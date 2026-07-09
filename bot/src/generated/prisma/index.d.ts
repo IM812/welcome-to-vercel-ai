@@ -3744,12 +3744,14 @@ export namespace Prisma {
     id: number | null
     userId: number | null
     errorCount: number | null
+    baselineMaxId: number | null
   }
 
   export type SearchSumAggregateOutputType = {
     id: number | null
     userId: number | null
     errorCount: number | null
+    baselineMaxId: bigint | null
   }
 
   export type SearchMinAggregateOutputType = {
@@ -3765,6 +3767,7 @@ export namespace Prisma {
     lastCheckedAt: Date | null
     lastFoundAt: Date | null
     baselineInitializedAt: Date | null
+    baselineMaxId: bigint | null
     lastNewListingAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -3783,6 +3786,7 @@ export namespace Prisma {
     lastCheckedAt: Date | null
     lastFoundAt: Date | null
     baselineInitializedAt: Date | null
+    baselineMaxId: bigint | null
     lastNewListingAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -3801,6 +3805,7 @@ export namespace Prisma {
     lastCheckedAt: number
     lastFoundAt: number
     baselineInitializedAt: number
+    baselineMaxId: number
     lastNewListingAt: number
     createdAt: number
     updatedAt: number
@@ -3812,12 +3817,14 @@ export namespace Prisma {
     id?: true
     userId?: true
     errorCount?: true
+    baselineMaxId?: true
   }
 
   export type SearchSumAggregateInputType = {
     id?: true
     userId?: true
     errorCount?: true
+    baselineMaxId?: true
   }
 
   export type SearchMinAggregateInputType = {
@@ -3833,6 +3840,7 @@ export namespace Prisma {
     lastCheckedAt?: true
     lastFoundAt?: true
     baselineInitializedAt?: true
+    baselineMaxId?: true
     lastNewListingAt?: true
     createdAt?: true
     updatedAt?: true
@@ -3851,6 +3859,7 @@ export namespace Prisma {
     lastCheckedAt?: true
     lastFoundAt?: true
     baselineInitializedAt?: true
+    baselineMaxId?: true
     lastNewListingAt?: true
     createdAt?: true
     updatedAt?: true
@@ -3869,6 +3878,7 @@ export namespace Prisma {
     lastCheckedAt?: true
     lastFoundAt?: true
     baselineInitializedAt?: true
+    baselineMaxId?: true
     lastNewListingAt?: true
     createdAt?: true
     updatedAt?: true
@@ -3974,6 +3984,7 @@ export namespace Prisma {
     lastCheckedAt: Date | null
     lastFoundAt: Date | null
     baselineInitializedAt: Date | null
+    baselineMaxId: bigint | null
     lastNewListingAt: Date | null
     createdAt: Date
     updatedAt: Date
@@ -4011,6 +4022,7 @@ export namespace Prisma {
     lastCheckedAt?: boolean
     lastFoundAt?: boolean
     baselineInitializedAt?: boolean
+    baselineMaxId?: boolean
     lastNewListingAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4033,6 +4045,7 @@ export namespace Prisma {
     lastCheckedAt?: boolean
     lastFoundAt?: boolean
     baselineInitializedAt?: boolean
+    baselineMaxId?: boolean
     lastNewListingAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4052,6 +4065,7 @@ export namespace Prisma {
     lastCheckedAt?: boolean
     lastFoundAt?: boolean
     baselineInitializedAt?: boolean
+    baselineMaxId?: boolean
     lastNewListingAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4071,12 +4085,13 @@ export namespace Prisma {
     lastCheckedAt?: boolean
     lastFoundAt?: boolean
     baselineInitializedAt?: boolean
+    baselineMaxId?: boolean
     lastNewListingAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type SearchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "name" | "platform" | "url" | "status" | "isActive" | "errorCount" | "lastError" | "lastCheckedAt" | "lastFoundAt" | "baselineInitializedAt" | "lastNewListingAt" | "createdAt" | "updatedAt", ExtArgs["result"]["search"]>
+  export type SearchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "name" | "platform" | "url" | "status" | "isActive" | "errorCount" | "lastError" | "lastCheckedAt" | "lastFoundAt" | "baselineInitializedAt" | "baselineMaxId" | "lastNewListingAt" | "createdAt" | "updatedAt", ExtArgs["result"]["search"]>
   export type SearchInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     listings?: boolean | Search$listingsArgs<ExtArgs>
@@ -4110,6 +4125,11 @@ export namespace Prisma {
       lastCheckedAt: Date | null
       lastFoundAt: Date | null
       baselineInitializedAt: Date | null
+      /**
+       * Max numeric Avito listing ID seen at baseline time. Only listings with
+       * a higher ID are sent as notifications. NULL = not yet computed.
+       */
+      baselineMaxId: bigint | null
       lastNewListingAt: Date | null
       createdAt: Date
       updatedAt: Date
@@ -4551,6 +4571,7 @@ export namespace Prisma {
     readonly lastCheckedAt: FieldRef<"Search", 'DateTime'>
     readonly lastFoundAt: FieldRef<"Search", 'DateTime'>
     readonly baselineInitializedAt: FieldRef<"Search", 'DateTime'>
+    readonly baselineMaxId: FieldRef<"Search", 'BigInt'>
     readonly lastNewListingAt: FieldRef<"Search", 'DateTime'>
     readonly createdAt: FieldRef<"Search", 'DateTime'>
     readonly updatedAt: FieldRef<"Search", 'DateTime'>
@@ -16600,6 +16621,7 @@ export namespace Prisma {
     lastCheckedAt: 'lastCheckedAt',
     lastFoundAt: 'lastFoundAt',
     baselineInitializedAt: 'baselineInitializedAt',
+    baselineMaxId: 'baselineMaxId',
     lastNewListingAt: 'lastNewListingAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -17099,6 +17121,7 @@ export namespace Prisma {
     lastCheckedAt?: DateTimeNullableFilter<"Search"> | Date | string | null
     lastFoundAt?: DateTimeNullableFilter<"Search"> | Date | string | null
     baselineInitializedAt?: DateTimeNullableFilter<"Search"> | Date | string | null
+    baselineMaxId?: BigIntNullableFilter<"Search"> | bigint | number | null
     lastNewListingAt?: DateTimeNullableFilter<"Search"> | Date | string | null
     createdAt?: DateTimeFilter<"Search"> | Date | string
     updatedAt?: DateTimeFilter<"Search"> | Date | string
@@ -17120,6 +17143,7 @@ export namespace Prisma {
     lastCheckedAt?: SortOrderInput | SortOrder
     lastFoundAt?: SortOrderInput | SortOrder
     baselineInitializedAt?: SortOrderInput | SortOrder
+    baselineMaxId?: SortOrderInput | SortOrder
     lastNewListingAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -17144,6 +17168,7 @@ export namespace Prisma {
     lastCheckedAt?: DateTimeNullableFilter<"Search"> | Date | string | null
     lastFoundAt?: DateTimeNullableFilter<"Search"> | Date | string | null
     baselineInitializedAt?: DateTimeNullableFilter<"Search"> | Date | string | null
+    baselineMaxId?: BigIntNullableFilter<"Search"> | bigint | number | null
     lastNewListingAt?: DateTimeNullableFilter<"Search"> | Date | string | null
     createdAt?: DateTimeFilter<"Search"> | Date | string
     updatedAt?: DateTimeFilter<"Search"> | Date | string
@@ -17165,6 +17190,7 @@ export namespace Prisma {
     lastCheckedAt?: SortOrderInput | SortOrder
     lastFoundAt?: SortOrderInput | SortOrder
     baselineInitializedAt?: SortOrderInput | SortOrder
+    baselineMaxId?: SortOrderInput | SortOrder
     lastNewListingAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -17191,6 +17217,7 @@ export namespace Prisma {
     lastCheckedAt?: DateTimeNullableWithAggregatesFilter<"Search"> | Date | string | null
     lastFoundAt?: DateTimeNullableWithAggregatesFilter<"Search"> | Date | string | null
     baselineInitializedAt?: DateTimeNullableWithAggregatesFilter<"Search"> | Date | string | null
+    baselineMaxId?: BigIntNullableWithAggregatesFilter<"Search"> | bigint | number | null
     lastNewListingAt?: DateTimeNullableWithAggregatesFilter<"Search"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Search"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Search"> | Date | string
@@ -18133,6 +18160,7 @@ export namespace Prisma {
     lastCheckedAt?: Date | string | null
     lastFoundAt?: Date | string | null
     baselineInitializedAt?: Date | string | null
+    baselineMaxId?: bigint | number | null
     lastNewListingAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -18154,6 +18182,7 @@ export namespace Prisma {
     lastCheckedAt?: Date | string | null
     lastFoundAt?: Date | string | null
     baselineInitializedAt?: Date | string | null
+    baselineMaxId?: bigint | number | null
     lastNewListingAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -18172,6 +18201,7 @@ export namespace Prisma {
     lastCheckedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastFoundAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     baselineInitializedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    baselineMaxId?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     lastNewListingAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18193,6 +18223,7 @@ export namespace Prisma {
     lastCheckedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastFoundAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     baselineInitializedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    baselineMaxId?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     lastNewListingAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18213,6 +18244,7 @@ export namespace Prisma {
     lastCheckedAt?: Date | string | null
     lastFoundAt?: Date | string | null
     baselineInitializedAt?: Date | string | null
+    baselineMaxId?: bigint | number | null
     lastNewListingAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -18229,6 +18261,7 @@ export namespace Prisma {
     lastCheckedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastFoundAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     baselineInitializedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    baselineMaxId?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     lastNewListingAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18247,6 +18280,7 @@ export namespace Prisma {
     lastCheckedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastFoundAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     baselineInitializedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    baselineMaxId?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     lastNewListingAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19387,6 +19421,17 @@ export namespace Prisma {
     not?: NestedEnumSearchStatusFilter<$PrismaModel> | $Enums.SearchStatus
   }
 
+  export type BigIntNullableFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -19415,6 +19460,7 @@ export namespace Prisma {
     lastCheckedAt?: SortOrder
     lastFoundAt?: SortOrder
     baselineInitializedAt?: SortOrder
+    baselineMaxId?: SortOrder
     lastNewListingAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -19424,6 +19470,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     errorCount?: SortOrder
+    baselineMaxId?: SortOrder
   }
 
   export type SearchMaxOrderByAggregateInput = {
@@ -19439,6 +19486,7 @@ export namespace Prisma {
     lastCheckedAt?: SortOrder
     lastFoundAt?: SortOrder
     baselineInitializedAt?: SortOrder
+    baselineMaxId?: SortOrder
     lastNewListingAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -19457,6 +19505,7 @@ export namespace Prisma {
     lastCheckedAt?: SortOrder
     lastFoundAt?: SortOrder
     baselineInitializedAt?: SortOrder
+    baselineMaxId?: SortOrder
     lastNewListingAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -19466,6 +19515,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     errorCount?: SortOrder
+    baselineMaxId?: SortOrder
   }
 
   export type EnumPlatformWithAggregatesFilter<$PrismaModel = never> = {
@@ -19504,6 +19554,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumSearchStatusFilter<$PrismaModel>
     _max?: NestedEnumSearchStatusFilter<$PrismaModel>
+  }
+
+  export type BigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedBigIntNullableFilter<$PrismaModel>
+    _min?: NestedBigIntNullableFilter<$PrismaModel>
+    _max?: NestedBigIntNullableFilter<$PrismaModel>
   }
 
   export type SearchScalarRelationFilter = {
@@ -20531,6 +20597,14 @@ export namespace Prisma {
     set?: $Enums.SearchStatus
   }
 
+  export type NullableBigIntFieldUpdateOperationsInput = {
+    set?: bigint | number | null
+    increment?: bigint | number
+    decrement?: bigint | number
+    multiply?: bigint | number
+    divide?: bigint | number
+  }
+
   export type UserUpdateOneRequiredWithoutSearchesNestedInput = {
     create?: XOR<UserCreateWithoutSearchesInput, UserUncheckedCreateWithoutSearchesInput>
     connectOrCreate?: UserCreateOrConnectWithoutSearchesInput
@@ -21155,6 +21229,17 @@ export namespace Prisma {
     not?: NestedEnumSearchStatusFilter<$PrismaModel> | $Enums.SearchStatus
   }
 
+  export type NestedBigIntNullableFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
+  }
+
   export type NestedEnumPlatformWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.Platform | EnumPlatformFieldRefInput<$PrismaModel>
     in?: $Enums.Platform[] | ListEnumPlatformFieldRefInput<$PrismaModel>
@@ -21190,6 +21275,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumSearchStatusFilter<$PrismaModel>
     _max?: NestedEnumSearchStatusFilter<$PrismaModel>
+  }
+
+  export type NestedBigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedBigIntNullableFilter<$PrismaModel>
+    _min?: NestedBigIntNullableFilter<$PrismaModel>
+    _max?: NestedBigIntNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumPaymentStatusFilter<$PrismaModel = never> = {
@@ -21374,6 +21475,7 @@ export namespace Prisma {
     lastCheckedAt?: Date | string | null
     lastFoundAt?: Date | string | null
     baselineInitializedAt?: Date | string | null
+    baselineMaxId?: bigint | number | null
     lastNewListingAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21393,6 +21495,7 @@ export namespace Prisma {
     lastCheckedAt?: Date | string | null
     lastFoundAt?: Date | string | null
     baselineInitializedAt?: Date | string | null
+    baselineMaxId?: bigint | number | null
     lastNewListingAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21751,6 +21854,7 @@ export namespace Prisma {
     lastCheckedAt?: DateTimeNullableFilter<"Search"> | Date | string | null
     lastFoundAt?: DateTimeNullableFilter<"Search"> | Date | string | null
     baselineInitializedAt?: DateTimeNullableFilter<"Search"> | Date | string | null
+    baselineMaxId?: BigIntNullableFilter<"Search"> | bigint | number | null
     lastNewListingAt?: DateTimeNullableFilter<"Search"> | Date | string | null
     createdAt?: DateTimeFilter<"Search"> | Date | string
     updatedAt?: DateTimeFilter<"Search"> | Date | string
@@ -22264,6 +22368,7 @@ export namespace Prisma {
     lastCheckedAt?: Date | string | null
     lastFoundAt?: Date | string | null
     baselineInitializedAt?: Date | string | null
+    baselineMaxId?: bigint | number | null
     lastNewListingAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22284,6 +22389,7 @@ export namespace Prisma {
     lastCheckedAt?: Date | string | null
     lastFoundAt?: Date | string | null
     baselineInitializedAt?: Date | string | null
+    baselineMaxId?: bigint | number | null
     lastNewListingAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22367,6 +22473,7 @@ export namespace Prisma {
     lastCheckedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastFoundAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     baselineInitializedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    baselineMaxId?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     lastNewListingAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22387,6 +22494,7 @@ export namespace Prisma {
     lastCheckedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastFoundAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     baselineInitializedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    baselineMaxId?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     lastNewListingAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22872,6 +22980,7 @@ export namespace Prisma {
     lastCheckedAt?: Date | string | null
     lastFoundAt?: Date | string | null
     baselineInitializedAt?: Date | string | null
+    baselineMaxId?: bigint | number | null
     lastNewListingAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22892,6 +23001,7 @@ export namespace Prisma {
     lastCheckedAt?: Date | string | null
     lastFoundAt?: Date | string | null
     baselineInitializedAt?: Date | string | null
+    baselineMaxId?: bigint | number | null
     lastNewListingAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -23041,6 +23151,7 @@ export namespace Prisma {
     lastCheckedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastFoundAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     baselineInitializedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    baselineMaxId?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     lastNewListingAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23061,6 +23172,7 @@ export namespace Prisma {
     lastCheckedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastFoundAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     baselineInitializedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    baselineMaxId?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     lastNewListingAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23939,6 +24051,7 @@ export namespace Prisma {
     lastCheckedAt?: Date | string | null
     lastFoundAt?: Date | string | null
     baselineInitializedAt?: Date | string | null
+    baselineMaxId?: bigint | number | null
     lastNewListingAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -24084,6 +24197,7 @@ export namespace Prisma {
     lastCheckedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastFoundAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     baselineInitializedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    baselineMaxId?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     lastNewListingAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24103,6 +24217,7 @@ export namespace Prisma {
     lastCheckedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastFoundAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     baselineInitializedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    baselineMaxId?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     lastNewListingAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24122,6 +24237,7 @@ export namespace Prisma {
     lastCheckedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastFoundAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     baselineInitializedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    baselineMaxId?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
     lastNewListingAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

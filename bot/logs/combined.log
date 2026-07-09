@@ -5327,3 +5327,626 @@ The column `Listing.rawPublishedAt` does not exist in the current database.
 2026-07-09 19:32:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8155364488
 2026-07-09 19:32:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8301654312
 2026-07-09 19:32:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8246238834
+2026-07-09 19:33:02 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:33:02 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:33:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8080280473
+2026-07-09 19:33:02 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:33:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8025959414
+2026-07-09 19:33:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8300905707
+2026-07-09 19:33:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8207402326
+2026-07-09 19:33:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8223024860
+2026-07-09 19:33:02 [[32minfo[39m]: [new-listing] searchId=6 externalId=7994334503 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/longsliv_vivienne_westwood_lion_chernyy_hayp_2026_7994334503?context=H4sIAAAAAAAA_wE_AMD_YToyOntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czoxOiJ4IjtzOjE2OiJvYnVkNzNpZDFhbVd1VjdPIjt9s4NVUT8AAAA
+2026-07-09 19:33:07 [[32minfo[39m]: [sent] listingId=844 externalId=7994334503
+2026-07-09 19:33:07 [[34mdebug[39m]: [seen] searchId=6 externalId=7945001274
+2026-07-09 19:33:07 [[34mdebug[39m]: [seen] searchId=6 externalId=8108108511
+2026-07-09 19:33:07 [[34mdebug[39m]: [seen] searchId=6 externalId=8301575168
+2026-07-09 19:33:07 [[34mdebug[39m]: [seen] searchId=6 externalId=8301508305
+2026-07-09 19:33:07 [[34mdebug[39m]: [seen] searchId=6 externalId=8181348876
+2026-07-09 19:33:07 [[34mdebug[39m]: [seen] searchId=6 externalId=8216526142
+2026-07-09 19:33:07 [[34mdebug[39m]: [seen] searchId=6 externalId=8275313250
+2026-07-09 19:33:07 [[34mdebug[39m]: [seen] searchId=6 externalId=8167816473
+2026-07-09 19:33:07 [[34mdebug[39m]: [seen] searchId=6 externalId=8261440955
+2026-07-09 19:33:07 [[34mdebug[39m]: [seen] searchId=6 externalId=8108849500
+2026-07-09 19:33:07 [[34mdebug[39m]: [seen] searchId=6 externalId=8166768523
+2026-07-09 19:33:07 [[34mdebug[39m]: [seen] searchId=6 externalId=8301592132
+2026-07-09 19:33:07 [[34mdebug[39m]: [seen] searchId=6 externalId=8156270563
+2026-07-09 19:33:10 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:33:10 [[34mdebug[39m]: [tick] searchId=5 fetched=30 checking=20
+2026-07-09 19:33:10 [[34mdebug[39m]: [seen] searchId=5 externalId=8181022530
+2026-07-09 19:33:10 [[34mdebug[39m]: [seen] searchId=5 externalId=8166650911
+2026-07-09 19:33:10 [[34mdebug[39m]: [seen] searchId=5 externalId=8166213969
+2026-07-09 19:33:10 [[34mdebug[39m]: [seen] searchId=5 externalId=8104677552
+2026-07-09 19:33:10 [[34mdebug[39m]: [seen] searchId=5 externalId=8158761623
+2026-07-09 19:33:10 [[34mdebug[39m]: [seen] searchId=5 externalId=8249226242
+2026-07-09 19:33:10 [[34mdebug[39m]: [seen] searchId=5 externalId=8249520395
+2026-07-09 19:33:10 [[34mdebug[39m]: [seen] searchId=5 externalId=8261044979
+2026-07-09 19:33:10 [[34mdebug[39m]: [seen] searchId=5 externalId=8174450667
+2026-07-09 19:33:10 [[34mdebug[39m]: [seen] searchId=5 externalId=8249198946
+2026-07-09 19:33:10 [[34mdebug[39m]: [seen] searchId=5 externalId=8104464564
+2026-07-09 19:33:10 [[34mdebug[39m]: [seen] searchId=5 externalId=8248886980
+2026-07-09 19:33:10 [[34mdebug[39m]: [seen] searchId=5 externalId=8249024624
+2026-07-09 19:33:10 [[34mdebug[39m]: [seen] searchId=5 externalId=8249502649
+2026-07-09 19:33:10 [[34mdebug[39m]: [seen] searchId=5 externalId=8166389716
+2026-07-09 19:33:10 [[34mdebug[39m]: [seen] searchId=5 externalId=8275209199
+2026-07-09 19:33:10 [[34mdebug[39m]: [seen] searchId=5 externalId=8186009574
+2026-07-09 19:33:10 [[34mdebug[39m]: [seen] searchId=5 externalId=8155364488
+2026-07-09 19:33:10 [[34mdebug[39m]: [seen] searchId=5 externalId=8301654312
+2026-07-09 19:33:10 [[34mdebug[39m]: [seen] searchId=5 externalId=8246238834
+2026-07-09 19:33:18 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:33:18 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:33:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8096198556
+2026-07-09 19:33:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8207167091
+2026-07-09 19:33:18 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:33:18 [[34mdebug[39m]: [seen] searchId=6 externalId=2784965793
+2026-07-09 19:33:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8080280473
+2026-07-09 19:33:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8214820266
+2026-07-09 19:33:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8025959414
+2026-07-09 19:33:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8207503665
+2026-07-09 19:33:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8108108511
+2026-07-09 19:33:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8257259298
+2026-07-09 19:33:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8189132560
+2026-07-09 19:33:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8176401528
+2026-07-09 19:33:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8176440813
+2026-07-09 19:33:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8146477997
+2026-07-09 19:33:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8216446928
+2026-07-09 19:33:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8189629322
+2026-07-09 19:33:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8146673947
+2026-07-09 19:33:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8301397375
+2026-07-09 19:33:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8226091849
+2026-07-09 19:33:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8156181039
+2026-07-09 19:33:18 [[33mwarn[39m]: [fetchHtml] 403 on attempt 1, retrying with new UA…
+2026-07-09 19:33:26 [[33mwarn[39m]: [fetchHtml] 403 on attempt 2, retrying with new UA…
+2026-07-09 19:33:36 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:33:37 [[34mdebug[39m]: [tick] searchId=5 fetched=30 checking=20
+2026-07-09 19:33:37 [[34mdebug[39m]: [seen] searchId=5 externalId=8181022530
+2026-07-09 19:33:37 [[34mdebug[39m]: [seen] searchId=5 externalId=8166650911
+2026-07-09 19:33:37 [[34mdebug[39m]: [seen] searchId=5 externalId=8166213969
+2026-07-09 19:33:37 [[34mdebug[39m]: [seen] searchId=5 externalId=8104677552
+2026-07-09 19:33:37 [[34mdebug[39m]: [seen] searchId=5 externalId=8158761623
+2026-07-09 19:33:37 [[34mdebug[39m]: [seen] searchId=5 externalId=8249226242
+2026-07-09 19:33:37 [[34mdebug[39m]: [seen] searchId=5 externalId=8249520395
+2026-07-09 19:33:37 [[34mdebug[39m]: [seen] searchId=5 externalId=8261044979
+2026-07-09 19:33:37 [[34mdebug[39m]: [seen] searchId=5 externalId=8174450667
+2026-07-09 19:33:37 [[34mdebug[39m]: [seen] searchId=5 externalId=8249198946
+2026-07-09 19:33:37 [[34mdebug[39m]: [seen] searchId=5 externalId=8104464564
+2026-07-09 19:33:37 [[34mdebug[39m]: [seen] searchId=5 externalId=8248886980
+2026-07-09 19:33:37 [[34mdebug[39m]: [seen] searchId=5 externalId=8249024624
+2026-07-09 19:33:37 [[34mdebug[39m]: [seen] searchId=5 externalId=8249502649
+2026-07-09 19:33:37 [[34mdebug[39m]: [seen] searchId=5 externalId=8166389716
+2026-07-09 19:33:37 [[34mdebug[39m]: [seen] searchId=5 externalId=8275209199
+2026-07-09 19:33:37 [[34mdebug[39m]: [seen] searchId=5 externalId=8186009574
+2026-07-09 19:33:37 [[34mdebug[39m]: [seen] searchId=5 externalId=8155364488
+2026-07-09 19:33:37 [[34mdebug[39m]: [seen] searchId=5 externalId=8301654312
+2026-07-09 19:33:37 [[34mdebug[39m]: [seen] searchId=5 externalId=8246238834
+2026-07-09 19:33:48 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:33:48 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:33:48 [[34mdebug[39m]: [seen] searchId=6 externalId=8080280473
+2026-07-09 19:33:48 [[32minfo[39m]: [new-listing] searchId=6 externalId=8156296754 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/zip_hudi_v_polosku_protocol_index_type_8156296754?context=H4sIAAAAAAAA_wE_AMD_YToyOntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czoxOiJ4IjtzOjE2OiJTbEZhbHNyc09USXJsWlNOIjt9-2lTqj8AAAA
+2026-07-09 19:33:48 [[32minfo[39m]: [sent] listingId=845 externalId=8156296754
+2026-07-09 19:33:48 [[34mdebug[39m]: [seen] searchId=6 externalId=8025959414
+2026-07-09 19:33:48 [[34mdebug[39m]: [seen] searchId=6 externalId=8139628537
+2026-07-09 19:33:48 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:33:48 [[34mdebug[39m]: [seen] searchId=6 externalId=8300905707
+2026-07-09 19:33:48 [[34mdebug[39m]: [seen] searchId=6 externalId=8207402326
+2026-07-09 19:33:48 [[34mdebug[39m]: [seen] searchId=6 externalId=8181415058
+2026-07-09 19:33:48 [[34mdebug[39m]: [seen] searchId=6 externalId=8176401528
+2026-07-09 19:33:48 [[34mdebug[39m]: [seen] searchId=6 externalId=8300980990
+2026-07-09 19:33:48 [[34mdebug[39m]: [seen] searchId=6 externalId=8181082690
+2026-07-09 19:33:48 [[34mdebug[39m]: [seen] searchId=6 externalId=8301328857
+2026-07-09 19:33:48 [[34mdebug[39m]: [seen] searchId=6 externalId=8189797118
+2026-07-09 19:33:48 [[34mdebug[39m]: [seen] searchId=6 externalId=8216786860
+2026-07-09 19:33:48 [[34mdebug[39m]: [seen] searchId=6 externalId=8274928212
+2026-07-09 19:33:48 [[34mdebug[39m]: [seen] searchId=6 externalId=8207458384
+2026-07-09 19:33:48 [[34mdebug[39m]: [seen] searchId=6 externalId=8176333892
+2026-07-09 19:33:48 [[34mdebug[39m]: [seen] searchId=6 externalId=8166768523
+2026-07-09 19:33:48 [[34mdebug[39m]: [seen] searchId=6 externalId=8216074459
+2026-07-09 19:33:48 [[34mdebug[39m]: [seen] searchId=6 externalId=8245968093
+2026-07-09 19:33:51 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:33:51 [[34mdebug[39m]: [tick] searchId=5 fetched=30 checking=20
+2026-07-09 19:33:51 [[34mdebug[39m]: [seen] searchId=5 externalId=8181022530
+2026-07-09 19:33:51 [[34mdebug[39m]: [seen] searchId=5 externalId=8166650911
+2026-07-09 19:33:51 [[34mdebug[39m]: [seen] searchId=5 externalId=8166213969
+2026-07-09 19:33:51 [[34mdebug[39m]: [seen] searchId=5 externalId=8104677552
+2026-07-09 19:33:51 [[34mdebug[39m]: [seen] searchId=5 externalId=8158761623
+2026-07-09 19:33:51 [[34mdebug[39m]: [seen] searchId=5 externalId=8249226242
+2026-07-09 19:33:51 [[34mdebug[39m]: [seen] searchId=5 externalId=8249520395
+2026-07-09 19:33:51 [[34mdebug[39m]: [seen] searchId=5 externalId=8261044979
+2026-07-09 19:33:51 [[34mdebug[39m]: [seen] searchId=5 externalId=8174450667
+2026-07-09 19:33:51 [[34mdebug[39m]: [seen] searchId=5 externalId=8249198946
+2026-07-09 19:33:51 [[34mdebug[39m]: [seen] searchId=5 externalId=8104464564
+2026-07-09 19:33:51 [[34mdebug[39m]: [seen] searchId=5 externalId=8248886980
+2026-07-09 19:33:51 [[34mdebug[39m]: [seen] searchId=5 externalId=8249024624
+2026-07-09 19:33:51 [[34mdebug[39m]: [seen] searchId=5 externalId=8249502649
+2026-07-09 19:33:51 [[34mdebug[39m]: [seen] searchId=5 externalId=8166389716
+2026-07-09 19:33:51 [[34mdebug[39m]: [seen] searchId=5 externalId=8275209199
+2026-07-09 19:33:51 [[34mdebug[39m]: [seen] searchId=5 externalId=8186009574
+2026-07-09 19:33:51 [[34mdebug[39m]: [seen] searchId=5 externalId=8155364488
+2026-07-09 19:33:51 [[34mdebug[39m]: [seen] searchId=5 externalId=8301654312
+2026-07-09 19:33:51 [[34mdebug[39m]: [seen] searchId=5 externalId=8246238834
+2026-07-09 19:34:02 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:34:02 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:34:02 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:34:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8080280473
+2026-07-09 19:34:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8025959414
+2026-07-09 19:34:02 [[34mdebug[39m]: [seen] searchId=6 externalId=7994334503
+2026-07-09 19:34:02 [[34mdebug[39m]: [seen] searchId=6 externalId=7418073769
+2026-07-09 19:34:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8068392143
+2026-07-09 19:34:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8027134708
+2026-07-09 19:34:02 [[34mdebug[39m]: [seen] searchId=6 externalId=7945001274
+2026-07-09 19:34:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8189797118
+2026-07-09 19:34:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8257602808
+2026-07-09 19:34:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8145897343
+2026-07-09 19:34:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8301132987
+2026-07-09 19:34:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8207597049
+2026-07-09 19:34:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8176440813
+2026-07-09 19:34:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8176401528
+2026-07-09 19:34:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8287362555
+2026-07-09 19:34:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8216526142
+2026-07-09 19:34:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8226091849
+2026-07-09 19:34:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8145908138
+2026-07-09 19:34:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8257259298
+2026-07-09 19:34:04 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:34:04 [[34mdebug[39m]: [tick] searchId=5 fetched=30 checking=20
+2026-07-09 19:34:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8181022530
+2026-07-09 19:34:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8166650911
+2026-07-09 19:34:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8166213969
+2026-07-09 19:34:04 [[32minfo[39m]: [new-listing] searchId=5 externalId=8146077969 url=https://www.avito.ru/ekaterinburg/telefony/iphone_se_2020_128_gb_sim_esim_8146077969?context=H4sIAAAAAAAA_wE_AMD_YToyOntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czoxOiJ4IjtzOjE2OiJub3FtVkdUVTlLaDh6eUgxIjt9wVKATT8AAAA
+2026-07-09 19:34:05 [[32minfo[39m]: [sent] listingId=846 externalId=8146077969
+2026-07-09 19:34:05 [[34mdebug[39m]: [seen] searchId=5 externalId=8104677552
+2026-07-09 19:34:05 [[34mdebug[39m]: [seen] searchId=5 externalId=8158761623
+2026-07-09 19:34:05 [[34mdebug[39m]: [seen] searchId=5 externalId=8249226242
+2026-07-09 19:34:05 [[34mdebug[39m]: [seen] searchId=5 externalId=8249520395
+2026-07-09 19:34:05 [[34mdebug[39m]: [seen] searchId=5 externalId=8261044979
+2026-07-09 19:34:05 [[34mdebug[39m]: [seen] searchId=5 externalId=8174450667
+2026-07-09 19:34:05 [[34mdebug[39m]: [seen] searchId=5 externalId=8249198946
+2026-07-09 19:34:05 [[34mdebug[39m]: [seen] searchId=5 externalId=8104464564
+2026-07-09 19:34:05 [[34mdebug[39m]: [seen] searchId=5 externalId=8248886980
+2026-07-09 19:34:05 [[34mdebug[39m]: [seen] searchId=5 externalId=8249024624
+2026-07-09 19:34:05 [[34mdebug[39m]: [seen] searchId=5 externalId=8249502649
+2026-07-09 19:34:05 [[34mdebug[39m]: [seen] searchId=5 externalId=8166389716
+2026-07-09 19:34:05 [[34mdebug[39m]: [seen] searchId=5 externalId=8275209199
+2026-07-09 19:34:05 [[34mdebug[39m]: [seen] searchId=5 externalId=8186009574
+2026-07-09 19:34:05 [[34mdebug[39m]: [seen] searchId=5 externalId=8155364488
+2026-07-09 19:34:05 [[34mdebug[39m]: [seen] searchId=5 externalId=8301654312
+2026-07-09 19:34:18 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:34:18 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:34:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8080280473
+2026-07-09 19:34:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8096198556
+2026-07-09 19:34:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8223024860
+2026-07-09 19:34:18 [[34mdebug[39m]: [seen] searchId=6 externalId=2784965793
+2026-07-09 19:34:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8207402326
+2026-07-09 19:34:18 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:34:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8025959414
+2026-07-09 19:34:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8301297627
+2026-07-09 19:34:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8167258345
+2026-07-09 19:34:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8148570802
+2026-07-09 19:34:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8216717160
+2026-07-09 19:34:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8108412490
+2026-07-09 19:34:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8207503665
+2026-07-09 19:34:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8216397843
+2026-07-09 19:34:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8167736839
+2026-07-09 19:34:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8156130875
+2026-07-09 19:34:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8301397375
+2026-07-09 19:34:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8156181039
+2026-07-09 19:34:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8207118367
+2026-07-09 19:34:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8233816078
+2026-07-09 19:34:18 [[33mwarn[39m]: [fetchHtml] 403 on attempt 1, retrying with new UA…
+2026-07-09 19:34:29 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:34:29 [[34mdebug[39m]: [tick] searchId=5 fetched=30 checking=20
+2026-07-09 19:34:29 [[34mdebug[39m]: [seen] searchId=5 externalId=8181022530
+2026-07-09 19:34:29 [[34mdebug[39m]: [seen] searchId=5 externalId=8166650911
+2026-07-09 19:34:29 [[34mdebug[39m]: [seen] searchId=5 externalId=8166213969
+2026-07-09 19:34:29 [[34mdebug[39m]: [seen] searchId=5 externalId=8104677552
+2026-07-09 19:34:29 [[34mdebug[39m]: [seen] searchId=5 externalId=8158761623
+2026-07-09 19:34:29 [[34mdebug[39m]: [seen] searchId=5 externalId=8249226242
+2026-07-09 19:34:29 [[34mdebug[39m]: [seen] searchId=5 externalId=8249520395
+2026-07-09 19:34:29 [[34mdebug[39m]: [seen] searchId=5 externalId=8261044979
+2026-07-09 19:34:29 [[34mdebug[39m]: [seen] searchId=5 externalId=8174450667
+2026-07-09 19:34:29 [[34mdebug[39m]: [seen] searchId=5 externalId=8249198946
+2026-07-09 19:34:29 [[34mdebug[39m]: [seen] searchId=5 externalId=8104464564
+2026-07-09 19:34:29 [[34mdebug[39m]: [seen] searchId=5 externalId=8248886980
+2026-07-09 19:34:29 [[34mdebug[39m]: [seen] searchId=5 externalId=8249024624
+2026-07-09 19:34:29 [[34mdebug[39m]: [seen] searchId=5 externalId=8249502649
+2026-07-09 19:34:29 [[34mdebug[39m]: [seen] searchId=5 externalId=8166389716
+2026-07-09 19:34:29 [[34mdebug[39m]: [seen] searchId=5 externalId=8275209199
+2026-07-09 19:34:29 [[34mdebug[39m]: [seen] searchId=5 externalId=8186009574
+2026-07-09 19:34:29 [[34mdebug[39m]: [seen] searchId=5 externalId=8155364488
+2026-07-09 19:34:29 [[34mdebug[39m]: [seen] searchId=5 externalId=8301654312
+2026-07-09 19:34:29 [[34mdebug[39m]: [seen] searchId=5 externalId=8246238834
+2026-07-09 19:34:32 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:34:33 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:34:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8080280473
+2026-07-09 19:34:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8096198556
+2026-07-09 19:34:33 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:34:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8207402326
+2026-07-09 19:34:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8223024860
+2026-07-09 19:34:33 [[34mdebug[39m]: [seen] searchId=6 externalId=2784965793
+2026-07-09 19:34:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8025959414
+2026-07-09 19:34:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8145908138
+2026-07-09 19:34:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8154926924
+2026-07-09 19:34:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8216397843
+2026-07-09 19:34:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8156270563
+2026-07-09 19:34:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8301297627
+2026-07-09 19:34:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8301645776
+2026-07-09 19:34:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8181326981
+2026-07-09 19:34:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8207118367
+2026-07-09 19:34:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8146729813
+2026-07-09 19:34:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8261440955
+2026-07-09 19:34:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8245968093
+2026-07-09 19:34:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8216074459
+2026-07-09 19:34:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8176440813
+2026-07-09 19:34:35 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:34:35 [[34mdebug[39m]: [tick] searchId=5 fetched=30 checking=20
+2026-07-09 19:34:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8181022530
+2026-07-09 19:34:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8166650911
+2026-07-09 19:34:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8166213969
+2026-07-09 19:34:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8104677552
+2026-07-09 19:34:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8158761623
+2026-07-09 19:34:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8249226242
+2026-07-09 19:34:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8249520395
+2026-07-09 19:34:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8261044979
+2026-07-09 19:34:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8174450667
+2026-07-09 19:34:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8249198946
+2026-07-09 19:34:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8104464564
+2026-07-09 19:34:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8248886980
+2026-07-09 19:34:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8249024624
+2026-07-09 19:34:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8249502649
+2026-07-09 19:34:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8166389716
+2026-07-09 19:34:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8275209199
+2026-07-09 19:34:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8186009574
+2026-07-09 19:34:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8155364488
+2026-07-09 19:34:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8301654312
+2026-07-09 19:34:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8246238834
+2026-07-09 19:34:47 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:34:47 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:34:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8080280473
+2026-07-09 19:34:47 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:34:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8300905707
+2026-07-09 19:34:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8025959414
+2026-07-09 19:34:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8223024860
+2026-07-09 19:34:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8207402326
+2026-07-09 19:34:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8006536681
+2026-07-09 19:34:47 [[34mdebug[39m]: [seen] searchId=6 externalId=7241516367
+2026-07-09 19:34:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8275516026
+2026-07-09 19:34:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8189629322
+2026-07-09 19:34:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8181415058
+2026-07-09 19:34:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8180985659
+2026-07-09 19:34:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8245968093
+2026-07-09 19:34:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8233245612
+2026-07-09 19:34:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8300980990
+2026-07-09 19:34:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8257602808
+2026-07-09 19:34:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8108412490
+2026-07-09 19:34:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8275313250
+2026-07-09 19:34:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8287362555
+2026-07-09 19:34:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8207597049
+2026-07-09 19:34:49 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:34:49 [[34mdebug[39m]: [tick] searchId=5 fetched=30 checking=20
+2026-07-09 19:34:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8181022530
+2026-07-09 19:34:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8166650911
+2026-07-09 19:34:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8166213969
+2026-07-09 19:34:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8146077969
+2026-07-09 19:34:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8104677552
+2026-07-09 19:34:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8158761623
+2026-07-09 19:34:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8249226242
+2026-07-09 19:34:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8249520395
+2026-07-09 19:34:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8261044979
+2026-07-09 19:34:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8174450667
+2026-07-09 19:34:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8249198946
+2026-07-09 19:34:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8104464564
+2026-07-09 19:34:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8248886980
+2026-07-09 19:34:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8249024624
+2026-07-09 19:34:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8249502649
+2026-07-09 19:34:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8166389716
+2026-07-09 19:34:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8275209199
+2026-07-09 19:34:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8186009574
+2026-07-09 19:34:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8155364488
+2026-07-09 19:34:49 [[34mdebug[39m]: [seen] searchId=5 externalId=8301654312
+2026-07-09 19:35:02 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:35:02 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:35:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8080280473
+2026-07-09 19:35:02 [[34mdebug[39m]: [seen] searchId=6 externalId=2784965793
+2026-07-09 19:35:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8207402326
+2026-07-09 19:35:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8096198556
+2026-07-09 19:35:02 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:35:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8025959414
+2026-07-09 19:35:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8223024860
+2026-07-09 19:35:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8148570802
+2026-07-09 19:35:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8145908138
+2026-07-09 19:35:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8301397375
+2026-07-09 19:35:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8145897343
+2026-07-09 19:35:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8155902726
+2026-07-09 19:35:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8206955645
+2026-07-09 19:35:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8301575168
+2026-07-09 19:35:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8301297627
+2026-07-09 19:35:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8146175207
+2026-07-09 19:35:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8154926924
+2026-07-09 19:35:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8157936630
+2026-07-09 19:35:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8156308244
+2026-07-09 19:35:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8233245612
+2026-07-09 19:35:04 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:35:04 [[34mdebug[39m]: [tick] searchId=5 fetched=30 checking=20
+2026-07-09 19:35:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8181022530
+2026-07-09 19:35:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8166650911
+2026-07-09 19:35:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8166213969
+2026-07-09 19:35:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8146077969
+2026-07-09 19:35:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8104677552
+2026-07-09 19:35:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8158761623
+2026-07-09 19:35:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8249226242
+2026-07-09 19:35:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8249520395
+2026-07-09 19:35:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8261044979
+2026-07-09 19:35:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8174450667
+2026-07-09 19:35:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8249198946
+2026-07-09 19:35:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8104464564
+2026-07-09 19:35:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8248886980
+2026-07-09 19:35:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8249024624
+2026-07-09 19:35:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8249502649
+2026-07-09 19:35:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8166389716
+2026-07-09 19:35:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8275209199
+2026-07-09 19:35:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8186009574
+2026-07-09 19:35:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8155364488
+2026-07-09 19:35:04 [[34mdebug[39m]: [seen] searchId=5 externalId=8301654312
+2026-07-09 19:35:17 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:35:17 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:35:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8080280473
+2026-07-09 19:35:17 [[34mdebug[39m]: [seen] searchId=6 externalId=2784965793
+2026-07-09 19:35:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8207402326
+2026-07-09 19:35:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8096198556
+2026-07-09 19:35:17 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:35:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8025959414
+2026-07-09 19:35:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8223024860
+2026-07-09 19:35:17 [[34mdebug[39m]: [seen] searchId=6 externalId=7945001274
+2026-07-09 19:35:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8148570802
+2026-07-09 19:35:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8275377171
+2026-07-09 19:35:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8145897343
+2026-07-09 19:35:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8146256486
+2026-07-09 19:35:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8167816473
+2026-07-09 19:35:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8301061789
+2026-07-09 19:35:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8166768523
+2026-07-09 19:35:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8181326981
+2026-07-09 19:35:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8301007516
+2026-07-09 19:35:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8301575168
+2026-07-09 19:35:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8157936630
+2026-07-09 19:35:18 [[34mdebug[39m]: [seen] searchId=6 externalId=8261808470
+2026-07-09 19:35:19 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:35:19 [[34mdebug[39m]: [tick] searchId=5 fetched=30 checking=20
+2026-07-09 19:35:19 [[34mdebug[39m]: [seen] searchId=5 externalId=8181022530
+2026-07-09 19:35:19 [[34mdebug[39m]: [seen] searchId=5 externalId=8166650911
+2026-07-09 19:35:19 [[34mdebug[39m]: [seen] searchId=5 externalId=8166213969
+2026-07-09 19:35:19 [[34mdebug[39m]: [seen] searchId=5 externalId=8146077969
+2026-07-09 19:35:19 [[34mdebug[39m]: [seen] searchId=5 externalId=8104677552
+2026-07-09 19:35:19 [[34mdebug[39m]: [seen] searchId=5 externalId=8158761623
+2026-07-09 19:35:19 [[34mdebug[39m]: [seen] searchId=5 externalId=8249226242
+2026-07-09 19:35:19 [[34mdebug[39m]: [seen] searchId=5 externalId=8249520395
+2026-07-09 19:35:19 [[34mdebug[39m]: [seen] searchId=5 externalId=8261044979
+2026-07-09 19:35:19 [[34mdebug[39m]: [seen] searchId=5 externalId=8174450667
+2026-07-09 19:35:19 [[34mdebug[39m]: [seen] searchId=5 externalId=8249198946
+2026-07-09 19:35:19 [[34mdebug[39m]: [seen] searchId=5 externalId=8104464564
+2026-07-09 19:35:19 [[34mdebug[39m]: [seen] searchId=5 externalId=8248886980
+2026-07-09 19:35:19 [[34mdebug[39m]: [seen] searchId=5 externalId=8249024624
+2026-07-09 19:35:19 [[34mdebug[39m]: [seen] searchId=5 externalId=8249502649
+2026-07-09 19:35:19 [[34mdebug[39m]: [seen] searchId=5 externalId=8166389716
+2026-07-09 19:35:19 [[34mdebug[39m]: [seen] searchId=5 externalId=8275209199
+2026-07-09 19:35:19 [[34mdebug[39m]: [seen] searchId=5 externalId=8186009574
+2026-07-09 19:35:19 [[34mdebug[39m]: [seen] searchId=5 externalId=8155364488
+2026-07-09 19:35:19 [[34mdebug[39m]: [seen] searchId=5 externalId=8301654312
+2026-07-09 19:35:33 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:35:33 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:35:33 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:35:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8080280473
+2026-07-09 19:35:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8214820266
+2026-07-09 19:35:33 [[34mdebug[39m]: [seen] searchId=6 externalId=7418073769
+2026-07-09 19:35:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8025959414
+2026-07-09 19:35:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8006536681
+2026-07-09 19:35:33 [[34mdebug[39m]: [seen] searchId=6 externalId=7994334503
+2026-07-09 19:35:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8167816473
+2026-07-09 19:35:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8301645776
+2026-07-09 19:35:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8301297627
+2026-07-09 19:35:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8176333892
+2026-07-09 19:35:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8275313250
+2026-07-09 19:35:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8207503665
+2026-07-09 19:35:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8207458384
+2026-07-09 19:35:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8108412490
+2026-07-09 19:35:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8216397843
+2026-07-09 19:35:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8207597049
+2026-07-09 19:35:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8301608613
+2026-07-09 19:35:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8180985659
+2026-07-09 19:35:33 [[34mdebug[39m]: [seen] searchId=6 externalId=8176440813
+2026-07-09 19:35:34 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:35:34 [[34mdebug[39m]: [tick] searchId=5 fetched=30 checking=20
+2026-07-09 19:35:34 [[34mdebug[39m]: [seen] searchId=5 externalId=8181022530
+2026-07-09 19:35:34 [[34mdebug[39m]: [seen] searchId=5 externalId=8166650911
+2026-07-09 19:35:34 [[34mdebug[39m]: [seen] searchId=5 externalId=8166213969
+2026-07-09 19:35:34 [[34mdebug[39m]: [seen] searchId=5 externalId=8146077969
+2026-07-09 19:35:34 [[34mdebug[39m]: [seen] searchId=5 externalId=8104677552
+2026-07-09 19:35:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8158761623
+2026-07-09 19:35:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8249226242
+2026-07-09 19:35:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8249520395
+2026-07-09 19:35:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8261044979
+2026-07-09 19:35:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8174450667
+2026-07-09 19:35:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8249198946
+2026-07-09 19:35:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8104464564
+2026-07-09 19:35:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8248886980
+2026-07-09 19:35:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8249024624
+2026-07-09 19:35:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8249502649
+2026-07-09 19:35:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8166389716
+2026-07-09 19:35:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8275209199
+2026-07-09 19:35:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8186009574
+2026-07-09 19:35:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8155364488
+2026-07-09 19:35:35 [[34mdebug[39m]: [seen] searchId=5 externalId=8301654312
+2026-07-09 19:35:47 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:35:47 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:35:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8207167091
+2026-07-09 19:35:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8096198556
+2026-07-09 19:35:47 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:35:47 [[34mdebug[39m]: [seen] searchId=6 externalId=2784965793
+2026-07-09 19:35:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8080280473
+2026-07-09 19:35:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8025959414
+2026-07-09 19:35:47 [[34mdebug[39m]: [seen] searchId=6 externalId=3156944601
+2026-07-09 19:35:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8165852839
+2026-07-09 19:35:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8301575168
+2026-07-09 19:35:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8189797118
+2026-07-09 19:35:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8156445370
+2026-07-09 19:35:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8301508305
+2026-07-09 19:35:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8233816078
+2026-07-09 19:35:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8301328857
+2026-07-09 19:35:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8146477997
+2026-07-09 19:35:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8145908138
+2026-07-09 19:35:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8181326981
+2026-07-09 19:35:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8167736839
+2026-07-09 19:35:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8257093545
+2026-07-09 19:35:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8275262758
+2026-07-09 19:35:48 [[33mwarn[39m]: [fetchHtml] 403 on attempt 1, retrying with new UA…
+2026-07-09 19:35:58 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:35:59 [[34mdebug[39m]: [tick] searchId=5 fetched=30 checking=20
+2026-07-09 19:35:59 [[34mdebug[39m]: [seen] searchId=5 externalId=8181022530
+2026-07-09 19:35:59 [[34mdebug[39m]: [seen] searchId=5 externalId=8166650911
+2026-07-09 19:35:59 [[34mdebug[39m]: [seen] searchId=5 externalId=8166213969
+2026-07-09 19:35:59 [[34mdebug[39m]: [seen] searchId=5 externalId=8146077969
+2026-07-09 19:35:59 [[34mdebug[39m]: [seen] searchId=5 externalId=8104677552
+2026-07-09 19:35:59 [[34mdebug[39m]: [seen] searchId=5 externalId=8158761623
+2026-07-09 19:35:59 [[34mdebug[39m]: [seen] searchId=5 externalId=8249226242
+2026-07-09 19:35:59 [[34mdebug[39m]: [seen] searchId=5 externalId=8249520395
+2026-07-09 19:35:59 [[34mdebug[39m]: [seen] searchId=5 externalId=8261044979
+2026-07-09 19:35:59 [[34mdebug[39m]: [seen] searchId=5 externalId=8174450667
+2026-07-09 19:35:59 [[34mdebug[39m]: [seen] searchId=5 externalId=8249198946
+2026-07-09 19:35:59 [[34mdebug[39m]: [seen] searchId=5 externalId=8104464564
+2026-07-09 19:35:59 [[34mdebug[39m]: [seen] searchId=5 externalId=8248886980
+2026-07-09 19:35:59 [[34mdebug[39m]: [seen] searchId=5 externalId=8249024624
+2026-07-09 19:35:59 [[34mdebug[39m]: [seen] searchId=5 externalId=8249502649
+2026-07-09 19:35:59 [[34mdebug[39m]: [seen] searchId=5 externalId=8166389716
+2026-07-09 19:35:59 [[34mdebug[39m]: [seen] searchId=5 externalId=8275209199
+2026-07-09 19:35:59 [[34mdebug[39m]: [seen] searchId=5 externalId=8186009574
+2026-07-09 19:35:59 [[34mdebug[39m]: [seen] searchId=5 externalId=8155364488
+2026-07-09 19:35:59 [[34mdebug[39m]: [seen] searchId=5 externalId=8301654312
+2026-07-09 19:36:03 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:36:03 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:36:03 [[32minfo[39m]: [new-listing] searchId=6 externalId=2523597047 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/futbolka_oversayz_optom_i_v_roznitsupechat_2523597047?context=H4sIAAAAAAAA_wE_AMD_YToyOntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czoxOiJ4IjtzOjE2OiJyaUFUUE5QV3hoajF6YTl6Ijt9zCH_4D8AAAA
+2026-07-09 19:36:04 [[32minfo[39m]: [sent] listingId=847 externalId=2523597047
+2026-07-09 19:36:04 [[34mdebug[39m]: [seen] searchId=6 externalId=8080280473
+2026-07-09 19:36:04 [[34mdebug[39m]: [seen] searchId=6 externalId=8207402326
+2026-07-09 19:36:04 [[34mdebug[39m]: [seen] searchId=6 externalId=8096198556
+2026-07-09 19:36:04 [[34mdebug[39m]: [seen] searchId=6 externalId=8223024860
+2026-07-09 19:36:04 [[34mdebug[39m]: [seen] searchId=6 externalId=2784965793
+2026-07-09 19:36:04 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:36:04 [[34mdebug[39m]: [seen] searchId=6 externalId=8156270563
+2026-07-09 19:36:04 [[34mdebug[39m]: [seen] searchId=6 externalId=8261440955
+2026-07-09 19:36:04 [[34mdebug[39m]: [seen] searchId=6 externalId=8301146385
+2026-07-09 19:36:04 [[34mdebug[39m]: [seen] searchId=6 externalId=8233816078
+2026-07-09 19:36:04 [[34mdebug[39m]: [seen] searchId=6 externalId=8301113238
+2026-07-09 19:36:04 [[34mdebug[39m]: [seen] searchId=6 externalId=8207458384
+2026-07-09 19:36:04 [[34mdebug[39m]: [seen] searchId=6 externalId=8245968093
+2026-07-09 19:36:04 [[34mdebug[39m]: [seen] searchId=6 externalId=8274928212
+2026-07-09 19:36:04 [[34mdebug[39m]: [seen] searchId=6 externalId=8216074459
+2026-07-09 19:36:04 [[34mdebug[39m]: [seen] searchId=6 externalId=8301397375
+2026-07-09 19:36:04 [[34mdebug[39m]: [seen] searchId=6 externalId=8245924593
+2026-07-09 19:36:04 [[34mdebug[39m]: [seen] searchId=6 externalId=8181082690
+2026-07-09 19:36:04 [[34mdebug[39m]: [seen] searchId=6 externalId=8275820616
+2026-07-09 19:36:04 [[33mwarn[39m]: [fetchHtml] 403 on attempt 1, retrying with new UA…
+2026-07-09 19:36:13 [[33mwarn[39m]: [fetchHtml] 403 on attempt 2, retrying with new UA…
+2026-07-09 19:36:26 [[33mwarn[39m]: [fetchHtml] 403 on attempt 1, retrying with new UA…
+2026-07-09 19:36:33 [[33mwarn[39m]: [fetchHtml] 403 on attempt 2, retrying with new UA…
+2026-07-09 19:36:47 [[33mwarn[39m]: [fetchHtml] 403 on attempt 1, retrying with new UA…
+2026-07-09 19:36:55 [[33mwarn[39m]: [fetchHtml] 403 on attempt 2, retrying with new UA…
+2026-07-09 19:37:05 [[31merror[39m]: Parser error for search 5: Request failed with status code 403
+2026-07-09 19:37:06 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 19:37:06 [[32minfo[39m]: Checker cron started (continuous loop, 15s interval)
+2026-07-09 19:37:06 [[32minfo[39m]: Subscription cron started
+2026-07-09 19:37:06 [[32minfo[39m]: Daily reset cron started
+2026-07-09 19:37:06 [[32minfo[39m]: Queue flush cron started
+2026-07-09 19:37:06 [[32minfo[39m]: [baseline-needed] searchId=5
+2026-07-09 19:37:06 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 19:37:06 [[31merror[39m]: Fatal startup error
+2026-07-09 19:37:08 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:37:08 [[32minfo[39m]: [baseline-init] searchId=5 items=30 baselineMaxId=8301706065
+2026-07-09 19:37:08 [[32minfo[39m]: [baseline-needed] searchId=6
+2026-07-09 19:37:10 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:37:10 [[32minfo[39m]: [baseline-init] searchId=6 items=30 baselineMaxId=8301645776
+2026-07-09 19:37:23 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:37:23 [[34mdebug[39m]: [tick] searchId=5 baselineMaxId=8301706065 checking=20
+2026-07-09 19:37:23 [[34mdebug[39m]: [skip] externalId=8166506348 numId=8166506348 baselineMaxId=8301706065
+2026-07-09 19:37:23 [[34mdebug[39m]: [skip] externalId=8181022530 numId=8181022530 baselineMaxId=8301706065
+2026-07-09 19:37:23 [[34mdebug[39m]: [skip] externalId=8166650911 numId=8166650911 baselineMaxId=8301706065
+2026-07-09 19:37:23 [[34mdebug[39m]: [skip] externalId=8166213969 numId=8166213969 baselineMaxId=8301706065
+2026-07-09 19:37:23 [[34mdebug[39m]: [skip] externalId=8146077969 numId=8146077969 baselineMaxId=8301706065
+2026-07-09 19:37:23 [[34mdebug[39m]: [skip] externalId=8104677552 numId=8104677552 baselineMaxId=8301706065
+2026-07-09 19:37:23 [[34mdebug[39m]: [skip] externalId=8158761623 numId=8158761623 baselineMaxId=8301706065
+2026-07-09 19:37:23 [[34mdebug[39m]: [skip] externalId=8249226242 numId=8249226242 baselineMaxId=8301706065
+2026-07-09 19:37:23 [[34mdebug[39m]: [skip] externalId=8249520395 numId=8249520395 baselineMaxId=8301706065
+2026-07-09 19:37:23 [[34mdebug[39m]: [skip] externalId=8261044979 numId=8261044979 baselineMaxId=8301706065
+2026-07-09 19:37:23 [[34mdebug[39m]: [skip] externalId=8174450667 numId=8174450667 baselineMaxId=8301706065
+2026-07-09 19:37:23 [[34mdebug[39m]: [skip] externalId=8249198946 numId=8249198946 baselineMaxId=8301706065
+2026-07-09 19:37:23 [[34mdebug[39m]: [skip] externalId=8104464564 numId=8104464564 baselineMaxId=8301706065
+2026-07-09 19:37:23 [[34mdebug[39m]: [skip] externalId=8248886980 numId=8248886980 baselineMaxId=8301706065
+2026-07-09 19:37:23 [[34mdebug[39m]: [skip] externalId=8249024624 numId=8249024624 baselineMaxId=8301706065
+2026-07-09 19:37:23 [[34mdebug[39m]: [skip] externalId=8249502649 numId=8249502649 baselineMaxId=8301706065
+2026-07-09 19:37:23 [[34mdebug[39m]: [skip] externalId=8166389716 numId=8166389716 baselineMaxId=8301706065
+2026-07-09 19:37:23 [[34mdebug[39m]: [skip] externalId=8275209199 numId=8275209199 baselineMaxId=8301706065
+2026-07-09 19:37:23 [[34mdebug[39m]: [skip] externalId=8186009574 numId=8186009574 baselineMaxId=8301706065
+2026-07-09 19:37:23 [[34mdebug[39m]: [skip] externalId=8155364488 numId=8155364488 baselineMaxId=8301706065
+2026-07-09 19:37:25 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:37:25 [[34mdebug[39m]: [tick] searchId=6 baselineMaxId=8301645776 checking=20
+2026-07-09 19:37:25 [[34mdebug[39m]: [skip] externalId=2523597047 numId=2523597047 baselineMaxId=8301645776
+2026-07-09 19:37:25 [[34mdebug[39m]: [skip] externalId=8080280473 numId=8080280473 baselineMaxId=8301645776
+2026-07-09 19:37:25 [[34mdebug[39m]: [skip] externalId=2784965793 numId=2784965793 baselineMaxId=8301645776
+2026-07-09 19:37:25 [[34mdebug[39m]: [skip] externalId=8096198556 numId=8096198556 baselineMaxId=8301645776
+2026-07-09 19:37:25 [[34mdebug[39m]: [skip] externalId=8207402326 numId=8207402326 baselineMaxId=8301645776
+2026-07-09 19:37:25 [[34mdebug[39m]: [skip] externalId=7648168131 numId=7648168131 baselineMaxId=8301645776
+2026-07-09 19:37:25 [[34mdebug[39m]: [skip] externalId=8025959414 numId=8025959414 baselineMaxId=8301645776
+2026-07-09 19:37:25 [[34mdebug[39m]: [skip] externalId=8257057780 numId=8257057780 baselineMaxId=8301645776
+2026-07-09 19:37:25 [[34mdebug[39m]: [skip] externalId=8301645776 numId=8301645776 baselineMaxId=8301645776
+2026-07-09 19:37:25 [[34mdebug[39m]: [skip] externalId=8301146385 numId=8301146385 baselineMaxId=8301645776
+2026-07-09 19:37:25 [[34mdebug[39m]: [skip] externalId=8146673947 numId=8146673947 baselineMaxId=8301645776
+2026-07-09 19:37:25 [[34mdebug[39m]: [skip] externalId=8275313250 numId=8275313250 baselineMaxId=8301645776
+2026-07-09 19:37:25 [[34mdebug[39m]: [skip] externalId=8207118367 numId=8207118367 baselineMaxId=8301645776
+2026-07-09 19:37:25 [[34mdebug[39m]: [skip] externalId=8301328857 numId=8301328857 baselineMaxId=8301645776
+2026-07-09 19:37:25 [[34mdebug[39m]: [skip] externalId=8301397375 numId=8301397375 baselineMaxId=8301645776
+2026-07-09 19:37:25 [[34mdebug[39m]: [skip] externalId=8167816473 numId=8167816473 baselineMaxId=8301645776
+2026-07-09 19:37:25 [[34mdebug[39m]: [skip] externalId=8301007516 numId=8301007516 baselineMaxId=8301645776
+2026-07-09 19:37:25 [[34mdebug[39m]: [skip] externalId=8156181039 numId=8156181039 baselineMaxId=8301645776
+2026-07-09 19:37:25 [[34mdebug[39m]: [skip] externalId=8154926924 numId=8154926924 baselineMaxId=8301645776
+2026-07-09 19:37:25 [[34mdebug[39m]: [skip] externalId=8156445370 numId=8156445370 baselineMaxId=8301645776
+2026-07-09 19:37:38 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:37:38 [[34mdebug[39m]: [tick] searchId=5 baselineMaxId=8301706065 checking=20
+2026-07-09 19:37:38 [[34mdebug[39m]: [skip] externalId=8166506348 numId=8166506348 baselineMaxId=8301706065
+2026-07-09 19:37:38 [[34mdebug[39m]: [skip] externalId=8181022530 numId=8181022530 baselineMaxId=8301706065
+2026-07-09 19:37:38 [[34mdebug[39m]: [skip] externalId=8166650911 numId=8166650911 baselineMaxId=8301706065
+2026-07-09 19:37:38 [[34mdebug[39m]: [skip] externalId=8166213969 numId=8166213969 baselineMaxId=8301706065
+2026-07-09 19:37:38 [[34mdebug[39m]: [skip] externalId=8146077969 numId=8146077969 baselineMaxId=8301706065
+2026-07-09 19:37:38 [[34mdebug[39m]: [skip] externalId=8104677552 numId=8104677552 baselineMaxId=8301706065
+2026-07-09 19:37:38 [[34mdebug[39m]: [skip] externalId=8158761623 numId=8158761623 baselineMaxId=8301706065
+2026-07-09 19:37:38 [[34mdebug[39m]: [skip] externalId=8249226242 numId=8249226242 baselineMaxId=8301706065
+2026-07-09 19:37:38 [[34mdebug[39m]: [skip] externalId=8249520395 numId=8249520395 baselineMaxId=8301706065
+2026-07-09 19:37:38 [[34mdebug[39m]: [skip] externalId=8261044979 numId=8261044979 baselineMaxId=8301706065
+2026-07-09 19:37:38 [[34mdebug[39m]: [skip] externalId=8174450667 numId=8174450667 baselineMaxId=8301706065
+2026-07-09 19:37:38 [[34mdebug[39m]: [skip] externalId=8249198946 numId=8249198946 baselineMaxId=8301706065
+2026-07-09 19:37:38 [[34mdebug[39m]: [skip] externalId=8104464564 numId=8104464564 baselineMaxId=8301706065
+2026-07-09 19:37:38 [[34mdebug[39m]: [skip] externalId=8248886980 numId=8248886980 baselineMaxId=8301706065
+2026-07-09 19:37:38 [[34mdebug[39m]: [skip] externalId=8249024624 numId=8249024624 baselineMaxId=8301706065
+2026-07-09 19:37:38 [[34mdebug[39m]: [skip] externalId=8249502649 numId=8249502649 baselineMaxId=8301706065
+2026-07-09 19:37:38 [[34mdebug[39m]: [skip] externalId=8166389716 numId=8166389716 baselineMaxId=8301706065
+2026-07-09 19:37:38 [[34mdebug[39m]: [skip] externalId=8275209199 numId=8275209199 baselineMaxId=8301706065
+2026-07-09 19:37:38 [[34mdebug[39m]: [skip] externalId=8186009574 numId=8186009574 baselineMaxId=8301706065
+2026-07-09 19:37:38 [[34mdebug[39m]: [skip] externalId=8155364488 numId=8155364488 baselineMaxId=8301706065
+2026-07-09 19:37:41 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:37:41 [[34mdebug[39m]: [tick] searchId=6 baselineMaxId=8301645776 checking=20
+2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=2523597047 numId=2523597047 baselineMaxId=8301645776
+2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=8080280473 numId=8080280473 baselineMaxId=8301645776
+2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=8096198556 numId=8096198556 baselineMaxId=8301645776
+2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=8207402326 numId=8207402326 baselineMaxId=8301645776
+2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=2784965793 numId=2784965793 baselineMaxId=8301645776
+2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=7648168131 numId=7648168131 baselineMaxId=8301645776
+2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=8025959414 numId=8025959414 baselineMaxId=8301645776
+2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=8223024860 numId=8223024860 baselineMaxId=8301645776
+2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=8146256486 numId=8146256486 baselineMaxId=8301645776
+2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=8166934259 numId=8166934259 baselineMaxId=8301645776
+2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=8216074459 numId=8216074459 baselineMaxId=8301645776
+2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=8156181039 numId=8156181039 baselineMaxId=8301645776
+2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=8108412490 numId=8108412490 baselineMaxId=8301645776
+2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=8207458384 numId=8207458384 baselineMaxId=8301645776
+2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=8275197529 numId=8275197529 baselineMaxId=8301645776
+2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=8301318257 numId=8301318257 baselineMaxId=8301645776
+2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=8301061789 numId=8301061789 baselineMaxId=8301645776
+2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=8301587144 numId=8301587144 baselineMaxId=8301645776
+2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=8301007516 numId=8301007516 baselineMaxId=8301645776
+2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=8146729813 numId=8146729813 baselineMaxId=8301645776
+2026-07-09 19:37:51 [[33mwarn[39m]: [fetchHtml] 403 on attempt 1, retrying with new UA…

@@ -155,6 +155,7 @@ exports.Prisma.SearchScalarFieldEnum = {
   lastCheckedAt: 'lastCheckedAt',
   lastFoundAt: 'lastFoundAt',
   baselineInitializedAt: 'baselineInitializedAt',
+  baselineMaxId: 'baselineMaxId',
   lastNewListingAt: 'lastNewListingAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

@@ -95,6 +95,9 @@ model Search {
   lastCheckedAt          DateTime?
   lastFoundAt            DateTime?
   baselineInitializedAt  DateTime?
+  /// Max numeric Avito listing ID seen at baseline time. Only listings with
+  /// a higher ID are sent as notifications. NULL = not yet computed.
+  baselineMaxId          BigInt?
   lastNewListingAt       DateTime?
   createdAt              DateTime     @default(now())
   updatedAt              DateTime     @updatedAt

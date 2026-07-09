@@ -11,15 +11,17 @@ import { hashListing } from '../utils/hash';
 import { PLATFORM_DOMAINS, PLAN_LIMITS } from '../types/index';
 import { logger } from '../utils/logger';
 
-// How many listings to seed as baseline on first add.
-const BASELINE_LIMIT = 30;
 // How many listings to inspect on each cron tick.
 const CHECK_LIMIT = 20;
 
-// Per-process warm-up flag. On the very first tick after restart we silently
-// mark every visible listing as "seen" so no stale items flood the user.
-// Key: searchId, Value: true once warm-up is done for that search.
-const warmedUp = new Set<number>();
+/**
+ * Convert an Avito externalId string (e.g. "8207503665") to BigInt.
+ * Returns null for hash-based IDs that are not purely numeric.
+ */
+function toBigInt(externalId: string): bigint | null {
+  if (!/^\d+$/.test(externalId)) return null;
+  try { return BigInt(externalId); } catch { return null; }
+}
 
 export class SearchService {
   private searchRepo: SearchRepository;
@@ -156,9 +158,10 @@ export class SearchService {
   }
 
   /**
-   * Fetch the category page, save the first BASELINE_LIMIT listings as
-   * baseline (isBaseline=true). No notifications sent.
-   * Sets baselineInitializedAt so future ticks know seeding is done.
+   * Fetch the category page, compute the maximum numeric Avito listing ID
+   * currently visible, and store it as baselineMaxId.
+   * No listings are saved to DB, no notifications are sent.
+   * On subsequent ticks only listings with externalId > baselineMaxId are sent.
    */
   async initializeSearchBaseline(searchId: number): Promise<number> {
     const search = await this.searchRepo.findById(searchId);
@@ -167,49 +170,35 @@ export class SearchService {
     const parser = ParserFactory.create(search.platform);
     const allItems = await withRetry(() => parser.parse(search.url));
 
-    // Take only the first BASELINE_LIMIT items — these become the "seen" set.
-    const items = allItems.slice(0, BASELINE_LIMIT);
-
-    let count = 0;
-    for (const parsed of items) {
+    // Find the highest numeric ID in the current feed.
+    let maxId = BigInt(0);
+    for (const parsed of allItems) {
       const externalId = parsed.externalId || hashListing(parsed.title, parsed.price, parsed.url);
-      try {
-        await this.listingRepo.upsert(
-          search.id,
-          externalId,
-          {
-            title: parsed.title,
-            price: parsed.price ?? null,
-            location: parsed.location ?? null,
-            imageUrl: parsed.imageUrl ?? null,
-            url: parsed.url,
-            platform: search.platform,
-            rawPublishedAt: parsed.rawPublishedAt ?? null,
-            publishedAt: parsed.publishedAt ?? null,
-            isBaseline: true,
-          } as Parameters<ListingRepository['upsert']>[2],
-        );
-        count++;
-      } catch { /* unique constraint — already seeded */ }
+      const num = toBigInt(externalId);
+      if (num !== null && num > maxId) maxId = num;
     }
 
     await this.searchRepo.update(search.id, {
       baselineInitializedAt: new Date(),
       lastCheckedAt: new Date(),
+      baselineMaxId: maxId > BigInt(0) ? maxId : null,
     });
 
-    logger.info(`[baseline-init] searchId=${search.id} saved=${count}/${allItems.length}`);
-    return count;
+    logger.info(`[baseline-init] searchId=${search.id} items=${allItems.length} baselineMaxId=${maxId}`);
+    return allItems.length;
   }
 
   /**
    * Main method called by CheckerCron on every tick.
    *
-   * Architecture:
-   *   1. First run ever: save first BASELINE_LIMIT listings as "seen" (no notify). Done.
-   *   2. Every subsequent run: fetch category page, look at first CHECK_LIMIT items.
-   *      Any externalId NOT already in DB → send notification immediately.
-   *      Date is used only to display in the message, NOT as a filter.
+   * Freshness rule (simple, reliable, restart-proof):
+   *   At baseline time we record the highest Avito listing ID visible in the
+   *   feed (baselineMaxId). Avito IDs are a global sequential counter —
+   *   any listing with ID > baselineMaxId was published AFTER we started
+   *   watching. No date parsing, no warm-up, no DB seen-set lookups.
+   *
+   *   After each sent notification we update baselineMaxId to the new max,
+   *   so the window always advances forward.
    */
   async checkSearchForNewListings(
     searchId: number,
@@ -219,71 +208,52 @@ export class SearchService {
     const search = await this.searchRepo.findById(searchId);
     if (!search) return;
 
-    const baselineAt = (search as typeof search & { baselineInitializedAt: Date | null })
-      .baselineInitializedAt;
+    const extSearch = search as typeof search & {
+      baselineInitializedAt: Date | null;
+      baselineMaxId: bigint | null;
+    };
 
-    // First-ever baseline: seed silently and return.
-    if (!baselineAt) {
-      logger.info(`[baseline-needed] searchId=${searchId} — seeding now`);
+    // First-ever baseline: compute maxId from current feed and return.
+    if (!extSearch.baselineInitializedAt) {
+      logger.info(`[baseline-needed] searchId=${searchId}`);
       await this.initializeSearchBaseline(searchId);
       return;
     }
 
+    const baselineMaxId: bigint = extSearch.baselineMaxId ?? BigInt(0);
+
     const parser = ParserFactory.create(search.platform);
     const allItems = await withRetry(() => parser.parse(search.url));
+    const items = allItems.slice(0, CHECK_LIMIT);
 
     await this.searchRepo.update(search.id, { lastCheckedAt: new Date() });
 
-    // Warm-up tick (once per process restart per search):
-    // silently mark everything currently visible as "seen" so that listings
-    // already in the feed before this bot instance started are never sent.
-    if (!warmedUp.has(search.id)) {
-      warmedUp.add(search.id);
-      logger.info(`[warm-up] searchId=${search.id} marking ${allItems.length} items as seen`);
-      for (const parsed of allItems) {
-        const externalId = parsed.externalId || hashListing(parsed.title, parsed.price, parsed.url);
-        const existing = await this.listingRepo.findByExternalId(search.id, externalId);
-        if (!existing) {
-          await this.listingRepo.upsert(
-            search.id,
-            externalId,
-            {
-              title: parsed.title,
-              price: parsed.price ?? null,
-              location: parsed.location ?? null,
-              imageUrl: parsed.imageUrl ?? null,
-              url: parsed.url,
-              platform: search.platform,
-              rawPublishedAt: parsed.rawPublishedAt ?? null,
-              publishedAt: parsed.publishedAt ?? null,
-              isBaseline: true,
-              skippedReason: null,
-            } as Parameters<ListingRepository['upsert']>[2],
-          );
-        }
-      }
-      return;
-    }
+    logger.debug(`[tick] searchId=${search.id} baselineMaxId=${baselineMaxId} checking=${items.length}`);
 
-    // Normal tick: check only the top CHECK_LIMIT items.
-    const items = allItems.slice(0, CHECK_LIMIT);
-
-    logger.debug(`[tick] searchId=${search.id} fetched=${allItems.length} checking=${items.length}`);
+    let newMaxId = baselineMaxId;
 
     for (const parsed of items) {
       const externalId = parsed.externalId || hashListing(parsed.title, parsed.price, parsed.url);
+      const numId = toBigInt(externalId);
 
-      // Already seen — skip.
-      const existing = await this.listingRepo.findByExternalId(search.id, externalId);
-      if (existing) {
-        logger.debug(`[seen] searchId=${search.id} externalId=${externalId}`);
+      // Track the highest ID we see this tick regardless of whether we send it.
+      if (numId !== null && numId > newMaxId) newMaxId = numId;
+
+      // Skip if ID is not numeric or not greater than baseline.
+      if (numId === null || numId <= baselineMaxId) {
+        logger.debug(`[skip] externalId=${externalId} numId=${numId} baselineMaxId=${baselineMaxId}`);
         continue;
       }
 
-      // New externalId in the feed → send immediately, no date filtering.
-      logger.info(`[new-listing] searchId=${search.id} externalId=${externalId} url=${parsed.url}`);
+      // Guard against double-send across restarts (cheap DB check only for new IDs).
+      const existing = await this.listingRepo.findByExternalId(search.id, externalId);
+      if (existing) {
+        logger.debug(`[already-sent] externalId=${externalId}`);
+        continue;
+      }
 
-      // Resolve a display date from the card's raw string (best-effort, no blocking).
+      logger.info(`[new] searchId=${search.id} externalId=${externalId} (>${baselineMaxId})`);
+
       const rawDate: string | null = parsed.rawPublishedAt ?? null;
       const parsedDate: Date | null = rawDate ? parseListingDate(rawDate) : (parsed.publishedAt ?? null);
 
@@ -322,6 +292,13 @@ export class SearchService {
         logger.info(`[sent] listingId=${listing.id} externalId=${externalId}`);
       }
     }
+
+    // Advance baselineMaxId so old listings never resurface after they scroll
+    // back into the top of the feed (Avito can re-promote bumped listings).
+    if (newMaxId > baselineMaxId) {
+      await this.searchRepo.update(search.id, { baselineMaxId: newMaxId });
+      logger.debug(`[maxId-advance] searchId=${search.id} ${baselineMaxId} → ${newMaxId}`);
+    }
   }
 
   /**
@@ -336,6 +313,8 @@ export class SearchService {
     if (!search) throw new Error('Search not found or access denied');
 
     await this.listingRepo.deleteBySearchId(search.id);
+    // Clear baselineMaxId so initializeSearchBaseline recomputes it from scratch.
+    await this.searchRepo.update(search.id, { baselineInitializedAt: null, baselineMaxId: null });
     return this.initializeSearchBaseline(search.id);
   }
 
