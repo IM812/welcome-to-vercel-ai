@@ -6,10 +6,7 @@ import { NotificationRepository } from '../repositories/notification.repository'
 import { UserRepository } from '../repositories/user.repository';
 import { AdminLogRepository } from '../repositories/adminlog.repository';
 import { SubscriptionService } from './subscription.service';
-import { isFreshListing } from '../utils/dateParser';
 import { logger } from '../utils/logger';
-
-const FRESH_MAX_MINUTES = Number(process.env.FRESH_LISTING_MAX_AGE_MINUTES ?? 5);
 
 export class NotificationService {
   private notifRepo: NotificationRepository;
@@ -42,25 +39,10 @@ export class NotificationService {
   ): Promise<boolean> {
     if (!this.bot) throw new Error('Bot not initialized');
 
-    // Hard guards — checked in this exact order, every condition must pass.
-    // Baseline and already-notified guards apply in EVERY mode.
+    // Hard guards — SearchService already applied the baseline-cutoff rule,
+    // so here we only protect against baseline records and double-sends.
     if ((listing as Listing & { isBaseline: boolean }).isBaseline) return false;
     if ((listing as Listing & { notifiedAt: Date | null }).notifiedAt) return false;
-
-    // The freshness guard only applies in strict mode. In competitor ("all")
-    // mode the SearchService already decided the listing is new, so we do not
-    // re-filter by date here.
-    const sendMode = (process.env.SEND_MODE ?? 'all').toLowerCase();
-    if (sendMode === 'strict') {
-      if (!listing.publishedAt) {
-        logger.debug(`[notification-skip] listingId=${listing.id} reason=no_publishedAt`);
-        return false;
-      }
-      if (!isFreshListing(listing.publishedAt, FRESH_MAX_MINUTES)) {
-        logger.debug(`[notification-skip] listingId=${listing.id} reason=stale publishedAt=${listing.publishedAt.toISOString()}`);
-        return false;
-      }
-    }
 
     // Guard against duplicate Notification rows for the same listing+user
     const existingNotif = await this.notifRepo.findByListingAndUser(listing.id, user.id);
