@@ -1,0 +1,677 @@
+2026-07-09 16:33:38 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:33:51 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:33:51 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:33:55 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:33:55 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:33:58 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:34:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:34:00 [[31merror[39m]: GrammyError: Call to 'sendMessage' failed! (400: Bad Request: chat not found)
+    at toGrammyError (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/error.js:47:12)
+    at ApiClient.callApi (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async AdminNotificationService.send (/vercel/share/v0-project/src/services/admin-notification.service.ts:23:9)
+    at async AdminNotificationService.notifyCriticalCronError (/vercel/share/v0-project/src/services/admin-notification.service.ts:65:5)
+2026-07-09 16:34:08 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:34:08 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:34:17 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:34:17 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:34:24 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:34:24 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:34:47 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:34:47 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:34:50 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:34:50 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:35:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:94:24
+
+  91 }
+  92 
+  93 async findAllActive(): Promise<User[]> {
+→ 94   return prisma.user.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async QueueFlushCron.flush (/vercel/share/v0-project/src/cron/queue-flush.cron.ts:33:19)
+2026-07-09 16:35:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:35:00 [[31merror[39m]: GrammyError: Call to 'sendMessage' failed! (400: Bad Request: chat not found)
+    at toGrammyError (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/error.js:47:12)
+    at ApiClient.callApi (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async AdminNotificationService.send (/vercel/share/v0-project/src/services/admin-notification.service.ts:23:9)
+    at async AdminNotificationService.notifyCriticalCronError (/vercel/share/v0-project/src/services/admin-notification.service.ts:65:5)
+2026-07-09 16:35:00 [[31merror[39m]: GrammyError: Call to 'sendMessage' failed! (400: Bad Request: chat not found)
+    at toGrammyError (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/error.js:47:12)
+    at ApiClient.callApi (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async AdminNotificationService.send (/vercel/share/v0-project/src/services/admin-notification.service.ts:23:9)
+    at async AdminNotificationService.notifyCriticalCronError (/vercel/share/v0-project/src/services/admin-notification.service.ts:65:5)
+2026-07-09 16:36:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:36:00 [[31merror[39m]: GrammyError: Call to 'sendMessage' failed! (400: Bad Request: chat not found)
+    at toGrammyError (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/error.js:47:12)
+    at ApiClient.callApi (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async AdminNotificationService.send (/vercel/share/v0-project/src/services/admin-notification.service.ts:23:9)
+    at async AdminNotificationService.notifyCriticalCronError (/vercel/share/v0-project/src/services/admin-notification.service.ts:65:5)
+2026-07-09 16:36:09 [[31merror[39m]: Fatal startup error
+2026-07-09 16:37:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:37:00 [[31merror[39m]: GrammyError: Call to 'sendMessage' failed! (400: Bad Request: chat not found)
+    at toGrammyError (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/error.js:47:12)
+    at ApiClient.callApi (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async AdminNotificationService.send (/vercel/share/v0-project/src/services/admin-notification.service.ts:23:9)
+    at async AdminNotificationService.notifyCriticalCronError (/vercel/share/v0-project/src/services/admin-notification.service.ts:65:5)
+2026-07-09 16:38:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:38:00 [[31merror[39m]: GrammyError: Call to 'sendMessage' failed! (400: Bad Request: chat not found)
+    at toGrammyError (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/error.js:47:12)
+    at ApiClient.callApi (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async AdminNotificationService.send (/vercel/share/v0-project/src/services/admin-notification.service.ts:23:9)
+    at async AdminNotificationService.notifyCriticalCronError (/vercel/share/v0-project/src/services/admin-notification.service.ts:65:5)
+2026-07-09 16:39:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:39:00 [[31merror[39m]: GrammyError: Call to 'sendMessage' failed! (400: Bad Request: chat not found)
+    at toGrammyError (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/error.js:47:12)
+    at ApiClient.callApi (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async AdminNotificationService.send (/vercel/share/v0-project/src/services/admin-notification.service.ts:23:9)
+    at async AdminNotificationService.notifyCriticalCronError (/vercel/share/v0-project/src/services/admin-notification.service.ts:65:5)
+2026-07-09 16:39:11 [[31merror[39m]: Fatal startup error
+2026-07-09 16:40:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:94:24
+
+  91 }
+  92 
+  93 async findAllActive(): Promise<User[]> {
+→ 94   return prisma.user.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async QueueFlushCron.flush (/vercel/share/v0-project/src/cron/queue-flush.cron.ts:33:19)
+2026-07-09 16:40:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:40:12 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:40:15 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:40:15 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:40:17 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:40:17 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:40:19 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:40:19 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:40:21 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:40:22 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:40:22 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:40:24 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:40:24 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:41:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:42:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:42:50 [[31merror[39m]: Fatal startup error
+2026-07-09 16:43:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:44:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:45:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:94:24
+
+  91 }
+  92 
+  93 async findAllActive(): Promise<User[]> {
+→ 94   return prisma.user.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async QueueFlushCron.flush (/vercel/share/v0-project/src/cron/queue-flush.cron.ts:33:19)
+2026-07-09 16:45:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:45:37 [[31merror[39m]: Fatal startup error
+2026-07-09 16:48:36 [[31merror[39m]: Fatal startup error
+2026-07-09 16:49:22 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.adminLog.create()` invocation in
+/vercel/share/v0-project/src/repositories/adminlog.repository.ts:6:27
+
+  3 
+  4 export class AdminLogRepository {
+  5   async log(action: string, details?: string, userId?: number): Promise<void> {
+→ 6     await prisma.adminLog.create(
+The column `details of relation AdminLog` does not exist in the current database.
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async AdminLogRepository.log (/vercel/share/v0-project/src/repositories/adminlog.repository.ts:6:5)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:55:5)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+2026-07-09 16:51:06 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.notification.create()` invocation in
+/vercel/share/v0-project/src/repositories/notification.repository.ts:6:32
+
+  3 
+  4 export class NotificationRepository {
+  5   async create(data: Prisma.NotificationCreateInput): Promise<Notification> {
+→ 6     return prisma.notification.create(
+The column `queuedAt of relation Notification` does not exist in the current database.
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async NotificationService.sendListingNotification (/vercel/share/v0-project/src/services/notification.service.ts:100:21)
+    at async CheckerCron.processSearch (/vercel/share/v0-project/src/cron/checker.cron.ts:112:9)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:74:7)
+2026-07-09 16:51:06 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.parserLog.create()` invocation in
+/vercel/share/v0-project/src/cron/checker.cron.ts:131:30
+
+  128 const errorMsg = err instanceof Error ? err.message : String(err);
+  129 const updated = await this.searchRepo.incrementError(search.id, errorMsg);
+  130 
+→ 131 await prisma.parserLog.create(
+The column `error of relation ParserLog` does not exist in the current database.
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.processSearch (/vercel/share/v0-project/src/cron/checker.cron.ts:131:7)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:74:7)
+2026-07-09 16:51:51 [[31merror[39m]: Fatal startup error
+2026-07-09 16:52:17 [[31merror[39m]: Fatal startup error
+2026-07-09 16:58:00 [[31merror[39m]: Fatal startup error
+2026-07-09 16:59:59 [[31merror[39m]: Fatal startup error
+2026-07-09 17:05:07 [[31merror[39m]: Fatal startup error
+2026-07-09 17:16:02 [[31merror[39m]: Fatal startup error
+2026-07-09 17:18:00 [[31merror[39m]: Fatal startup error
+2026-07-09 17:19:06 [[31merror[39m]: Fatal startup error
+2026-07-09 17:21:45 [[31merror[39m]: Fatal startup error
+2026-07-09 17:28:26 [[31merror[39m]: Fatal startup error
+2026-07-09 17:33:16 [[31merror[39m]: Fatal startup error
+2026-07-09 17:34:03 [[31merror[39m]: Fatal startup error
+2026-07-09 17:37:42 [[31merror[39m]: Unhandled bot error
+2026-07-09 17:40:09 [[31merror[39m]: Unhandled bot error
+2026-07-09 17:42:46 [[31merror[39m]: Fatal startup error
+2026-07-09 17:45:44 [[31merror[39m]: Fatal startup error
+2026-07-09 17:47:01 [[31merror[39m]: Fatal startup error
+2026-07-09 17:53:27 [[31merror[39m]: Fatal startup error
+2026-07-09 17:53:33 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.update()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:52:26
+
+  49 // Only increment the counter and store the message.
+  50 // The caller (CheckerCron) decides when to flip status to ERROR
+  51 // (after MAX_ERRORS consecutive failures) to avoid premature lockout.
+→ 52 return prisma.search.update(
+An operation failed because it depends on one or more records that were required but not found. No record was found for an update.
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.processSearch (/vercel/share/v0-project/src/cron/checker.cron.ts:189:23)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:88:7)
+2026-07-09 18:01:26 [[31merror[39m]: Fatal startup error
+2026-07-09 18:10:47 [[31merror[39m]: Fatal startup error
+2026-07-09 18:11:59 [[31merror[39m]: Fatal startup error

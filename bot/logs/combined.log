@@ -1,0 +1,985 @@
+2026-07-09 16:32:46 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 16:32:46 [[32minfo[39m]: Checker cron started
+2026-07-09 16:32:46 [[32minfo[39m]: Subscription cron started
+2026-07-09 16:32:46 [[32minfo[39m]: Daily reset cron started
+2026-07-09 16:32:46 [[32minfo[39m]: Queue flush cron started
+2026-07-09 16:32:47 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 16:33:11 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 16:33:11 [[32minfo[39m]: Checker cron started
+2026-07-09 16:33:11 [[32minfo[39m]: Subscription cron started
+2026-07-09 16:33:11 [[32minfo[39m]: Daily reset cron started
+2026-07-09 16:33:11 [[32minfo[39m]: Queue flush cron started
+2026-07-09 16:33:12 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 16:33:38 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:33:51 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:33:51 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:33:55 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:33:55 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:33:58 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:34:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:34:00 [[31merror[39m]: GrammyError: Call to 'sendMessage' failed! (400: Bad Request: chat not found)
+    at toGrammyError (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/error.js:47:12)
+    at ApiClient.callApi (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async AdminNotificationService.send (/vercel/share/v0-project/src/services/admin-notification.service.ts:23:9)
+    at async AdminNotificationService.notifyCriticalCronError (/vercel/share/v0-project/src/services/admin-notification.service.ts:65:5)
+2026-07-09 16:34:08 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:34:08 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:34:17 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:34:17 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:34:24 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:34:24 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:34:47 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:34:47 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:34:50 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:34:50 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:35:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:94:24
+
+  91 }
+  92 
+  93 async findAllActive(): Promise<User[]> {
+→ 94   return prisma.user.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async QueueFlushCron.flush (/vercel/share/v0-project/src/cron/queue-flush.cron.ts:33:19)
+2026-07-09 16:35:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:35:00 [[31merror[39m]: GrammyError: Call to 'sendMessage' failed! (400: Bad Request: chat not found)
+    at toGrammyError (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/error.js:47:12)
+    at ApiClient.callApi (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async AdminNotificationService.send (/vercel/share/v0-project/src/services/admin-notification.service.ts:23:9)
+    at async AdminNotificationService.notifyCriticalCronError (/vercel/share/v0-project/src/services/admin-notification.service.ts:65:5)
+2026-07-09 16:35:00 [[31merror[39m]: GrammyError: Call to 'sendMessage' failed! (400: Bad Request: chat not found)
+    at toGrammyError (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/error.js:47:12)
+    at ApiClient.callApi (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async AdminNotificationService.send (/vercel/share/v0-project/src/services/admin-notification.service.ts:23:9)
+    at async AdminNotificationService.notifyCriticalCronError (/vercel/share/v0-project/src/services/admin-notification.service.ts:65:5)
+2026-07-09 16:36:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:36:00 [[31merror[39m]: GrammyError: Call to 'sendMessage' failed! (400: Bad Request: chat not found)
+    at toGrammyError (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/error.js:47:12)
+    at ApiClient.callApi (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async AdminNotificationService.send (/vercel/share/v0-project/src/services/admin-notification.service.ts:23:9)
+    at async AdminNotificationService.notifyCriticalCronError (/vercel/share/v0-project/src/services/admin-notification.service.ts:65:5)
+2026-07-09 16:36:09 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 16:36:09 [[32minfo[39m]: Checker cron started
+2026-07-09 16:36:09 [[32minfo[39m]: Subscription cron started
+2026-07-09 16:36:09 [[32minfo[39m]: Daily reset cron started
+2026-07-09 16:36:09 [[32minfo[39m]: Queue flush cron started
+2026-07-09 16:36:09 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 16:36:09 [[31merror[39m]: Fatal startup error
+2026-07-09 16:36:36 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 16:36:36 [[32minfo[39m]: Checker cron started
+2026-07-09 16:36:36 [[32minfo[39m]: Subscription cron started
+2026-07-09 16:36:36 [[32minfo[39m]: Daily reset cron started
+2026-07-09 16:36:36 [[32minfo[39m]: Queue flush cron started
+2026-07-09 16:36:37 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 16:37:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:37:00 [[31merror[39m]: GrammyError: Call to 'sendMessage' failed! (400: Bad Request: chat not found)
+    at toGrammyError (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/error.js:47:12)
+    at ApiClient.callApi (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async AdminNotificationService.send (/vercel/share/v0-project/src/services/admin-notification.service.ts:23:9)
+    at async AdminNotificationService.notifyCriticalCronError (/vercel/share/v0-project/src/services/admin-notification.service.ts:65:5)
+2026-07-09 16:38:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:38:00 [[31merror[39m]: GrammyError: Call to 'sendMessage' failed! (400: Bad Request: chat not found)
+    at toGrammyError (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/error.js:47:12)
+    at ApiClient.callApi (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async AdminNotificationService.send (/vercel/share/v0-project/src/services/admin-notification.service.ts:23:9)
+    at async AdminNotificationService.notifyCriticalCronError (/vercel/share/v0-project/src/services/admin-notification.service.ts:65:5)
+2026-07-09 16:39:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:39:00 [[31merror[39m]: GrammyError: Call to 'sendMessage' failed! (400: Bad Request: chat not found)
+    at toGrammyError (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/error.js:47:12)
+    at ApiClient.callApi (/vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/core/client.js:100:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async AdminNotificationService.send (/vercel/share/v0-project/src/services/admin-notification.service.ts:23:9)
+    at async AdminNotificationService.notifyCriticalCronError (/vercel/share/v0-project/src/services/admin-notification.service.ts:65:5)
+2026-07-09 16:39:10 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 16:39:10 [[32minfo[39m]: Checker cron started
+2026-07-09 16:39:10 [[32minfo[39m]: Subscription cron started
+2026-07-09 16:39:10 [[32minfo[39m]: Daily reset cron started
+2026-07-09 16:39:10 [[32minfo[39m]: Queue flush cron started
+2026-07-09 16:39:11 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 16:39:11 [[31merror[39m]: Fatal startup error
+2026-07-09 16:40:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:94:24
+
+  91 }
+  92 
+  93 async findAllActive(): Promise<User[]> {
+→ 94   return prisma.user.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async QueueFlushCron.flush (/vercel/share/v0-project/src/cron/queue-flush.cron.ts:33:19)
+2026-07-09 16:40:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:40:12 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:40:15 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:40:15 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:40:17 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:40:17 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:40:19 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:40:19 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:40:21 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:40:22 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:40:22 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:40:24 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:6:24
+
+  3 
+  4 export class UserRepository {
+  5   async findByTelegramId(telegramId: bigint | string): Promise<User | null> {
+→ 6     return prisma.user.findUnique(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:21:22)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/convenience/session.js:67:9
+2026-07-09 16:40:24 [[31merror[39m]: Unhandled bot error
+2026-07-09 16:41:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:42:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:42:50 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 16:42:50 [[32minfo[39m]: Checker cron started
+2026-07-09 16:42:50 [[32minfo[39m]: Subscription cron started
+2026-07-09 16:42:50 [[32minfo[39m]: Daily reset cron started
+2026-07-09 16:42:50 [[32minfo[39m]: Queue flush cron started
+2026-07-09 16:42:50 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 16:42:50 [[31merror[39m]: Fatal startup error
+2026-07-09 16:43:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:44:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:45:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/user.repository.ts:94:24
+
+  91 }
+  92 
+  93 async findAllActive(): Promise<User[]> {
+→ 94   return prisma.user.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async QueueFlushCron.flush (/vercel/share/v0-project/src/cron/queue-flush.cron.ts:33:19)
+2026-07-09 16:45:00 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.findMany()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:74:26
+
+  71 }
+  72 
+  73 async findAllActiveForCron(): Promise<Search[]> {
+→ 74   return prisma.search.findMany(
+Can't reach database server at 127.0.0.1:5432
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:58:25)
+2026-07-09 16:45:36 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 16:45:36 [[32minfo[39m]: Checker cron started
+2026-07-09 16:45:36 [[32minfo[39m]: Subscription cron started
+2026-07-09 16:45:36 [[32minfo[39m]: Daily reset cron started
+2026-07-09 16:45:36 [[32minfo[39m]: Queue flush cron started
+2026-07-09 16:45:37 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 16:45:37 [[31merror[39m]: Fatal startup error
+2026-07-09 16:48:36 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 16:48:36 [[32minfo[39m]: Checker cron started
+2026-07-09 16:48:36 [[32minfo[39m]: Subscription cron started
+2026-07-09 16:48:36 [[32minfo[39m]: Daily reset cron started
+2026-07-09 16:48:36 [[32minfo[39m]: Queue flush cron started
+2026-07-09 16:48:36 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 16:48:36 [[31merror[39m]: Fatal startup error
+2026-07-09 16:49:01 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 16:49:01 [[32minfo[39m]: Checker cron started
+2026-07-09 16:49:02 [[32minfo[39m]: Subscription cron started
+2026-07-09 16:49:02 [[32minfo[39m]: Daily reset cron started
+2026-07-09 16:49:02 [[32minfo[39m]: Queue flush cron started
+2026-07-09 16:49:02 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 16:49:22 [[32minfo[39m]: New user registered: 987405159 (@IM812)
+2026-07-09 16:49:22 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.adminLog.create()` invocation in
+/vercel/share/v0-project/src/repositories/adminlog.repository.ts:6:27
+
+  3 
+  4 export class AdminLogRepository {
+  5   async log(action: string, details?: string, userId?: number): Promise<void> {
+→ 6     await prisma.adminLog.create(
+The column `details of relation AdminLog` does not exist in the current database.
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async AdminLogRepository.log (/vercel/share/v0-project/src/repositories/adminlog.repository.ts:6:5)
+    at async UserService.getOrCreate (/vercel/share/v0-project/src/services/user.service.ts:55:5)
+    at async authMiddleware (/vercel/share/v0-project/src/middlewares/auth.middleware.ts:19:29)
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+    at async /vercel/share/v0-project/node_modules/.pnpm/grammy@1.44.0/node_modules/grammy/out/composer.js:62:13
+2026-07-09 16:50:08 [[32minfo[39m]: Search 1 created for user 1 on AVITO
+2026-07-09 16:51:06 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.notification.create()` invocation in
+/vercel/share/v0-project/src/repositories/notification.repository.ts:6:32
+
+  3 
+  4 export class NotificationRepository {
+  5   async create(data: Prisma.NotificationCreateInput): Promise<Notification> {
+→ 6     return prisma.notification.create(
+The column `queuedAt of relation Notification` does not exist in the current database.
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async NotificationService.sendListingNotification (/vercel/share/v0-project/src/services/notification.service.ts:100:21)
+    at async CheckerCron.processSearch (/vercel/share/v0-project/src/cron/checker.cron.ts:112:9)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:74:7)
+2026-07-09 16:51:06 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.parserLog.create()` invocation in
+/vercel/share/v0-project/src/cron/checker.cron.ts:131:30
+
+  128 const errorMsg = err instanceof Error ? err.message : String(err);
+  129 const updated = await this.searchRepo.incrementError(search.id, errorMsg);
+  130 
+→ 131 await prisma.parserLog.create(
+The column `error of relation ParserLog` does not exist in the current database.
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.processSearch (/vercel/share/v0-project/src/cron/checker.cron.ts:131:7)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:74:7)
+2026-07-09 16:51:50 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 16:51:50 [[32minfo[39m]: Checker cron started
+2026-07-09 16:51:50 [[32minfo[39m]: Subscription cron started
+2026-07-09 16:51:50 [[32minfo[39m]: Daily reset cron started
+2026-07-09 16:51:50 [[32minfo[39m]: Queue flush cron started
+2026-07-09 16:51:50 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 16:51:51 [[31merror[39m]: Fatal startup error
+2026-07-09 16:52:17 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 16:52:17 [[32minfo[39m]: Checker cron started
+2026-07-09 16:52:17 [[32minfo[39m]: Subscription cron started
+2026-07-09 16:52:17 [[32minfo[39m]: Daily reset cron started
+2026-07-09 16:52:17 [[32minfo[39m]: Queue flush cron started
+2026-07-09 16:52:17 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 16:52:17 [[31merror[39m]: Fatal startup error
+2026-07-09 16:54:02 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 16:54:02 [[32minfo[39m]: Checker cron started
+2026-07-09 16:54:02 [[32minfo[39m]: Subscription cron started
+2026-07-09 16:54:02 [[32minfo[39m]: Daily reset cron started
+2026-07-09 16:54:02 [[32minfo[39m]: Queue flush cron started
+2026-07-09 16:54:02 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 16:58:00 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 16:58:00 [[32minfo[39m]: Checker cron started
+2026-07-09 16:58:00 [[32minfo[39m]: Subscription cron started
+2026-07-09 16:58:00 [[32minfo[39m]: Daily reset cron started
+2026-07-09 16:58:00 [[32minfo[39m]: Queue flush cron started
+2026-07-09 16:58:00 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 16:58:00 [[31merror[39m]: Fatal startup error
+2026-07-09 16:58:24 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 16:58:24 [[32minfo[39m]: Checker cron started
+2026-07-09 16:58:24 [[32minfo[39m]: Subscription cron started
+2026-07-09 16:58:24 [[32minfo[39m]: Daily reset cron started
+2026-07-09 16:58:24 [[32minfo[39m]: Queue flush cron started
+2026-07-09 16:58:24 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 16:59:59 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 16:59:59 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 16:59:59 [[32minfo[39m]: Subscription cron started
+2026-07-09 16:59:59 [[32minfo[39m]: Daily reset cron started
+2026-07-09 16:59:59 [[32minfo[39m]: Queue flush cron started
+2026-07-09 16:59:59 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 16:59:59 [[31merror[39m]: Fatal startup error
+2026-07-09 17:00:21 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 17:00:21 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 17:00:21 [[32minfo[39m]: Subscription cron started
+2026-07-09 17:00:21 [[32minfo[39m]: Daily reset cron started
+2026-07-09 17:00:21 [[32minfo[39m]: Queue flush cron started
+2026-07-09 17:00:21 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 17:01:49 [[32minfo[39m]: Search 2 created for user 1 on AVITO
+2026-07-09 17:05:07 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 17:05:07 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 17:05:07 [[32minfo[39m]: Subscription cron started
+2026-07-09 17:05:07 [[32minfo[39m]: Daily reset cron started
+2026-07-09 17:05:07 [[32minfo[39m]: Queue flush cron started
+2026-07-09 17:05:07 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 17:05:07 [[31merror[39m]: Fatal startup error
+2026-07-09 17:13:26 [[32minfo[39m]: Search 3 created for user 1 on AVITO
+2026-07-09 17:13:56 [[34mdebug[39m]: Search 3: found 33 new listings
+2026-07-09 17:16:02 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 17:16:02 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 17:16:02 [[32minfo[39m]: Subscription cron started
+2026-07-09 17:16:02 [[32minfo[39m]: Daily reset cron started
+2026-07-09 17:16:02 [[32minfo[39m]: Queue flush cron started
+2026-07-09 17:16:02 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 17:16:02 [[31merror[39m]: Fatal startup error
+2026-07-09 17:17:59 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 17:17:59 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 17:17:59 [[32minfo[39m]: Subscription cron started
+2026-07-09 17:17:59 [[32minfo[39m]: Daily reset cron started
+2026-07-09 17:17:59 [[32minfo[39m]: Queue flush cron started
+2026-07-09 17:18:00 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 17:18:00 [[31merror[39m]: Fatal startup error
+2026-07-09 17:19:06 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 17:19:06 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 17:19:06 [[32minfo[39m]: Subscription cron started
+2026-07-09 17:19:06 [[32minfo[39m]: Daily reset cron started
+2026-07-09 17:19:06 [[32minfo[39m]: Queue flush cron started
+2026-07-09 17:19:06 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 17:19:06 [[31merror[39m]: Fatal startup error
+2026-07-09 17:20:25 [[32minfo[39m]: Search 4 created for user 1 on AVITO
+2026-07-09 17:21:44 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 17:21:44 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 17:21:44 [[32minfo[39m]: Subscription cron started
+2026-07-09 17:21:44 [[32minfo[39m]: Daily reset cron started
+2026-07-09 17:21:44 [[32minfo[39m]: Queue flush cron started
+2026-07-09 17:21:45 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 17:21:45 [[31merror[39m]: Fatal startup error
+2026-07-09 17:23:10 [[32minfo[39m]: New user registered: 5845902140 (@usecoie)
+2026-07-09 17:23:15 [[32minfo[39m]: New user registered: 8223624256 (@kmleads_jun)
+2026-07-09 17:25:46 [[32minfo[39m]: Search 5 created for user 2 on AVITO
+2026-07-09 17:28:26 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 17:28:26 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 17:28:26 [[32minfo[39m]: Subscription cron started
+2026-07-09 17:28:26 [[32minfo[39m]: Daily reset cron started
+2026-07-09 17:28:26 [[32minfo[39m]: Queue flush cron started
+2026-07-09 17:28:26 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 17:28:26 [[31merror[39m]: Fatal startup error
+2026-07-09 17:33:15 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 17:33:15 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 17:33:15 [[32minfo[39m]: Subscription cron started
+2026-07-09 17:33:15 [[32minfo[39m]: Daily reset cron started
+2026-07-09 17:33:15 [[32minfo[39m]: Queue flush cron started
+2026-07-09 17:33:16 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 17:33:16 [[31merror[39m]: Fatal startup error
+2026-07-09 17:34:03 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 17:34:03 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 17:34:03 [[32minfo[39m]: Subscription cron started
+2026-07-09 17:34:03 [[32minfo[39m]: Daily reset cron started
+2026-07-09 17:34:03 [[32minfo[39m]: Queue flush cron started
+2026-07-09 17:34:03 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 17:34:03 [[31merror[39m]: Fatal startup error
+2026-07-09 17:37:14 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 17:37:15 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 17:37:15 [[32minfo[39m]: Subscription cron started
+2026-07-09 17:37:15 [[32minfo[39m]: Daily reset cron started
+2026-07-09 17:37:15 [[32minfo[39m]: Queue flush cron started
+2026-07-09 17:37:15 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 17:37:36 [[34mdebug[39m]: Search 4: found 37 new listings
+2026-07-09 17:37:42 [[31merror[39m]: Unhandled bot error
+2026-07-09 17:40:08 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 17:40:08 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 17:40:08 [[32minfo[39m]: Subscription cron started
+2026-07-09 17:40:08 [[32minfo[39m]: Daily reset cron started
+2026-07-09 17:40:08 [[32minfo[39m]: Queue flush cron started
+2026-07-09 17:40:09 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 17:40:09 [[31merror[39m]: Unhandled bot error
+2026-07-09 17:40:10 [[34mdebug[39m]: Search 2: got 0 listings, isFirstRun=true
+2026-07-09 17:40:10 [[32minfo[39m]: Search 2: seeded 0 listings (no notifications sent)
+2026-07-09 17:40:12 [[34mdebug[39m]: Search 5: got 50 listings, isFirstRun=true
+2026-07-09 17:40:16 [[32minfo[39m]: Search 5: seeded 50 listings (no notifications sent)
+2026-07-09 17:41:40 [[34mdebug[39m]: Search 2: got 0 listings, isFirstRun=false
+2026-07-09 17:41:40 [[34mdebug[39m]: Search 2: noDate=0 tooOld=0 sent=0
+2026-07-09 17:41:42 [[34mdebug[39m]: Search 5: got 40 listings, isFirstRun=false
+2026-07-09 17:41:42 [[34mdebug[39m]: Search 5: noDate=0 tooOld=40 sent=0
+2026-07-09 17:42:45 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 17:42:45 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 17:42:45 [[32minfo[39m]: Subscription cron started
+2026-07-09 17:42:45 [[32minfo[39m]: Daily reset cron started
+2026-07-09 17:42:45 [[32minfo[39m]: Queue flush cron started
+2026-07-09 17:42:45 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 17:42:46 [[31merror[39m]: Fatal startup error
+2026-07-09 17:42:47 [[34mdebug[39m]: Search 2: got 0 listings, isFirstRun=false
+2026-07-09 17:42:47 [[34mdebug[39m]: Search 2: noDate=0 tooOld=0 sent=0
+2026-07-09 17:42:48 [[34mdebug[39m]: Search 5: got 50 listings, isFirstRun=false
+2026-07-09 17:42:48 [[34mdebug[39m]: Search 5: noDate=0 tooOld=50 sent=0
+2026-07-09 17:43:18 [[34mdebug[39m]: Search 4: got 81 listings, isFirstRun=false
+2026-07-09 17:43:33 [[34mdebug[39m]: Search 4: noDate=45 tooOld=36 sent=45
+2026-07-09 17:43:33 [[34mdebug[39m]: Search 4: found 45 new listings
+2026-07-09 17:44:16 [[34mdebug[39m]: Search 2: got 0 listings, isFirstRun=false
+2026-07-09 17:44:16 [[34mdebug[39m]: Search 2: noDate=0 tooOld=0 sent=0
+2026-07-09 17:44:18 [[34mdebug[39m]: Search 5: got 40 listings, isFirstRun=false
+2026-07-09 17:44:18 [[34mdebug[39m]: Search 5: noDate=0 tooOld=40 sent=0
+2026-07-09 17:45:43 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 17:45:43 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 17:45:43 [[32minfo[39m]: Subscription cron started
+2026-07-09 17:45:43 [[32minfo[39m]: Daily reset cron started
+2026-07-09 17:45:43 [[32minfo[39m]: Queue flush cron started
+2026-07-09 17:45:44 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 17:45:44 [[31merror[39m]: Fatal startup error
+2026-07-09 17:45:45 [[34mdebug[39m]: Search 2: got 0 listings, isFirstRun=false
+2026-07-09 17:45:45 [[34mdebug[39m]: Search 2: noDate=0 tooOld=0 sent=0
+2026-07-09 17:45:47 [[34mdebug[39m]: Search 5: got 50 listings, isFirstRun=false
+2026-07-09 17:45:47 [[34mdebug[39m]: Search 5: noDate=0 tooOld=50 sent=0
+2026-07-09 17:47:00 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 17:47:00 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 17:47:00 [[32minfo[39m]: Subscription cron started
+2026-07-09 17:47:00 [[32minfo[39m]: Daily reset cron started
+2026-07-09 17:47:00 [[32minfo[39m]: Queue flush cron started
+2026-07-09 17:47:01 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 17:47:01 [[31merror[39m]: Fatal startup error
+2026-07-09 17:47:02 [[34mdebug[39m]: Search 2: got 0 listings, isFirstRun=false
+2026-07-09 17:47:02 [[34mdebug[39m]: Search 2: noDate=0 tooOld=0 sent=0
+2026-07-09 17:47:04 [[34mdebug[39m]: Search 5: got 50 listings, isFirstRun=false
+2026-07-09 17:47:04 [[34mdebug[39m]: Search 5: noDate=0 tooOld=50 sent=0
+2026-07-09 17:47:34 [[34mdebug[39m]: Search 4: got 82 listings, isFirstRun=false
+2026-07-09 17:47:38 [[34mdebug[39m]: Search 4: noDate=46 tooOld=36 sent=8
+2026-07-09 17:47:38 [[34mdebug[39m]: Search 4: found 8 new listings
+2026-07-09 17:48:31 [[34mdebug[39m]: Search 2: got 0 listings, isFirstRun=false
+2026-07-09 17:48:31 [[34mdebug[39m]: Search 2: noDate=0 tooOld=0 sent=0
+2026-07-09 17:48:33 [[34mdebug[39m]: Search 5: got 40 listings, isFirstRun=false
+2026-07-09 17:48:33 [[34mdebug[39m]: Search 5: noDate=0 tooOld=40 sent=0
+2026-07-09 17:49:03 [[34mdebug[39m]: Search 4: got 71 listings, isFirstRun=false
+2026-07-09 17:49:04 [[34mdebug[39m]: Search 4: noDate=36 tooOld=35 sent=2
+2026-07-09 17:49:04 [[34mdebug[39m]: Search 4: found 2 new listings
+2026-07-09 17:50:02 [[34mdebug[39m]: Search 2: got 0 listings, isFirstRun=false
+2026-07-09 17:50:02 [[34mdebug[39m]: Search 2: noDate=0 tooOld=0 sent=0
+2026-07-09 17:50:04 [[34mdebug[39m]: Search 5: got 40 listings, isFirstRun=false
+2026-07-09 17:50:04 [[34mdebug[39m]: Search 5: noDate=0 tooOld=40 sent=0
+2026-07-09 17:50:32 [[34mdebug[39m]: Search 2: got 0 listings, isFirstRun=true
+2026-07-09 17:50:32 [[32minfo[39m]: Search 2: seeded 0 listings (no notifications sent)
+2026-07-09 17:50:33 [[34mdebug[39m]: Search 5: got 40 listings, isFirstRun=true
+2026-07-09 17:50:36 [[32minfo[39m]: Search 5: seeded 40 listings (no notifications sent)
+2026-07-09 17:50:39 [[34mdebug[39m]: Search 4: got 70 listings, isFirstRun=true
+2026-07-09 17:50:44 [[32minfo[39m]: Search 4: seeded 70 listings (no notifications sent)
+2026-07-09 17:52:02 [[34mdebug[39m]: Search 2: got 0 listings, isFirstRun=false
+2026-07-09 17:52:02 [[34mdebug[39m]: Search 2: noDate=0 tooOld=0 sent=0
+2026-07-09 17:52:03 [[34mdebug[39m]: Search 5: got 40 listings, isFirstRun=false
+2026-07-09 17:52:03 [[34mdebug[39m]: Search 5: noDate=0 tooOld=40 sent=0
+2026-07-09 17:52:06 [[34mdebug[39m]: Search 4: got 69 listings, isFirstRun=false
+2026-07-09 17:52:10 [[34mdebug[39m]: Search 4: noDate=37 tooOld=32 sent=11
+2026-07-09 17:52:10 [[34mdebug[39m]: Search 4: found 11 new listings
+2026-07-09 17:53:27 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 17:53:27 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 17:53:27 [[32minfo[39m]: Subscription cron started
+2026-07-09 17:53:27 [[32minfo[39m]: Daily reset cron started
+2026-07-09 17:53:27 [[32minfo[39m]: Queue flush cron started
+2026-07-09 17:53:27 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 17:53:27 [[31merror[39m]: Fatal startup error
+2026-07-09 17:53:28 [[34mdebug[39m]: Search 2: got 0 listings, isFirstRun=false
+2026-07-09 17:53:28 [[34mdebug[39m]: Search 2: noDate=0 tooOld=0 sent=0
+2026-07-09 17:53:30 [[34mdebug[39m]: Search 5: got 50 listings, isFirstRun=false
+2026-07-09 17:53:30 [[34mdebug[39m]: Search 5: noDate=0 tooOld=50 sent=0
+2026-07-09 17:53:33 [[31merror[39m]: PrismaClientKnownRequestError: 
+Invalid `prisma.search.update()` invocation in
+/vercel/share/v0-project/src/repositories/search.repository.ts:52:26
+
+  49 // Only increment the counter and store the message.
+  50 // The caller (CheckerCron) decides when to flip status to ERROR
+  51 // (after MAX_ERRORS consecutive failures) to avoid premature lockout.
+→ 52 return prisma.search.update(
+An operation failed because it depends on one or more records that were required but not found. No record was found for an update.
+    at zr.handleRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:8286)
+    at zr.handleAndLogRequestError (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7581)
+    at zr.request (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:69:7288)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async a (/vercel/share/v0-project/src/generated/prisma/runtime/client.js:79:6862)
+    at async CheckerCron.processSearch (/vercel/share/v0-project/src/cron/checker.cron.ts:189:23)
+    at async CheckerCron.run (/vercel/share/v0-project/src/cron/checker.cron.ts:88:7)
+2026-07-09 17:54:56 [[32minfo[39m]: Search 6 created for user 1 on AVITO
+2026-07-09 17:54:57 [[34mdebug[39m]: Search 2: got 0 listings, isFirstRun=false
+2026-07-09 17:54:57 [[34mdebug[39m]: Search 2: noDate=0 tooOld=0 sent=0
+2026-07-09 17:54:59 [[34mdebug[39m]: Search 5: got 50 listings, isFirstRun=false
+2026-07-09 17:54:59 [[34mdebug[39m]: Search 5: noDate=0 tooOld=50 sent=0
+2026-07-09 17:55:02 [[34mdebug[39m]: Search 6: got 80 listings, isFirstRun=true
+2026-07-09 17:55:09 [[32minfo[39m]: Search 6: seeded 80 listings (no notifications sent)
+2026-07-09 17:56:28 [[34mdebug[39m]: Search 2: got 0 listings, isFirstRun=false
+2026-07-09 17:56:28 [[34mdebug[39m]: Search 2: noDate=0 tooOld=0 sent=0
+2026-07-09 17:56:30 [[34mdebug[39m]: Search 5: got 40 listings, isFirstRun=false
+2026-07-09 17:56:30 [[34mdebug[39m]: Search 5: noDate=0 tooOld=40 sent=0
+2026-07-09 17:56:33 [[34mdebug[39m]: Search 6: got 78 listings, isFirstRun=false
+2026-07-09 17:56:33 [[34mdebug[39m]: Search 6: noDate=45 tooOld=33 sent=0
+2026-07-09 17:57:30 [[34mdebug[39m]: Search 3: got 50 listings, isFirstRun=false
+2026-07-09 17:57:30 [[34mdebug[39m]: Search 3: noDate=44 tooOld=6 sent=0
+2026-07-09 17:57:59 [[34mdebug[39m]: Search 5: got 40 listings, isFirstRun=false
+2026-07-09 17:57:59 [[34mdebug[39m]: Search 5: noDate=0 tooOld=40 sent=0
+2026-07-09 17:58:02 [[34mdebug[39m]: Search 6: got 70 listings, isFirstRun=false
+2026-07-09 17:58:02 [[34mdebug[39m]: Search 6: noDate=34 tooOld=36 sent=0
+2026-07-09 17:58:59 [[34mdebug[39m]: Search 3: got 40 listings, isFirstRun=false
+2026-07-09 17:58:59 [[34mdebug[39m]: Search 3: noDate=38 tooOld=2 sent=0
+2026-07-09 17:59:29 [[34mdebug[39m]: Search 5: got 50 listings, isFirstRun=false
+2026-07-09 17:59:29 [[34mdebug[39m]: Search 5: noDate=0 tooOld=50 sent=0
+2026-07-09 17:59:32 [[34mdebug[39m]: Search 6: got 71 listings, isFirstRun=false
+2026-07-09 17:59:32 [[34mdebug[39m]: Search 6: noDate=35 tooOld=36 sent=0
+2026-07-09 18:00:29 [[34mdebug[39m]: Search 3: got 40 listings, isFirstRun=false
+2026-07-09 18:00:29 [[34mdebug[39m]: Search 3: noDate=38 tooOld=2 sent=0
+2026-07-09 18:00:58 [[34mdebug[39m]: Search 5: got 40 listings, isFirstRun=false
+2026-07-09 18:00:58 [[34mdebug[39m]: Search 5: noDate=0 tooOld=40 sent=0
+2026-07-09 18:01:01 [[34mdebug[39m]: Search 6: got 81 listings, isFirstRun=false
+2026-07-09 18:01:01 [[34mdebug[39m]: Search 6: noDate=45 tooOld=36 sent=0
+2026-07-09 18:01:25 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 18:01:25 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 18:01:25 [[32minfo[39m]: Subscription cron started
+2026-07-09 18:01:25 [[32minfo[39m]: Daily reset cron started
+2026-07-09 18:01:25 [[32minfo[39m]: Queue flush cron started
+2026-07-09 18:01:26 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 18:01:26 [[31merror[39m]: Fatal startup error
+2026-07-09 18:02:29 [[32minfo[39m]: Search 6: baseline initialized with 79 listings
+2026-07-09 18:03:36 [[34mdebug[39m]: Search 3: checked 50 listings, sent=21
+2026-07-09 18:03:58 [[34mdebug[39m]: Search 5: checked 50 listings, sent=0
+2026-07-09 18:04:19 [[34mdebug[39m]: Search 6: checked 81 listings, sent=39
+2026-07-09 18:05:27 [[34mdebug[39m]: Search 5: checked 40 listings, sent=0
+2026-07-09 18:06:58 [[34mdebug[39m]: Search 5: checked 40 listings, sent=0
+2026-07-09 18:08:30 [[34mdebug[39m]: Search 5: checked 50 listings, sent=2
+2026-07-09 18:10:00 [[34mdebug[39m]: Search 5: checked 50 listings, sent=1
+2026-07-09 18:10:46 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 18:10:46 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 18:10:47 [[32minfo[39m]: Subscription cron started
+2026-07-09 18:10:47 [[32minfo[39m]: Daily reset cron started
+2026-07-09 18:10:47 [[32minfo[39m]: Queue flush cron started
+2026-07-09 18:10:47 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 18:10:47 [[31merror[39m]: Fatal startup error
+2026-07-09 18:11:20 [[34mdebug[39m]: Search 5: checked 50 listings, sent=0
+2026-07-09 18:11:58 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 18:11:58 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 18:11:58 [[32minfo[39m]: Subscription cron started
+2026-07-09 18:11:58 [[32minfo[39m]: Daily reset cron started
+2026-07-09 18:11:58 [[32minfo[39m]: Queue flush cron started
+2026-07-09 18:11:59 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 18:11:59 [[31merror[39m]: Fatal startup error
+2026-07-09 18:12:31 [[34mdebug[39m]: Search 5: checked 50 listings, sent=0
+2026-07-09 18:14:01 [[34mdebug[39m]: Search 5: checked 40 listings, sent=0

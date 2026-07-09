@@ -1,0 +1,258 @@
+generator client {
+  provider        = "prisma-client-js"
+  output          = "../src/generated/prisma"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Plan {
+  FREE
+  START
+  PRO
+  UNLIMITED
+}
+
+enum SearchStatus {
+  ACTIVE
+  PAUSED
+  ERROR
+  LIMITED
+}
+
+enum Platform {
+  AVITO
+  CIAN
+  YOULA
+  AUTORU
+}
+
+enum NotificationStatus {
+  SENT
+  QUEUED
+  FAILED
+  SKIPPED
+}
+
+model User {
+  id                            Int       @id @default(autoincrement())
+  telegramId                    BigInt    @unique
+  username                      String?
+  firstName                     String?
+  lastName                      String?
+  plan                          Plan      @default(FREE)
+  subscriptionUntil             DateTime?
+  isBanned                      Boolean   @default(false)
+  banReason                     String?
+  dailyNotificationCount        Int       @default(0)
+  dailyNotificationLimitResetAt DateTime  @default(now())
+  trialStartedAt                DateTime?
+  trialEndsAt                   DateTime?
+  trialUsed                     Boolean   @default(false)
+  referredByUserId              Int?
+  referredBy                    User?     @relation("Referrals", fields: [referredByUserId], references: [id])
+  referrals                     User[]    @relation("Referrals")
+  createdAt                     DateTime  @default(now())
+  updatedAt                     DateTime  @updatedAt
+  lastActiveAt                  DateTime  @default(now())
+
+  searches      Search[]
+  payments      Payment[]
+  favorites     Favorite[]
+  notifications Notification[]
+  settings      UserSettings?
+  adminLogs     AdminLog[]
+  sentReferrals Referral[]     @relation("ReferrerUser")
+  gotReferral   Referral?      @relation("ReferredUser")
+  promoUses     PromoCodeUse[]
+
+  @@index([telegramId])
+  @@index([plan])
+  @@index([isBanned])
+}
+
+model Search {
+  id            Int          @id @default(autoincrement())
+  userId        Int
+  user          User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name          String?
+  platform      Platform
+  url           String
+  status        SearchStatus @default(ACTIVE)
+  isActive      Boolean      @default(true)
+  errorCount    Int          @default(0)
+  lastError     String?
+  lastCheckedAt DateTime?
+  lastFoundAt   DateTime?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  listings      Listing[]
+  notifications Notification[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([isActive])
+  @@index([platform])
+}
+
+model Listing {
+  id          Int       @id @default(autoincrement())
+  searchId    Int
+  search      Search    @relation(fields: [searchId], references: [id], onDelete: Cascade)
+  externalId  String
+  title       String
+  price       String?
+  location    String?
+  imageUrl    String?
+  url         String
+  platform    Platform
+  publishedAt DateTime?
+  foundAt     DateTime  @default(now())
+
+  notifications Notification[]
+  favorites     Favorite[]
+
+  @@unique([searchId, externalId])
+  @@index([searchId])
+  @@index([externalId])
+  @@index([foundAt])
+}
+
+model Payment {
+  id                      Int      @id @default(autoincrement())
+  userId                  Int
+  user                    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  telegramPaymentChargeId String   @unique
+  providerPaymentChargeId String?
+  plan                    Plan
+  stars                   Int
+  daysGranted             Int      @default(30)
+  processedAt             DateTime @default(now())
+  createdAt               DateTime @default(now())
+
+  @@index([userId])
+  @@index([telegramPaymentChargeId])
+}
+
+model Favorite {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listingId Int
+  listing   Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, listingId])
+  @@index([userId])
+}
+
+model Notification {
+  id        Int                @id @default(autoincrement())
+  userId    Int
+  user      User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  searchId  Int
+  search    Search             @relation(fields: [searchId], references: [id], onDelete: Cascade)
+  listingId Int
+  listing   Listing            @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  status    NotificationStatus @default(QUEUED)
+  sentAt    DateTime?
+  queuedAt  DateTime           @default(now())
+  reason    String?
+
+  @@index([userId])
+  @@index([status])
+  @@index([queuedAt])
+}
+
+model UserSettings {
+  id                  Int      @id @default(autoincrement())
+  userId              Int      @unique
+  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  silentMode          Boolean  @default(false)
+  photoMode           Boolean  @default(true)
+  digestMode          Boolean  @default(false)
+  workingHoursEnabled Boolean  @default(false)
+  workingHoursFrom    Int      @default(8)
+  workingHoursTo      Int      @default(23)
+  timezone            String   @default("Europe/Moscow")
+  language            String   @default("ru")
+  updatedAt           DateTime @updatedAt
+}
+
+model PromoCode {
+  id        Int       @id @default(autoincrement())
+  code      String    @unique
+  plan      Plan
+  days      Int
+  maxUses   Int
+  usedCount Int       @default(0)
+  expiresAt DateTime?
+  isActive  Boolean   @default(true)
+  createdAt DateTime  @default(now())
+
+  uses PromoCodeUse[]
+
+  @@index([code])
+}
+
+model PromoCodeUse {
+  id          Int       @id @default(autoincrement())
+  promoCodeId Int
+  promoCode   PromoCode @relation(fields: [promoCodeId], references: [id])
+  userId      Int
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  usedAt      DateTime  @default(now())
+
+  @@unique([promoCodeId, userId])
+}
+
+model Referral {
+  id             Int       @id @default(autoincrement())
+  referrerId     Int
+  referrer       User      @relation("ReferrerUser", fields: [referrerId], references: [id], onDelete: Cascade)
+  referredUserId Int       @unique
+  referredUser   User      @relation("ReferredUser", fields: [referredUserId], references: [id], onDelete: Cascade)
+  bonusGranted   Boolean   @default(false)
+  bonusGrantedAt DateTime?
+  createdAt      DateTime  @default(now())
+
+  @@index([referrerId])
+}
+
+model AdminLog {
+  id        Int      @id @default(autoincrement())
+  userId    Int?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action    String
+  details   String?
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([action])
+}
+
+model BroadcastLog {
+  id          Int       @id @default(autoincrement())
+  message     String
+  totalSent   Int       @default(0)
+  totalFailed Int       @default(0)
+  startedAt   DateTime  @default(now())
+  finishedAt  DateTime?
+  startedBy   BigInt
+}
+
+model ParserLog {
+  id        Int      @id @default(autoincrement())
+  platform  Platform
+  searchId  Int?
+  success   Boolean
+  error     String?
+  duration  Int
+  createdAt DateTime @default(now())
+
+  @@index([platform])
+  @@index([createdAt])
+}
