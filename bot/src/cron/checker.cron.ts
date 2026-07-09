@@ -4,9 +4,8 @@ import type { User, UserSettings, Search } from '../generated/prisma/index';
 import { SearchRepository } from '../repositories/search.repository';
 import { NotificationService } from '../services/notification.service';
 import { SearchService } from '../services/search.service';
-import { SubscriptionService } from '../services/subscription.service';
+
 import { AdminNotificationService } from '../services/admin-notification.service';
-import { PLAN_LIMITS } from '../types/index';
 import { prisma } from '../database/client';
 import { logger } from '../utils/logger';
 import { sleep } from '../utils/retry';
@@ -19,7 +18,6 @@ export class CheckerCron {
   private searchRepo: SearchRepository;
   private searchService: SearchService;
   private notifService: NotificationService;
-  private subService: SubscriptionService;
   private adminNotifService: AdminNotificationService;
   private bot: Bot<BotContext>;
   private isRunning = false;
@@ -28,7 +26,6 @@ export class CheckerCron {
     this.searchRepo = new SearchRepository();
     this.notifService = new NotificationService();
     this.searchService = new SearchService();
-    this.subService = new SubscriptionService();
     this.adminNotifService = adminNotifService;
     this.bot = bot;
     this.notifService.setBot(bot);
@@ -38,7 +35,7 @@ export class CheckerCron {
 
   start(): void {
     void this.loop();
-    logger.info('Checker cron started (continuous loop, 30s interval)');
+    logger.info('Checker cron started (continuous loop, 15s interval)');
   }
 
   private async loop(): Promise<void> {
@@ -54,7 +51,7 @@ export class CheckerCron {
             this.isRunning = false;
           });
       }
-      await sleep(30_000);
+      await sleep(15_000);
     }
   }
 
@@ -68,17 +65,13 @@ export class CheckerCron {
 
       if (!user || user.isBanned) continue;
 
-      const effectivePlan = this.subService.effectivePlan(user);
-      const interval = PLAN_LIMITS[effectivePlan].checkIntervalMinutes;
-
-      if (search.lastCheckedAt) {
+      // ERROR searches: back off 5 min before retrying
+      if (search.status === 'ERROR' && search.lastCheckedAt) {
         const diffMinutes = (now.getTime() - search.lastCheckedAt.getTime()) / 60_000;
-        if (search.status === 'ERROR') {
-          if (diffMinutes < 5) continue;
-        } else if (diffMinutes < interval) {
-          continue;
-        }
+        if (diffMinutes < 5) continue;
       }
+      // Active searches: run every cron tick (15s) — no artificial interval gate.
+      // Speed is the priority: we want to notify before competitors do.
 
       await this.processSearch(search, user);
     }

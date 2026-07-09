@@ -10,7 +10,7 @@ export interface Parser {
 
 export abstract class BaseParser implements Parser {
   protected readonly http: AxiosInstance;
-  protected readonly timeoutMs = 15_000;
+  protected readonly timeoutMs = 8_000;
 
   constructor() {
     this.http = axios.create({

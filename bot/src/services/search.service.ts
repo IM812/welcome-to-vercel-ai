@@ -222,45 +222,54 @@ export class SearchService {
 
     await this.searchRepo.update(search.id, { lastCheckedAt: new Date() });
 
+    // ── Step 1: filter out known duplicates in one pass ───────────────────────
+    const newItems: typeof items = [];
     for (const parsed of items) {
-      // 1. Resolve externalId (parser-provided or content hash)
-      const externalId =
-        parsed.externalId ||
-        hashListing(parsed.title, parsed.price, parsed.url);
-
-      // 2. Skip if already in DB for this search — do this BEFORE fetching the detail page
+      const externalId = parsed.externalId || hashListing(parsed.title, parsed.price, parsed.url);
       const existing = await this.listingRepo.findByExternalId(search.id, externalId);
       if (existing) {
         logger.debug(`[duplicate-skip] searchId=${search.id} externalId=${externalId}`);
-        continue;
-      }
-
-      logger.debug(`[avito-new-candidate] externalId=${externalId} url=${parsed.url}`);
-
-      // 3. Resolve raw date from the DETAIL page.
-      //    The meta line "№ XXXXXXX · сегодня в 21:08 · N просмотров" on the
-      //    individual listing page is the only reliable source of publication
-      //    time on Avito. The category/search page either shows a vague
-      //    relative string ("час назад") or nothing at all.
-      //    We always fetch the detail page for NEW externalIds — dedup above
-      //    ensures we only do this once per listing.
-      let rawDate: string | null = null;
-      if (parser instanceof AvitoParser) {
-        rawDate = await parser.fetchListingDate(parsed.url);
-        if (rawDate) {
-          logger.debug(`[avito-details] externalId=${externalId} rawPublishedAt="${rawDate}"`);
-        } else {
-          // Fallback: use whatever the category card had (may be empty)
-          rawDate = parsed.rawPublishedAt ?? null;
-          logger.debug(`[avito-details-fallback] externalId=${externalId} rawPublishedAt="${rawDate ?? 'null'}"`);
-        }
       } else {
-        rawDate = parsed.rawPublishedAt ?? null;
+        newItems.push({ ...parsed, externalId });
       }
+    }
 
-      const parsedDate: Date | null = rawDate
-        ? parseListingDate(rawDate)
-        : (parsed.publishedAt ?? null);
+    if (newItems.length === 0) return;
+
+    logger.debug(`[new-candidates] searchId=${search.id} count=${newItems.length}`);
+
+    // ── Step 2: fetch detail pages IN PARALLEL for all new candidates ─────────
+    // The meta line "№ XXXXXXX · сегодня в 21:08 · N просмотров" on the
+    // individual listing page is the only reliable date source on Avito.
+    // Parallel fetch cuts latency from N×8s down to ~8s regardless of count.
+    type WithDate = (typeof newItems)[number] & { rawDate: string | null; parsedDate: Date | null };
+    const withDates: WithDate[] = await Promise.all(
+      newItems.map(async (parsed): Promise<WithDate> => {
+        let rawDate: string | null = null;
+        if (parser instanceof AvitoParser) {
+          rawDate = await parser.fetchListingDate(parsed.url);
+          if (rawDate) {
+            logger.debug(`[avito-details] externalId=${parsed.externalId} rawPublishedAt="${rawDate}"`);
+          } else {
+            rawDate = parsed.rawPublishedAt ?? null;
+            logger.debug(`[avito-details-fallback] externalId=${parsed.externalId} raw="${rawDate ?? 'null'}"`);
+          }
+        } else {
+          rawDate = parsed.rawPublishedAt ?? null;
+        }
+        const parsedDate: Date | null = rawDate
+          ? parseListingDate(rawDate)
+          : (parsed.publishedAt ?? null);
+        logger.debug(`[date-parse] externalId=${parsed.externalId} raw="${rawDate ?? 'null'}" parsed=${parsedDate?.toISOString() ?? 'null'}`);
+        return { ...parsed, rawDate, parsedDate };
+      }),
+    );
+
+    // ── Step 3: apply cutoff and notify ──────────────────────────────────────
+    for (const parsed of withDates) {
+      const externalId = parsed.externalId;
+      const rawDate = parsed.rawDate;
+      const parsedDate = parsed.parsedDate;
 
       logger.debug(
         `[date-parse] raw=${rawDate ?? 'null'} parsed=${parsedDate?.toISOString() ?? 'null'}`,
