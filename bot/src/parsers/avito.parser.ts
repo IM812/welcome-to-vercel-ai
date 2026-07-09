@@ -26,7 +26,7 @@ export class AvitoParser extends BaseParser {
     const listings: ParsedListing[] = [];
 
     $('[data-marker="item"]').each((_, el) => {
-      if (listings.length >= MAX_LISTINGS) return false; // stop iterating
+      if (listings.length >= MAX_LISTINGS) return; // stop iterating
 
       try {
         const $el = $(el);
@@ -117,21 +117,21 @@ export class AvitoParser extends BaseParser {
       // Walk all text nodes looking for the "· DD месяц в HH:MM ·" pattern
       let found: string | null = null;
       $('*').each((_, el) => {
-        if (found) return false;
+        if (found) return;
         const text = $(el).text();
         const raw = extractDateFromMetaLine(text);
-        if (raw) { found = raw; return false; }
+        if (raw) { found = raw; }
       });
       if (found) return found;
 
       // JSON-LD fallback: some layouts embed datePosted in structured data
       $('script[type="application/ld+json"]').each((_, el) => {
-        if (found) return false;
+        if (found) return;
         try {
           const data = JSON.parse($(el).html() ?? '{}');
           const datePosted: string | undefined =
             data?.datePosted ?? data?.offers?.priceValidUntil;
-          if (datePosted) { found = datePosted; return false; }
+          if (datePosted) { found = datePosted; }
         } catch { /* ignore malformed JSON */ }
       });
 

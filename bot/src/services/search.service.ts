@@ -1,4 +1,4 @@
-import type { Platform, Search, User, UserSettings } from '../generated/prisma/index';
+import type { Platform, Search, User } from '../generated/prisma/index';
 import { SearchRepository } from '../repositories/search.repository';
 import { ListingRepository } from '../repositories/listing.repository';
 import { SubscriptionService } from './subscription.service';

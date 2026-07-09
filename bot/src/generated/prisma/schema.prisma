@@ -109,21 +109,29 @@ model Search {
 }
 
 model Listing {
-  id          Int       @id @default(autoincrement())
-  searchId    Int
-  search      Search    @relation(fields: [searchId], references: [id], onDelete: Cascade)
-  externalId  String
-  title       String
-  price       String?
-  location    String?
-  imageUrl    String?
-  url         String
-  platform    Platform
-  publishedAt DateTime?
-  foundAt     DateTime  @default(now())
-  firstSeenAt DateTime  @default(now())
-  isBaseline  Boolean   @default(false)
-  notifiedAt  DateTime?
+  id             Int       @id @default(autoincrement())
+  searchId       Int
+  search         Search    @relation(fields: [searchId], references: [id], onDelete: Cascade)
+  externalId     String
+  title          String
+  price          String?
+  location       String?
+  imageUrl       String?
+  url            String
+  platform       Platform
+  /// Raw date string as returned by the parser (e.g. "3 минуты назад", "сегодня в 18:45").
+  rawPublishedAt String?
+  /// Parsed UTC timestamp of when the listing was published on the platform.
+  publishedAt    DateTime?
+  foundAt        DateTime  @default(now())
+  /// Timestamp when this listing was first stored in the database.
+  firstSeenAt    DateTime  @default(now())
+  /// True when this record was created as part of the initial baseline scan.
+  isBaseline     Boolean   @default(false)
+  /// Set after a Telegram notification was successfully delivered.
+  notifiedAt     DateTime?
+  /// Reason why a notification was NOT sent: TOO_OLD | UNKNOWN_DATE | null (notified or baseline).
+  skippedReason  String?
 
   notifications Notification[]
   favorites     Favorite[]

@@ -170,11 +170,13 @@ exports.Prisma.ListingScalarFieldEnum = {
   imageUrl: 'imageUrl',
   url: 'url',
   platform: 'platform',
+  rawPublishedAt: 'rawPublishedAt',
   publishedAt: 'publishedAt',
   foundAt: 'foundAt',
   firstSeenAt: 'firstSeenAt',
   isBaseline: 'isBaseline',
-  notifiedAt: 'notifiedAt'
+  notifiedAt: 'notifiedAt',
+  skippedReason: 'skippedReason'
 };
 
 exports.Prisma.PaymentScalarFieldEnum = {

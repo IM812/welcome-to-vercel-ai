@@ -5053,11 +5053,13 @@ export namespace Prisma {
     imageUrl: string | null
     url: string | null
     platform: $Enums.Platform | null
+    rawPublishedAt: string | null
     publishedAt: Date | null
     foundAt: Date | null
     firstSeenAt: Date | null
     isBaseline: boolean | null
     notifiedAt: Date | null
+    skippedReason: string | null
   }
 
   export type ListingMaxAggregateOutputType = {
@@ -5070,11 +5072,13 @@ export namespace Prisma {
     imageUrl: string | null
     url: string | null
     platform: $Enums.Platform | null
+    rawPublishedAt: string | null
     publishedAt: Date | null
     foundAt: Date | null
     firstSeenAt: Date | null
     isBaseline: boolean | null
     notifiedAt: Date | null
+    skippedReason: string | null
   }
 
   export type ListingCountAggregateOutputType = {
@@ -5087,11 +5091,13 @@ export namespace Prisma {
     imageUrl: number
     url: number
     platform: number
+    rawPublishedAt: number
     publishedAt: number
     foundAt: number
     firstSeenAt: number
     isBaseline: number
     notifiedAt: number
+    skippedReason: number
     _all: number
   }
 
@@ -5116,11 +5122,13 @@ export namespace Prisma {
     imageUrl?: true
     url?: true
     platform?: true
+    rawPublishedAt?: true
     publishedAt?: true
     foundAt?: true
     firstSeenAt?: true
     isBaseline?: true
     notifiedAt?: true
+    skippedReason?: true
   }
 
   export type ListingMaxAggregateInputType = {
@@ -5133,11 +5141,13 @@ export namespace Prisma {
     imageUrl?: true
     url?: true
     platform?: true
+    rawPublishedAt?: true
     publishedAt?: true
     foundAt?: true
     firstSeenAt?: true
     isBaseline?: true
     notifiedAt?: true
+    skippedReason?: true
   }
 
   export type ListingCountAggregateInputType = {
@@ -5150,11 +5160,13 @@ export namespace Prisma {
     imageUrl?: true
     url?: true
     platform?: true
+    rawPublishedAt?: true
     publishedAt?: true
     foundAt?: true
     firstSeenAt?: true
     isBaseline?: true
     notifiedAt?: true
+    skippedReason?: true
     _all?: true
   }
 
@@ -5254,11 +5266,13 @@ export namespace Prisma {
     imageUrl: string | null
     url: string
     platform: $Enums.Platform
+    rawPublishedAt: string | null
     publishedAt: Date | null
     foundAt: Date
     firstSeenAt: Date
     isBaseline: boolean
     notifiedAt: Date | null
+    skippedReason: string | null
     _count: ListingCountAggregateOutputType | null
     _avg: ListingAvgAggregateOutputType | null
     _sum: ListingSumAggregateOutputType | null
@@ -5290,11 +5304,13 @@ export namespace Prisma {
     imageUrl?: boolean
     url?: boolean
     platform?: boolean
+    rawPublishedAt?: boolean
     publishedAt?: boolean
     foundAt?: boolean
     firstSeenAt?: boolean
     isBaseline?: boolean
     notifiedAt?: boolean
+    skippedReason?: boolean
     search?: boolean | SearchDefaultArgs<ExtArgs>
     notifications?: boolean | Listing$notificationsArgs<ExtArgs>
     favorites?: boolean | Listing$favoritesArgs<ExtArgs>
@@ -5311,11 +5327,13 @@ export namespace Prisma {
     imageUrl?: boolean
     url?: boolean
     platform?: boolean
+    rawPublishedAt?: boolean
     publishedAt?: boolean
     foundAt?: boolean
     firstSeenAt?: boolean
     isBaseline?: boolean
     notifiedAt?: boolean
+    skippedReason?: boolean
     search?: boolean | SearchDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["listing"]>
 
@@ -5329,11 +5347,13 @@ export namespace Prisma {
     imageUrl?: boolean
     url?: boolean
     platform?: boolean
+    rawPublishedAt?: boolean
     publishedAt?: boolean
     foundAt?: boolean
     firstSeenAt?: boolean
     isBaseline?: boolean
     notifiedAt?: boolean
+    skippedReason?: boolean
     search?: boolean | SearchDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["listing"]>
 
@@ -5347,14 +5367,16 @@ export namespace Prisma {
     imageUrl?: boolean
     url?: boolean
     platform?: boolean
+    rawPublishedAt?: boolean
     publishedAt?: boolean
     foundAt?: boolean
     firstSeenAt?: boolean
     isBaseline?: boolean
     notifiedAt?: boolean
+    skippedReason?: boolean
   }
 
-  export type ListingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "searchId" | "externalId" | "title" | "price" | "location" | "imageUrl" | "url" | "platform" | "publishedAt" | "foundAt" | "firstSeenAt" | "isBaseline" | "notifiedAt", ExtArgs["result"]["listing"]>
+  export type ListingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "searchId" | "externalId" | "title" | "price" | "location" | "imageUrl" | "url" | "platform" | "rawPublishedAt" | "publishedAt" | "foundAt" | "firstSeenAt" | "isBaseline" | "notifiedAt" | "skippedReason", ExtArgs["result"]["listing"]>
   export type ListingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     search?: boolean | SearchDefaultArgs<ExtArgs>
     notifications?: boolean | Listing$notificationsArgs<ExtArgs>
@@ -5385,11 +5407,31 @@ export namespace Prisma {
       imageUrl: string | null
       url: string
       platform: $Enums.Platform
+      /**
+       * Raw date string as returned by the parser (e.g. "3 минуты назад", "сегодня в 18:45").
+       */
+      rawPublishedAt: string | null
+      /**
+       * Parsed UTC timestamp of when the listing was published on the platform.
+       */
       publishedAt: Date | null
       foundAt: Date
+      /**
+       * Timestamp when this listing was first stored in the database.
+       */
       firstSeenAt: Date
+      /**
+       * True when this record was created as part of the initial baseline scan.
+       */
       isBaseline: boolean
+      /**
+       * Set after a Telegram notification was successfully delivered.
+       */
       notifiedAt: Date | null
+      /**
+       * Reason why a notification was NOT sent: TOO_OLD | UNKNOWN_DATE | null (notified or baseline).
+       */
+      skippedReason: string | null
     }, ExtArgs["result"]["listing"]>
     composites: {}
   }
@@ -5825,11 +5867,13 @@ export namespace Prisma {
     readonly imageUrl: FieldRef<"Listing", 'String'>
     readonly url: FieldRef<"Listing", 'String'>
     readonly platform: FieldRef<"Listing", 'Platform'>
+    readonly rawPublishedAt: FieldRef<"Listing", 'String'>
     readonly publishedAt: FieldRef<"Listing", 'DateTime'>
     readonly foundAt: FieldRef<"Listing", 'DateTime'>
     readonly firstSeenAt: FieldRef<"Listing", 'DateTime'>
     readonly isBaseline: FieldRef<"Listing", 'Boolean'>
     readonly notifiedAt: FieldRef<"Listing", 'DateTime'>
+    readonly skippedReason: FieldRef<"Listing", 'String'>
   }
     
 
@@ -16574,11 +16618,13 @@ export namespace Prisma {
     imageUrl: 'imageUrl',
     url: 'url',
     platform: 'platform',
+    rawPublishedAt: 'rawPublishedAt',
     publishedAt: 'publishedAt',
     foundAt: 'foundAt',
     firstSeenAt: 'firstSeenAt',
     isBaseline: 'isBaseline',
-    notifiedAt: 'notifiedAt'
+    notifiedAt: 'notifiedAt',
+    skippedReason: 'skippedReason'
   };
 
   export type ListingScalarFieldEnum = (typeof ListingScalarFieldEnum)[keyof typeof ListingScalarFieldEnum]
@@ -17163,11 +17209,13 @@ export namespace Prisma {
     imageUrl?: StringNullableFilter<"Listing"> | string | null
     url?: StringFilter<"Listing"> | string
     platform?: EnumPlatformFilter<"Listing"> | $Enums.Platform
+    rawPublishedAt?: StringNullableFilter<"Listing"> | string | null
     publishedAt?: DateTimeNullableFilter<"Listing"> | Date | string | null
     foundAt?: DateTimeFilter<"Listing"> | Date | string
     firstSeenAt?: DateTimeFilter<"Listing"> | Date | string
     isBaseline?: BoolFilter<"Listing"> | boolean
     notifiedAt?: DateTimeNullableFilter<"Listing"> | Date | string | null
+    skippedReason?: StringNullableFilter<"Listing"> | string | null
     search?: XOR<SearchScalarRelationFilter, SearchWhereInput>
     notifications?: NotificationListRelationFilter
     favorites?: FavoriteListRelationFilter
@@ -17183,11 +17231,13 @@ export namespace Prisma {
     imageUrl?: SortOrderInput | SortOrder
     url?: SortOrder
     platform?: SortOrder
+    rawPublishedAt?: SortOrderInput | SortOrder
     publishedAt?: SortOrderInput | SortOrder
     foundAt?: SortOrder
     firstSeenAt?: SortOrder
     isBaseline?: SortOrder
     notifiedAt?: SortOrderInput | SortOrder
+    skippedReason?: SortOrderInput | SortOrder
     search?: SearchOrderByWithRelationInput
     notifications?: NotificationOrderByRelationAggregateInput
     favorites?: FavoriteOrderByRelationAggregateInput
@@ -17207,11 +17257,13 @@ export namespace Prisma {
     imageUrl?: StringNullableFilter<"Listing"> | string | null
     url?: StringFilter<"Listing"> | string
     platform?: EnumPlatformFilter<"Listing"> | $Enums.Platform
+    rawPublishedAt?: StringNullableFilter<"Listing"> | string | null
     publishedAt?: DateTimeNullableFilter<"Listing"> | Date | string | null
     foundAt?: DateTimeFilter<"Listing"> | Date | string
     firstSeenAt?: DateTimeFilter<"Listing"> | Date | string
     isBaseline?: BoolFilter<"Listing"> | boolean
     notifiedAt?: DateTimeNullableFilter<"Listing"> | Date | string | null
+    skippedReason?: StringNullableFilter<"Listing"> | string | null
     search?: XOR<SearchScalarRelationFilter, SearchWhereInput>
     notifications?: NotificationListRelationFilter
     favorites?: FavoriteListRelationFilter
@@ -17227,11 +17279,13 @@ export namespace Prisma {
     imageUrl?: SortOrderInput | SortOrder
     url?: SortOrder
     platform?: SortOrder
+    rawPublishedAt?: SortOrderInput | SortOrder
     publishedAt?: SortOrderInput | SortOrder
     foundAt?: SortOrder
     firstSeenAt?: SortOrder
     isBaseline?: SortOrder
     notifiedAt?: SortOrderInput | SortOrder
+    skippedReason?: SortOrderInput | SortOrder
     _count?: ListingCountOrderByAggregateInput
     _avg?: ListingAvgOrderByAggregateInput
     _max?: ListingMaxOrderByAggregateInput
@@ -17252,11 +17306,13 @@ export namespace Prisma {
     imageUrl?: StringNullableWithAggregatesFilter<"Listing"> | string | null
     url?: StringWithAggregatesFilter<"Listing"> | string
     platform?: EnumPlatformWithAggregatesFilter<"Listing"> | $Enums.Platform
+    rawPublishedAt?: StringNullableWithAggregatesFilter<"Listing"> | string | null
     publishedAt?: DateTimeNullableWithAggregatesFilter<"Listing"> | Date | string | null
     foundAt?: DateTimeWithAggregatesFilter<"Listing"> | Date | string
     firstSeenAt?: DateTimeWithAggregatesFilter<"Listing"> | Date | string
     isBaseline?: BoolWithAggregatesFilter<"Listing"> | boolean
     notifiedAt?: DateTimeNullableWithAggregatesFilter<"Listing"> | Date | string | null
+    skippedReason?: StringNullableWithAggregatesFilter<"Listing"> | string | null
   }
 
   export type PaymentWhereInput = {
@@ -18204,11 +18260,13 @@ export namespace Prisma {
     imageUrl?: string | null
     url: string
     platform: $Enums.Platform
+    rawPublishedAt?: string | null
     publishedAt?: Date | string | null
     foundAt?: Date | string
     firstSeenAt?: Date | string
     isBaseline?: boolean
     notifiedAt?: Date | string | null
+    skippedReason?: string | null
     search: SearchCreateNestedOneWithoutListingsInput
     notifications?: NotificationCreateNestedManyWithoutListingInput
     favorites?: FavoriteCreateNestedManyWithoutListingInput
@@ -18224,11 +18282,13 @@ export namespace Prisma {
     imageUrl?: string | null
     url: string
     platform: $Enums.Platform
+    rawPublishedAt?: string | null
     publishedAt?: Date | string | null
     foundAt?: Date | string
     firstSeenAt?: Date | string
     isBaseline?: boolean
     notifiedAt?: Date | string | null
+    skippedReason?: string | null
     notifications?: NotificationUncheckedCreateNestedManyWithoutListingInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutListingInput
   }
@@ -18241,11 +18301,13 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
     platform?: EnumPlatformFieldUpdateOperationsInput | $Enums.Platform
+    rawPublishedAt?: NullableStringFieldUpdateOperationsInput | string | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     foundAt?: DateTimeFieldUpdateOperationsInput | Date | string
     firstSeenAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
     search?: SearchUpdateOneRequiredWithoutListingsNestedInput
     notifications?: NotificationUpdateManyWithoutListingNestedInput
     favorites?: FavoriteUpdateManyWithoutListingNestedInput
@@ -18261,11 +18323,13 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
     platform?: EnumPlatformFieldUpdateOperationsInput | $Enums.Platform
+    rawPublishedAt?: NullableStringFieldUpdateOperationsInput | string | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     foundAt?: DateTimeFieldUpdateOperationsInput | Date | string
     firstSeenAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
     notifications?: NotificationUncheckedUpdateManyWithoutListingNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutListingNestedInput
   }
@@ -18280,11 +18344,13 @@ export namespace Prisma {
     imageUrl?: string | null
     url: string
     platform: $Enums.Platform
+    rawPublishedAt?: string | null
     publishedAt?: Date | string | null
     foundAt?: Date | string
     firstSeenAt?: Date | string
     isBaseline?: boolean
     notifiedAt?: Date | string | null
+    skippedReason?: string | null
   }
 
   export type ListingUpdateManyMutationInput = {
@@ -18295,11 +18361,13 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
     platform?: EnumPlatformFieldUpdateOperationsInput | $Enums.Platform
+    rawPublishedAt?: NullableStringFieldUpdateOperationsInput | string | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     foundAt?: DateTimeFieldUpdateOperationsInput | Date | string
     firstSeenAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ListingUncheckedUpdateManyInput = {
@@ -18312,11 +18380,13 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
     platform?: EnumPlatformFieldUpdateOperationsInput | $Enums.Platform
+    rawPublishedAt?: NullableStringFieldUpdateOperationsInput | string | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     foundAt?: DateTimeFieldUpdateOperationsInput | Date | string
     firstSeenAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PaymentCreateInput = {
@@ -19456,11 +19526,13 @@ export namespace Prisma {
     imageUrl?: SortOrder
     url?: SortOrder
     platform?: SortOrder
+    rawPublishedAt?: SortOrder
     publishedAt?: SortOrder
     foundAt?: SortOrder
     firstSeenAt?: SortOrder
     isBaseline?: SortOrder
     notifiedAt?: SortOrder
+    skippedReason?: SortOrder
   }
 
   export type ListingAvgOrderByAggregateInput = {
@@ -19478,11 +19550,13 @@ export namespace Prisma {
     imageUrl?: SortOrder
     url?: SortOrder
     platform?: SortOrder
+    rawPublishedAt?: SortOrder
     publishedAt?: SortOrder
     foundAt?: SortOrder
     firstSeenAt?: SortOrder
     isBaseline?: SortOrder
     notifiedAt?: SortOrder
+    skippedReason?: SortOrder
   }
 
   export type ListingMinOrderByAggregateInput = {
@@ -19495,11 +19569,13 @@ export namespace Prisma {
     imageUrl?: SortOrder
     url?: SortOrder
     platform?: SortOrder
+    rawPublishedAt?: SortOrder
     publishedAt?: SortOrder
     foundAt?: SortOrder
     firstSeenAt?: SortOrder
     isBaseline?: SortOrder
     notifiedAt?: SortOrder
+    skippedReason?: SortOrder
   }
 
   export type ListingSumOrderByAggregateInput = {
@@ -21981,11 +22057,13 @@ export namespace Prisma {
     imageUrl?: string | null
     url: string
     platform: $Enums.Platform
+    rawPublishedAt?: string | null
     publishedAt?: Date | string | null
     foundAt?: Date | string
     firstSeenAt?: Date | string
     isBaseline?: boolean
     notifiedAt?: Date | string | null
+    skippedReason?: string | null
     notifications?: NotificationCreateNestedManyWithoutListingInput
     favorites?: FavoriteCreateNestedManyWithoutListingInput
   }
@@ -21999,11 +22077,13 @@ export namespace Prisma {
     imageUrl?: string | null
     url: string
     platform: $Enums.Platform
+    rawPublishedAt?: string | null
     publishedAt?: Date | string | null
     foundAt?: Date | string
     firstSeenAt?: Date | string
     isBaseline?: boolean
     notifiedAt?: Date | string | null
+    skippedReason?: string | null
     notifications?: NotificationUncheckedCreateNestedManyWithoutListingInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutListingInput
   }
@@ -22148,11 +22228,13 @@ export namespace Prisma {
     imageUrl?: StringNullableFilter<"Listing"> | string | null
     url?: StringFilter<"Listing"> | string
     platform?: EnumPlatformFilter<"Listing"> | $Enums.Platform
+    rawPublishedAt?: StringNullableFilter<"Listing"> | string | null
     publishedAt?: DateTimeNullableFilter<"Listing"> | Date | string | null
     foundAt?: DateTimeFilter<"Listing"> | Date | string
     firstSeenAt?: DateTimeFilter<"Listing"> | Date | string
     isBaseline?: BoolFilter<"Listing"> | boolean
     notifiedAt?: DateTimeNullableFilter<"Listing"> | Date | string | null
+    skippedReason?: StringNullableFilter<"Listing"> | string | null
   }
 
   export type NotificationUpsertWithWhereUniqueWithoutSearchInput = {
@@ -22555,11 +22637,13 @@ export namespace Prisma {
     imageUrl?: string | null
     url: string
     platform: $Enums.Platform
+    rawPublishedAt?: string | null
     publishedAt?: Date | string | null
     foundAt?: Date | string
     firstSeenAt?: Date | string
     isBaseline?: boolean
     notifiedAt?: Date | string | null
+    skippedReason?: string | null
     search: SearchCreateNestedOneWithoutListingsInput
     notifications?: NotificationCreateNestedManyWithoutListingInput
   }
@@ -22574,11 +22658,13 @@ export namespace Prisma {
     imageUrl?: string | null
     url: string
     platform: $Enums.Platform
+    rawPublishedAt?: string | null
     publishedAt?: Date | string | null
     foundAt?: Date | string
     firstSeenAt?: Date | string
     isBaseline?: boolean
     notifiedAt?: Date | string | null
+    skippedReason?: string | null
     notifications?: NotificationUncheckedCreateNestedManyWithoutListingInput
   }
 
@@ -22678,11 +22764,13 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
     platform?: EnumPlatformFieldUpdateOperationsInput | $Enums.Platform
+    rawPublishedAt?: NullableStringFieldUpdateOperationsInput | string | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     foundAt?: DateTimeFieldUpdateOperationsInput | Date | string
     firstSeenAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
     search?: SearchUpdateOneRequiredWithoutListingsNestedInput
     notifications?: NotificationUpdateManyWithoutListingNestedInput
   }
@@ -22697,11 +22785,13 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
     platform?: EnumPlatformFieldUpdateOperationsInput | $Enums.Platform
+    rawPublishedAt?: NullableStringFieldUpdateOperationsInput | string | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     foundAt?: DateTimeFieldUpdateOperationsInput | Date | string
     firstSeenAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
     notifications?: NotificationUncheckedUpdateManyWithoutListingNestedInput
   }
 
@@ -22821,11 +22911,13 @@ export namespace Prisma {
     imageUrl?: string | null
     url: string
     platform: $Enums.Platform
+    rawPublishedAt?: string | null
     publishedAt?: Date | string | null
     foundAt?: Date | string
     firstSeenAt?: Date | string
     isBaseline?: boolean
     notifiedAt?: Date | string | null
+    skippedReason?: string | null
     search: SearchCreateNestedOneWithoutListingsInput
     favorites?: FavoriteCreateNestedManyWithoutListingInput
   }
@@ -22840,11 +22932,13 @@ export namespace Prisma {
     imageUrl?: string | null
     url: string
     platform: $Enums.Platform
+    rawPublishedAt?: string | null
     publishedAt?: Date | string | null
     foundAt?: Date | string
     firstSeenAt?: Date | string
     isBaseline?: boolean
     notifiedAt?: Date | string | null
+    skippedReason?: string | null
     favorites?: FavoriteUncheckedCreateNestedManyWithoutListingInput
   }
 
@@ -22992,11 +23086,13 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
     platform?: EnumPlatformFieldUpdateOperationsInput | $Enums.Platform
+    rawPublishedAt?: NullableStringFieldUpdateOperationsInput | string | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     foundAt?: DateTimeFieldUpdateOperationsInput | Date | string
     firstSeenAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
     search?: SearchUpdateOneRequiredWithoutListingsNestedInput
     favorites?: FavoriteUpdateManyWithoutListingNestedInput
   }
@@ -23011,11 +23107,13 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
     platform?: EnumPlatformFieldUpdateOperationsInput | $Enums.Platform
+    rawPublishedAt?: NullableStringFieldUpdateOperationsInput | string | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     foundAt?: DateTimeFieldUpdateOperationsInput | Date | string
     firstSeenAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
     favorites?: FavoriteUncheckedUpdateManyWithoutListingNestedInput
   }
 
@@ -24173,11 +24271,13 @@ export namespace Prisma {
     imageUrl?: string | null
     url: string
     platform: $Enums.Platform
+    rawPublishedAt?: string | null
     publishedAt?: Date | string | null
     foundAt?: Date | string
     firstSeenAt?: Date | string
     isBaseline?: boolean
     notifiedAt?: Date | string | null
+    skippedReason?: string | null
   }
 
   export type NotificationCreateManySearchInput = {
@@ -24198,11 +24298,13 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
     platform?: EnumPlatformFieldUpdateOperationsInput | $Enums.Platform
+    rawPublishedAt?: NullableStringFieldUpdateOperationsInput | string | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     foundAt?: DateTimeFieldUpdateOperationsInput | Date | string
     firstSeenAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
     notifications?: NotificationUpdateManyWithoutListingNestedInput
     favorites?: FavoriteUpdateManyWithoutListingNestedInput
   }
@@ -24216,11 +24318,13 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
     platform?: EnumPlatformFieldUpdateOperationsInput | $Enums.Platform
+    rawPublishedAt?: NullableStringFieldUpdateOperationsInput | string | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     foundAt?: DateTimeFieldUpdateOperationsInput | Date | string
     firstSeenAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
     notifications?: NotificationUncheckedUpdateManyWithoutListingNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutListingNestedInput
   }
@@ -24234,11 +24338,13 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     url?: StringFieldUpdateOperationsInput | string
     platform?: EnumPlatformFieldUpdateOperationsInput | $Enums.Platform
+    rawPublishedAt?: NullableStringFieldUpdateOperationsInput | string | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     foundAt?: DateTimeFieldUpdateOperationsInput | Date | string
     firstSeenAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type NotificationUpdateWithoutSearchInput = {

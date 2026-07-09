@@ -675,3 +675,12 @@ An operation failed because it depends on one or more records that were required
 2026-07-09 18:01:26 [[31merror[39m]: Fatal startup error
 2026-07-09 18:10:47 [[31merror[39m]: Fatal startup error
 2026-07-09 18:11:59 [[31merror[39m]: Fatal startup error
+2026-07-09 18:43:46 [[31merror[39m]: Parser error for search 5: 
+Invalid `prisma.listing.findUnique()` invocation in
+/vercel/share/v0-project/bot/src/repositories/listing.repository.ts:14:27
+
+  11 }
+  12 
+  13 async findByExternalId(searchId: number, externalId: string): Promise<Listing | null> {
+→ 14   return prisma.listing.findUnique(
+The column `Listing.rawPublishedAt` does not exist in the current database.

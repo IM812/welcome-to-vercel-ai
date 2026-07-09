@@ -983,3 +983,25 @@ An operation failed because it depends on one or more records that were required
 2026-07-09 18:11:59 [[31merror[39m]: Fatal startup error
 2026-07-09 18:12:31 [[34mdebug[39m]: Search 5: checked 50 listings, sent=0
 2026-07-09 18:14:01 [[34mdebug[39m]: Search 5: checked 40 listings, sent=0
+2026-07-09 18:43:43 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 18:43:43 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 18:43:43 [[32minfo[39m]: Subscription cron started
+2026-07-09 18:43:43 [[32minfo[39m]: Daily reset cron started
+2026-07-09 18:43:43 [[32minfo[39m]: Queue flush cron started
+2026-07-09 18:43:43 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 18:43:45 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 18:43:46 [[31merror[39m]: Parser error for search 5: 
+Invalid `prisma.listing.findUnique()` invocation in
+/vercel/share/v0-project/bot/src/repositories/listing.repository.ts:14:27
+
+  11 }
+  12 
+  13 async findByExternalId(searchId: number, externalId: string): Promise<Listing | null> {
+→ 14   return prisma.listing.findUnique(
+The column `Listing.rawPublishedAt` does not exist in the current database.
+2026-07-09 18:44:19 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 18:44:19 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 18:44:19 [[32minfo[39m]: Subscription cron started
+2026-07-09 18:44:19 [[32minfo[39m]: Daily reset cron started
+2026-07-09 18:44:19 [[32minfo[39m]: Queue flush cron started
+2026-07-09 18:44:19 [[32minfo[39m]: Bot @avito_parser_test_bot started
