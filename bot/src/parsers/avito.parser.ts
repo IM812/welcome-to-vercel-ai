@@ -186,13 +186,13 @@ function extractDateFromMetaLine(text: string): string | null {
   const hourRelMatch = s.match(/(\d+\s*)?час[а-я]*\s*назад/);
   if (hourRelMatch) return hourRelMatch[0].trim();
 
-  // "сегодня в HH:MM"
-  const todayMatch = s.match(/сегодня\s+в\s+\d{1,2}:\d{2}/);
-  if (todayMatch) return todayMatch[0].trim();
+  // "сегодня в HH:MM" — keep as-is; dateParser converts to absolute MSK timestamp
+  const todayMatch = s.match(/сегодня\s+в\s+(\d{1,2}:\d{2})/);
+  if (todayMatch) return `сегодня в ${todayMatch[1]}`;
 
   // "вчера в HH:MM"
-  const yesterdayMatch = s.match(/вчера\s+в\s+\d{1,2}:\d{2}/);
-  if (yesterdayMatch) return yesterdayMatch[0].trim();
+  const yesterdayMatch = s.match(/вчера\s+в\s+(\d{1,2}:\d{2})/);
+  if (yesterdayMatch) return `вчера в ${yesterdayMatch[1]}`;
 
   // "D месяц в HH:MM"  e.g. "3 июля в 23:26"
   const absMatch = s.match(/\d{1,2}\s+[а-яё]+\s+в\s+\d{1,2}:\d{2}/);

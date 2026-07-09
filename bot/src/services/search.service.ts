@@ -237,16 +237,25 @@ export class SearchService {
 
       logger.debug(`[avito-new-candidate] externalId=${externalId} url=${parsed.url}`);
 
-      // 3. Resolve raw date:
-      //    For Avito, the category page does not contain reliable dates.
-      //    We open the individual listing page only for NEW externalIds to get
-      //    the exact publication time from "№ XXXXXXX · 3 июля в 23:26 · N просмотров".
-      let rawDate: string | null = parsed.rawPublishedAt ?? null;
-      if (!rawDate && parser instanceof AvitoParser) {
+      // 3. Resolve raw date from the DETAIL page.
+      //    The meta line "№ XXXXXXX · сегодня в 21:08 · N просмотров" on the
+      //    individual listing page is the only reliable source of publication
+      //    time on Avito. The category/search page either shows a vague
+      //    relative string ("час назад") or nothing at all.
+      //    We always fetch the detail page for NEW externalIds — dedup above
+      //    ensures we only do this once per listing.
+      let rawDate: string | null = null;
+      if (parser instanceof AvitoParser) {
         rawDate = await parser.fetchListingDate(parsed.url);
         if (rawDate) {
-          logger.debug(`[avito-details] externalId=${externalId} rawPublishedAt=${rawDate}`);
+          logger.debug(`[avito-details] externalId=${externalId} rawPublishedAt="${rawDate}"`);
+        } else {
+          // Fallback: use whatever the category card had (may be empty)
+          rawDate = parsed.rawPublishedAt ?? null;
+          logger.debug(`[avito-details-fallback] externalId=${externalId} rawPublishedAt="${rawDate ?? 'null'}"`);
         }
+      } else {
+        rawDate = parsed.rawPublishedAt ?? null;
       }
 
       const parsedDate: Date | null = rawDate
