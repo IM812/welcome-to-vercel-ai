@@ -11,10 +11,15 @@ import { hashListing } from '../utils/hash';
 import { PLATFORM_DOMAINS, PLAN_LIMITS } from '../types/index';
 import { logger } from '../utils/logger';
 
-// How many listings from the top of the feed to inspect on each cron tick.
-// The baseline seed always saves up to PARSE_LIMIT items.
+// How many listings to seed as baseline on first add.
 const BASELINE_LIMIT = 30;
+// How many listings to inspect on each cron tick.
 const CHECK_LIMIT = 20;
+
+// Per-process warm-up flag. On the very first tick after restart we silently
+// mark every visible listing as "seen" so no stale items flood the user.
+// Key: searchId, Value: true once warm-up is done for that search.
+const warmedUp = new Set<number>();
 
 export class SearchService {
   private searchRepo: SearchRepository;
@@ -217,19 +222,51 @@ export class SearchService {
     const baselineAt = (search as typeof search & { baselineInitializedAt: Date | null })
       .baselineInitializedAt;
 
-    // First run: seed baseline silently and return.
+    // First-ever baseline: seed silently and return.
     if (!baselineAt) {
       logger.info(`[baseline-needed] searchId=${searchId} — seeding now`);
       await this.initializeSearchBaseline(searchId);
       return;
     }
 
-    // Normal tick: parse only the first CHECK_LIMIT items from the feed.
     const parser = ParserFactory.create(search.platform);
     const allItems = await withRetry(() => parser.parse(search.url));
-    const items = allItems.slice(0, CHECK_LIMIT);
 
     await this.searchRepo.update(search.id, { lastCheckedAt: new Date() });
+
+    // Warm-up tick (once per process restart per search):
+    // silently mark everything currently visible as "seen" so that listings
+    // already in the feed before this bot instance started are never sent.
+    if (!warmedUp.has(search.id)) {
+      warmedUp.add(search.id);
+      logger.info(`[warm-up] searchId=${search.id} marking ${allItems.length} items as seen`);
+      for (const parsed of allItems) {
+        const externalId = parsed.externalId || hashListing(parsed.title, parsed.price, parsed.url);
+        const existing = await this.listingRepo.findByExternalId(search.id, externalId);
+        if (!existing) {
+          await this.listingRepo.upsert(
+            search.id,
+            externalId,
+            {
+              title: parsed.title,
+              price: parsed.price ?? null,
+              location: parsed.location ?? null,
+              imageUrl: parsed.imageUrl ?? null,
+              url: parsed.url,
+              platform: search.platform,
+              rawPublishedAt: parsed.rawPublishedAt ?? null,
+              publishedAt: parsed.publishedAt ?? null,
+              isBaseline: true,
+              skippedReason: null,
+            } as Parameters<ListingRepository['upsert']>[2],
+          );
+        }
+      }
+      return;
+    }
+
+    // Normal tick: check only the top CHECK_LIMIT items.
+    const items = allItems.slice(0, CHECK_LIMIT);
 
     logger.debug(`[tick] searchId=${search.id} fetched=${allItems.length} checking=${items.length}`);
 
