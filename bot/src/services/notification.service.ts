@@ -42,16 +42,24 @@ export class NotificationService {
   ): Promise<boolean> {
     if (!this.bot) throw new Error('Bot not initialized');
 
-    // Hard guards — checked in this exact order, every condition must pass
+    // Hard guards — checked in this exact order, every condition must pass.
+    // Baseline and already-notified guards apply in EVERY mode.
     if ((listing as Listing & { isBaseline: boolean }).isBaseline) return false;
     if ((listing as Listing & { notifiedAt: Date | null }).notifiedAt) return false;
-    if (!listing.publishedAt) {
-      logger.debug(`[notification-skip] listingId=${listing.id} reason=no_publishedAt`);
-      return false;
-    }
-    if (!isFreshListing(listing.publishedAt, FRESH_MAX_MINUTES)) {
-      logger.debug(`[notification-skip] listingId=${listing.id} reason=stale publishedAt=${listing.publishedAt.toISOString()}`);
-      return false;
+
+    // The freshness guard only applies in strict mode. In competitor ("all")
+    // mode the SearchService already decided the listing is new, so we do not
+    // re-filter by date here.
+    const sendMode = (process.env.SEND_MODE ?? 'all').toLowerCase();
+    if (sendMode === 'strict') {
+      if (!listing.publishedAt) {
+        logger.debug(`[notification-skip] listingId=${listing.id} reason=no_publishedAt`);
+        return false;
+      }
+      if (!isFreshListing(listing.publishedAt, FRESH_MAX_MINUTES)) {
+        logger.debug(`[notification-skip] listingId=${listing.id} reason=stale publishedAt=${listing.publishedAt.toISOString()}`);
+        return false;
+      }
     }
 
     // Guard against duplicate Notification rows for the same listing+user

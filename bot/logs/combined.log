@@ -1705,3 +1705,279 @@ The column `Listing.rawPublishedAt` does not exist in the current database.
 2026-07-09 18:59:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8233139244
 2026-07-09 18:59:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8157936630
 2026-07-09 18:59:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8176440813
+2026-07-09 18:59:59 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104677552
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8158761623
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8261044979
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174450667
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249198946
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104464564
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248886980
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249024624
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249502649
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8166389716
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8275209199
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8155364488
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301654312
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8246238834
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301144329
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8156581818
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104731124
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301706065
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8207310510
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301485432
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301369903
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248985066
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249142106
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174176305
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301128238
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249493752
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248944445
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8256793335
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249586758
+2026-07-09 19:00:00 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8257850004
+2026-07-09 19:00:30 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:00:30 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8249168008
+2026-07-09 19:00:30 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8161548148
+2026-07-09 19:00:30 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8096198556
+2026-07-09 19:00:30 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8223024860
+2026-07-09 19:00:30 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8123905023
+2026-07-09 19:00:30 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8006536681
+2026-07-09 19:00:30 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7777619852
+2026-07-09 19:00:30 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8202958508
+2026-07-09 19:00:30 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301061789
+2026-07-09 19:00:30 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301318257
+2026-07-09 19:00:30 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156542738
+2026-07-09 19:00:30 [[34mdebug[39m]: [avito-new-candidate] externalId=8261808470 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/plavatelnye_shorty_loewe_8261808470?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToiMHJkZm9zMjFzcTNwdTZmYWprazVsb3d4aTBsNTNxciI7fTE6Ect_AAAA
+2026-07-09 19:00:30 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:00:30.856Z
+2026-07-09 19:00:30 [[34mdebug[39m]: [fresh-check] externalId=8261808470 ageMinutes=60.00 send=false reason=TOO_OLD
+2026-07-09 19:00:30 [[34mdebug[39m]: [old-skip] externalId=8261808470 reason=TOO_OLD ageMinutes=60.00
+2026-07-09 19:00:30 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8189797118
+2026-07-09 19:00:30 [[34mdebug[39m]: [avito-new-candidate] externalId=8275377171 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/polo_lacoste_8275377171?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToiMHJkZm9zMjFzcTNwdTZmYWprazVsb3d4aTBsNTNxciI7fTE6Ect_AAAA
+2026-07-09 19:00:30 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:00:30.970Z
+2026-07-09 19:00:30 [[34mdebug[39m]: [fresh-check] externalId=8275377171 ageMinutes=60.00 send=false reason=TOO_OLD
+2026-07-09 19:00:30 [[34mdebug[39m]: [old-skip] externalId=8275377171 reason=TOO_OLD ageMinutes=60.00
+2026-07-09 19:00:31 [[34mdebug[39m]: [avito-new-candidate] externalId=8245924593 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/futbolka_lgb_moment_chernaya_hayp_xs-xl_8245924593?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToiMHJkZm9zMjFzcTNwdTZmYWprazVsb3d4aTBsNTNxciI7fTE6Ect_AAAA
+2026-07-09 19:00:31 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:00:31.070Z
+2026-07-09 19:00:31 [[34mdebug[39m]: [fresh-check] externalId=8245924593 ageMinutes=60.00 send=false reason=TOO_OLD
+2026-07-09 19:00:31 [[34mdebug[39m]: [old-skip] externalId=8245924593 reason=TOO_OLD ageMinutes=60.00
+2026-07-09 19:00:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275262758
+2026-07-09 19:00:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275197529
+2026-07-09 19:00:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8157936630
+2026-07-09 19:00:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8233642760
+2026-07-09 19:00:31 [[34mdebug[39m]: [avito-new-candidate] externalId=8156445370 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/futbolka_casablanca_airlines_8156445370?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToiMHJkZm9zMjFzcTNwdTZmYWprazVsb3d4aTBsNTNxciI7fTE6Ect_AAAA
+2026-07-09 19:00:31 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:00:31.226Z
+2026-07-09 19:00:31 [[34mdebug[39m]: [fresh-check] externalId=8156445370 ageMinutes=60.00 send=false reason=TOO_OLD
+2026-07-09 19:00:31 [[34mdebug[39m]: [old-skip] externalId=8156445370 reason=TOO_OLD ageMinutes=60.00
+2026-07-09 19:00:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301328857
+2026-07-09 19:00:31 [[34mdebug[39m]: [avito-new-candidate] externalId=8245968093 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/shirokie_shorty_nizhe_kolena_hysteric_glamour_type_8245968093?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToiMHJkZm9zMjFzcTNwdTZmYWprazVsb3d4aTBsNTNxciI7fTE6Ect_AAAA
+2026-07-09 19:00:31 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:00:31.340Z
+2026-07-09 19:00:31 [[34mdebug[39m]: [fresh-check] externalId=8245968093 ageMinutes=60.00 send=false reason=TOO_OLD
+2026-07-09 19:00:31 [[34mdebug[39m]: [old-skip] externalId=8245968093 reason=TOO_OLD ageMinutes=60.00
+2026-07-09 19:00:31 [[34mdebug[39m]: [avito-new-candidate] externalId=8146673947 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/futbolka_protocol_index_x_spin4spin_oymakon_tee_8146673947?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToiMHJkZm9zMjFzcTNwdTZmYWprazVsb3d4aTBsNTNxciI7fTE6Ect_AAAA
+2026-07-09 19:00:31 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:00:31.440Z
+2026-07-09 19:00:31 [[34mdebug[39m]: [fresh-check] externalId=8146673947 ageMinutes=60.00 send=false reason=TOO_OLD
+2026-07-09 19:00:31 [[34mdebug[39m]: [old-skip] externalId=8146673947 reason=TOO_OLD ageMinutes=60.00
+2026-07-09 19:00:31 [[34mdebug[39m]: [avito-new-candidate] externalId=8216526142 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/takahiromiyashita_the_soloist_futbolka_8216526142?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToiMHJkZm9zMjFzcTNwdTZmYWprazVsb3d4aTBsNTNxciI7fTE6Ect_AAAA
+2026-07-09 19:00:31 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:00:31.542Z
+2026-07-09 19:00:31 [[34mdebug[39m]: [fresh-check] externalId=8216526142 ageMinutes=60.00 send=false reason=TOO_OLD
+2026-07-09 19:00:31 [[34mdebug[39m]: [old-skip] externalId=8216526142 reason=TOO_OLD ageMinutes=60.00
+2026-07-09 19:00:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301587144
+2026-07-09 19:00:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301397375
+2026-07-09 19:00:31 [[34mdebug[39m]: [avito-new-candidate] externalId=8108108511 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/futbolka_sbornoy_brazilii_2026-2027_8108108511?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToiMHJkZm9zMjFzcTNwdTZmYWprazVsb3d4aTBsNTNxciI7fTE6Ect_AAAA
+2026-07-09 19:00:31 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:00:31.675Z
+2026-07-09 19:00:31 [[34mdebug[39m]: [fresh-check] externalId=8108108511 ageMinutes=60.00 send=false reason=TOO_OLD
+2026-07-09 19:00:31 [[34mdebug[39m]: [old-skip] externalId=8108108511 reason=TOO_OLD ageMinutes=60.00
+2026-07-09 19:00:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8249530613
+2026-07-09 19:00:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8176333892
+2026-07-09 19:00:31 [[34mdebug[39m]: [avito-new-candidate] externalId=8207728728 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/futbolka_s_minonom_y2k_archive_drip_opium_type_8207728728?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToiMHJkZm9zMjFzcTNwdTZmYWprazVsb3d4aTBsNTNxciI7fTE6Ect_AAAA
+2026-07-09 19:00:31 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:00:31.809Z
+2026-07-09 19:00:31 [[34mdebug[39m]: [fresh-check] externalId=8207728728 ageMinutes=60.00 send=false reason=TOO_OLD
+2026-07-09 19:00:31 [[34mdebug[39m]: [old-skip] externalId=8207728728 reason=TOO_OLD ageMinutes=60.00
+2026-07-09 19:01:29 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104677552
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8158761623
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8261044979
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174450667
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249198946
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104464564
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248886980
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249024624
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249502649
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8166389716
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8275209199
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8155364488
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301654312
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8246238834
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301144329
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8156581818
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104731124
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301706065
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8207310510
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301485432
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301369903
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248985066
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249142106
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174176305
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301128238
+2026-07-09 19:01:29 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249493752
+2026-07-09 19:01:30 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248944445
+2026-07-09 19:01:30 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8256793335
+2026-07-09 19:01:30 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249586758
+2026-07-09 19:01:30 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8257850004
+2026-07-09 19:02:00 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:02:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8249168008
+2026-07-09 19:02:00 [[34mdebug[39m]: [avito-new-candidate] externalId=8249359700 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/retro_pidzhak_betty_barbey_8249359700?context=H4sIAAAAAAAA_wE_AMD_YToyOntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czoxOiJ4IjtzOjE2OiI5VFZaRTl3TUNaUVBKeWFTIjt9ij-9BT8AAAA
+2026-07-09 19:02:00 [[34mdebug[39m]: [date-parse] raw=Вчера parsed=null
+2026-07-09 19:02:00 [[34mdebug[39m]: [fresh-check] externalId=8249359700 ageMinutes=n/a send=true reason=ok
+2026-07-09 19:02:01 [[32minfo[39m]: [notification-sent] listingId=763
+2026-07-09 19:02:01 [[32minfo[39m]: [avito-send] externalId=8249359700
+2026-07-09 19:02:01 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8161548148
+2026-07-09 19:02:01 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8096198556
+2026-07-09 19:02:01 [[34mdebug[39m]: [avito-new-candidate] externalId=2784965793 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/arenda_novyh_smokingov_i_muzhskih_kostyumov_2784965793?context=H4sIAAAAAAAA_wE_AMD_YToyOntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czoxOiJ4IjtzOjE2OiI5VFZaRTl3TUNaUVBKeWFTIjt9ij-9BT8AAAA
+2026-07-09 19:02:02 [[34mdebug[39m]: [avito-details] externalId=2784965793 rawPublishedAt=7 июля в 17:23
+2026-07-09 19:02:02 [[34mdebug[39m]: [date-parse] raw=7 июля в 17:23 parsed=2026-07-07T14:23:00.000Z
+2026-07-09 19:02:02 [[34mdebug[39m]: [fresh-check] externalId=2784965793 ageMinutes=3159.04 send=false reason=TOO_OLD
+2026-07-09 19:02:02 [[34mdebug[39m]: [old-skip] externalId=2784965793 reason=TOO_OLD ageMinutes=3159.04
+2026-07-09 19:02:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8223024860
+2026-07-09 19:02:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8202958508
+2026-07-09 19:02:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8145908138
+2026-07-09 19:02:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275377171
+2026-07-09 19:02:02 [[34mdebug[39m]: [avito-new-candidate] externalId=8146477997 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/futbolka_prada_triangular_icon_8146477997?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToibHR2Y210eGNtcHhqeDVhczRweTA4czZiOWt3ZGV4cyI7fe2wkVl_AAAA
+2026-07-09 19:02:02 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:02:02.334Z
+2026-07-09 19:02:02 [[34mdebug[39m]: [fresh-check] externalId=8146477997 ageMinutes=60.00 send=false reason=TOO_OLD
+2026-07-09 19:02:02 [[34mdebug[39m]: [old-skip] externalId=8146477997 reason=TOO_OLD ageMinutes=60.00
+2026-07-09 19:02:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8226091849
+2026-07-09 19:02:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156130875
+2026-07-09 19:02:02 [[34mdebug[39m]: [avito-new-candidate] externalId=8148570802 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/pidzhak_muzhskoy_zara_m_8148570802?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToibHR2Y210eGNtcHhqeDVhczRweTA4czZiOWt3ZGV4cyI7fe2wkVl_AAAA
+2026-07-09 19:02:02 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:02:02.455Z
+2026-07-09 19:02:02 [[34mdebug[39m]: [fresh-check] externalId=8148570802 ageMinutes=60.00 send=false reason=TOO_OLD
+2026-07-09 19:02:02 [[34mdebug[39m]: [old-skip] externalId=8148570802 reason=TOO_OLD ageMinutes=60.00
+2026-07-09 19:02:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156181039
+2026-07-09 19:02:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8189132560
+2026-07-09 19:02:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8167816473
+2026-07-09 19:02:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207458384
+2026-07-09 19:02:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301575168
+2026-07-09 19:02:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8155902726
+2026-07-09 19:02:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275313250
+2026-07-09 19:02:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8233245612
+2026-07-09 19:02:02 [[34mdebug[39m]: [avito-new-candidate] externalId=8108412490 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/futbolka_mastermind_8108412490?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToibHR2Y210eGNtcHhqeDVhczRweTA4czZiOWt3ZGV4cyI7fe2wkVl_AAAA
+2026-07-09 19:02:02 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:02:02.659Z
+2026-07-09 19:02:02 [[34mdebug[39m]: [fresh-check] externalId=8108412490 ageMinutes=60.00 send=false reason=TOO_OLD
+2026-07-09 19:02:02 [[34mdebug[39m]: [old-skip] externalId=8108412490 reason=TOO_OLD ageMinutes=60.00
+2026-07-09 19:02:02 [[34mdebug[39m]: [avito-new-candidate] externalId=8146729813 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/futbolka_protocol_index_moscow_city_tee_8146729813?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToibHR2Y210eGNtcHhqeDVhczRweTA4czZiOWt3ZGV4cyI7fe2wkVl_AAAA
+2026-07-09 19:02:02 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:02:02.756Z
+2026-07-09 19:02:02 [[34mdebug[39m]: [fresh-check] externalId=8146729813 ageMinutes=60.00 send=false reason=TOO_OLD
+2026-07-09 19:02:02 [[34mdebug[39m]: [old-skip] externalId=8146729813 reason=TOO_OLD ageMinutes=60.00
+2026-07-09 19:02:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8157936630
+2026-07-09 19:02:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156270563
+2026-07-09 19:02:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8274928212
+2026-07-09 19:02:02 [[34mdebug[39m]: [avito-new-candidate] externalId=8176401528 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/hudi_enfants_riches_dempires_erd_8176401528?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToibHR2Y210eGNtcHhqeDVhczRweTA4czZiOWt3ZGV4cyI7fe2wkVl_AAAA
+2026-07-09 19:02:02 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:02:02.891Z
+2026-07-09 19:02:02 [[34mdebug[39m]: [fresh-check] externalId=8176401528 ageMinutes=60.00 send=false reason=TOO_OLD
+2026-07-09 19:02:02 [[34mdebug[39m]: [old-skip] externalId=8176401528 reason=TOO_OLD ageMinutes=60.00
+2026-07-09 19:02:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8249530613
+2026-07-09 19:02:02 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156445370
+2026-07-09 19:02:03 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8108108511
+2026-07-09 19:02:37 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 19:02:37 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 19:02:37 [[32minfo[39m]: Subscription cron started
+2026-07-09 19:02:37 [[32minfo[39m]: Daily reset cron started
+2026-07-09 19:02:37 [[32minfo[39m]: Queue flush cron started
+2026-07-09 19:02:37 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 19:02:38 [[31merror[39m]: Fatal startup error
+2026-07-09 19:02:39 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104677552
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8158761623
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8261044979
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174450667
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249198946
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104464564
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248886980
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249024624
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249502649
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8166389716
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8275209199
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8155364488
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301654312
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8246238834
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301144329
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8156581818
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104731124
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301706065
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8207310510
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301485432
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301369903
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248985066
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249142106
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174176305
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301128238
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249493752
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248944445
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8256793335
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249586758
+2026-07-09 19:02:39 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8257850004
+2026-07-09 19:03:10 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:03:10 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8249168008
+2026-07-09 19:03:10 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8249689367
+2026-07-09 19:03:10 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8249359700
+2026-07-09 19:03:10 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8189069267
+2026-07-09 19:03:10 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7797979847
+2026-07-09 19:03:10 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8223024860
+2026-07-09 19:03:10 [[34mdebug[39m]: [avito-new-candidate] externalId=8027134708 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/dzhinsy_klesh_if_six_was_nine_x_lgb_type_8027134708?context=H4sIAAAAAAAA_wE_AMD_YToyOntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czoxOiJ4IjtzOjE2OiJtb1BYQVJYWGszeExvaHZrIjt9gTiu8z8AAAA
+2026-07-09 19:03:11 [[34mdebug[39m]: [avito-details] externalId=8027134708 rawPublishedAt=27 июня в 09:07
+2026-07-09 19:03:11 [[34mdebug[39m]: [date-parse] raw=27 июня в 09:07 parsed=2026-06-27T06:07:00.000Z
+2026-07-09 19:03:11 [[34mdebug[39m]: [fresh-check] mode=all externalId=8027134708 ageMinutes=18056.19 send=true reason=ok
+2026-07-09 19:03:12 [[32minfo[39m]: [notification-sent] listingId=770
+2026-07-09 19:03:12 [[32minfo[39m]: [avito-send] externalId=8027134708
+2026-07-09 19:03:12 [[34mdebug[39m]: [avito-new-candidate] externalId=8243104639 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/polo_ralph_lauren_8243104639?context=H4sIAAAAAAAA_wE_AMD_YToyOntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czoxOiJ4IjtzOjE2OiJtb1BYQVJYWGszeExvaHZrIjt9gTiu8z8AAAA
+2026-07-09 19:03:12 [[34mdebug[39m]: [date-parse] raw=3 дня назад parsed=null
+2026-07-09 19:03:12 [[34mdebug[39m]: [fresh-check] mode=all externalId=8243104639 ageMinutes=n/a send=true reason=ok
+2026-07-09 19:03:12 [[32minfo[39m]: [notification-sent] listingId=771
+2026-07-09 19:03:12 [[32minfo[39m]: [avito-send] externalId=8243104639
+2026-07-09 19:03:12 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146175207
+2026-07-09 19:03:12 [[34mdebug[39m]: [avito-new-candidate] externalId=8156308244 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/vetrovka_brunello_cucinelli_8156308244?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToidmFja3V5MG9zbXJmOWpldjE1Zm9lZmhuN21xaHo3ZiI7ffnaS4B_AAAA
+2026-07-09 19:03:12 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:03:12.921Z
+2026-07-09 19:03:12 [[34mdebug[39m]: [fresh-check] mode=all externalId=8156308244 ageMinutes=60.00 send=true reason=ok
+2026-07-09 19:03:13 [[32minfo[39m]: [notification-sent] listingId=772
+2026-07-09 19:03:13 [[32minfo[39m]: [avito-send] externalId=8156308244
+2026-07-09 19:03:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275197529
+2026-07-09 19:03:13 [[34mdebug[39m]: [avito-new-candidate] externalId=8181082690 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/hudi_nettspend_elc_8181082690?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToidmFja3V5MG9zbXJmOWpldjE1Zm9lZmhuN21xaHo3ZiI7ffnaS4B_AAAA
+2026-07-09 19:03:13 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:03:13.933Z
+2026-07-09 19:03:13 [[34mdebug[39m]: [fresh-check] mode=all externalId=8181082690 ageMinutes=60.00 send=true reason=ok
+2026-07-09 19:03:18 [[32minfo[39m]: [notification-sent] listingId=773
+2026-07-09 19:03:18 [[32minfo[39m]: [avito-send] externalId=8181082690
+2026-07-09 19:03:18 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8257259298
+2026-07-09 19:03:19 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301061789
+2026-07-09 19:03:19 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216717160
+2026-07-09 19:03:19 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8233642760
+2026-07-09 19:03:19 [[34mdebug[39m]: [avito-new-candidate] externalId=8301007516 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/sportivnyy_kostyum_lacoste_8301007516?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToidmFja3V5MG9zbXJmOWpldjE1Zm9lZmhuN21xaHo3ZiI7ffnaS4B_AAAA
+2026-07-09 19:03:19 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:03:19.056Z
+2026-07-09 19:03:19 [[34mdebug[39m]: [fresh-check] mode=all externalId=8301007516 ageMinutes=60.00 send=true reason=ok
+2026-07-09 19:03:19 [[32minfo[39m]: [notification-sent] listingId=774
+2026-07-09 19:03:19 [[32minfo[39m]: [avito-send] externalId=8301007516
+2026-07-09 19:03:19 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8300980990
+2026-07-09 19:03:19 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8206955645
+2026-07-09 19:03:20 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301146385
+2026-07-09 19:03:20 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207458384
+2026-07-09 19:03:20 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275262758
+2026-07-09 19:03:20 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275377171
+2026-07-09 19:03:20 [[34mdebug[39m]: [avito-new-candidate] externalId=8181348876 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/cp_company_shtany_original_biryuzovye_8181348876?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToidmFja3V5MG9zbXJmOWpldjE1Zm9lZmhuN21xaHo3ZiI7ffnaS4B_AAAA
+2026-07-09 19:03:20 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:03:20.069Z
+2026-07-09 19:03:20 [[34mdebug[39m]: [fresh-check] mode=all externalId=8181348876 ageMinutes=60.00 send=true reason=ok
+2026-07-09 19:03:24 [[32minfo[39m]: [notification-sent] listingId=775
+2026-07-09 19:03:24 [[32minfo[39m]: [avito-send] externalId=8181348876
+2026-07-09 19:03:24 [[34mdebug[39m]: [avito-new-candidate] externalId=8233816078 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/futbolka_peace_in_war_8233816078?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToidmFja3V5MG9zbXJmOWpldjE1Zm9lZmhuN21xaHo3ZiI7ffnaS4B_AAAA
+2026-07-09 19:03:24 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:03:24.720Z
+2026-07-09 19:03:24 [[34mdebug[39m]: [fresh-check] mode=all externalId=8233816078 ageMinutes=60.00 send=true reason=ok
+2026-07-09 19:03:25 [[32minfo[39m]: [notification-sent] listingId=776
+2026-07-09 19:03:25 [[32minfo[39m]: [avito-send] externalId=8233816078
+2026-07-09 19:03:25 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8166934259
+2026-07-09 19:03:25 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301182706
+2026-07-09 19:03:25 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8155902726
+2026-07-09 19:03:25 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146673947
+2026-07-09 19:03:25 [[34mdebug[39m]: [avito-new-candidate] externalId=8108849500 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/sportivnye_shtany_maison_margiela_m-2xl_8108849500?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToidmFja3V5MG9zbXJmOWpldjE1Zm9lZmhuN21xaHo3ZiI7ffnaS4B_AAAA
+2026-07-09 19:03:25 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:03:25.487Z
+2026-07-09 19:03:25 [[34mdebug[39m]: [fresh-check] mode=all externalId=8108849500 ageMinutes=60.00 send=true reason=ok
+2026-07-09 19:03:30 [[32minfo[39m]: [notification-sent] listingId=777
+2026-07-09 19:03:30 [[32minfo[39m]: [avito-send] externalId=8108849500

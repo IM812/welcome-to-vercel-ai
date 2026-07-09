@@ -257,44 +257,44 @@ export class SearchService {
         `[date-parse] raw=${rawDate ?? 'null'} parsed=${parsedDate?.toISOString() ?? 'null'}`,
       );
 
-      // 4. Freshness decision
+      // 4. Freshness / send decision
       //
       // Reaching this point means the externalId is NEW (not in DB) and the
       // baseline has already been taken. In a feed polled every ~30s, a new
-      // externalId means the listing JUST appeared — this itself is a strong
-      // freshness signal (this is how competitor bots work).
+      // externalId means the listing JUST appeared — that is itself the freshness
+      // signal competitor bots rely on.
       //
-      // The parsed date is used only to REJECT listings that are provably old:
-      //   • date parsed AND older than maxAge  → TOO_OLD  → skip
-      //   • date parsed AND fresh (≤ maxAge)   → send
-      //   • date could NOT be parsed           → send if SEND_WHEN_DATE_UNKNOWN
-      //     (Avito hides dates on cards and returns 403 on detail pages, so
-      //      "no date" must NOT block a genuinely new listing).
+      // SEND_MODE controls how the parsed date is used:
+      //   • "all"    (default) — competitor behaviour: send EVERY new listing
+      //                          regardless of its printed date. The date is
+      //                          logged only. Maximises the number of leads.
+      //   • "strict"           — only send when a date was parsed AND its age is
+      //                          ≤ FRESH_LISTING_MAX_AGE_MINUTES. Sends nothing
+      //                          when Avito withholds the date.
+      const sendMode = (process.env.SEND_MODE ?? 'all').toLowerCase();
       const maxAge = Number(process.env.FRESH_LISTING_MAX_AGE_MINUTES ?? FRESH_MAX_MINUTES);
-      const sendWhenUnknown =
-        (process.env.SEND_WHEN_DATE_UNKNOWN ?? 'true').toLowerCase() !== 'false';
       const ageMinutes = parsedDate ? getListingAgeMinutes(parsedDate) : null;
 
       let shouldSend: boolean;
       let skippedReason: string | null;
 
-      if (parsedDate) {
-        // We have a real date — enforce the strict age rule.
+      if (sendMode === 'strict') {
+        // Strict: require a parsed, fresh date.
         const fresh = isFreshListing(parsedDate, maxAge);
         shouldSend = fresh;
-        skippedReason = fresh ? null : 'TOO_OLD';
+        skippedReason = fresh ? null : parsedDate ? 'TOO_OLD' : 'UNKNOWN_DATE';
       } else {
-        // No parseable date — new externalId is treated as fresh.
-        shouldSend = sendWhenUnknown;
-        skippedReason = sendWhenUnknown ? null : 'UNKNOWN_DATE';
+        // Competitor mode: every new externalId is sent.
+        shouldSend = true;
+        skippedReason = null;
       }
 
       logger.debug(
-        `[fresh-check] externalId=${externalId} ageMinutes=${ageMinutes?.toFixed(2) ?? 'n/a'} send=${shouldSend} reason=${skippedReason ?? 'ok'}`,
+        `[fresh-check] mode=${sendMode} externalId=${externalId} ageMinutes=${ageMinutes?.toFixed(2) ?? 'n/a'} send=${shouldSend} reason=${skippedReason ?? 'ok'}`,
       );
 
       if (!shouldSend) {
-        // Save to DB so we never revisit it, but do NOT notify
+        // Save to DB so we never revisit it, but do NOT notify (strict mode only)
         if (skippedReason === 'TOO_OLD') {
           logger.debug(`[old-skip] externalId=${externalId} reason=TOO_OLD ageMinutes=${ageMinutes?.toFixed(2) ?? 'n/a'}`);
         } else {
@@ -320,10 +320,11 @@ export class SearchService {
         continue;
       }
 
-      // 5. New listing that passed the freshness decision — save and notify.
-      // If the date was unknown we stamp publishedAt = now (first-seen time)
-      // so downstream logic and the notification guard have a valid instant.
-      const effectivePublishedAt = parsedDate ?? new Date();
+      // 5. New listing to notify — save and send.
+      // We stamp publishedAt = "first seen now" so the notification guard and
+      // downstream logic always have a valid, fresh instant (the real printed
+      // date, when available, is preserved in rawPublishedAt).
+      const effectivePublishedAt = new Date();
 
       const { listing } = await this.listingRepo.upsert(
         search.id,
