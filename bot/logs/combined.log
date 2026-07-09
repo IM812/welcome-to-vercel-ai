@@ -5950,3 +5950,297 @@ The column `Listing.rawPublishedAt` does not exist in the current database.
 2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=8301007516 numId=8301007516 baselineMaxId=8301645776
 2026-07-09 19:37:41 [[34mdebug[39m]: [skip] externalId=8146729813 numId=8146729813 baselineMaxId=8301645776
 2026-07-09 19:37:51 [[33mwarn[39m]: [fetchHtml] 403 on attempt 1, retrying with new UA…
+2026-07-09 19:38:02 [[33mwarn[39m]: [fetchHtml] 403 on attempt 2, retrying with new UA…
+2026-07-09 19:38:13 [[33mwarn[39m]: [fetchHtml] 403 on attempt 1, retrying with new UA…
+2026-07-09 19:38:22 [[33mwarn[39m]: [fetchHtml] 403 on attempt 2, retrying with new UA…
+2026-07-09 19:38:36 [[33mwarn[39m]: [fetchHtml] 403 on attempt 1, retrying with new UA…
+2026-07-09 19:38:44 [[33mwarn[39m]: [fetchHtml] 403 on attempt 2, retrying with new UA…
+2026-07-09 19:38:52 [[31merror[39m]: Parser error for search 5: Request failed with status code 403
+2026-07-09 19:38:52 [[33mwarn[39m]: [fetchHtml] 403 on attempt 1, retrying with new UA…
+2026-07-09 19:39:01 [[33mwarn[39m]: [fetchHtml] 403 on attempt 2, retrying with new UA…
+2026-07-09 19:39:13 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:39:13 [[34mdebug[39m]: [tick] searchId=6 baselineMaxId=8301645776 checking=20
+2026-07-09 19:39:13 [[34mdebug[39m]: [skip] externalId=7648168131 numId=7648168131 baselineMaxId=8301645776
+2026-07-09 19:39:13 [[34mdebug[39m]: [skip] externalId=8080280473 numId=8080280473 baselineMaxId=8301645776
+2026-07-09 19:39:13 [[34mdebug[39m]: [skip] externalId=8025959414 numId=8025959414 baselineMaxId=8301645776
+2026-07-09 19:39:13 [[34mdebug[39m]: [skip] externalId=7418073769 numId=7418073769 baselineMaxId=8301645776
+2026-07-09 19:39:13 [[34mdebug[39m]: [skip] externalId=7994334503 numId=7994334503 baselineMaxId=8301645776
+2026-07-09 19:39:13 [[34mdebug[39m]: [skip] externalId=8087803341 numId=8087803341 baselineMaxId=8301645776
+2026-07-09 19:39:13 [[34mdebug[39m]: [skip] externalId=8027134708 numId=8027134708 baselineMaxId=8301645776
+2026-07-09 19:39:13 [[34mdebug[39m]: [skip] externalId=7945001274 numId=7945001274 baselineMaxId=8301645776
+2026-07-09 19:39:13 [[34mdebug[39m]: [skip] externalId=8108108511 numId=8108108511 baselineMaxId=8301645776
+2026-07-09 19:39:13 [[34mdebug[39m]: [skip] externalId=8287362555 numId=8287362555 baselineMaxId=8301645776
+2026-07-09 19:39:13 [[34mdebug[39m]: [skip] externalId=8155902726 numId=8155902726 baselineMaxId=8301645776
+2026-07-09 19:39:13 [[34mdebug[39m]: [skip] externalId=8275262758 numId=8275262758 baselineMaxId=8301645776
+2026-07-09 19:39:13 [[34mdebug[39m]: [skip] externalId=8301318257 numId=8301318257 baselineMaxId=8301645776
+2026-07-09 19:39:13 [[34mdebug[39m]: [skip] externalId=8233245612 numId=8233245612 baselineMaxId=8301645776
+2026-07-09 19:39:13 [[34mdebug[39m]: [skip] externalId=8257602808 numId=8257602808 baselineMaxId=8301645776
+2026-07-09 19:39:13 [[34mdebug[39m]: [skip] externalId=8181348876 numId=8181348876 baselineMaxId=8301645776
+2026-07-09 19:39:13 [[34mdebug[39m]: [skip] externalId=8181415058 numId=8181415058 baselineMaxId=8301645776
+2026-07-09 19:39:13 [[34mdebug[39m]: [skip] externalId=8176333892 numId=8176333892 baselineMaxId=8301645776
+2026-07-09 19:39:13 [[34mdebug[39m]: [skip] externalId=8300980990 numId=8300980990 baselineMaxId=8301645776
+2026-07-09 19:39:13 [[34mdebug[39m]: [skip] externalId=8275820616 numId=8275820616 baselineMaxId=8301645776
+2026-07-09 19:39:27 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:39:27 [[34mdebug[39m]: [tick] searchId=5 baselineMaxId=8301706065 checking=20
+2026-07-09 19:39:27 [[34mdebug[39m]: [skip] externalId=8166506348 numId=8166506348 baselineMaxId=8301706065
+2026-07-09 19:39:27 [[34mdebug[39m]: [skip] externalId=8181022530 numId=8181022530 baselineMaxId=8301706065
+2026-07-09 19:39:27 [[34mdebug[39m]: [skip] externalId=8166650911 numId=8166650911 baselineMaxId=8301706065
+2026-07-09 19:39:27 [[34mdebug[39m]: [skip] externalId=8166213969 numId=8166213969 baselineMaxId=8301706065
+2026-07-09 19:39:27 [[34mdebug[39m]: [skip] externalId=8146077969 numId=8146077969 baselineMaxId=8301706065
+2026-07-09 19:39:27 [[34mdebug[39m]: [skip] externalId=8104677552 numId=8104677552 baselineMaxId=8301706065
+2026-07-09 19:39:27 [[34mdebug[39m]: [skip] externalId=8158761623 numId=8158761623 baselineMaxId=8301706065
+2026-07-09 19:39:27 [[34mdebug[39m]: [skip] externalId=8249226242 numId=8249226242 baselineMaxId=8301706065
+2026-07-09 19:39:27 [[34mdebug[39m]: [skip] externalId=8249520395 numId=8249520395 baselineMaxId=8301706065
+2026-07-09 19:39:27 [[34mdebug[39m]: [skip] externalId=8261044979 numId=8261044979 baselineMaxId=8301706065
+2026-07-09 19:39:27 [[34mdebug[39m]: [skip] externalId=8174450667 numId=8174450667 baselineMaxId=8301706065
+2026-07-09 19:39:27 [[34mdebug[39m]: [skip] externalId=8249198946 numId=8249198946 baselineMaxId=8301706065
+2026-07-09 19:39:27 [[34mdebug[39m]: [skip] externalId=8104464564 numId=8104464564 baselineMaxId=8301706065
+2026-07-09 19:39:27 [[34mdebug[39m]: [skip] externalId=8248886980 numId=8248886980 baselineMaxId=8301706065
+2026-07-09 19:39:27 [[34mdebug[39m]: [skip] externalId=8249024624 numId=8249024624 baselineMaxId=8301706065
+2026-07-09 19:39:27 [[34mdebug[39m]: [skip] externalId=8249502649 numId=8249502649 baselineMaxId=8301706065
+2026-07-09 19:39:27 [[34mdebug[39m]: [skip] externalId=8166389716 numId=8166389716 baselineMaxId=8301706065
+2026-07-09 19:39:27 [[34mdebug[39m]: [skip] externalId=8275209199 numId=8275209199 baselineMaxId=8301706065
+2026-07-09 19:39:27 [[34mdebug[39m]: [skip] externalId=8186009574 numId=8186009574 baselineMaxId=8301706065
+2026-07-09 19:39:27 [[34mdebug[39m]: [skip] externalId=8155364488 numId=8155364488 baselineMaxId=8301706065
+2026-07-09 19:39:29 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:39:29 [[34mdebug[39m]: [tick] searchId=6 baselineMaxId=8301645776 checking=20
+2026-07-09 19:39:29 [[34mdebug[39m]: [skip] externalId=8096198556 numId=8096198556 baselineMaxId=8301645776
+2026-07-09 19:39:29 [[34mdebug[39m]: [skip] externalId=8207167091 numId=8207167091 baselineMaxId=8301645776
+2026-07-09 19:39:29 [[34mdebug[39m]: [skip] externalId=2784965793 numId=2784965793 baselineMaxId=8301645776
+2026-07-09 19:39:29 [[34mdebug[39m]: [skip] externalId=8080280473 numId=8080280473 baselineMaxId=8301645776
+2026-07-09 19:39:29 [[34mdebug[39m]: [skip] externalId=7648168131 numId=7648168131 baselineMaxId=8301645776
+2026-07-09 19:39:29 [[34mdebug[39m]: [skip] externalId=8025959414 numId=8025959414 baselineMaxId=8301645776
+2026-07-09 19:39:29 [[34mdebug[39m]: [skip] externalId=8165852839 numId=8165852839 baselineMaxId=8301645776
+2026-07-09 19:39:29 [[34mdebug[39m]: [skip] externalId=3156944601 numId=3156944601 baselineMaxId=8301645776
+2026-07-09 19:39:29 [[34mdebug[39m]: [skip] externalId=8301061789 numId=8301061789 baselineMaxId=8301645776
+2026-07-09 19:39:29 [[34mdebug[39m]: [skip] externalId=8275516026 numId=8275516026 baselineMaxId=8301645776
+2026-07-09 19:39:29 [[34mdebug[39m]: [skip] externalId=8207728728 numId=8207728728 baselineMaxId=8301645776
+2026-07-09 19:39:29 [[34mdebug[39m]: [skip] externalId=8108108511 numId=8108108511 baselineMaxId=8301645776
+2026-07-09 19:39:29 [[34mdebug[39m]: [skip] externalId=8301608613 numId=8301608613 baselineMaxId=8301645776
+2026-07-09 19:39:29 [[34mdebug[39m]: [skip] externalId=8166934259 numId=8166934259 baselineMaxId=8301645776
+2026-07-09 19:39:29 [[34mdebug[39m]: [skip] externalId=8301587144 numId=8301587144 baselineMaxId=8301645776
+2026-07-09 19:39:29 [[34mdebug[39m]: [skip] externalId=8216446928 numId=8216446928 baselineMaxId=8301645776
+2026-07-09 19:39:29 [[34mdebug[39m]: [skip] externalId=8189132560 numId=8189132560 baselineMaxId=8301645776
+2026-07-09 19:39:29 [[34mdebug[39m]: [skip] externalId=8216786860 numId=8216786860 baselineMaxId=8301645776
+2026-07-09 19:39:29 [[34mdebug[39m]: [skip] externalId=8145908138 numId=8145908138 baselineMaxId=8301645776
+2026-07-09 19:39:29 [[34mdebug[39m]: [skip] externalId=8156542738 numId=8156542738 baselineMaxId=8301645776
+2026-07-09 19:39:37 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:39:37 [[34mdebug[39m]: [tick] searchId=5 baselineMaxId=8301706065 checking=20
+2026-07-09 19:39:37 [[34mdebug[39m]: [skip] externalId=8166506348 numId=8166506348 baselineMaxId=8301706065
+2026-07-09 19:39:37 [[34mdebug[39m]: [skip] externalId=8181022530 numId=8181022530 baselineMaxId=8301706065
+2026-07-09 19:39:37 [[34mdebug[39m]: [skip] externalId=8166650911 numId=8166650911 baselineMaxId=8301706065
+2026-07-09 19:39:37 [[34mdebug[39m]: [skip] externalId=8166213969 numId=8166213969 baselineMaxId=8301706065
+2026-07-09 19:39:37 [[34mdebug[39m]: [skip] externalId=8146077969 numId=8146077969 baselineMaxId=8301706065
+2026-07-09 19:39:37 [[34mdebug[39m]: [skip] externalId=8104677552 numId=8104677552 baselineMaxId=8301706065
+2026-07-09 19:39:37 [[34mdebug[39m]: [skip] externalId=8158761623 numId=8158761623 baselineMaxId=8301706065
+2026-07-09 19:39:37 [[34mdebug[39m]: [skip] externalId=8249226242 numId=8249226242 baselineMaxId=8301706065
+2026-07-09 19:39:37 [[34mdebug[39m]: [skip] externalId=8249520395 numId=8249520395 baselineMaxId=8301706065
+2026-07-09 19:39:37 [[34mdebug[39m]: [skip] externalId=8261044979 numId=8261044979 baselineMaxId=8301706065
+2026-07-09 19:39:37 [[34mdebug[39m]: [skip] externalId=8174450667 numId=8174450667 baselineMaxId=8301706065
+2026-07-09 19:39:37 [[34mdebug[39m]: [skip] externalId=8249198946 numId=8249198946 baselineMaxId=8301706065
+2026-07-09 19:39:37 [[34mdebug[39m]: [skip] externalId=8104464564 numId=8104464564 baselineMaxId=8301706065
+2026-07-09 19:39:37 [[34mdebug[39m]: [skip] externalId=8248886980 numId=8248886980 baselineMaxId=8301706065
+2026-07-09 19:39:37 [[34mdebug[39m]: [skip] externalId=8249024624 numId=8249024624 baselineMaxId=8301706065
+2026-07-09 19:39:37 [[34mdebug[39m]: [skip] externalId=8249502649 numId=8249502649 baselineMaxId=8301706065
+2026-07-09 19:39:37 [[34mdebug[39m]: [skip] externalId=8166389716 numId=8166389716 baselineMaxId=8301706065
+2026-07-09 19:39:37 [[34mdebug[39m]: [skip] externalId=8275209199 numId=8275209199 baselineMaxId=8301706065
+2026-07-09 19:39:37 [[34mdebug[39m]: [skip] externalId=8186009574 numId=8186009574 baselineMaxId=8301706065
+2026-07-09 19:39:37 [[34mdebug[39m]: [skip] externalId=8155364488 numId=8155364488 baselineMaxId=8301706065
+2026-07-09 19:39:40 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:39:40 [[34mdebug[39m]: [tick] searchId=6 baselineMaxId=8301645776 checking=20
+2026-07-09 19:39:40 [[34mdebug[39m]: [skip] externalId=8207167091 numId=8207167091 baselineMaxId=8301645776
+2026-07-09 19:39:40 [[34mdebug[39m]: [skip] externalId=8096198556 numId=8096198556 baselineMaxId=8301645776
+2026-07-09 19:39:40 [[34mdebug[39m]: [skip] externalId=2784965793 numId=2784965793 baselineMaxId=8301645776
+2026-07-09 19:39:40 [[34mdebug[39m]: [skip] externalId=7648168131 numId=7648168131 baselineMaxId=8301645776
+2026-07-09 19:39:40 [[34mdebug[39m]: [skip] externalId=8080280473 numId=8080280473 baselineMaxId=8301645776
+2026-07-09 19:39:40 [[34mdebug[39m]: [skip] externalId=8025959414 numId=8025959414 baselineMaxId=8301645776
+2026-07-09 19:39:40 [[34mdebug[39m]: [skip] externalId=3156944601 numId=3156944601 baselineMaxId=8301645776
+2026-07-09 19:39:40 [[34mdebug[39m]: [skip] externalId=8301608613 numId=8301608613 baselineMaxId=8301645776
+2026-07-09 19:39:40 [[34mdebug[39m]: [skip] externalId=8146256486 numId=8146256486 baselineMaxId=8301645776
+2026-07-09 19:39:40 [[34mdebug[39m]: [skip] externalId=8167258345 numId=8167258345 baselineMaxId=8301645776
+2026-07-09 19:39:40 [[34mdebug[39m]: [skip] externalId=8207503665 numId=8207503665 baselineMaxId=8301645776
+2026-07-09 19:39:40 [[34mdebug[39m]: [skip] externalId=8216717160 numId=8216717160 baselineMaxId=8301645776
+2026-07-09 19:39:40 [[34mdebug[39m]: [skip] externalId=8301397375 numId=8301397375 baselineMaxId=8301645776
+2026-07-09 19:39:40 [[34mdebug[39m]: [skip] externalId=8261808470 numId=8261808470 baselineMaxId=8301645776
+2026-07-09 19:39:40 [[34mdebug[39m]: [skip] externalId=8181326981 numId=8181326981 baselineMaxId=8301645776
+2026-07-09 19:39:40 [[34mdebug[39m]: [skip] externalId=8301007516 numId=8301007516 baselineMaxId=8301645776
+2026-07-09 19:39:40 [[34mdebug[39m]: [skip] externalId=8146477997 numId=8146477997 baselineMaxId=8301645776
+2026-07-09 19:39:40 [[34mdebug[39m]: [skip] externalId=8148570802 numId=8148570802 baselineMaxId=8301645776
+2026-07-09 19:39:40 [[34mdebug[39m]: [skip] externalId=8275377171 numId=8275377171 baselineMaxId=8301645776
+2026-07-09 19:39:40 [[34mdebug[39m]: [skip] externalId=8108412490 numId=8108412490 baselineMaxId=8301645776
+2026-07-09 19:39:53 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:39:53 [[34mdebug[39m]: [tick] searchId=5 baselineMaxId=8301706065 checking=20
+2026-07-09 19:39:53 [[34mdebug[39m]: [skip] externalId=8166506348 numId=8166506348 baselineMaxId=8301706065
+2026-07-09 19:39:53 [[34mdebug[39m]: [skip] externalId=8181022530 numId=8181022530 baselineMaxId=8301706065
+2026-07-09 19:39:53 [[34mdebug[39m]: [skip] externalId=8166650911 numId=8166650911 baselineMaxId=8301706065
+2026-07-09 19:39:53 [[34mdebug[39m]: [skip] externalId=8166213969 numId=8166213969 baselineMaxId=8301706065
+2026-07-09 19:39:53 [[34mdebug[39m]: [skip] externalId=8146077969 numId=8146077969 baselineMaxId=8301706065
+2026-07-09 19:39:53 [[34mdebug[39m]: [skip] externalId=8104677552 numId=8104677552 baselineMaxId=8301706065
+2026-07-09 19:39:53 [[34mdebug[39m]: [skip] externalId=8158761623 numId=8158761623 baselineMaxId=8301706065
+2026-07-09 19:39:53 [[34mdebug[39m]: [skip] externalId=8249226242 numId=8249226242 baselineMaxId=8301706065
+2026-07-09 19:39:53 [[34mdebug[39m]: [skip] externalId=8249520395 numId=8249520395 baselineMaxId=8301706065
+2026-07-09 19:39:53 [[34mdebug[39m]: [skip] externalId=8261044979 numId=8261044979 baselineMaxId=8301706065
+2026-07-09 19:39:53 [[34mdebug[39m]: [skip] externalId=8174450667 numId=8174450667 baselineMaxId=8301706065
+2026-07-09 19:39:53 [[34mdebug[39m]: [skip] externalId=8249198946 numId=8249198946 baselineMaxId=8301706065
+2026-07-09 19:39:53 [[34mdebug[39m]: [skip] externalId=8104464564 numId=8104464564 baselineMaxId=8301706065
+2026-07-09 19:39:53 [[34mdebug[39m]: [skip] externalId=8248886980 numId=8248886980 baselineMaxId=8301706065
+2026-07-09 19:39:53 [[34mdebug[39m]: [skip] externalId=8249024624 numId=8249024624 baselineMaxId=8301706065
+2026-07-09 19:39:53 [[34mdebug[39m]: [skip] externalId=8249502649 numId=8249502649 baselineMaxId=8301706065
+2026-07-09 19:39:53 [[34mdebug[39m]: [skip] externalId=8166389716 numId=8166389716 baselineMaxId=8301706065
+2026-07-09 19:39:53 [[34mdebug[39m]: [skip] externalId=8275209199 numId=8275209199 baselineMaxId=8301706065
+2026-07-09 19:39:53 [[34mdebug[39m]: [skip] externalId=8186009574 numId=8186009574 baselineMaxId=8301706065
+2026-07-09 19:39:53 [[34mdebug[39m]: [skip] externalId=8155364488 numId=8155364488 baselineMaxId=8301706065
+2026-07-09 19:39:55 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:39:55 [[34mdebug[39m]: [tick] searchId=6 baselineMaxId=8301645776 checking=20
+2026-07-09 19:39:55 [[34mdebug[39m]: [skip] externalId=2523597047 numId=2523597047 baselineMaxId=8301645776
+2026-07-09 19:39:55 [[34mdebug[39m]: [skip] externalId=8080280473 numId=8080280473 baselineMaxId=8301645776
+2026-07-09 19:39:55 [[34mdebug[39m]: [skip] externalId=7648168131 numId=7648168131 baselineMaxId=8301645776
+2026-07-09 19:39:55 [[34mdebug[39m]: [skip] externalId=8025959414 numId=8025959414 baselineMaxId=8301645776
+2026-07-09 19:39:55 [[34mdebug[39m]: [skip] externalId=7994334503 numId=7994334503 baselineMaxId=8301645776
+2026-07-09 19:39:55 [[34mdebug[39m]: [skip] externalId=8300905707 numId=8300905707 baselineMaxId=8301645776
+2026-07-09 19:39:55 [[34mdebug[39m]: [skip] externalId=8223024860 numId=8223024860 baselineMaxId=8301645776
+2026-07-09 19:39:55 [[34mdebug[39m]: [skip] externalId=8108412490 numId=8108412490 baselineMaxId=8301645776
+2026-07-09 19:39:55 [[34mdebug[39m]: [skip] externalId=8181082690 numId=8181082690 baselineMaxId=8301645776
+2026-07-09 19:39:55 [[34mdebug[39m]: [skip] externalId=8189629322 numId=8189629322 baselineMaxId=8301645776
+2026-07-09 19:39:55 [[34mdebug[39m]: [skip] externalId=8275313250 numId=8275313250 baselineMaxId=8301645776
+2026-07-09 19:39:55 [[34mdebug[39m]: [skip] externalId=8233245612 numId=8233245612 baselineMaxId=8301645776
+2026-07-09 19:39:55 [[34mdebug[39m]: [skip] externalId=8257057780 numId=8257057780 baselineMaxId=8301645776
+2026-07-09 19:39:55 [[34mdebug[39m]: [skip] externalId=8145897343 numId=8145897343 baselineMaxId=8301645776
+2026-07-09 19:39:55 [[34mdebug[39m]: [skip] externalId=8154926924 numId=8154926924 baselineMaxId=8301645776
+2026-07-09 19:39:55 [[34mdebug[39m]: [skip] externalId=8275262758 numId=8275262758 baselineMaxId=8301645776
+2026-07-09 19:39:55 [[34mdebug[39m]: [skip] externalId=8216397843 numId=8216397843 baselineMaxId=8301645776
+2026-07-09 19:39:55 [[34mdebug[39m]: [skip] externalId=8156130875 numId=8156130875 baselineMaxId=8301645776
+2026-07-09 19:39:55 [[34mdebug[39m]: [skip] externalId=8189797118 numId=8189797118 baselineMaxId=8301645776
+2026-07-09 19:39:55 [[34mdebug[39m]: [skip] externalId=8226091849 numId=8226091849 baselineMaxId=8301645776
+2026-07-09 19:40:06 [[33mwarn[39m]: [fetchHtml] 403 on attempt 1, retrying with new UA…
+2026-07-09 19:40:18 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:40:18 [[34mdebug[39m]: [tick] searchId=5 baselineMaxId=8301706065 checking=20
+2026-07-09 19:40:18 [[34mdebug[39m]: [skip] externalId=8166506348 numId=8166506348 baselineMaxId=8301706065
+2026-07-09 19:40:18 [[34mdebug[39m]: [skip] externalId=8181022530 numId=8181022530 baselineMaxId=8301706065
+2026-07-09 19:40:18 [[34mdebug[39m]: [skip] externalId=8166650911 numId=8166650911 baselineMaxId=8301706065
+2026-07-09 19:40:18 [[34mdebug[39m]: [skip] externalId=8166213969 numId=8166213969 baselineMaxId=8301706065
+2026-07-09 19:40:18 [[34mdebug[39m]: [skip] externalId=8146077969 numId=8146077969 baselineMaxId=8301706065
+2026-07-09 19:40:18 [[34mdebug[39m]: [skip] externalId=8104677552 numId=8104677552 baselineMaxId=8301706065
+2026-07-09 19:40:18 [[34mdebug[39m]: [skip] externalId=8158761623 numId=8158761623 baselineMaxId=8301706065
+2026-07-09 19:40:18 [[34mdebug[39m]: [skip] externalId=8249226242 numId=8249226242 baselineMaxId=8301706065
+2026-07-09 19:40:18 [[34mdebug[39m]: [skip] externalId=8249520395 numId=8249520395 baselineMaxId=8301706065
+2026-07-09 19:40:18 [[34mdebug[39m]: [skip] externalId=8261044979 numId=8261044979 baselineMaxId=8301706065
+2026-07-09 19:40:18 [[34mdebug[39m]: [skip] externalId=8174450667 numId=8174450667 baselineMaxId=8301706065
+2026-07-09 19:40:18 [[34mdebug[39m]: [skip] externalId=8249198946 numId=8249198946 baselineMaxId=8301706065
+2026-07-09 19:40:18 [[34mdebug[39m]: [skip] externalId=8104464564 numId=8104464564 baselineMaxId=8301706065
+2026-07-09 19:40:18 [[34mdebug[39m]: [skip] externalId=8248886980 numId=8248886980 baselineMaxId=8301706065
+2026-07-09 19:40:18 [[34mdebug[39m]: [skip] externalId=8249024624 numId=8249024624 baselineMaxId=8301706065
+2026-07-09 19:40:18 [[34mdebug[39m]: [skip] externalId=8249502649 numId=8249502649 baselineMaxId=8301706065
+2026-07-09 19:40:18 [[34mdebug[39m]: [skip] externalId=8166389716 numId=8166389716 baselineMaxId=8301706065
+2026-07-09 19:40:18 [[34mdebug[39m]: [skip] externalId=8275209199 numId=8275209199 baselineMaxId=8301706065
+2026-07-09 19:40:18 [[34mdebug[39m]: [skip] externalId=8186009574 numId=8186009574 baselineMaxId=8301706065
+2026-07-09 19:40:18 [[34mdebug[39m]: [skip] externalId=8155364488 numId=8155364488 baselineMaxId=8301706065
+2026-07-09 19:40:20 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:40:21 [[34mdebug[39m]: [tick] searchId=6 baselineMaxId=8301645776 checking=20
+2026-07-09 19:40:21 [[34mdebug[39m]: [skip] externalId=8096198556 numId=8096198556 baselineMaxId=8301645776
+2026-07-09 19:40:21 [[34mdebug[39m]: [skip] externalId=8207167091 numId=8207167091 baselineMaxId=8301645776
+2026-07-09 19:40:21 [[34mdebug[39m]: [skip] externalId=7648168131 numId=7648168131 baselineMaxId=8301645776
+2026-07-09 19:40:21 [[34mdebug[39m]: [skip] externalId=2784965793 numId=2784965793 baselineMaxId=8301645776
+2026-07-09 19:40:21 [[34mdebug[39m]: [skip] externalId=8080280473 numId=8080280473 baselineMaxId=8301645776
+2026-07-09 19:40:21 [[34mdebug[39m]: [skip] externalId=8025959414 numId=8025959414 baselineMaxId=8301645776
+2026-07-09 19:40:21 [[34mdebug[39m]: [skip] externalId=8214820266 numId=8214820266 baselineMaxId=8301645776
+2026-07-09 19:40:21 [[34mdebug[39m]: [skip] externalId=8287667100 numId=8287667100 baselineMaxId=8301645776
+2026-07-09 19:40:21 [[34mdebug[39m]: [skip] externalId=8181082690 numId=8181082690 baselineMaxId=8301645776
+2026-07-09 19:40:21 [[34mdebug[39m]: [skip] externalId=8156445370 numId=8156445370 baselineMaxId=8301645776
+2026-07-09 19:40:21 [[34mdebug[39m]: [skip] externalId=8180985659 numId=8180985659 baselineMaxId=8301645776
+2026-07-09 19:40:21 [[34mdebug[39m]: [skip] externalId=8156308244 numId=8156308244 baselineMaxId=8301645776
+2026-07-09 19:40:21 [[34mdebug[39m]: [skip] externalId=8301397375 numId=8301397375 baselineMaxId=8301645776
+2026-07-09 19:40:21 [[34mdebug[39m]: [skip] externalId=8189629322 numId=8189629322 baselineMaxId=8301645776
+2026-07-09 19:40:21 [[34mdebug[39m]: [skip] externalId=8207597049 numId=8207597049 baselineMaxId=8301645776
+2026-07-09 19:40:21 [[34mdebug[39m]: [skip] externalId=8207503665 numId=8207503665 baselineMaxId=8301645776
+2026-07-09 19:40:21 [[34mdebug[39m]: [skip] externalId=8206955645 numId=8206955645 baselineMaxId=8301645776
+2026-07-09 19:40:21 [[34mdebug[39m]: [skip] externalId=8301592132 numId=8301592132 baselineMaxId=8301645776
+2026-07-09 19:40:21 [[34mdebug[39m]: [skip] externalId=8301645776 numId=8301645776 baselineMaxId=8301645776
+2026-07-09 19:40:21 [[34mdebug[39m]: [skip] externalId=8189132560 numId=8189132560 baselineMaxId=8301645776
+2026-07-09 19:40:21 [[33mwarn[39m]: [fetchHtml] 403 on attempt 1, retrying with new UA…
+2026-07-09 19:40:30 [[33mwarn[39m]: [fetchHtml] 403 on attempt 2, retrying with new UA…
+2026-07-09 19:40:41 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:40:41 [[34mdebug[39m]: [tick] searchId=5 baselineMaxId=8301706065 checking=20
+2026-07-09 19:40:41 [[34mdebug[39m]: [skip] externalId=8166506348 numId=8166506348 baselineMaxId=8301706065
+2026-07-09 19:40:41 [[34mdebug[39m]: [skip] externalId=8181022530 numId=8181022530 baselineMaxId=8301706065
+2026-07-09 19:40:41 [[34mdebug[39m]: [skip] externalId=8166650911 numId=8166650911 baselineMaxId=8301706065
+2026-07-09 19:40:41 [[34mdebug[39m]: [skip] externalId=8166213969 numId=8166213969 baselineMaxId=8301706065
+2026-07-09 19:40:41 [[34mdebug[39m]: [skip] externalId=8146077969 numId=8146077969 baselineMaxId=8301706065
+2026-07-09 19:40:41 [[34mdebug[39m]: [skip] externalId=8104677552 numId=8104677552 baselineMaxId=8301706065
+2026-07-09 19:40:41 [[34mdebug[39m]: [skip] externalId=8158761623 numId=8158761623 baselineMaxId=8301706065
+2026-07-09 19:40:41 [[34mdebug[39m]: [skip] externalId=8249226242 numId=8249226242 baselineMaxId=8301706065
+2026-07-09 19:40:41 [[34mdebug[39m]: [skip] externalId=8249520395 numId=8249520395 baselineMaxId=8301706065
+2026-07-09 19:40:41 [[34mdebug[39m]: [skip] externalId=8261044979 numId=8261044979 baselineMaxId=8301706065
+2026-07-09 19:40:41 [[34mdebug[39m]: [skip] externalId=8174450667 numId=8174450667 baselineMaxId=8301706065
+2026-07-09 19:40:41 [[34mdebug[39m]: [skip] externalId=8249198946 numId=8249198946 baselineMaxId=8301706065
+2026-07-09 19:40:41 [[34mdebug[39m]: [skip] externalId=8104464564 numId=8104464564 baselineMaxId=8301706065
+2026-07-09 19:40:41 [[34mdebug[39m]: [skip] externalId=8248886980 numId=8248886980 baselineMaxId=8301706065
+2026-07-09 19:40:41 [[34mdebug[39m]: [skip] externalId=8249024624 numId=8249024624 baselineMaxId=8301706065
+2026-07-09 19:40:41 [[34mdebug[39m]: [skip] externalId=8249502649 numId=8249502649 baselineMaxId=8301706065
+2026-07-09 19:40:41 [[34mdebug[39m]: [skip] externalId=8166389716 numId=8166389716 baselineMaxId=8301706065
+2026-07-09 19:40:41 [[34mdebug[39m]: [skip] externalId=8275209199 numId=8275209199 baselineMaxId=8301706065
+2026-07-09 19:40:41 [[34mdebug[39m]: [skip] externalId=8186009574 numId=8186009574 baselineMaxId=8301706065
+2026-07-09 19:40:41 [[34mdebug[39m]: [skip] externalId=8155364488 numId=8155364488 baselineMaxId=8301706065
+2026-07-09 19:40:43 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:40:43 [[34mdebug[39m]: [tick] searchId=6 baselineMaxId=8301645776 checking=20
+2026-07-09 19:40:43 [[34mdebug[39m]: [skip] externalId=8096198556 numId=8096198556 baselineMaxId=8301645776
+2026-07-09 19:40:43 [[34mdebug[39m]: [skip] externalId=2784965793 numId=2784965793 baselineMaxId=8301645776
+2026-07-09 19:40:43 [[34mdebug[39m]: [skip] externalId=7648168131 numId=7648168131 baselineMaxId=8301645776
+2026-07-09 19:40:43 [[34mdebug[39m]: [skip] externalId=8207167091 numId=8207167091 baselineMaxId=8301645776
+2026-07-09 19:40:43 [[34mdebug[39m]: [skip] externalId=8080280473 numId=8080280473 baselineMaxId=8301645776
+2026-07-09 19:40:43 [[34mdebug[39m]: [skip] externalId=8025959414 numId=8025959414 baselineMaxId=8301645776
+2026-07-09 19:40:43 [[34mdebug[39m]: [skip] externalId=8006536681 numId=8006536681 baselineMaxId=8301645776
+2026-07-09 19:40:43 [[34mdebug[39m]: [skip] externalId=8301397375 numId=8301397375 baselineMaxId=8301645776
+2026-07-09 19:40:43 [[34mdebug[39m]: [skip] externalId=8301328857 numId=8301328857 baselineMaxId=8301645776
+2026-07-09 19:40:43 [[34mdebug[39m]: [skip] externalId=8154926924 numId=8154926924 baselineMaxId=8301645776
+2026-07-09 19:40:43 [[34mdebug[39m]: [skip] externalId=8108412490 numId=8108412490 baselineMaxId=8301645776
+2026-07-09 19:40:43 [[34mdebug[39m]: [skip] externalId=8146256486 numId=8146256486 baselineMaxId=8301645776
+2026-07-09 19:40:43 [[34mdebug[39m]: [skip] externalId=8216526142 numId=8216526142 baselineMaxId=8301645776
+2026-07-09 19:40:43 [[34mdebug[39m]: [skip] externalId=8301146385 numId=8301146385 baselineMaxId=8301645776
+2026-07-09 19:40:43 [[34mdebug[39m]: [skip] externalId=8245968093 numId=8245968093 baselineMaxId=8301645776
+2026-07-09 19:40:43 [[34mdebug[39m]: [skip] externalId=8167258345 numId=8167258345 baselineMaxId=8301645776
+2026-07-09 19:40:43 [[34mdebug[39m]: [skip] externalId=8176333892 numId=8176333892 baselineMaxId=8301645776
+2026-07-09 19:40:43 [[34mdebug[39m]: [skip] externalId=8287362555 numId=8287362555 baselineMaxId=8301645776
+2026-07-09 19:40:43 [[34mdebug[39m]: [skip] externalId=8207458384 numId=8207458384 baselineMaxId=8301645776
+2026-07-09 19:40:43 [[34mdebug[39m]: [skip] externalId=8226091849 numId=8226091849 baselineMaxId=8301645776
+2026-07-09 19:40:51 [[33mwarn[39m]: [fetchHtml] 403 on attempt 1, retrying with new UA…
+2026-07-09 19:41:01 [[33mwarn[39m]: [fetchHtml] 403 on attempt 2, retrying with new UA…
+2026-07-09 19:41:10 [[33mwarn[39m]: [fetchHtml] 403 on attempt 1, retrying with new UA…
+2026-07-09 19:41:18 [[33mwarn[39m]: [fetchHtml] 403 on attempt 2, retrying with new UA…
+2026-07-09 19:41:26 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 19:41:26 [[32minfo[39m]: Checker cron started (continuous loop, 15s interval)
+2026-07-09 19:41:27 [[32minfo[39m]: Subscription cron started
+2026-07-09 19:41:27 [[32minfo[39m]: Daily reset cron started
+2026-07-09 19:41:27 [[32minfo[39m]: Queue flush cron started
+2026-07-09 19:41:27 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 19:41:27 [[31merror[39m]: Fatal startup error
+2026-07-09 19:41:28 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:41:29 [[32minfo[39m]: [session-seed] searchId=5 snapped 30 ids — skipping this tick
+2026-07-09 19:41:32 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:41:32 [[32minfo[39m]: [session-seed] searchId=6 snapped 30 ids — skipping this tick
+2026-07-09 19:41:42 [[33mwarn[39m]: [fetchHtml] 403 on attempt 1, retrying with new UA…
+2026-07-09 19:41:49 [[33mwarn[39m]: [fetchHtml] 403 on attempt 2, retrying with new UA…
+2026-07-09 19:42:01 [[33mwarn[39m]: [fetchHtml] 403 on attempt 1, retrying with new UA…
+2026-07-09 19:42:09 [[33mwarn[39m]: [fetchHtml] 403 on attempt 2, retrying with new UA…
+2026-07-09 19:42:20 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:42:20 [[34mdebug[39m]: [tick] searchId=5 feed=30 checking=20
+2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8166506348
+2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8181022530
+2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8166650911
+2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8166213969
+2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8146077969
+2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8104677552
+2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8158761623
+2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8249226242
+2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8249520395
+2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8261044979
+2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8174450667
+2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8249198946
+2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8104464564
+2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8248886980
+2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8249024624
+2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8249502649
+2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8166389716
+2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8275209199
+2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8186009574
+2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8155364488

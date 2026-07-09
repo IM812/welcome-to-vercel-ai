@@ -14,14 +14,10 @@ import { logger } from '../utils/logger';
 // How many listings to inspect on each cron tick.
 const CHECK_LIMIT = 20;
 
-/**
- * Convert an Avito externalId string (e.g. "8207503665") to BigInt.
- * Returns null for hash-based IDs that are not purely numeric.
- */
-function toBigInt(externalId: string): bigint | null {
-  if (!/^\d+$/.test(externalId)) return null;
-  try { return BigInt(externalId); } catch { return null; }
-}
+// In-memory seen set per searchId, populated on the first tick after restart.
+// Prevents flooding the user with old listings that were already in the feed
+// before this bot process started, without requiring DB writes for each one.
+const sessionSeen = new Map<number, Set<string>>();
 
 export class SearchService {
   private searchRepo: SearchRepository;
@@ -158,10 +154,9 @@ export class SearchService {
   }
 
   /**
-   * Fetch the category page, compute the maximum numeric Avito listing ID
-   * currently visible, and store it as baselineMaxId.
-   * No listings are saved to DB, no notifications are sent.
-   * On subsequent ticks only listings with externalId > baselineMaxId are sent.
+   * Seed baseline: fetch the feed, mark all current externalIds as seen
+   * in the DB (isBaseline=true) AND in the in-memory session set.
+   * No notifications sent. Called once when the search is first added.
    */
   async initializeSearchBaseline(searchId: number): Promise<number> {
     const search = await this.searchRepo.findById(searchId);
@@ -170,35 +165,49 @@ export class SearchService {
     const parser = ParserFactory.create(search.platform);
     const allItems = await withRetry(() => parser.parse(search.url));
 
-    // Find the highest numeric ID in the current feed.
-    let maxId = BigInt(0);
+    const seen = new Set<string>();
     for (const parsed of allItems) {
       const externalId = parsed.externalId || hashListing(parsed.title, parsed.price, parsed.url);
-      const num = toBigInt(externalId);
-      if (num !== null && num > maxId) maxId = num;
+      seen.add(externalId);
+      try {
+        await this.listingRepo.upsert(search.id, externalId, {
+          title: parsed.title,
+          price: parsed.price ?? null,
+          location: parsed.location ?? null,
+          imageUrl: parsed.imageUrl ?? null,
+          url: parsed.url,
+          platform: search.platform,
+          rawPublishedAt: parsed.rawPublishedAt ?? null,
+          publishedAt: parsed.publishedAt ?? null,
+          isBaseline: true,
+          skippedReason: null,
+        } as Parameters<ListingRepository['upsert']>[2]);
+      } catch { /* unique constraint — already seeded */ }
     }
+
+    sessionSeen.set(search.id, seen);
 
     await this.searchRepo.update(search.id, {
       baselineInitializedAt: new Date(),
       lastCheckedAt: new Date(),
-      baselineMaxId: maxId > BigInt(0) ? maxId : null,
     });
 
-    logger.info(`[baseline-init] searchId=${search.id} items=${allItems.length} baselineMaxId=${maxId}`);
-    return allItems.length;
+    logger.info(`[baseline-init] searchId=${search.id} saved=${seen.size}/${allItems.length}`);
+    return seen.size;
   }
 
   /**
    * Main method called by CheckerCron on every tick.
    *
-   * Freshness rule (simple, reliable, restart-proof):
-   *   At baseline time we record the highest Avito listing ID visible in the
-   *   feed (baselineMaxId). Avito IDs are a global sequential counter —
-   *   any listing with ID > baselineMaxId was published AFTER we started
-   *   watching. No date parsing, no warm-up, no DB seen-set lookups.
+   * Seen-set architecture (restart-proof):
+   *   - DB seen-set: all externalIds ever saved for this search (baseline + sent).
+   *     Prevents double-sends across restarts.
+   *   - Session seen-set (in-memory): populated on the FIRST tick after restart
+   *     by quietly snapshotting the current feed. Prevents the restart-flood of
+   *     old listings that were already in the feed before this process started
+   *     but were never saved to DB (because they were skipped by old logic, etc.)
    *
-   *   After each sent notification we update baselineMaxId to the new max,
-   *   so the window always advances forward.
+   *   An externalId is sent ONLY if it is absent from BOTH sets.
    */
   async checkSearchForNewListings(
     searchId: number,
@@ -208,19 +217,14 @@ export class SearchService {
     const search = await this.searchRepo.findById(searchId);
     if (!search) return;
 
-    const extSearch = search as typeof search & {
-      baselineInitializedAt: Date | null;
-      baselineMaxId: bigint | null;
-    };
+    const extSearch = search as typeof search & { baselineInitializedAt: Date | null };
 
-    // First-ever baseline: compute maxId from current feed and return.
+    // First-ever baseline: seed the DB seen-set and return.
     if (!extSearch.baselineInitializedAt) {
       logger.info(`[baseline-needed] searchId=${searchId}`);
       await this.initializeSearchBaseline(searchId);
       return;
     }
-
-    const baselineMaxId: bigint = extSearch.baselineMaxId ?? BigInt(0);
 
     const parser = ParserFactory.create(search.platform);
     const allItems = await withRetry(() => parser.parse(search.url));
@@ -228,31 +232,42 @@ export class SearchService {
 
     await this.searchRepo.update(search.id, { lastCheckedAt: new Date() });
 
-    logger.debug(`[tick] searchId=${search.id} baselineMaxId=${baselineMaxId} checking=${items.length}`);
+    // First tick after restart: snapshot current feed into session seen-set.
+    // This covers listings that were in the feed before this process started
+    // but never made it into the DB (old skipped entries, etc.).
+    if (!sessionSeen.has(search.id)) {
+      const snap = new Set(allItems.map(
+        p => p.externalId || hashListing(p.title, p.price, p.url)
+      ));
+      sessionSeen.set(search.id, snap);
+      logger.info(`[session-seed] searchId=${search.id} snapped ${snap.size} ids — skipping this tick`);
+      return;
+    }
 
-    let newMaxId = baselineMaxId;
+    const seenSession = sessionSeen.get(search.id)!;
+
+    logger.debug(`[tick] searchId=${search.id} feed=${allItems.length} checking=${items.length}`);
 
     for (const parsed of items) {
       const externalId = parsed.externalId || hashListing(parsed.title, parsed.price, parsed.url);
-      const numId = toBigInt(externalId);
 
-      // Track the highest ID we see this tick regardless of whether we send it.
-      if (numId !== null && numId > newMaxId) newMaxId = numId;
-
-      // Skip if ID is not numeric or not greater than baseline.
-      if (numId === null || numId <= baselineMaxId) {
-        logger.debug(`[skip] externalId=${externalId} numId=${numId} baselineMaxId=${baselineMaxId}`);
+      // 1. In-memory session check — O(1), no DB hit.
+      if (seenSession.has(externalId)) {
+        logger.debug(`[seen-session] externalId=${externalId}`);
         continue;
       }
 
-      // Guard against double-send across restarts (cheap DB check only for new IDs).
+      // 2. DB check — protects against double-send across restarts.
       const existing = await this.listingRepo.findByExternalId(search.id, externalId);
       if (existing) {
-        logger.debug(`[already-sent] externalId=${externalId}`);
+        seenSession.add(externalId); // warm the in-memory cache
+        logger.debug(`[seen-db] externalId=${externalId}`);
         continue;
       }
 
-      logger.info(`[new] searchId=${search.id} externalId=${externalId} (>${baselineMaxId})`);
+      // Genuinely new — send it.
+      logger.info(`[new] searchId=${search.id} externalId=${externalId}`);
+      seenSession.add(externalId);
 
       const rawDate: string | null = parsed.rawPublishedAt ?? null;
       const parsedDate: Date | null = rawDate ? parseListingDate(rawDate) : (parsed.publishedAt ?? null);
@@ -292,13 +307,6 @@ export class SearchService {
         logger.info(`[sent] listingId=${listing.id} externalId=${externalId}`);
       }
     }
-
-    // Advance baselineMaxId so old listings never resurface after they scroll
-    // back into the top of the feed (Avito can re-promote bumped listings).
-    if (newMaxId > baselineMaxId) {
-      await this.searchRepo.update(search.id, { baselineMaxId: newMaxId });
-      logger.debug(`[maxId-advance] searchId=${search.id} ${baselineMaxId} → ${newMaxId}`);
-    }
   }
 
   /**
@@ -313,8 +321,8 @@ export class SearchService {
     if (!search) throw new Error('Search not found or access denied');
 
     await this.listingRepo.deleteBySearchId(search.id);
-    // Clear baselineMaxId so initializeSearchBaseline recomputes it from scratch.
-    await this.searchRepo.update(search.id, { baselineInitializedAt: null, baselineMaxId: null });
+    await this.searchRepo.update(search.id, { baselineInitializedAt: null });
+    sessionSeen.delete(search.id);
     return this.initializeSearchBaseline(search.id);
   }
 
