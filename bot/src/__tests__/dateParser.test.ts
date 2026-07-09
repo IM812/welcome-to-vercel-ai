@@ -75,49 +75,39 @@ describe('parseListingDate', () => {
     expect(d!.getTime()).toBe(NOW.getTime() - 2 * 3_600_000);
   });
 
-  it('"сегодня в 18:45" sets hours/minutes on today', () => {
+  // NOTE: All RU wall-clock times are interpreted as Moscow time (UTC+3) and
+  // stored as UTC instants, so expected values below are the MSK time minus 3h.
+
+  it('"сегодня в 18:45" (MSK) → 15:45 UTC today', () => {
     const d = parseListingDate('сегодня в 18:45', NOW);
     expect(d).not.toBeNull();
-    expect(d!.getHours()).toBe(18);
-    expect(d!.getMinutes()).toBe(45);
-    // Same date as NOW
-    expect(d!.getDate()).toBe(NOW.getDate());
+    // NOW = 2026-07-09; MSK 18:45 → UTC 15:45
+    expect(d!.getTime()).toBe(Date.UTC(2026, 6, 9, 15, 45, 0, 0));
   });
 
-  it('"вчера в 23:10" sets hours/minutes on yesterday', () => {
+  it('"вчера в 23:10" (MSK) → 20:10 UTC yesterday', () => {
     const d = parseListingDate('вчера в 23:10', NOW);
     expect(d).not.toBeNull();
-    expect(d!.getHours()).toBe(23);
-    expect(d!.getMinutes()).toBe(10);
-    expect(d!.getDate()).toBe(NOW.getDate() - 1);
+    // Yesterday MSK 23:10 → UTC 20:10 on the 8th
+    expect(d!.getTime()).toBe(Date.UTC(2026, 6, 8, 20, 10, 0, 0));
   });
 
-  it('"9 июля в 20:55" returns correct date', () => {
+  it('"9 июля в 20:55" (MSK) → 17:55 UTC', () => {
     const d = parseListingDate('9 июля в 20:55', NOW);
     expect(d).not.toBeNull();
-    expect(d!.getDate()).toBe(9);
-    expect(d!.getMonth()).toBe(6); // July = 6
-    expect(d!.getHours()).toBe(20);
-    expect(d!.getMinutes()).toBe(55);
+    expect(d!.getTime()).toBe(Date.UTC(2026, 6, 9, 17, 55, 0, 0));
   });
 
-  it('"3 июля в 23:26" — Avito detail page format — parses correctly', () => {
+  it('"3 июля в 23:26" — Avito detail page format (MSK) → 20:26 UTC', () => {
     const d = parseListingDate('3 июля в 23:26', NOW);
     expect(d).not.toBeNull();
-    expect(d!.getDate()).toBe(3);
-    expect(d!.getMonth()).toBe(6); // July = 6
-    expect(d!.getHours()).toBe(23);
-    expect(d!.getMinutes()).toBe(26);
+    expect(d!.getTime()).toBe(Date.UTC(2026, 6, 3, 20, 26, 0, 0));
   });
 
-  it('"09.07.2026 20:55" parses dot-separated date with time', () => {
+  it('"09.07.2026 20:55" (MSK) → 17:55 UTC', () => {
     const d = parseListingDate('09.07.2026 20:55', NOW);
     expect(d).not.toBeNull();
-    expect(d!.getFullYear()).toBe(2026);
-    expect(d!.getMonth()).toBe(6);
-    expect(d!.getDate()).toBe(9);
-    expect(d!.getHours()).toBe(20);
-    expect(d!.getMinutes()).toBe(55);
+    expect(d!.getTime()).toBe(Date.UTC(2026, 6, 9, 17, 55, 0, 0));
   });
 
   it('ISO string "2026-07-09T18:45:00Z" parses correctly', () => {
@@ -162,9 +152,11 @@ describe('isFreshListing', () => {
   });
 
   it('"сегодня в текущее время" → true', () => {
-    // Build a time string that matches NOW's local hours/minutes
-    const h = NOW.getHours().toString().padStart(2, '0');
-    const m = NOW.getMinutes().toString().padStart(2, '0');
+    // Build a time string matching NOW expressed in MSK (UTC+3).
+    // NOW = 18:00 UTC → 21:00 MSK, which parses back to exactly NOW.
+    const msk = new Date(NOW.getTime() + 3 * 3_600_000);
+    const h = msk.getUTCHours().toString().padStart(2, '0');
+    const m = msk.getUTCMinutes().toString().padStart(2, '0');
     expect(fresh(`сегодня в ${h}:${m}`)).toBe(true);
   });
 

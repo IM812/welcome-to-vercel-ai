@@ -61,6 +61,20 @@ export class AvitoParser extends BaseParser {
         if (!href) return;
         const fullUrl = href.startsWith('http') ? href : `https://www.avito.ru${href}`;
 
+        // Extract the date DIRECTLY from the search-result card — no extra
+        // HTTP request. Prefer an ISO datetime attribute, then relative text
+        // ("N минут назад" / "3 июля в 23:26"). Only if the card has no date
+        // does SearchService fall back to fetchListingDate() (detail page).
+        const dateEl = $el.find('[data-marker="item-date"]').first();
+        const dateIso =
+          dateEl.attr('datetime') ??
+          dateEl.attr('data-time') ??
+          dateEl.find('time').attr('datetime') ??
+          $el.find('time').attr('datetime');
+        const dateText = dateEl.text().trim() || $el.find('time').text().trim();
+        const rawPublishedAt: string | undefined =
+          (dateIso ?? dateText)?.trim() || undefined;
+
         const finalExternalId = externalId ?? hashListing(title, price, fullUrl);
 
         listings.push({
@@ -70,8 +84,9 @@ export class AvitoParser extends BaseParser {
           location,
           imageUrl: imageUrl && !imageUrl.includes('data:') ? imageUrl : undefined,
           url: fullUrl,
-          // rawPublishedAt intentionally omitted — fetched separately via fetchListingDate()
-          // only for new externalIds to minimise HTTP requests.
+          // From the card when available; SearchService fetches the detail page
+          // only when this is undefined (minimises requests & 403 risk).
+          rawPublishedAt,
         });
       } catch (err) {
         this.safeLog('Failed to parse Avito category item', err);
