@@ -174,16 +174,27 @@ export class NotificationService {
       lines.push(`📍 ${this.esc(listing.location)}`);
     }
 
-    // Published date — always show something so user knows when it appeared
-    const dateStr = listing.publishedAt
-      ? listing.publishedAt.toLocaleString('ru-RU', {
-          day: 'numeric',
-          month: 'long',
-          hour: '2-digit',
-          minute: '2-digit',
-        })
-      : 'только что';
-    lines.push(`Опубликовано: ${this.esc(dateStr)}`);
+    // Published date.
+    // Priority: the exact raw string scraped from Avito (e.g. "2 июля в 01:18")
+    // — this is what the user sees on the site. Fall back to the parsed date,
+    // and if the date is genuinely unknown say so honestly instead of inventing
+    // a time (previously this showed the bot's "first seen" moment, which was
+    // wrong).
+    const raw = (listing as Listing & { rawPublishedAt: string | null }).rawPublishedAt;
+    if (raw && raw.trim()) {
+      lines.push(`Опубликовано: ${this.esc(raw.trim())}`);
+    } else if (listing.publishedAt) {
+      const dateStr = listing.publishedAt.toLocaleString('ru-RU', {
+        day: 'numeric',
+        month: 'long',
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZone: 'Europe/Moscow',
+      });
+      lines.push(`Опубликовано: ${this.esc(dateStr)}`);
+    } else {
+      lines.push('Опубликовано: время не указано');
+    }
 
     // Search label
     if (search.name) {

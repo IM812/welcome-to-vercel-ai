@@ -1981,3 +1981,119 @@ The column `Listing.rawPublishedAt` does not exist in the current database.
 2026-07-09 19:03:25 [[34mdebug[39m]: [fresh-check] mode=all externalId=8108849500 ageMinutes=60.00 send=true reason=ok
 2026-07-09 19:03:30 [[32minfo[39m]: [notification-sent] listingId=777
 2026-07-09 19:03:30 [[32minfo[39m]: [avito-send] externalId=8108849500
+2026-07-09 19:04:09 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104677552
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8158761623
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8261044979
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174450667
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249198946
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104464564
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248886980
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249024624
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249502649
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8166389716
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8275209199
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8155364488
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301654312
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8246238834
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301144329
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8156581818
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104731124
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301706065
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8207310510
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301485432
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301369903
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248985066
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249142106
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174176305
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301128238
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249493752
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248944445
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8256793335
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249586758
+2026-07-09 19:04:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8257850004
+2026-07-09 19:04:40 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:04:40 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8202958508
+2026-07-09 19:04:40 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8096198556
+2026-07-09 19:04:40 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=2784965793
+2026-07-09 19:04:40 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8189069267
+2026-07-09 19:04:40 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8161548148
+2026-07-09 19:04:40 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8068392143
+2026-07-09 19:04:40 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8065061129
+2026-07-09 19:04:40 [[34mdebug[39m]: [avito-new-candidate] externalId=8275820616 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/rubashka_g-star_8275820616?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToiNGNpeHN4eHIzNzE3anJrZHhlMzhkeTk0cjliajZ5MiI7faBGAEh_AAAA
+2026-07-09 19:04:40 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:04:40.368Z
+2026-07-09 19:04:40 [[34mdebug[39m]: [fresh-check] mode=all externalId=8275820616 ageMinutes=60.00 send=true reason=ok
+2026-07-09 19:04:45 [[32minfo[39m]: [notification-sent] listingId=778
+2026-07-09 19:04:45 [[32minfo[39m]: [avito-send] externalId=8275820616
+2026-07-09 19:04:45 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275197529
+2026-07-09 19:04:45 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8145897343
+2026-07-09 19:04:45 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156542738
+2026-07-09 19:04:45 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156130875
+2026-07-09 19:04:45 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8180985659
+2026-07-09 19:04:45 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301508305
+2026-07-09 19:04:45 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301397375
+2026-07-09 19:04:45 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8181082690
+2026-07-09 19:04:45 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8261440955
+2026-07-09 19:04:45 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146729813
+2026-07-09 19:04:45 [[34mdebug[39m]: [avito-new-candidate] externalId=8167736839 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/dzhinsovye_shorty_acne_studios_8167736839?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToiNGNpeHN4eHIzNzE3anJrZHhlMzhkeTk0cjliajZ5MiI7faBGAEh_AAAA
+2026-07-09 19:04:45 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:04:45.523Z
+2026-07-09 19:04:45 [[34mdebug[39m]: [fresh-check] mode=all externalId=8167736839 ageMinutes=60.00 send=true reason=ok
+2026-07-09 19:04:46 [[32minfo[39m]: [notification-sent] listingId=779
+2026-07-09 19:04:46 [[32minfo[39m]: [avito-send] externalId=8167736839
+2026-07-09 19:04:46 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8181348876
+2026-07-09 19:04:46 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301328857
+2026-07-09 19:04:46 [[34mdebug[39m]: [avito-new-candidate] externalId=8301132987 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/futbolka_amiri_8301132987?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToiNGNpeHN4eHIzNzE3anJrZHhlMzhkeTk0cjliajZ5MiI7faBGAEh_AAAA
+2026-07-09 19:04:46 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:04:46.218Z
+2026-07-09 19:04:46 [[34mdebug[39m]: [fresh-check] mode=all externalId=8301132987 ageMinutes=60.00 send=true reason=ok
+2026-07-09 19:04:47 [[32minfo[39m]: [notification-sent] listingId=780
+2026-07-09 19:04:47 [[32minfo[39m]: [avito-send] externalId=8301132987
+2026-07-09 19:04:47 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8261808470
+2026-07-09 19:04:47 [[34mdebug[39m]: [avito-new-candidate] externalId=8207118367 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/futbolka_swag_y2k_archive_opium_lin_issey_mp3_8207118367?context=H4sIAAAAAAAA_wF_AID_YTo0OntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czozOiJzcmMiO3M6MTA6ImJyb2FkbWF0Y2giO3M6MTE6IndpZGdldFRpdGxlIjtOO3M6MToieCI7czozMToiNGNpeHN4eHIzNzE3anJrZHhlMzhkeTk0cjliajZ5MiI7faBGAEh_AAAA
+2026-07-09 19:04:47 [[34mdebug[39m]: [date-parse] raw=1 час назад parsed=2026-07-09T18:04:47.146Z
+2026-07-09 19:04:47 [[34mdebug[39m]: [fresh-check] mode=all externalId=8207118367 ageMinutes=60.00 send=true reason=ok
+2026-07-09 19:04:48 [[32minfo[39m]: [notification-sent] listingId=781
+2026-07-09 19:04:48 [[32minfo[39m]: [avito-send] externalId=8207118367
+2026-07-09 19:04:48 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8233139244
+2026-07-09 19:04:48 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8226091849
+2026-07-09 19:04:48 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301007516
+2026-07-09 19:04:48 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8166768523
+2026-07-09 19:04:48 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146175207
+2026-07-09 19:04:48 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8167816473
+2026-07-09 19:05:35 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 19:05:35 [[32minfo[39m]: Checker cron started (continuous loop, 30s interval)
+2026-07-09 19:05:35 [[32minfo[39m]: Subscription cron started
+2026-07-09 19:05:35 [[32minfo[39m]: Daily reset cron started
+2026-07-09 19:05:35 [[32minfo[39m]: Queue flush cron started
+2026-07-09 19:05:36 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 19:05:36 [[31merror[39m]: Fatal startup error
+2026-07-09 19:05:38 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104677552
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8158761623
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8261044979
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174450667
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249198946
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104464564
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248886980
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249024624
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249502649
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8166389716
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8275209199
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8155364488
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301654312
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8246238834
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301144329
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8156581818
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104731124
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301706065
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8207310510
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301485432
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301369903
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248985066
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249142106
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174176305
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301128238
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249493752
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248944445
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8256793335
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249586758
+2026-07-09 19:05:38 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8257850004

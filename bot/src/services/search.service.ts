@@ -321,11 +321,10 @@ export class SearchService {
       }
 
       // 5. New listing to notify — save and send.
-      // We stamp publishedAt = "first seen now" so the notification guard and
-      // downstream logic always have a valid, fresh instant (the real printed
-      // date, when available, is preserved in rawPublishedAt).
-      const effectivePublishedAt = new Date();
-
+      // Store the REAL parsed publication date (or null when Avito hid it).
+      // We must NOT fake this to "now" — that made the bot display a wrong
+      // "Опубликовано" time. The notification guard is mode-aware and does not
+      // re-check freshness in competitor mode, so a null date is fine here.
       const { listing } = await this.listingRepo.upsert(
         search.id,
         externalId,
@@ -337,7 +336,7 @@ export class SearchService {
           url: parsed.url,
           platform: search.platform,
           rawPublishedAt: rawDate,
-          publishedAt: effectivePublishedAt,
+          publishedAt: parsedDate,
           isBaseline: false,
           skippedReason: null,
         } as Parameters<ListingRepository['upsert']>[2],
