@@ -4621,3 +4621,214 @@ The column `Listing.rawPublishedAt` does not exist in the current database.
 2026-07-09 19:27:07 [[34mdebug[39m]: [seen] searchId=6 externalId=8145908138
 2026-07-09 19:27:07 [[34mdebug[39m]: [seen] searchId=6 externalId=8108849500
 2026-07-09 19:27:07 [[34mdebug[39m]: [seen] searchId=6 externalId=8257093545
+2026-07-09 19:27:22 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:27:22 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:27:22 [[34mdebug[39m]: [seen] searchId=6 externalId=8207167091
+2026-07-09 19:27:22 [[34mdebug[39m]: [seen] searchId=6 externalId=8096198556
+2026-07-09 19:27:22 [[34mdebug[39m]: [seen] searchId=6 externalId=2784965793
+2026-07-09 19:27:22 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:27:23 [[34mdebug[39m]: [seen] searchId=6 externalId=8214820266
+2026-07-09 19:27:23 [[34mdebug[39m]: [seen] searchId=6 externalId=8179445553
+2026-07-09 19:27:23 [[34mdebug[39m]: [seen] searchId=6 externalId=3156944601
+2026-07-09 19:27:23 [[34mdebug[39m]: [seen] searchId=6 externalId=8006536681
+2026-07-09 19:27:23 [[34mdebug[39m]: [seen] searchId=6 externalId=8300980990
+2026-07-09 19:27:23 [[34mdebug[39m]: [seen] searchId=6 externalId=8154926924
+2026-07-09 19:27:23 [[34mdebug[39m]: [seen] searchId=6 externalId=8226091849
+2026-07-09 19:27:23 [[34mdebug[39m]: [seen] searchId=6 externalId=8301007516
+2026-07-09 19:27:23 [[34mdebug[39m]: [seen] searchId=6 externalId=8216526142
+2026-07-09 19:27:23 [[34mdebug[39m]: [seen] searchId=6 externalId=8166934259
+2026-07-09 19:27:23 [[34mdebug[39m]: [seen] searchId=6 externalId=8301182706
+2026-07-09 19:27:23 [[34mdebug[39m]: [seen] searchId=6 externalId=8301061789
+2026-07-09 19:27:23 [[34mdebug[39m]: [seen] searchId=6 externalId=8301297627
+2026-07-09 19:27:23 [[34mdebug[39m]: [seen] searchId=6 externalId=8257602808
+2026-07-09 19:27:23 [[34mdebug[39m]: [seen] searchId=6 externalId=8301645776
+2026-07-09 19:27:23 [[34mdebug[39m]: [seen] searchId=6 externalId=8156181039
+2026-07-09 19:27:35 [[31merror[39m]: Parser error for search 6: Request failed with status code 403
+2026-07-09 19:27:52 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:27:52 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:27:52 [[34mdebug[39m]: [seen] searchId=6 externalId=8096198556
+2026-07-09 19:27:52 [[34mdebug[39m]: [seen] searchId=6 externalId=2784965793
+2026-07-09 19:27:52 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:27:52 [[34mdebug[39m]: [seen] searchId=6 externalId=8179445553
+2026-07-09 19:27:52 [[34mdebug[39m]: [seen] searchId=6 externalId=8223024860
+2026-07-09 19:27:52 [[34mdebug[39m]: [seen] searchId=6 externalId=8006536681
+2026-07-09 19:27:52 [[34mdebug[39m]: [seen] searchId=6 externalId=8123905023
+2026-07-09 19:27:52 [[34mdebug[39m]: [seen] searchId=6 externalId=3156944601
+2026-07-09 19:27:52 [[34mdebug[39m]: [seen] searchId=6 externalId=8257602808
+2026-07-09 19:27:52 [[34mdebug[39m]: [seen] searchId=6 externalId=8207118367
+2026-07-09 19:27:52 [[34mdebug[39m]: [seen] searchId=6 externalId=8301575168
+2026-07-09 19:27:52 [[34mdebug[39m]: [seen] searchId=6 externalId=8181082690
+2026-07-09 19:27:52 [[34mdebug[39m]: [seen] searchId=6 externalId=8216074459
+2026-07-09 19:27:52 [[34mdebug[39m]: [seen] searchId=6 externalId=8216786860
+2026-07-09 19:27:52 [[34mdebug[39m]: [seen] searchId=6 externalId=8301592132
+2026-07-09 19:27:52 [[34mdebug[39m]: [seen] searchId=6 externalId=8216526142
+2026-07-09 19:27:52 [[34mdebug[39m]: [seen] searchId=6 externalId=8233245612
+2026-07-09 19:27:52 [[34mdebug[39m]: [seen] searchId=6 externalId=8301297627
+2026-07-09 19:27:52 [[34mdebug[39m]: [seen] searchId=6 externalId=8146256486
+2026-07-09 19:27:52 [[34mdebug[39m]: [seen] searchId=6 externalId=8301061789
+2026-07-09 19:28:08 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:28:08 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:28:08 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:28:08 [[34mdebug[39m]: [seen] searchId=6 externalId=8300905707
+2026-07-09 19:28:08 [[32minfo[39m]: [new-listing] searchId=6 externalId=8111065419 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/shorty_acne_studios_shirokie_8111065419?context=H4sIAAAAAAAA_wE_AMD_YToyOntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czoxOiJ4IjtzOjE2OiJBTzFwWnZQZnZmNnMyaE56Ijt99nCbWj8AAAA
+2026-07-09 19:28:09 [[32minfo[39m]: [sent] listingId=836 externalId=8111065419
+2026-07-09 19:28:09 [[34mdebug[39m]: [seen] searchId=6 externalId=8223024860
+2026-07-09 19:28:09 [[34mdebug[39m]: [seen] searchId=6 externalId=8006536681
+2026-07-09 19:28:09 [[34mdebug[39m]: [seen] searchId=6 externalId=7241516367
+2026-07-09 19:28:09 [[34mdebug[39m]: [seen] searchId=6 externalId=8151321740
+2026-07-09 19:28:09 [[32minfo[39m]: [new-listing] searchId=6 externalId=8108345063 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/futbolka_balenciaga_paris_10_8108345063?context=H4sIAAAAAAAA_wE_AMD_YToyOntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czoxOiJ4IjtzOjE2OiJBTzFwWnZQZnZmNnMyaE56Ijt99nCbWj8AAAA
+2026-07-09 19:28:09 [[32minfo[39m]: [sent] listingId=837 externalId=8108345063
+2026-07-09 19:28:09 [[34mdebug[39m]: [seen] searchId=6 externalId=8216446928
+2026-07-09 19:28:09 [[34mdebug[39m]: [seen] searchId=6 externalId=8207728728
+2026-07-09 19:28:09 [[34mdebug[39m]: [seen] searchId=6 externalId=8301587144
+2026-07-09 19:28:09 [[34mdebug[39m]: [seen] searchId=6 externalId=8301061789
+2026-07-09 19:28:09 [[34mdebug[39m]: [seen] searchId=6 externalId=8146175207
+2026-07-09 19:28:09 [[34mdebug[39m]: [seen] searchId=6 externalId=8180985659
+2026-07-09 19:28:09 [[34mdebug[39m]: [seen] searchId=6 externalId=8257057780
+2026-07-09 19:28:09 [[34mdebug[39m]: [seen] searchId=6 externalId=8216526142
+2026-07-09 19:28:09 [[34mdebug[39m]: [seen] searchId=6 externalId=8176401528
+2026-07-09 19:28:09 [[34mdebug[39m]: [seen] searchId=6 externalId=8207118367
+2026-07-09 19:28:09 [[34mdebug[39m]: [seen] searchId=6 externalId=8145897343
+2026-07-09 19:28:09 [[34mdebug[39m]: [seen] searchId=6 externalId=8148570802
+2026-07-09 19:28:22 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:28:22 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:28:22 [[34mdebug[39m]: [seen] searchId=6 externalId=8096198556
+2026-07-09 19:28:22 [[34mdebug[39m]: [seen] searchId=6 externalId=8223024860
+2026-07-09 19:28:22 [[34mdebug[39m]: [seen] searchId=6 externalId=2784965793
+2026-07-09 19:28:22 [[32minfo[39m]: [new-listing] searchId=6 externalId=8207402326 url=https://www.avito.ru/saratov/odezhda_obuv_aksessuary/shorty_cp_company_nylon_3_tsveta_8207402326?slocation=637640&context=H4sIAAAAAAAA_wFaAKX_YTozOntzOjE1OiJoYXNHZW9UYXJnZXRpbmciO2I6MTtzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czoxOiJ4IjtzOjE2OiJ1UERHSnluWkpIUm12MFpmIjt9p_aIZloAAAA
+2026-07-09 19:28:23 [[32minfo[39m]: [sent] listingId=838 externalId=8207402326
+2026-07-09 19:28:23 [[34mdebug[39m]: [seen] searchId=6 externalId=7966763474
+2026-07-09 19:28:23 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:28:23 [[34mdebug[39m]: [seen] searchId=6 externalId=8179445553
+2026-07-09 19:28:23 [[34mdebug[39m]: [seen] searchId=6 externalId=7945001274
+2026-07-09 19:28:23 [[34mdebug[39m]: [seen] searchId=6 externalId=8301132987
+2026-07-09 19:28:23 [[34mdebug[39m]: [seen] searchId=6 externalId=8155902726
+2026-07-09 19:28:23 [[34mdebug[39m]: [seen] searchId=6 externalId=8274928212
+2026-07-09 19:28:24 [[34mdebug[39m]: [seen] searchId=6 externalId=8216074459
+2026-07-09 19:28:24 [[34mdebug[39m]: [seen] searchId=6 externalId=8300980990
+2026-07-09 19:28:24 [[34mdebug[39m]: [seen] searchId=6 externalId=8108108511
+2026-07-09 19:28:24 [[34mdebug[39m]: [seen] searchId=6 externalId=8301297627
+2026-07-09 19:28:24 [[34mdebug[39m]: [seen] searchId=6 externalId=8156270563
+2026-07-09 19:28:24 [[34mdebug[39m]: [seen] searchId=6 externalId=8156181039
+2026-07-09 19:28:24 [[34mdebug[39m]: [seen] searchId=6 externalId=8181348876
+2026-07-09 19:28:24 [[34mdebug[39m]: [seen] searchId=6 externalId=8145897343
+2026-07-09 19:28:24 [[34mdebug[39m]: [seen] searchId=6 externalId=8301592132
+2026-07-09 19:28:37 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:28:37 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:28:37 [[34mdebug[39m]: [seen] searchId=6 externalId=8096198556
+2026-07-09 19:28:37 [[34mdebug[39m]: [seen] searchId=6 externalId=8207167091
+2026-07-09 19:28:37 [[34mdebug[39m]: [seen] searchId=6 externalId=2784965793
+2026-07-09 19:28:37 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:28:37 [[34mdebug[39m]: [seen] searchId=6 externalId=8179445553
+2026-07-09 19:28:37 [[34mdebug[39m]: [seen] searchId=6 externalId=3156944601
+2026-07-09 19:28:37 [[34mdebug[39m]: [seen] searchId=6 externalId=7418073769
+2026-07-09 19:28:37 [[34mdebug[39m]: [seen] searchId=6 externalId=8301318257
+2026-07-09 19:28:37 [[34mdebug[39m]: [seen] searchId=6 externalId=8145908138
+2026-07-09 19:28:37 [[34mdebug[39m]: [seen] searchId=6 externalId=8216717160
+2026-07-09 19:28:37 [[34mdebug[39m]: [seen] searchId=6 externalId=8275262758
+2026-07-09 19:28:37 [[34mdebug[39m]: [seen] searchId=6 externalId=8207503665
+2026-07-09 19:28:37 [[34mdebug[39m]: [seen] searchId=6 externalId=8167258345
+2026-07-09 19:28:37 [[34mdebug[39m]: [seen] searchId=6 externalId=8257602808
+2026-07-09 19:28:37 [[34mdebug[39m]: [seen] searchId=6 externalId=8156270563
+2026-07-09 19:28:37 [[34mdebug[39m]: [seen] searchId=6 externalId=8146175207
+2026-07-09 19:28:37 [[34mdebug[39m]: [seen] searchId=6 externalId=8301397375
+2026-07-09 19:28:37 [[34mdebug[39m]: [seen] searchId=6 externalId=8108849500
+2026-07-09 19:28:37 [[34mdebug[39m]: [seen] searchId=6 externalId=8176440813
+2026-07-09 19:28:37 [[34mdebug[39m]: [seen] searchId=6 externalId=8216074459
+2026-07-09 19:28:43 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 19:28:43 [[32minfo[39m]: Checker cron started (continuous loop, 15s interval)
+2026-07-09 19:28:43 [[32minfo[39m]: Subscription cron started
+2026-07-09 19:28:43 [[32minfo[39m]: Daily reset cron started
+2026-07-09 19:28:43 [[32minfo[39m]: Queue flush cron started
+2026-07-09 19:28:44 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 19:28:44 [[31merror[39m]: Fatal startup error
+2026-07-09 19:28:46 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:28:46 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:28:46 [[34mdebug[39m]: [seen] searchId=6 externalId=8207167091
+2026-07-09 19:28:46 [[34mdebug[39m]: [seen] searchId=6 externalId=8096198556
+2026-07-09 19:28:46 [[34mdebug[39m]: [seen] searchId=6 externalId=2784965793
+2026-07-09 19:28:46 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:28:47 [[32minfo[39m]: [new-listing] searchId=6 externalId=8080280473 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/stone_island_futbolka_8080280473?context=H4sIAAAAAAAA_wE_AMD_YToyOntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czoxOiJ4IjtzOjE2OiJHRnlVb1pIczRqSVV1ZWE3Ijt9lLG8GD8AAAA
+2026-07-09 19:28:47 [[32minfo[39m]: [sent] listingId=839 externalId=8080280473
+2026-07-09 19:28:47 [[34mdebug[39m]: [seen] searchId=6 externalId=7418073769
+2026-07-09 19:28:47 [[34mdebug[39m]: [seen] searchId=6 externalId=3156944601
+2026-07-09 19:28:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8179445553
+2026-07-09 19:28:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8146729813
+2026-07-09 19:28:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8216074459
+2026-07-09 19:28:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8300980990
+2026-07-09 19:28:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8275262758
+2026-07-09 19:28:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8287362555
+2026-07-09 19:28:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8257602808
+2026-07-09 19:28:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8301575168
+2026-07-09 19:28:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8216786860
+2026-07-09 19:28:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8301508305
+2026-07-09 19:28:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8145908138
+2026-07-09 19:28:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8275197529
+2026-07-09 19:28:47 [[34mdebug[39m]: [seen] searchId=6 externalId=8301397375
+2026-07-09 19:29:01 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:29:01 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:29:01 [[34mdebug[39m]: [seen] searchId=6 externalId=8207167091
+2026-07-09 19:29:01 [[34mdebug[39m]: [seen] searchId=6 externalId=8096198556
+2026-07-09 19:29:01 [[34mdebug[39m]: [seen] searchId=6 externalId=2784965793
+2026-07-09 19:29:01 [[34mdebug[39m]: [seen] searchId=6 externalId=8080280473
+2026-07-09 19:29:01 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:29:01 [[34mdebug[39m]: [seen] searchId=6 externalId=3156944601
+2026-07-09 19:29:01 [[34mdebug[39m]: [seen] searchId=6 externalId=8179445553
+2026-07-09 19:29:01 [[34mdebug[39m]: [seen] searchId=6 externalId=8216446928
+2026-07-09 19:29:01 [[34mdebug[39m]: [seen] searchId=6 externalId=8301608613
+2026-07-09 19:29:01 [[34mdebug[39m]: [seen] searchId=6 externalId=8181415058
+2026-07-09 19:29:01 [[34mdebug[39m]: [seen] searchId=6 externalId=8180985659
+2026-07-09 19:29:01 [[34mdebug[39m]: [seen] searchId=6 externalId=8301113238
+2026-07-09 19:29:01 [[34mdebug[39m]: [seen] searchId=6 externalId=8146673947
+2026-07-09 19:29:01 [[34mdebug[39m]: [seen] searchId=6 externalId=8257602808
+2026-07-09 19:29:01 [[34mdebug[39m]: [seen] searchId=6 externalId=8207503665
+2026-07-09 19:29:01 [[34mdebug[39m]: [seen] searchId=6 externalId=8176401528
+2026-07-09 19:29:01 [[34mdebug[39m]: [seen] searchId=6 externalId=8156445370
+2026-07-09 19:29:01 [[34mdebug[39m]: [seen] searchId=6 externalId=8108849500
+2026-07-09 19:29:01 [[34mdebug[39m]: [seen] searchId=6 externalId=8176440813
+2026-07-09 19:29:02 [[34mdebug[39m]: [seen] searchId=6 externalId=8300980990
+2026-07-09 19:29:16 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:29:16 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:29:16 [[34mdebug[39m]: [seen] searchId=6 externalId=8080280473
+2026-07-09 19:29:16 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:29:16 [[34mdebug[39m]: [seen] searchId=6 externalId=7418073769
+2026-07-09 19:29:16 [[34mdebug[39m]: [seen] searchId=6 externalId=7945001274
+2026-07-09 19:29:17 [[32minfo[39m]: [new-listing] searchId=6 externalId=7832207615 url=https://www.avito.ru/moskva/odezhda_obuv_aksessuary/futbolka_enfants_riches_deprimes_erd_na_rukah_7832207615?context=H4sIAAAAAAAA_wE_AMD_YToyOntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czoxOiJ4IjtzOjE2OiJOU1ZtSDVuY09Ya3lyeHNQIjt9p8dnxT8AAAA
+2026-07-09 19:29:17 [[32minfo[39m]: [sent] listingId=840 externalId=7832207615
+2026-07-09 19:29:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8027134708
+2026-07-09 19:29:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8223024860
+2026-07-09 19:29:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8275377171
+2026-07-09 19:29:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8156270563
+2026-07-09 19:29:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8207503665
+2026-07-09 19:29:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8146175207
+2026-07-09 19:29:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8206955645
+2026-07-09 19:29:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8233245612
+2026-07-09 19:29:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8275003908
+2026-07-09 19:29:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8300980990
+2026-07-09 19:29:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8261440955
+2026-07-09 19:29:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8156181039
+2026-07-09 19:29:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8226091849
+2026-07-09 19:29:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8108412490
+2026-07-09 19:29:17 [[34mdebug[39m]: [seen] searchId=6 externalId=8156308244
+2026-07-09 19:29:31 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:29:31 [[34mdebug[39m]: [tick] searchId=6 fetched=30 checking=20
+2026-07-09 19:29:31 [[34mdebug[39m]: [seen] searchId=6 externalId=8096198556
+2026-07-09 19:29:31 [[34mdebug[39m]: [seen] searchId=6 externalId=8207167091
+2026-07-09 19:29:31 [[34mdebug[39m]: [seen] searchId=6 externalId=2784965793
+2026-07-09 19:29:31 [[34mdebug[39m]: [seen] searchId=6 externalId=8080280473
+2026-07-09 19:29:31 [[34mdebug[39m]: [seen] searchId=6 externalId=7648168131
+2026-07-09 19:29:31 [[34mdebug[39m]: [seen] searchId=6 externalId=8179445553
+2026-07-09 19:29:31 [[34mdebug[39m]: [seen] searchId=6 externalId=3156944601
+2026-07-09 19:29:31 [[34mdebug[39m]: [seen] searchId=6 externalId=7418073769
+2026-07-09 19:29:31 [[34mdebug[39m]: [seen] searchId=6 externalId=8176333892
+2026-07-09 19:29:31 [[34mdebug[39m]: [seen] searchId=6 externalId=8275003908
+2026-07-09 19:29:31 [[34mdebug[39m]: [seen] searchId=6 externalId=8301318257
+2026-07-09 19:29:31 [[34mdebug[39m]: [seen] searchId=6 externalId=8301397375
+2026-07-09 19:29:31 [[34mdebug[39m]: [seen] searchId=6 externalId=8216717160
+2026-07-09 19:29:31 [[34mdebug[39m]: [seen] searchId=6 externalId=8180985659
+2026-07-09 19:29:31 [[34mdebug[39m]: [seen] searchId=6 externalId=8181326981
+2026-07-09 19:29:31 [[34mdebug[39m]: [seen] searchId=6 externalId=8301645776
+2026-07-09 19:29:31 [[34mdebug[39m]: [seen] searchId=6 externalId=8154926924
+2026-07-09 19:29:31 [[34mdebug[39m]: [seen] searchId=6 externalId=8216786860
+2026-07-09 19:29:31 [[34mdebug[39m]: [seen] searchId=6 externalId=8275820616
+2026-07-09 19:29:31 [[34mdebug[39m]: [seen] searchId=6 externalId=8287362555

@@ -4,8 +4,8 @@ export function sleep(ms: number): Promise<void> {
 
 export async function withRetry<T>(
   fn: () => Promise<T>,
-  maxAttempts: number = 2,
-  delayMs: number = 500,
+  maxAttempts: number = 3,
+  delayMs: number = 2_000,
 ): Promise<T> {
   let lastError: unknown;
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
@@ -14,6 +14,7 @@ export async function withRetry<T>(
     } catch (err) {
       lastError = err;
       if (attempt < maxAttempts) {
+        // Exponential back-off: 2s, 4s, 8s…
         await sleep(delayMs * attempt);
       }
     }
