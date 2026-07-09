@@ -684,3 +684,4 @@ Invalid `prisma.listing.findUnique()` invocation in
   13 async findByExternalId(searchId: number, externalId: string): Promise<Listing | null> {
 → 14   return prisma.listing.findUnique(
 The column `Listing.rawPublishedAt` does not exist in the current database.
+2026-07-09 18:57:58 [[31merror[39m]: Fatal startup error

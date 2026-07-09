@@ -257,22 +257,46 @@ export class SearchService {
         `[date-parse] raw=${rawDate ?? 'null'} parsed=${parsedDate?.toISOString() ?? 'null'}`,
       );
 
-      // 4. Freshness check
+      // 4. Freshness decision
+      //
+      // Reaching this point means the externalId is NEW (not in DB) and the
+      // baseline has already been taken. In a feed polled every ~30s, a new
+      // externalId means the listing JUST appeared — this itself is a strong
+      // freshness signal (this is how competitor bots work).
+      //
+      // The parsed date is used only to REJECT listings that are provably old:
+      //   • date parsed AND older than maxAge  → TOO_OLD  → skip
+      //   • date parsed AND fresh (≤ maxAge)   → send
+      //   • date could NOT be parsed           → send if SEND_WHEN_DATE_UNKNOWN
+      //     (Avito hides dates on cards and returns 403 on detail pages, so
+      //      "no date" must NOT block a genuinely new listing).
       const maxAge = Number(process.env.FRESH_LISTING_MAX_AGE_MINUTES ?? FRESH_MAX_MINUTES);
-      const fresh = isFreshListing(parsedDate, maxAge);
+      const sendWhenUnknown =
+        (process.env.SEND_WHEN_DATE_UNKNOWN ?? 'true').toLowerCase() !== 'false';
       const ageMinutes = parsedDate ? getListingAgeMinutes(parsedDate) : null;
 
+      let shouldSend: boolean;
+      let skippedReason: string | null;
+
+      if (parsedDate) {
+        // We have a real date — enforce the strict age rule.
+        const fresh = isFreshListing(parsedDate, maxAge);
+        shouldSend = fresh;
+        skippedReason = fresh ? null : 'TOO_OLD';
+      } else {
+        // No parseable date — new externalId is treated as fresh.
+        shouldSend = sendWhenUnknown;
+        skippedReason = sendWhenUnknown ? null : 'UNKNOWN_DATE';
+      }
+
       logger.debug(
-        `[fresh-check] externalId=${externalId} ageMinutes=${ageMinutes?.toFixed(2) ?? 'n/a'} fresh=${fresh}`,
+        `[fresh-check] externalId=${externalId} ageMinutes=${ageMinutes?.toFixed(2) ?? 'n/a'} send=${shouldSend} reason=${skippedReason ?? 'ok'}`,
       );
 
-      if (!fresh) {
-        // Save to DB so we never visit it again, but do NOT notify
-        const skippedReason = parsedDate ? 'TOO_OLD' : 'UNKNOWN_DATE';
-
+      if (!shouldSend) {
+        // Save to DB so we never revisit it, but do NOT notify
         if (skippedReason === 'TOO_OLD') {
-          logger.debug(`[old-skip] externalId=${externalId} reason=TOO_OLD`);
-          logger.debug(`[avito-skip-old] externalId=${externalId} ageMinutes=${ageMinutes?.toFixed(2) ?? 'n/a'}`);
+          logger.debug(`[old-skip] externalId=${externalId} reason=TOO_OLD ageMinutes=${ageMinutes?.toFixed(2) ?? 'n/a'}`);
         } else {
           logger.debug(`[unknown-date-skip] externalId=${externalId} reason=UNKNOWN_DATE`);
         }
@@ -296,7 +320,11 @@ export class SearchService {
         continue;
       }
 
-      // 5. Fresh listing — save and send notification
+      // 5. New listing that passed the freshness decision — save and notify.
+      // If the date was unknown we stamp publishedAt = now (first-seen time)
+      // so downstream logic and the notification guard have a valid instant.
+      const effectivePublishedAt = parsedDate ?? new Date();
+
       const { listing } = await this.listingRepo.upsert(
         search.id,
         externalId,
@@ -308,7 +336,7 @@ export class SearchService {
           url: parsed.url,
           platform: search.platform,
           rawPublishedAt: rawDate,
-          publishedAt: parsedDate,
+          publishedAt: effectivePublishedAt,
           isBaseline: false,
           skippedReason: null,
         } as Parameters<ListingRepository['upsert']>[2],
