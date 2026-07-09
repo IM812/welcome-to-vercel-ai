@@ -101,6 +101,15 @@ describe('parseListingDate', () => {
     expect(d!.getMinutes()).toBe(55);
   });
 
+  it('"3 июля в 23:26" — Avito detail page format — parses correctly', () => {
+    const d = parseListingDate('3 июля в 23:26', NOW);
+    expect(d).not.toBeNull();
+    expect(d!.getDate()).toBe(3);
+    expect(d!.getMonth()).toBe(6); // July = 6
+    expect(d!.getHours()).toBe(23);
+    expect(d!.getMinutes()).toBe(26);
+  });
+
   it('"09.07.2026 20:55" parses dot-separated date with time', () => {
     const d = parseListingDate('09.07.2026 20:55', NOW);
     expect(d).not.toBeNull();

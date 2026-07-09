@@ -2,14 +2,32 @@ import * as cheerio from 'cheerio';
 import { BaseParser } from './base.parser';
 import type { ParsedListing } from '../types/index';
 import { hashListing } from '../utils/hash';
+import { logger } from '../utils/logger';
+
+/**
+ * How many listings to collect from a category/search page per check.
+ * Override via AVITO_MAX_LISTINGS_PER_CHECK env var.
+ */
+const MAX_LISTINGS = Number(process.env.AVITO_MAX_LISTINGS_PER_CHECK ?? 30);
 
 export class AvitoParser extends BaseParser {
+  /**
+   * Main entry point used by SearchService.
+   *
+   * Phase 1 — scrape the category/search page and collect up to MAX_LISTINGS
+   * candidate items (externalId, title, price, url, imageUrl).
+   * rawPublishedAt is intentionally left undefined here — it will be filled
+   * by fetchListingDate() in the service, but ONLY for new externalIds that
+   * are not yet in the database (to avoid unnecessary HTTP requests).
+   */
   async parse(url: string): Promise<ParsedListing[]> {
     const html = await this.fetchHtml(url);
     const $ = cheerio.load(html);
     const listings: ParsedListing[] = [];
 
     $('[data-marker="item"]').each((_, el) => {
+      if (listings.length >= MAX_LISTINGS) return false; // stop iterating
+
       try {
         const $el = $(el);
 
@@ -43,19 +61,6 @@ export class AvitoParser extends BaseParser {
         if (!href) return;
         const fullUrl = href.startsWith('http') ? href : `https://www.avito.ru${href}`;
 
-        const dateEl = $el.find('[data-marker="item-date"]').first();
-        // Prefer ISO datetime attribute; fall back to Russian relative text.
-        // Also try data-time and title attributes some Avito layouts use.
-        const dateIso =
-          dateEl.attr('datetime') ??
-          dateEl.attr('data-time') ??
-          dateEl.find('time').attr('datetime') ??
-          $el.find('time').attr('datetime');
-        const dateText = dateEl.text().trim() || $el.find('time').text().trim();
-        // rawPublishedAt is the original string, exactly as scraped — used for dateParser.ts
-        const rawPublishedAt: string | undefined = dateIso ?? dateText ?? undefined;
-        const publishedAt = parseAvitoDate(rawPublishedAt);
-
         const finalExternalId = externalId ?? hashListing(title, price, fullUrl);
 
         listings.push({
@@ -65,89 +70,122 @@ export class AvitoParser extends BaseParser {
           location,
           imageUrl: imageUrl && !imageUrl.includes('data:') ? imageUrl : undefined,
           url: fullUrl,
-          rawPublishedAt,
-          publishedAt,
+          // rawPublishedAt intentionally omitted — fetched separately via fetchListingDate()
+          // only for new externalIds to minimise HTTP requests.
         });
       } catch (err) {
-        this.safeLog('Failed to parse Avito item', err);
+        this.safeLog('Failed to parse Avito category item', err);
       }
     });
 
+    logger.debug(`[avito-category] found=${listings.length}`);
     return listings;
+  }
+
+  /**
+   * Phase 2 — open a single listing detail page and extract the raw
+   * publication date from the meta line:
+   *   "№ 8132962928 · 3 июля в 23:26 · 10093 просмотра"
+   *
+   * Returns the raw date string (e.g. "3 июля в 23:26") or null if it
+   * cannot be found.
+   *
+   * Called by SearchService only for externalIds that are NOT yet in the DB.
+   */
+  async fetchListingDate(itemUrl: string): Promise<string | null> {
+    try {
+      const html = await this.fetchHtml(itemUrl);
+      const $ = cheerio.load(html);
+
+      // Avito detail page: look for the meta info line that contains the
+      // listing number, publication date and view count.
+      // Common selectors across Avito layouts:
+      const candidateSelectors = [
+        '[data-marker="item-view/item-params"] span',
+        '[data-marker="item-view/item-params"]',
+        '.item-params span',
+        '.styles-module-params_list span',
+        // JSON-LD fallback
+      ];
+
+      for (const sel of candidateSelectors) {
+        const text = $(sel).text();
+        const raw = extractDateFromMetaLine(text);
+        if (raw) return raw;
+      }
+
+      // Walk all text nodes looking for the "· DD месяц в HH:MM ·" pattern
+      let found: string | null = null;
+      $('*').each((_, el) => {
+        if (found) return false;
+        const text = $(el).text();
+        const raw = extractDateFromMetaLine(text);
+        if (raw) { found = raw; return false; }
+      });
+      if (found) return found;
+
+      // JSON-LD fallback: some layouts embed datePosted in structured data
+      $('script[type="application/ld+json"]').each((_, el) => {
+        if (found) return false;
+        try {
+          const data = JSON.parse($(el).html() ?? '{}');
+          const datePosted: string | undefined =
+            data?.datePosted ?? data?.offers?.priceValidUntil;
+          if (datePosted) { found = datePosted; return false; }
+        } catch { /* ignore malformed JSON */ }
+      });
+
+      return found;
+    } catch (err) {
+      this.safeLog(`fetchListingDate failed for ${itemUrl}`, err);
+      return null;
+    }
   }
 }
 
-function parseAvitoDate(str: string | undefined): Date | undefined {
-  if (!str) return undefined;
-  try {
-    // Try ISO / RFC2822 first (datetime attribute)
-    const iso = new Date(str);
-    if (!isNaN(iso.getTime())) return iso;
+/**
+ * Scans a text blob for the Avito publication-date pattern:
+ *   "· 3 июля в 23:26 ·"   →  "3 июля в 23:26"
+ *   "· сегодня в 14:00 ·"  →  "сегодня в 14:00"
+ *   "· вчера в 08:30 ·"    →  "вчера в 08:30"
+ *   "· 2 минуты назад ·"   →  "2 минуты назад"
+ *   "· только что ·"       →  "только что"
+ *
+ * Returns the trimmed raw string, or null if nothing matched.
+ */
+function extractDateFromMetaLine(text: string): string | null {
+  if (!text) return null;
 
-    const now = new Date();
-    const s = str.toLowerCase().trim();
+  const s = text.toLowerCase();
 
-    // "сегодня в 14:30" or "today at 14:30"
-    const todayMatch = s.match(/сегодня.*?(\d{1,2}):(\d{2})/);
-    if (todayMatch) {
-      const d = new Date(now);
-      d.setHours(Number(todayMatch[1]), Number(todayMatch[2]), 0, 0);
-      return d;
-    }
-
-    // "вчера в 14:30"
-    const yesterdayMatch = s.match(/вчера.*?(\d{1,2}):(\d{2})/);
-    if (yesterdayMatch) {
-      const d = new Date(now);
-      d.setDate(d.getDate() - 1);
-      d.setHours(Number(yesterdayMatch[1]), Number(yesterdayMatch[2]), 0, 0);
-      return d;
-    }
-
-    // "X минут назад" / "X минуту назад"
-    const minutesMatch = s.match(/(\d+)\s*мин/);
-    if (minutesMatch) {
-      return new Date(now.getTime() - Number(minutesMatch[1]) * 60_000);
-    }
-
-    // "X часов назад" / "X час назад"
-    const hoursMatch = s.match(/(\d+)\s*час/);
-    if (hoursMatch) {
-      return new Date(now.getTime() - Number(hoursMatch[1]) * 3_600_000);
-    }
-
-    // "X дней назад"
-    const daysMatch = s.match(/(\d+)\s*дн/);
-    if (daysMatch) {
-      return new Date(now.getTime() - Number(daysMatch[1]) * 86_400_000);
-    }
-
-    // Absolute dates: "15 апр", "15 апр 21:00", "3 мая 2026", "12 апреля", "1 янв 2025"
-    // Note: Avito often appends a time "DD мес HH:MM" — we parse day+month and optionally time.
-    const MONTHS: Record<string, number> = {
-      янв: 0, февр: 1, фев: 1, мар: 2, апр: 3, май: 4, мая: 4, июн: 5,
-      июл: 6, авг: 7, сен: 8, окт: 9, ноя: 10, дек: 11,
-      января: 0, февраля: 1, марта: 2, апреля: 3, июня: 5,
-      июля: 6, августа: 7, сентября: 8, октября: 9, ноября: 10, декабря: 11,
-    };
-    // Pattern: "27 апр 21:00" or "27 апреля" or "27 апр 2025" or "27 апр 2025 21:00"
-    const absMatch = s.match(/(\d{1,2})\s+([а-яё]+)(?:\s+(\d{4}))?(?:\s+(\d{1,2}):(\d{2}))?/);
-    if (absMatch) {
-      const day = Number(absMatch[1]);
-      const monthNum = Object.entries(MONTHS).find(([k]) => absMatch[2].startsWith(k))?.[1];
-      if (monthNum !== undefined) {
-        const year = absMatch[3] ? Number(absMatch[3]) : now.getFullYear();
-        const hours = absMatch[4] ? Number(absMatch[4]) : 0;
-        const minutes = absMatch[5] ? Number(absMatch[5]) : 0;
-        const d = new Date(year, monthNum, day, hours, minutes, 0, 0);
-        // If resulting date is in the future, it belongs to the previous year
-        if (d > now) d.setFullYear(d.getFullYear() - 1);
-        return d;
-      }
-    }
-
-    return undefined;
-  } catch {
-    return undefined;
+  // "только что" / "сейчас"
+  if (/только что|сейчас/.test(s)) {
+    return /только что/.test(s) ? 'только что' : 'сейчас';
   }
+
+  // "X минут(у/ы) назад"
+  const minMatch = s.match(/(\d+)\s*мин[а-я]*\s*назад/);
+  if (minMatch) return minMatch[0].trim();
+
+  // "X час(а/ов) назад"
+  const hourRelMatch = s.match(/(\d+\s*)?час[а-я]*\s*назад/);
+  if (hourRelMatch) return hourRelMatch[0].trim();
+
+  // "сегодня в HH:MM"
+  const todayMatch = s.match(/сегодня\s+в\s+\d{1,2}:\d{2}/);
+  if (todayMatch) return todayMatch[0].trim();
+
+  // "вчера в HH:MM"
+  const yesterdayMatch = s.match(/вчера\s+в\s+\d{1,2}:\d{2}/);
+  if (yesterdayMatch) return yesterdayMatch[0].trim();
+
+  // "D месяц в HH:MM"  e.g. "3 июля в 23:26"
+  const absMatch = s.match(/\d{1,2}\s+[а-яё]+\s+в\s+\d{1,2}:\d{2}/);
+  if (absMatch) return absMatch[0].trim();
+
+  // "D месяц"  e.g. "3 июля" (without time)
+  const absNoTimeMatch = s.match(/\d{1,2}\s+[а-яё]{3,}/);
+  if (absNoTimeMatch) return absNoTimeMatch[0].trim();
+
+  return null;
 }

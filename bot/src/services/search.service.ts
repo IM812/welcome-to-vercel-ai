@@ -4,6 +4,7 @@ import { ListingRepository } from '../repositories/listing.repository';
 import { SubscriptionService } from './subscription.service';
 import { NotificationService } from './notification.service';
 import { ParserFactory } from '../parsers/parser.factory';
+import { AvitoParser } from '../parsers/avito.parser';
 import { withRetry } from '../utils/retry';
 import { parseListingDate, isFreshListing, getListingAgeMinutes } from '../utils/dateParser';
 import { hashListing } from '../utils/hash';
@@ -227,15 +228,27 @@ export class SearchService {
         parsed.externalId ||
         hashListing(parsed.title, parsed.price, parsed.url);
 
-      // 2. Skip if already in DB for this search
+      // 2. Skip if already in DB for this search — do this BEFORE fetching the detail page
       const existing = await this.listingRepo.findByExternalId(search.id, externalId);
       if (existing) {
         logger.debug(`[duplicate-skip] searchId=${search.id} externalId=${externalId}`);
         continue;
       }
 
-      // 3. Resolve raw date and parse it
-      const rawDate: string | null = parsed.rawPublishedAt ?? null;
+      logger.debug(`[avito-new-candidate] externalId=${externalId} url=${parsed.url}`);
+
+      // 3. Resolve raw date:
+      //    For Avito, the category page does not contain reliable dates.
+      //    We open the individual listing page only for NEW externalIds to get
+      //    the exact publication time from "№ XXXXXXX · 3 июля в 23:26 · N просмотров".
+      let rawDate: string | null = parsed.rawPublishedAt ?? null;
+      if (!rawDate && parser instanceof AvitoParser) {
+        rawDate = await parser.fetchListingDate(parsed.url);
+        if (rawDate) {
+          logger.debug(`[avito-details] externalId=${externalId} rawPublishedAt=${rawDate}`);
+        }
+      }
+
       const parsedDate: Date | null = rawDate
         ? parseListingDate(rawDate)
         : (parsed.publishedAt ?? null);
@@ -259,6 +272,7 @@ export class SearchService {
 
         if (skippedReason === 'TOO_OLD') {
           logger.debug(`[old-skip] externalId=${externalId} reason=TOO_OLD`);
+          logger.debug(`[avito-skip-old] externalId=${externalId} ageMinutes=${ageMinutes?.toFixed(2) ?? 'n/a'}`);
         } else {
           logger.debug(`[unknown-date-skip] externalId=${externalId} reason=UNKNOWN_DATE`);
         }
@@ -316,6 +330,7 @@ export class SearchService {
         await this.listingRepo.markNotified(listing.id);
         await this.searchRepo.update(search.id, { lastNewListingAt: new Date() });
         logger.info(`[notification-sent] listingId=${listing.id}`);
+        logger.info(`[avito-send] externalId=${externalId}`);
       }
     }
   }

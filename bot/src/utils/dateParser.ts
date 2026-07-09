@@ -94,10 +94,12 @@ export function parseListingDate(
     if (!isNaN(d.getTime())) return d;
   }
 
-  // ── "D месяц [YYYY] [HH:MM]" e.g. "9 июля в 20:55" / "9 июля 2026 20:55" ──
-  const absMatch = s.match(
-    /(\d{1,2})\s+([а-яё]+)(?:\s+(\d{4}))?(?:(?:\s+в)?\s+(\d{1,2}):(\d{2}))?/,
-  );
+  // ── "D месяц [в] [YYYY] [HH:MM]" ───────────────────────────────────────────
+  // Covers: "3 июля в 23:26", "9 июля 20:55", "27 апреля 2026 21:00", "3 июля"
+  // The optional literal "в" between month and time is stripped before matching.
+  const absMatch = s
+    .replace(/\bв\b/, '') // remove standalone "в" so regex stays uniform
+    .match(/(\d{1,2})\s+([а-яё]+)(?:\s+(\d{4}))?(?:\s+(\d{1,2}):(\d{2}))?/);
   if (absMatch) {
     const day = Number(absMatch[1]);
     const monthKey = Object.keys(MONTHS).find((k) => absMatch[2].startsWith(k));
