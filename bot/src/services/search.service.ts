@@ -275,27 +275,24 @@ export class SearchService {
         `[date-parse] raw=${rawDate ?? 'null'} parsed=${parsedDate?.toISOString() ?? 'null'}`,
       );
 
-      // 4. Baseline-cutoff rule — the ONLY rule that matters:
+      // 4. Baseline-cutoff rule:
       //
-      //   Send the listing if and only if its publication date is AFTER the
-      //   moment the user added this search (baselineInitializedAt).
+      //   The only listings we SKIP are ones where we have a confirmed date
+      //   that is provably older than when the user added this search.
       //
-      //   • parsedDate exists AND parsedDate >= baselineAt  → send
-      //   • parsedDate exists AND parsedDate <  baselineAt  → skip (old listing)
-      //   • parsedDate is null (Avito hid the date)         → skip
-      //     The user said "I don't want old listings at all". If we cannot
-      //     confirm the listing is newer than the search was added, we do not
-      //     send it. A truly fresh listing will have a parseable date within
-      //     minutes of being posted.
+      //   • parsedDate exists AND parsedDate < baselineAt  → skip (confirmed old)
+      //   • parsedDate exists AND parsedDate >= baselineAt → send
+      //   • parsedDate is null (Avito didn't expose the date) → SEND
+      //     A new externalId appearing in the feed means the listing just
+      //     entered the results page — that alone is a freshness signal.
+      //     We only have hard evidence of staleness when we actually parsed
+      //     a date that predates the search creation.
       const cutoff = baselineAt as Date;
 
       let shouldSend: boolean;
       let skippedReason: string | null;
 
-      if (!parsedDate) {
-        shouldSend = false;
-        skippedReason = 'UNKNOWN_DATE';
-      } else if (parsedDate < cutoff) {
+      if (parsedDate && parsedDate < cutoff) {
         shouldSend = false;
         skippedReason = 'TOO_OLD';
       } else {

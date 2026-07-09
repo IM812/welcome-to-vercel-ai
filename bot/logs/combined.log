@@ -2894,3 +2894,1002 @@ The column `Listing.rawPublishedAt` does not exist in the current database.
 2026-07-09 19:19:29 [[34mdebug[39m]: [date-parse] raw=30 июня в 11:44 parsed=2026-06-30T08:44:00.000Z
 2026-07-09 19:19:29 [[34mdebug[39m]: [cutoff-check] externalId=7241516367 publishedAt=2026-06-30T08:44:00.000Z cutoff=2026-07-09T18:02:37.766Z send=false reason=TOO_OLD
 2026-07-09 19:19:29 [[34mdebug[39m]: [old-skip] externalId=7241516367 publishedAt=2026-06-30T08:44:00.000Z
+2026-07-09 19:19:40 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104677552
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8158761623
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249226242
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249520395
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8261044979
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174450667
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249198946
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104464564
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248886980
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249024624
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249502649
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8166389716
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8275209199
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8186009574
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8155364488
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301654312
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8246238834
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301144329
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8156581818
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104731124
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301706065
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8207310510
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301485432
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301369903
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248985066
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249142106
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174176305
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301128238
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249493752
+2026-07-09 19:19:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248944445
+2026-07-09 19:19:43 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8096198556
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=2784965793
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7648168131
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8179445553
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8223024860
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7966763474
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8027134708
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8176401528
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8261808470
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301297627
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8287362555
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207118367
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216446928
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8300980990
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8257259298
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8145908138
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275262758
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8148570802
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156270563
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301132987
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301592132
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146175207
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301587144
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146256486
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8108412490
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301508305
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301061789
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8167736839
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8181326981
+2026-07-09 19:19:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8181348876
+2026-07-09 19:19:54 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:19:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104677552
+2026-07-09 19:19:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8158761623
+2026-07-09 19:19:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249226242
+2026-07-09 19:19:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249520395
+2026-07-09 19:19:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8261044979
+2026-07-09 19:19:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174450667
+2026-07-09 19:19:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249198946
+2026-07-09 19:19:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104464564
+2026-07-09 19:19:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248886980
+2026-07-09 19:19:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249024624
+2026-07-09 19:19:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249502649
+2026-07-09 19:19:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8166389716
+2026-07-09 19:19:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8275209199
+2026-07-09 19:19:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8186009574
+2026-07-09 19:19:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8155364488
+2026-07-09 19:19:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301654312
+2026-07-09 19:19:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8246238834
+2026-07-09 19:19:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301144329
+2026-07-09 19:19:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8156581818
+2026-07-09 19:19:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104731124
+2026-07-09 19:19:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301706065
+2026-07-09 19:19:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8207310510
+2026-07-09 19:19:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301485432
+2026-07-09 19:19:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301369903
+2026-07-09 19:19:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248985066
+2026-07-09 19:19:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249142106
+2026-07-09 19:19:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174176305
+2026-07-09 19:19:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301128238
+2026-07-09 19:19:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249493752
+2026-07-09 19:19:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248944445
+2026-07-09 19:19:57 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:19:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8096198556
+2026-07-09 19:19:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=2784965793
+2026-07-09 19:19:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7648168131
+2026-07-09 19:19:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8179445553
+2026-07-09 19:19:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8223024860
+2026-07-09 19:19:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7966763474
+2026-07-09 19:19:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8027134708
+2026-07-09 19:19:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301508305
+2026-07-09 19:19:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8176440813
+2026-07-09 19:19:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8145897343
+2026-07-09 19:19:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275003908
+2026-07-09 19:19:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301113238
+2026-07-09 19:19:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301061789
+2026-07-09 19:19:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146673947
+2026-07-09 19:19:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8257093545
+2026-07-09 19:19:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8181326981
+2026-07-09 19:19:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156181039
+2026-07-09 19:19:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301608613
+2026-07-09 19:19:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8181082690
+2026-07-09 19:19:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8108108511
+2026-07-09 19:19:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146729813
+2026-07-09 19:19:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301318257
+2026-07-09 19:19:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8300980990
+2026-07-09 19:19:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275262758
+2026-07-09 19:19:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301007516
+2026-07-09 19:19:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8176333892
+2026-07-09 19:19:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146477997
+2026-07-09 19:19:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301146385
+2026-07-09 19:19:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8145908138
+2026-07-09 19:19:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8257602808
+2026-07-09 19:20:09 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:20:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104677552
+2026-07-09 19:20:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8158761623
+2026-07-09 19:20:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249226242
+2026-07-09 19:20:09 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249520395
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8261044979
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174450667
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249198946
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104464564
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248886980
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249024624
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249502649
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8166389716
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8275209199
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8186009574
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8155364488
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301654312
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8246238834
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301144329
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8156581818
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104731124
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301706065
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8207310510
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301485432
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301369903
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248985066
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249142106
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174176305
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301128238
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249493752
+2026-07-09 19:20:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248944445
+2026-07-09 19:20:12 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8096198556
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207167091
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=2784965793
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7648168131
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8189069267
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7418073769
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8179445553
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146729813
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8257602808
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8176440813
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8108412490
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207503665
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8167736839
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8108108511
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207597049
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301508305
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8145897343
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207458384
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8274928212
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275003908
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146175207
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301297627
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156270563
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8157936630
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301007516
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146477997
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146256486
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301182706
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207118367
+2026-07-09 19:20:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8166934259
+2026-07-09 19:20:24 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:20:24 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=3753587236
+2026-07-09 19:20:24 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=8134699622
+2026-07-09 19:20:24 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=8055735047
+2026-07-09 19:20:25 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=7924194781
+2026-07-09 19:20:25 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=7304072240
+2026-07-09 19:20:25 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=8214878882
+2026-07-09 19:20:25 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=7831767846
+2026-07-09 19:20:25 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=7966884845
+2026-07-09 19:20:25 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=8185492568
+2026-07-09 19:20:25 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=8009457760
+2026-07-09 19:20:25 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=7703508384
+2026-07-09 19:20:25 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=8140908874
+2026-07-09 19:20:25 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=8054912245
+2026-07-09 19:20:25 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=8023378690
+2026-07-09 19:20:25 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=8185236641
+2026-07-09 19:20:25 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=8141514922
+2026-07-09 19:20:25 [[34mdebug[39m]: [new-candidates] searchId=3 count=14
+2026-07-09 19:20:25 [[33mwarn[39m]: AxiosError: Request failed with status code 403
+    at settle (/vercel/share/v0-project/bot/node_modules/axios/dist/node/axios.cjs:2216:12)
+    at Unzip.handleStreamEnd (/vercel/share/v0-project/bot/node_modules/axios/dist/node/axios.cjs:4062:11)
+    at Unzip.emit (node:events:508:28)
+    at endReadableNT (node:internal/streams/readable:1729:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+    at Axios.request (/vercel/share/v0-project/bot/node_modules/axios/dist/node/axios.cjs:5517:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async AvitoParser.fetchListingDate (/vercel/share/v0-project/bot/src/parsers/avito.parser.ts:114:24)
+    at async <anonymous> (/vercel/share/v0-project/bot/src/services/search.service.ts:250:21)
+    at async Promise.all (index 10)
+    at async SearchService.checkSearchForNewListings (/vercel/share/v0-project/bot/src/services/search.service.ts:246:35)
+    at async CheckerCron.processSearch (/vercel/share/v0-project/bot/src/cron/checker.cron.ts:85:7)
+    at async CheckerCron.run (/vercel/share/v0-project/bot/src/cron/checker.cron.ts:76:7)
+2026-07-09 19:20:25 [[34mdebug[39m]: [avito-details-fallback] externalId=7240271369 raw="null"
+2026-07-09 19:20:25 [[34mdebug[39m]: [date-parse] externalId=7240271369 raw="null" parsed=null
+2026-07-09 19:20:25 [[33mwarn[39m]: AxiosError: Request failed with status code 403
+    at settle (/vercel/share/v0-project/bot/node_modules/axios/dist/node/axios.cjs:2216:12)
+    at Unzip.handleStreamEnd (/vercel/share/v0-project/bot/node_modules/axios/dist/node/axios.cjs:4062:11)
+    at Unzip.emit (node:events:508:28)
+    at endReadableNT (node:internal/streams/readable:1729:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+    at Axios.request (/vercel/share/v0-project/bot/node_modules/axios/dist/node/axios.cjs:5517:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async AvitoParser.fetchListingDate (/vercel/share/v0-project/bot/src/parsers/avito.parser.ts:114:24)
+    at async <anonymous> (/vercel/share/v0-project/bot/src/services/search.service.ts:250:21)
+    at async Promise.all (index 6)
+    at async SearchService.checkSearchForNewListings (/vercel/share/v0-project/bot/src/services/search.service.ts:246:35)
+    at async CheckerCron.processSearch (/vercel/share/v0-project/bot/src/cron/checker.cron.ts:85:7)
+    at async CheckerCron.run (/vercel/share/v0-project/bot/src/cron/checker.cron.ts:76:7)
+2026-07-09 19:20:25 [[34mdebug[39m]: [avito-details-fallback] externalId=8036187497 raw="null"
+2026-07-09 19:20:25 [[34mdebug[39m]: [date-parse] externalId=8036187497 raw="null" parsed=null
+2026-07-09 19:20:25 [[34mdebug[39m]: [avito-details] externalId=8121254556 rawPublishedAt="14 июня в 14:26"
+2026-07-09 19:20:25 [[34mdebug[39m]: [date-parse] externalId=8121254556 raw="14 июня в 14:26" parsed=2026-06-14T11:26:00.000Z
+2026-07-09 19:20:25 [[34mdebug[39m]: [avito-details] externalId=7906857802 rawPublishedAt="5 июля в 12:12"
+2026-07-09 19:20:25 [[34mdebug[39m]: [date-parse] externalId=7906857802 raw="5 июля в 12:12" parsed=2026-07-05T09:12:00.000Z
+2026-07-09 19:20:26 [[34mdebug[39m]: [avito-details] externalId=7752438598 rawPublishedAt="сейчас"
+2026-07-09 19:20:26 [[34mdebug[39m]: [date-parse] externalId=7752438598 raw="сейчас" parsed=2026-07-09T19:20:26.038Z
+2026-07-09 19:20:26 [[34mdebug[39m]: [avito-details] externalId=7940395602 rawPublishedAt="16 июня в 12:36"
+2026-07-09 19:20:26 [[34mdebug[39m]: [date-parse] externalId=7940395602 raw="16 июня в 12:36" parsed=2026-06-16T09:36:00.000Z
+2026-07-09 19:20:26 [[34mdebug[39m]: [avito-details] externalId=7304777055 rawPublishedAt="сейчас"
+2026-07-09 19:20:26 [[34mdebug[39m]: [date-parse] externalId=7304777055 raw="сейчас" parsed=2026-07-09T19:20:26.164Z
+2026-07-09 19:20:26 [[34mdebug[39m]: [avito-details] externalId=7970284680 rawPublishedAt="5 июля в 17:22"
+2026-07-09 19:20:26 [[34mdebug[39m]: [date-parse] externalId=7970284680 raw="5 июля в 17:22" parsed=2026-07-05T14:22:00.000Z
+2026-07-09 19:20:26 [[34mdebug[39m]: [avito-details] externalId=7240435579 rawPublishedAt="сейчас"
+2026-07-09 19:20:26 [[34mdebug[39m]: [date-parse] externalId=7240435579 raw="сейчас" parsed=2026-07-09T19:20:26.327Z
+2026-07-09 19:20:26 [[34mdebug[39m]: [avito-details] externalId=7654944715 rawPublishedAt="18 июня в 12:27"
+2026-07-09 19:20:26 [[34mdebug[39m]: [date-parse] externalId=7654944715 raw="18 июня в 12:27" parsed=2026-06-18T09:27:00.000Z
+2026-07-09 19:20:26 [[34mdebug[39m]: [avito-details] externalId=4616487259 rawPublishedAt="сейчас"
+2026-07-09 19:20:26 [[34mdebug[39m]: [date-parse] externalId=4616487259 raw="сейчас" parsed=2026-07-09T19:20:26.441Z
+2026-07-09 19:20:26 [[34mdebug[39m]: [avito-details] externalId=4584557227 rawPublishedAt="13 июня в 22:22"
+2026-07-09 19:20:26 [[34mdebug[39m]: [date-parse] externalId=4584557227 raw="13 июня в 22:22" parsed=2026-06-13T19:22:00.000Z
+2026-07-09 19:20:26 [[34mdebug[39m]: [avito-details] externalId=8132391520 rawPublishedAt="16 июня в 11:56"
+2026-07-09 19:20:26 [[34mdebug[39m]: [date-parse] externalId=8132391520 raw="16 июня в 11:56" parsed=2026-06-16T08:56:00.000Z
+2026-07-09 19:20:26 [[34mdebug[39m]: [avito-details] externalId=7906454251 rawPublishedAt="14 июня в 13:39"
+2026-07-09 19:20:26 [[34mdebug[39m]: [date-parse] externalId=7906454251 raw="14 июня в 13:39" parsed=2026-06-14T10:39:00.000Z
+2026-07-09 19:20:26 [[34mdebug[39m]: [date-parse] raw=5 июля в 12:12 parsed=2026-07-05T09:12:00.000Z
+2026-07-09 19:20:26 [[34mdebug[39m]: [cutoff-check] externalId=7906857802 publishedAt=2026-07-05T09:12:00.000Z cutoff=2026-07-09T18:02:02.245Z send=false reason=TOO_OLD
+2026-07-09 19:20:26 [[34mdebug[39m]: [old-skip] externalId=7906857802 publishedAt=2026-07-05T09:12:00.000Z
+2026-07-09 19:20:26 [[34mdebug[39m]: [date-parse] raw=14 июня в 13:39 parsed=2026-06-14T10:39:00.000Z
+2026-07-09 19:20:26 [[34mdebug[39m]: [cutoff-check] externalId=7906454251 publishedAt=2026-06-14T10:39:00.000Z cutoff=2026-07-09T18:02:02.245Z send=false reason=TOO_OLD
+2026-07-09 19:20:26 [[34mdebug[39m]: [old-skip] externalId=7906454251 publishedAt=2026-06-14T10:39:00.000Z
+2026-07-09 19:20:26 [[34mdebug[39m]: [date-parse] raw=14 июня в 14:26 parsed=2026-06-14T11:26:00.000Z
+2026-07-09 19:20:26 [[34mdebug[39m]: [cutoff-check] externalId=8121254556 publishedAt=2026-06-14T11:26:00.000Z cutoff=2026-07-09T18:02:02.245Z send=false reason=TOO_OLD
+2026-07-09 19:20:26 [[34mdebug[39m]: [old-skip] externalId=8121254556 publishedAt=2026-06-14T11:26:00.000Z
+2026-07-09 19:20:26 [[34mdebug[39m]: [date-parse] raw=13 июня в 22:22 parsed=2026-06-13T19:22:00.000Z
+2026-07-09 19:20:26 [[34mdebug[39m]: [cutoff-check] externalId=4584557227 publishedAt=2026-06-13T19:22:00.000Z cutoff=2026-07-09T18:02:02.245Z send=false reason=TOO_OLD
+2026-07-09 19:20:26 [[34mdebug[39m]: [old-skip] externalId=4584557227 publishedAt=2026-06-13T19:22:00.000Z
+2026-07-09 19:20:27 [[34mdebug[39m]: [date-parse] raw=16 июня в 11:56 parsed=2026-06-16T08:56:00.000Z
+2026-07-09 19:20:27 [[34mdebug[39m]: [cutoff-check] externalId=8132391520 publishedAt=2026-06-16T08:56:00.000Z cutoff=2026-07-09T18:02:02.245Z send=false reason=TOO_OLD
+2026-07-09 19:20:27 [[34mdebug[39m]: [old-skip] externalId=8132391520 publishedAt=2026-06-16T08:56:00.000Z
+2026-07-09 19:20:27 [[34mdebug[39m]: [date-parse] raw=сейчас parsed=2026-07-09T19:20:26.038Z
+2026-07-09 19:20:27 [[34mdebug[39m]: [cutoff-check] externalId=7752438598 publishedAt=2026-07-09T19:20:26.038Z cutoff=2026-07-09T18:02:02.245Z send=true reason=ok
+2026-07-09 19:20:27 [[32minfo[39m]: [notification-sent] listingId=806
+2026-07-09 19:20:27 [[32minfo[39m]: [avito-send] externalId=7752438598
+2026-07-09 19:20:27 [[34mdebug[39m]: [date-parse] raw=null parsed=null
+2026-07-09 19:20:27 [[34mdebug[39m]: [cutoff-check] externalId=8036187497 publishedAt=null cutoff=2026-07-09T18:02:02.245Z send=false reason=UNKNOWN_DATE
+2026-07-09 19:20:27 [[34mdebug[39m]: [unknown-date-skip] externalId=8036187497
+2026-07-09 19:20:27 [[34mdebug[39m]: [date-parse] raw=сейчас parsed=2026-07-09T19:20:26.327Z
+2026-07-09 19:20:27 [[34mdebug[39m]: [cutoff-check] externalId=7240435579 publishedAt=2026-07-09T19:20:26.327Z cutoff=2026-07-09T18:02:02.245Z send=true reason=ok
+2026-07-09 19:20:28 [[32minfo[39m]: [notification-sent] listingId=808
+2026-07-09 19:20:28 [[32minfo[39m]: [avito-send] externalId=7240435579
+2026-07-09 19:20:28 [[34mdebug[39m]: [date-parse] raw=18 июня в 12:27 parsed=2026-06-18T09:27:00.000Z
+2026-07-09 19:20:28 [[34mdebug[39m]: [cutoff-check] externalId=7654944715 publishedAt=2026-06-18T09:27:00.000Z cutoff=2026-07-09T18:02:02.245Z send=false reason=TOO_OLD
+2026-07-09 19:20:28 [[34mdebug[39m]: [old-skip] externalId=7654944715 publishedAt=2026-06-18T09:27:00.000Z
+2026-07-09 19:20:28 [[34mdebug[39m]: [date-parse] raw=сейчас parsed=2026-07-09T19:20:26.164Z
+2026-07-09 19:20:28 [[34mdebug[39m]: [cutoff-check] externalId=7304777055 publishedAt=2026-07-09T19:20:26.164Z cutoff=2026-07-09T18:02:02.245Z send=true reason=ok
+2026-07-09 19:20:28 [[32minfo[39m]: [notification-sent] listingId=810
+2026-07-09 19:20:28 [[32minfo[39m]: [avito-send] externalId=7304777055
+2026-07-09 19:20:28 [[34mdebug[39m]: [date-parse] raw=null parsed=null
+2026-07-09 19:20:28 [[34mdebug[39m]: [cutoff-check] externalId=7240271369 publishedAt=null cutoff=2026-07-09T18:02:02.245Z send=false reason=UNKNOWN_DATE
+2026-07-09 19:20:28 [[34mdebug[39m]: [unknown-date-skip] externalId=7240271369
+2026-07-09 19:20:28 [[34mdebug[39m]: [date-parse] raw=сейчас parsed=2026-07-09T19:20:26.441Z
+2026-07-09 19:20:28 [[34mdebug[39m]: [cutoff-check] externalId=4616487259 publishedAt=2026-07-09T19:20:26.441Z cutoff=2026-07-09T18:02:02.245Z send=true reason=ok
+2026-07-09 19:20:29 [[32minfo[39m]: [notification-sent] listingId=812
+2026-07-09 19:20:29 [[32minfo[39m]: [avito-send] externalId=4616487259
+2026-07-09 19:20:29 [[34mdebug[39m]: [date-parse] raw=16 июня в 12:36 parsed=2026-06-16T09:36:00.000Z
+2026-07-09 19:20:29 [[34mdebug[39m]: [cutoff-check] externalId=7940395602 publishedAt=2026-06-16T09:36:00.000Z cutoff=2026-07-09T18:02:02.245Z send=false reason=TOO_OLD
+2026-07-09 19:20:29 [[34mdebug[39m]: [old-skip] externalId=7940395602 publishedAt=2026-06-16T09:36:00.000Z
+2026-07-09 19:20:29 [[34mdebug[39m]: [date-parse] raw=5 июля в 17:22 parsed=2026-07-05T14:22:00.000Z
+2026-07-09 19:20:29 [[34mdebug[39m]: [cutoff-check] externalId=7970284680 publishedAt=2026-07-05T14:22:00.000Z cutoff=2026-07-09T18:02:02.245Z send=false reason=TOO_OLD
+2026-07-09 19:20:29 [[34mdebug[39m]: [old-skip] externalId=7970284680 publishedAt=2026-07-05T14:22:00.000Z
+2026-07-09 19:20:31 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104677552
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8158761623
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249226242
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249520395
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8261044979
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174450667
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249198946
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104464564
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248886980
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249024624
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249502649
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8166389716
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8275209199
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8186009574
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8155364488
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301654312
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8246238834
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301144329
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8156581818
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104731124
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301706065
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8207310510
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301485432
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301369903
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248985066
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249142106
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174176305
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301128238
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249493752
+2026-07-09 19:20:31 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248944445
+2026-07-09 19:20:35 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8096198556
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207167091
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=2784965793
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8189069267
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7648168131
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7418073769
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8179445553
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8108849500
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8108412490
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8257602808
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301397375
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8257057780
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8167736839
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216526142
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301132987
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301061789
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301113238
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207503665
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156308244
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275377171
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8274928212
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8257093545
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146477997
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301146385
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207118367
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216446928
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8245924593
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8166934259
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216717160
+2026-07-09 19:20:35 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8257259298
+2026-07-09 19:20:40 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:20:40 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=8134699622
+2026-07-09 19:20:40 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=3753587236
+2026-07-09 19:20:40 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=8121254556
+2026-07-09 19:20:40 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=7906857802
+2026-07-09 19:20:40 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=8055735047
+2026-07-09 19:20:40 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=7970284680
+2026-07-09 19:20:40 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=8185492568
+2026-07-09 19:20:40 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=7924194781
+2026-07-09 19:20:40 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=7654944715
+2026-07-09 19:20:40 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=7304072240
+2026-07-09 19:20:40 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=7940395602
+2026-07-09 19:20:40 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=8036187497
+2026-07-09 19:20:40 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=4584557227
+2026-07-09 19:20:40 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=7966884845
+2026-07-09 19:20:40 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=8214878882
+2026-07-09 19:20:40 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=7879228089
+2026-07-09 19:20:40 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=8185487295
+2026-07-09 19:20:40 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=8132391520
+2026-07-09 19:20:40 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=8009457760
+2026-07-09 19:20:40 [[34mdebug[39m]: [duplicate-skip] searchId=3 externalId=8100027744
+2026-07-09 19:20:40 [[34mdebug[39m]: [new-candidates] searchId=3 count=10
+2026-07-09 19:20:40 [[33mwarn[39m]: AxiosError: Request failed with status code 403
+    at settle (/vercel/share/v0-project/bot/node_modules/axios/dist/node/axios.cjs:2216:12)
+    at Unzip.handleStreamEnd (/vercel/share/v0-project/bot/node_modules/axios/dist/node/axios.cjs:4062:11)
+    at Unzip.emit (node:events:508:28)
+    at endReadableNT (node:internal/streams/readable:1729:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+    at Axios.request (/vercel/share/v0-project/bot/node_modules/axios/dist/node/axios.cjs:5517:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async AvitoParser.fetchListingDate (/vercel/share/v0-project/bot/src/parsers/avito.parser.ts:114:24)
+    at async <anonymous> (/vercel/share/v0-project/bot/src/services/search.service.ts:250:21)
+    at async Promise.all (index 3)
+    at async SearchService.checkSearchForNewListings (/vercel/share/v0-project/bot/src/services/search.service.ts:246:35)
+    at async CheckerCron.processSearch (/vercel/share/v0-project/bot/src/cron/checker.cron.ts:85:7)
+    at async CheckerCron.run (/vercel/share/v0-project/bot/src/cron/checker.cron.ts:76:7)
+2026-07-09 19:20:40 [[34mdebug[39m]: [avito-details-fallback] externalId=8132518863 raw="null"
+2026-07-09 19:20:40 [[34mdebug[39m]: [date-parse] externalId=8132518863 raw="null" parsed=null
+2026-07-09 19:20:41 [[34mdebug[39m]: [avito-details] externalId=7957483253 rawPublishedAt="17 июня в 19:46"
+2026-07-09 19:20:41 [[34mdebug[39m]: [date-parse] externalId=7957483253 raw="17 июня в 19:46" parsed=2026-06-17T16:46:00.000Z
+2026-07-09 19:20:41 [[34mdebug[39m]: [avito-details] externalId=8121873903 rawPublishedAt="13 июня в 12:24"
+2026-07-09 19:20:41 [[34mdebug[39m]: [date-parse] externalId=8121873903 raw="13 июня в 12:24" parsed=2026-06-13T09:24:00.000Z
+2026-07-09 19:20:41 [[34mdebug[39m]: [avito-details] externalId=8141875480 rawPublishedAt="15 июня в 03:35"
+2026-07-09 19:20:41 [[34mdebug[39m]: [date-parse] externalId=8141875480 raw="15 июня в 03:35" parsed=2026-06-15T00:35:00.000Z
+2026-07-09 19:20:41 [[34mdebug[39m]: [avito-details] externalId=8217603302 rawPublishedAt="16 июня в 13:19"
+2026-07-09 19:20:41 [[34mdebug[39m]: [date-parse] externalId=8217603302 raw="16 июня в 13:19" parsed=2026-06-16T10:19:00.000Z
+2026-07-09 19:20:41 [[34mdebug[39m]: [avito-details] externalId=8095257302 rawPublishedAt="20 июня в 14:04"
+2026-07-09 19:20:41 [[34mdebug[39m]: [date-parse] externalId=8095257302 raw="20 июня в 14:04" parsed=2026-06-20T11:04:00.000Z
+2026-07-09 19:20:41 [[34mdebug[39m]: [avito-details] externalId=7908153552 rawPublishedAt="19 июня в 10:47"
+2026-07-09 19:20:41 [[34mdebug[39m]: [date-parse] externalId=7908153552 raw="19 июня в 10:47" parsed=2026-06-19T07:47:00.000Z
+2026-07-09 19:20:41 [[34mdebug[39m]: [avito-details] externalId=8100254539 rawPublishedAt="13 июня в 11:56"
+2026-07-09 19:20:41 [[34mdebug[39m]: [date-parse] externalId=8100254539 raw="13 июня в 11:56" parsed=2026-06-13T08:56:00.000Z
+2026-07-09 19:20:41 [[34mdebug[39m]: [avito-details] externalId=7711773196 rawPublishedAt="27 июня в 11:10"
+2026-07-09 19:20:41 [[34mdebug[39m]: [date-parse] externalId=7711773196 raw="27 июня в 11:10" parsed=2026-06-27T08:10:00.000Z
+2026-07-09 19:20:41 [[34mdebug[39m]: [avito-details] externalId=8141585714 rawPublishedAt="15 июня в 03:35"
+2026-07-09 19:20:41 [[34mdebug[39m]: [date-parse] externalId=8141585714 raw="15 июня в 03:35" parsed=2026-06-15T00:35:00.000Z
+2026-07-09 19:20:41 [[34mdebug[39m]: [date-parse] raw=15 июня в 03:35 parsed=2026-06-15T00:35:00.000Z
+2026-07-09 19:20:41 [[34mdebug[39m]: [cutoff-check] externalId=8141875480 publishedAt=2026-06-15T00:35:00.000Z cutoff=2026-07-09T18:02:02.245Z send=false reason=TOO_OLD
+2026-07-09 19:20:41 [[34mdebug[39m]: [old-skip] externalId=8141875480 publishedAt=2026-06-15T00:35:00.000Z
+2026-07-09 19:20:42 [[34mdebug[39m]: [date-parse] raw=15 июня в 03:35 parsed=2026-06-15T00:35:00.000Z
+2026-07-09 19:20:42 [[34mdebug[39m]: [cutoff-check] externalId=8141585714 publishedAt=2026-06-15T00:35:00.000Z cutoff=2026-07-09T18:02:02.245Z send=false reason=TOO_OLD
+2026-07-09 19:20:42 [[34mdebug[39m]: [old-skip] externalId=8141585714 publishedAt=2026-06-15T00:35:00.000Z
+2026-07-09 19:20:42 [[34mdebug[39m]: [date-parse] raw=13 июня в 11:56 parsed=2026-06-13T08:56:00.000Z
+2026-07-09 19:20:42 [[34mdebug[39m]: [cutoff-check] externalId=8100254539 publishedAt=2026-06-13T08:56:00.000Z cutoff=2026-07-09T18:02:02.245Z send=false reason=TOO_OLD
+2026-07-09 19:20:42 [[34mdebug[39m]: [old-skip] externalId=8100254539 publishedAt=2026-06-13T08:56:00.000Z
+2026-07-09 19:20:42 [[34mdebug[39m]: [date-parse] raw=null parsed=null
+2026-07-09 19:20:42 [[34mdebug[39m]: [cutoff-check] externalId=8132518863 publishedAt=null cutoff=2026-07-09T18:02:02.245Z send=false reason=UNKNOWN_DATE
+2026-07-09 19:20:42 [[34mdebug[39m]: [unknown-date-skip] externalId=8132518863
+2026-07-09 19:20:42 [[34mdebug[39m]: [date-parse] raw=17 июня в 19:46 parsed=2026-06-17T16:46:00.000Z
+2026-07-09 19:20:42 [[34mdebug[39m]: [cutoff-check] externalId=7957483253 publishedAt=2026-06-17T16:46:00.000Z cutoff=2026-07-09T18:02:02.245Z send=false reason=TOO_OLD
+2026-07-09 19:20:42 [[34mdebug[39m]: [old-skip] externalId=7957483253 publishedAt=2026-06-17T16:46:00.000Z
+2026-07-09 19:20:42 [[34mdebug[39m]: [date-parse] raw=27 июня в 11:10 parsed=2026-06-27T08:10:00.000Z
+2026-07-09 19:20:42 [[34mdebug[39m]: [cutoff-check] externalId=7711773196 publishedAt=2026-06-27T08:10:00.000Z cutoff=2026-07-09T18:02:02.245Z send=false reason=TOO_OLD
+2026-07-09 19:20:42 [[34mdebug[39m]: [old-skip] externalId=7711773196 publishedAt=2026-06-27T08:10:00.000Z
+2026-07-09 19:20:42 [[34mdebug[39m]: [date-parse] raw=13 июня в 12:24 parsed=2026-06-13T09:24:00.000Z
+2026-07-09 19:20:42 [[34mdebug[39m]: [cutoff-check] externalId=8121873903 publishedAt=2026-06-13T09:24:00.000Z cutoff=2026-07-09T18:02:02.245Z send=false reason=TOO_OLD
+2026-07-09 19:20:42 [[34mdebug[39m]: [old-skip] externalId=8121873903 publishedAt=2026-06-13T09:24:00.000Z
+2026-07-09 19:20:42 [[34mdebug[39m]: [date-parse] raw=20 июня в 14:04 parsed=2026-06-20T11:04:00.000Z
+2026-07-09 19:20:42 [[34mdebug[39m]: [cutoff-check] externalId=8095257302 publishedAt=2026-06-20T11:04:00.000Z cutoff=2026-07-09T18:02:02.245Z send=false reason=TOO_OLD
+2026-07-09 19:20:42 [[34mdebug[39m]: [old-skip] externalId=8095257302 publishedAt=2026-06-20T11:04:00.000Z
+2026-07-09 19:20:42 [[34mdebug[39m]: [date-parse] raw=16 июня в 13:19 parsed=2026-06-16T10:19:00.000Z
+2026-07-09 19:20:42 [[34mdebug[39m]: [cutoff-check] externalId=8217603302 publishedAt=2026-06-16T10:19:00.000Z cutoff=2026-07-09T18:02:02.245Z send=false reason=TOO_OLD
+2026-07-09 19:20:42 [[34mdebug[39m]: [old-skip] externalId=8217603302 publishedAt=2026-06-16T10:19:00.000Z
+2026-07-09 19:20:42 [[34mdebug[39m]: [date-parse] raw=19 июня в 10:47 parsed=2026-06-19T07:47:00.000Z
+2026-07-09 19:20:42 [[34mdebug[39m]: [cutoff-check] externalId=7908153552 publishedAt=2026-06-19T07:47:00.000Z cutoff=2026-07-09T18:02:02.245Z send=false reason=TOO_OLD
+2026-07-09 19:20:42 [[34mdebug[39m]: [old-skip] externalId=7908153552 publishedAt=2026-06-19T07:47:00.000Z
+2026-07-09 19:20:44 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:20:44 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104677552
+2026-07-09 19:20:44 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8158761623
+2026-07-09 19:20:44 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249226242
+2026-07-09 19:20:44 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249520395
+2026-07-09 19:20:44 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8261044979
+2026-07-09 19:20:44 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174450667
+2026-07-09 19:20:44 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249198946
+2026-07-09 19:20:44 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104464564
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248886980
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249024624
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249502649
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8166389716
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8275209199
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8186009574
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8155364488
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301654312
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8246238834
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301144329
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8156581818
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104731124
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301706065
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8207310510
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301485432
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301369903
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248985066
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249142106
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174176305
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301128238
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249493752
+2026-07-09 19:20:45 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248944445
+2026-07-09 19:20:49 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:20:49 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8096198556
+2026-07-09 19:20:49 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=2784965793
+2026-07-09 19:20:49 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7648168131
+2026-07-09 19:20:49 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8179445553
+2026-07-09 19:20:49 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8223024860
+2026-07-09 19:20:49 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8006536681
+2026-07-09 19:20:49 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7241516367
+2026-07-09 19:20:49 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8123905023
+2026-07-09 19:20:49 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207458384
+2026-07-09 19:20:49 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8189132560
+2026-07-09 19:20:49 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301575168
+2026-07-09 19:20:50 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8176401528
+2026-07-09 19:20:50 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8145897343
+2026-07-09 19:20:50 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301132987
+2026-07-09 19:20:50 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8176440813
+2026-07-09 19:20:50 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8148570802
+2026-07-09 19:20:50 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156308244
+2026-07-09 19:20:50 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275262758
+2026-07-09 19:20:50 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275197529
+2026-07-09 19:20:50 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8108849500
+2026-07-09 19:20:50 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275313250
+2026-07-09 19:20:50 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146729813
+2026-07-09 19:20:50 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8261808470
+2026-07-09 19:20:50 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301318257
+2026-07-09 19:20:50 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275377171
+2026-07-09 19:20:50 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216786860
+2026-07-09 19:20:50 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146175207
+2026-07-09 19:20:50 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8180985659
+2026-07-09 19:20:50 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301328857
+2026-07-09 19:20:50 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8233245612
+2026-07-09 19:20:55 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104677552
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8158761623
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249226242
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249520395
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8261044979
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174450667
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249198946
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104464564
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248886980
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249024624
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249502649
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8166389716
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8275209199
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8186009574
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8155364488
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301654312
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8246238834
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301144329
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8156581818
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104731124
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301706065
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8207310510
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301485432
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301369903
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248985066
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249142106
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174176305
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301128238
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249493752
+2026-07-09 19:20:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248944445
+2026-07-09 19:21:00 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207167091
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8096198556
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=2784965793
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8189069267
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7648168131
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8214820266
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7418073769
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216397843
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8300980990
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8155902726
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8167736839
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8287667100
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8206955645
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146477997
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207728728
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156130875
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301608613
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8181415058
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8176333892
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8181082690
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8145908138
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156181039
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8257259298
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8189629322
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8261808470
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216074459
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8274928212
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156542738
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8167816473
+2026-07-09 19:21:00 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8233816078
+2026-07-09 19:21:10 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104677552
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8158761623
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249226242
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249520395
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8261044979
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174450667
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249198946
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104464564
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248886980
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249024624
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249502649
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8166389716
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8275209199
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8186009574
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8155364488
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301654312
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8246238834
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301144329
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8156581818
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104731124
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301706065
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8207310510
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301485432
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301369903
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248985066
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249142106
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174176305
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301128238
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249493752
+2026-07-09 19:21:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248944445
+2026-07-09 19:21:13 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7797979847
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8223024860
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7648168131
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8179445553
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8189797118
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8167258345
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275313250
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8145908138
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301645776
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216786860
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8167816473
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8157936630
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8257602808
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275516026
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8167736839
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8148570802
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8176333892
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8180985659
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8166934259
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8206955645
+2026-07-09 19:21:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216446928
+2026-07-09 19:21:14 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301592132
+2026-07-09 19:21:14 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156130875
+2026-07-09 19:21:14 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8108108511
+2026-07-09 19:21:14 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301587144
+2026-07-09 19:21:14 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301182706
+2026-07-09 19:21:14 [[34mdebug[39m]: [new-candidates] searchId=6 count=4
+2026-07-09 19:21:14 [[33mwarn[39m]: AxiosError: Request failed with status code 403
+    at settle (/vercel/share/v0-project/bot/node_modules/axios/dist/node/axios.cjs:2216:12)
+    at Unzip.handleStreamEnd (/vercel/share/v0-project/bot/node_modules/axios/dist/node/axios.cjs:4062:11)
+    at Unzip.emit (node:events:508:28)
+    at endReadableNT (node:internal/streams/readable:1729:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+    at Axios.request (/vercel/share/v0-project/bot/node_modules/axios/dist/node/axios.cjs:5517:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async AvitoParser.fetchListingDate (/vercel/share/v0-project/bot/src/parsers/avito.parser.ts:114:24)
+    at async <anonymous> (/vercel/share/v0-project/bot/src/services/search.service.ts:250:21)
+    at async Promise.all (index 0)
+    at async SearchService.checkSearchForNewListings (/vercel/share/v0-project/bot/src/services/search.service.ts:246:35)
+    at async CheckerCron.processSearch (/vercel/share/v0-project/bot/src/cron/checker.cron.ts:85:7)
+    at async CheckerCron.run (/vercel/share/v0-project/bot/src/cron/checker.cron.ts:76:7)
+2026-07-09 19:21:14 [[34mdebug[39m]: [avito-details-fallback] externalId=8207641380 raw="Вчера"
+2026-07-09 19:21:14 [[34mdebug[39m]: [date-parse] externalId=8207641380 raw="Вчера" parsed=null
+2026-07-09 19:21:14 [[34mdebug[39m]: [avito-details] externalId=7945001274 rawPublishedAt="сегодня в 18:54"
+2026-07-09 19:21:14 [[34mdebug[39m]: [date-parse] externalId=7945001274 raw="сегодня в 18:54" parsed=2026-07-09T15:54:00.000Z
+2026-07-09 19:21:14 [[34mdebug[39m]: [avito-details] externalId=7841605246 rawPublishedAt="25 июня в 23:35"
+2026-07-09 19:21:14 [[34mdebug[39m]: [date-parse] externalId=7841605246 raw="25 июня в 23:35" parsed=2026-06-25T20:35:00.000Z
+2026-07-09 19:21:15 [[34mdebug[39m]: [avito-details] externalId=8300905707 rawPublishedAt="сегодня в 15:50"
+2026-07-09 19:21:15 [[34mdebug[39m]: [date-parse] externalId=8300905707 raw="сегодня в 15:50" parsed=2026-07-09T12:50:00.000Z
+2026-07-09 19:21:15 [[34mdebug[39m]: [date-parse] raw=Вчера parsed=null
+2026-07-09 19:21:15 [[34mdebug[39m]: [cutoff-check] externalId=8207641380 publishedAt=null cutoff=2026-07-09T18:02:37.766Z send=false reason=UNKNOWN_DATE
+2026-07-09 19:21:15 [[34mdebug[39m]: [unknown-date-skip] externalId=8207641380
+2026-07-09 19:21:15 [[34mdebug[39m]: [date-parse] raw=сегодня в 15:50 parsed=2026-07-09T12:50:00.000Z
+2026-07-09 19:21:15 [[34mdebug[39m]: [cutoff-check] externalId=8300905707 publishedAt=2026-07-09T12:50:00.000Z cutoff=2026-07-09T18:02:37.766Z send=false reason=TOO_OLD
+2026-07-09 19:21:15 [[34mdebug[39m]: [old-skip] externalId=8300905707 publishedAt=2026-07-09T12:50:00.000Z
+2026-07-09 19:21:15 [[34mdebug[39m]: [date-parse] raw=сегодня в 18:54 parsed=2026-07-09T15:54:00.000Z
+2026-07-09 19:21:15 [[34mdebug[39m]: [cutoff-check] externalId=7945001274 publishedAt=2026-07-09T15:54:00.000Z cutoff=2026-07-09T18:02:37.766Z send=false reason=TOO_OLD
+2026-07-09 19:21:15 [[34mdebug[39m]: [old-skip] externalId=7945001274 publishedAt=2026-07-09T15:54:00.000Z
+2026-07-09 19:21:15 [[34mdebug[39m]: [date-parse] raw=25 июня в 23:35 parsed=2026-06-25T20:35:00.000Z
+2026-07-09 19:21:15 [[34mdebug[39m]: [cutoff-check] externalId=7841605246 publishedAt=2026-06-25T20:35:00.000Z cutoff=2026-07-09T18:02:37.766Z send=false reason=TOO_OLD
+2026-07-09 19:21:15 [[34mdebug[39m]: [old-skip] externalId=7841605246 publishedAt=2026-06-25T20:35:00.000Z
+2026-07-09 19:21:26 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:21:26 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104677552
+2026-07-09 19:21:26 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8158761623
+2026-07-09 19:21:26 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249226242
+2026-07-09 19:21:26 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249520395
+2026-07-09 19:21:26 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8261044979
+2026-07-09 19:21:26 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174450667
+2026-07-09 19:21:26 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249198946
+2026-07-09 19:21:26 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104464564
+2026-07-09 19:21:26 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248886980
+2026-07-09 19:21:26 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249024624
+2026-07-09 19:21:26 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249502649
+2026-07-09 19:21:26 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8166389716
+2026-07-09 19:21:26 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8275209199
+2026-07-09 19:21:26 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8186009574
+2026-07-09 19:21:26 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8155364488
+2026-07-09 19:21:26 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301654312
+2026-07-09 19:21:26 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8246238834
+2026-07-09 19:21:26 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301144329
+2026-07-09 19:21:26 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8156581818
+2026-07-09 19:21:26 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104731124
+2026-07-09 19:21:27 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301706065
+2026-07-09 19:21:27 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8207310510
+2026-07-09 19:21:27 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301485432
+2026-07-09 19:21:27 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301369903
+2026-07-09 19:21:27 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248985066
+2026-07-09 19:21:27 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249142106
+2026-07-09 19:21:27 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174176305
+2026-07-09 19:21:27 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301128238
+2026-07-09 19:21:27 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249493752
+2026-07-09 19:21:27 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248944445
+2026-07-09 19:21:30 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:21:30 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8096198556
+2026-07-09 19:21:30 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207167091
+2026-07-09 19:21:30 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=2784965793
+2026-07-09 19:21:30 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7648168131
+2026-07-09 19:21:30 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8189069267
+2026-07-09 19:21:30 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8214820266
+2026-07-09 19:21:30 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8179445553
+2026-07-09 19:21:30 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7418073769
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301146385
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275820616
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8257057780
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301575168
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301592132
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301397375
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301182706
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207503665
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275377171
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216786860
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8233816078
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8155902726
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156270563
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8145908138
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216397843
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8287667100
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301328857
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8257093545
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216074459
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8181415058
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8245968093
+2026-07-09 19:21:31 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8148570802
+2026-07-09 19:21:40 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104677552
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8158761623
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249226242
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249520395
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8261044979
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174450667
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249198946
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104464564
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248886980
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249024624
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249502649
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8166389716
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8275209199
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8186009574
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8155364488
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301654312
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8246238834
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301144329
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8156581818
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104731124
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301706065
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8207310510
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301485432
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301369903
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248985066
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249142106
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174176305
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301128238
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249493752
+2026-07-09 19:21:40 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248944445
+2026-07-09 19:21:42 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:21:42 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8096198556
+2026-07-09 19:21:42 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8223024860
+2026-07-09 19:21:42 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7966763474
+2026-07-09 19:21:42 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7648168131
+2026-07-09 19:21:42 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=2784965793
+2026-07-09 19:21:42 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8006536681
+2026-07-09 19:21:42 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8179445553
+2026-07-09 19:21:42 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8206973549
+2026-07-09 19:21:42 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301608613
+2026-07-09 19:21:42 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8245924593
+2026-07-09 19:21:42 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156308244
+2026-07-09 19:21:42 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216526142
+2026-07-09 19:21:42 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8155902726
+2026-07-09 19:21:42 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8108412490
+2026-07-09 19:21:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156542738
+2026-07-09 19:21:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301397375
+2026-07-09 19:21:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8145908138
+2026-07-09 19:21:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275313250
+2026-07-09 19:21:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301113238
+2026-07-09 19:21:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156181039
+2026-07-09 19:21:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216786860
+2026-07-09 19:21:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8167258345
+2026-07-09 19:21:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156270563
+2026-07-09 19:21:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146175207
+2026-07-09 19:21:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275516026
+2026-07-09 19:21:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275377171
+2026-07-09 19:21:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8245968093
+2026-07-09 19:21:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8189629322
+2026-07-09 19:21:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216717160
+2026-07-09 19:21:43 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8257602808
+2026-07-09 19:21:54 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:21:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104677552
+2026-07-09 19:21:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8158761623
+2026-07-09 19:21:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249226242
+2026-07-09 19:21:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249520395
+2026-07-09 19:21:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8261044979
+2026-07-09 19:21:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174450667
+2026-07-09 19:21:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249198946
+2026-07-09 19:21:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104464564
+2026-07-09 19:21:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248886980
+2026-07-09 19:21:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249024624
+2026-07-09 19:21:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249502649
+2026-07-09 19:21:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8166389716
+2026-07-09 19:21:54 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8275209199
+2026-07-09 19:21:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8186009574
+2026-07-09 19:21:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8155364488
+2026-07-09 19:21:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301654312
+2026-07-09 19:21:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8246238834
+2026-07-09 19:21:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301144329
+2026-07-09 19:21:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8156581818
+2026-07-09 19:21:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104731124
+2026-07-09 19:21:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301706065
+2026-07-09 19:21:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8207310510
+2026-07-09 19:21:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301485432
+2026-07-09 19:21:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301369903
+2026-07-09 19:21:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248985066
+2026-07-09 19:21:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249142106
+2026-07-09 19:21:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174176305
+2026-07-09 19:21:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301128238
+2026-07-09 19:21:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249493752
+2026-07-09 19:21:55 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248944445
+2026-07-09 19:21:57 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:21:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7797979847
+2026-07-09 19:21:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7648168131
+2026-07-09 19:21:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207641380
+2026-07-09 19:21:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8300905707
+2026-07-09 19:21:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8179445553
+2026-07-09 19:21:57 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8223024860
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216786860
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8181082690
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216397843
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8108108511
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275516026
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8181415058
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8181348876
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301587144
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8166934259
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216526142
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8287667100
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207118367
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156130875
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301182706
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146673947
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275003908
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8245968093
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275313250
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8226091849
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207458384
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156542738
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8167816473
+2026-07-09 19:21:58 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207503665
+2026-07-09 19:21:58 [[34mdebug[39m]: [new-candidates] searchId=6 count=1
+2026-07-09 19:21:58 [[34mdebug[39m]: [avito-details] externalId=8151321740 rawPublishedAt="вчера в 00:23"
+2026-07-09 19:21:58 [[34mdebug[39m]: [date-parse] externalId=8151321740 raw="вчера в 00:23" parsed=2026-07-07T21:23:00.000Z
+2026-07-09 19:21:58 [[34mdebug[39m]: [date-parse] raw=вчера в 00:23 parsed=2026-07-07T21:23:00.000Z
+2026-07-09 19:21:58 [[34mdebug[39m]: [cutoff-check] externalId=8151321740 publishedAt=2026-07-07T21:23:00.000Z cutoff=2026-07-09T18:02:37.766Z send=false reason=TOO_OLD
+2026-07-09 19:21:58 [[34mdebug[39m]: [old-skip] externalId=8151321740 publishedAt=2026-07-07T21:23:00.000Z
+2026-07-09 19:22:10 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104677552
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8158761623
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249226242
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249520395
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8261044979
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174450667
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249198946
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104464564
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248886980
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249024624
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249502649
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8166389716
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8275209199
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8186009574
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8155364488
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301654312
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8246238834
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301144329
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8156581818
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104731124
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301706065
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8207310510
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301485432
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301369903
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248985066
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249142106
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174176305
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301128238
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249493752
+2026-07-09 19:22:10 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248944445
+2026-07-09 19:22:13 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7797979847
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7648168131
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207641380
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8223024860
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8300905707
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8006536681
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8179445553
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8226091849
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216526142
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8176333892
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8108412490
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8261440955
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8167258345
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156542738
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8167816473
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146477997
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8274928212
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8155902726
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216786860
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156308244
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156181039
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301132987
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301113238
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301397375
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8181348876
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8157936630
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8166934259
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8166768523
+2026-07-09 19:22:13 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216717160
+2026-07-09 19:22:13 [[34mdebug[39m]: [new-candidates] searchId=6 count=1
+2026-07-09 19:22:14 [[34mdebug[39m]: [avito-details] externalId=7495477667 rawPublishedAt="сегодня в 21:38"
+2026-07-09 19:22:14 [[34mdebug[39m]: [date-parse] externalId=7495477667 raw="сегодня в 21:38" parsed=2026-07-09T18:38:00.000Z
+2026-07-09 19:22:14 [[34mdebug[39m]: [date-parse] raw=сегодня в 21:38 parsed=2026-07-09T18:38:00.000Z
+2026-07-09 19:22:14 [[34mdebug[39m]: [cutoff-check] externalId=7495477667 publishedAt=2026-07-09T18:38:00.000Z cutoff=2026-07-09T18:02:37.766Z send=true reason=ok
+2026-07-09 19:22:14 [[32minfo[39m]: [notification-sent] listingId=830
+2026-07-09 19:22:14 [[32minfo[39m]: [avito-send] externalId=7495477667
+2026-07-09 19:22:17 [[32minfo[39m]: Starting SearchBot...
+2026-07-09 19:22:17 [[32minfo[39m]: Checker cron started (continuous loop, 15s interval)
+2026-07-09 19:22:17 [[32minfo[39m]: Subscription cron started
+2026-07-09 19:22:17 [[32minfo[39m]: Daily reset cron started
+2026-07-09 19:22:17 [[32minfo[39m]: Queue flush cron started
+2026-07-09 19:22:18 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-09 19:22:18 [[31merror[39m]: Fatal startup error
+2026-07-09 19:22:20 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104677552
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8158761623
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249226242
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249520395
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8261044979
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174450667
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249198946
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104464564
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248886980
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249024624
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249502649
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8166389716
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8275209199
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8186009574
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8155364488
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301654312
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8246238834
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301144329
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8156581818
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8104731124
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301706065
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8207310510
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301485432
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301369903
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248985066
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249142106
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8174176305
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8301128238
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8249493752
+2026-07-09 19:22:20 [[34mdebug[39m]: [duplicate-skip] searchId=5 externalId=8248944445
+2026-07-09 19:22:23 [[34mdebug[39m]: [avito-category] found=30
+2026-07-09 19:22:23 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7648168131
+2026-07-09 19:22:23 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8096198556
+2026-07-09 19:22:23 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=2784965793
+2026-07-09 19:22:23 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8223024860
+2026-07-09 19:22:23 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=7945001274
+2026-07-09 19:22:23 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8100522546
+2026-07-09 19:22:23 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8206973549
+2026-07-09 19:22:23 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8181082690
+2026-07-09 19:22:23 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146729813
+2026-07-09 19:22:23 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8146673947
+2026-07-09 19:22:23 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8207458384
+2026-07-09 19:22:23 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301592132
+2026-07-09 19:22:23 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8257259298
+2026-07-09 19:22:23 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8181415058
+2026-07-09 19:22:23 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8233245612
+2026-07-09 19:22:23 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301297627
+2026-07-09 19:22:23 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8145897343
+2026-07-09 19:22:23 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8181326981
+2026-07-09 19:22:23 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8275262758
+2026-07-09 19:22:23 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156445370
+2026-07-09 19:22:24 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8216397843
+2026-07-09 19:22:24 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301397375
+2026-07-09 19:22:24 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8156542738
+2026-07-09 19:22:24 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8261808470
+2026-07-09 19:22:24 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301146385
+2026-07-09 19:22:24 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8154926924
+2026-07-09 19:22:24 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8226091849
+2026-07-09 19:22:24 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8301328857
+2026-07-09 19:22:24 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8181348876
+2026-07-09 19:22:24 [[34mdebug[39m]: [duplicate-skip] searchId=6 externalId=8287667100
