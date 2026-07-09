@@ -6,7 +6,10 @@ import { NotificationRepository } from '../repositories/notification.repository'
 import { UserRepository } from '../repositories/user.repository';
 import { AdminLogRepository } from '../repositories/adminlog.repository';
 import { SubscriptionService } from './subscription.service';
+import { isFreshListing } from '../utils/dateParser';
 import { logger } from '../utils/logger';
+
+const FRESH_MAX_MINUTES = Number(process.env.FRESH_LISTING_MAX_AGE_MINUTES ?? 5);
 
 export class NotificationService {
   private notifRepo: NotificationRepository;
@@ -39,9 +42,17 @@ export class NotificationService {
   ): Promise<boolean> {
     if (!this.bot) throw new Error('Bot not initialized');
 
-    // Hard guards — never send for baseline listings or already-notified ones
+    // Hard guards — checked in this exact order, every condition must pass
     if ((listing as Listing & { isBaseline: boolean }).isBaseline) return false;
     if ((listing as Listing & { notifiedAt: Date | null }).notifiedAt) return false;
+    if (!listing.publishedAt) {
+      logger.debug(`[notification-skip] listingId=${listing.id} reason=no_publishedAt`);
+      return false;
+    }
+    if (!isFreshListing(listing.publishedAt, FRESH_MAX_MINUTES)) {
+      logger.debug(`[notification-skip] listingId=${listing.id} reason=stale publishedAt=${listing.publishedAt.toISOString()}`);
+      return false;
+    }
 
     // Guard against duplicate Notification rows for the same listing+user
     const existingNotif = await this.notifRepo.findByListingAndUser(listing.id, user.id);

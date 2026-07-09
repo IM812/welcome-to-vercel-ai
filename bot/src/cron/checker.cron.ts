@@ -2,16 +2,14 @@ import type { Bot } from 'grammy';
 import type { BotContext } from '../types/index';
 import type { User, UserSettings, Search } from '../generated/prisma/index';
 import { SearchRepository } from '../repositories/search.repository';
-import { ListingRepository } from '../repositories/listing.repository';
-import { ParserFactory } from '../parsers/parser.factory';
 import { NotificationService } from '../services/notification.service';
+import { SearchService } from '../services/search.service';
 import { SubscriptionService } from '../services/subscription.service';
 import { AdminNotificationService } from '../services/admin-notification.service';
 import { PLAN_LIMITS } from '../types/index';
 import { prisma } from '../database/client';
 import { logger } from '../utils/logger';
 import { sleep } from '../utils/retry';
-import { withRetry } from '../utils/retry';
 
 type SearchWithUser = Search & {
   user: User & { settings: UserSettings | null };
@@ -19,7 +17,7 @@ type SearchWithUser = Search & {
 
 export class CheckerCron {
   private searchRepo: SearchRepository;
-  private listingRepo: ListingRepository;
+  private searchService: SearchService;
   private notifService: NotificationService;
   private subService: SubscriptionService;
   private adminNotifService: AdminNotificationService;
@@ -28,12 +26,14 @@ export class CheckerCron {
 
   constructor(bot: Bot<BotContext>, adminNotifService: AdminNotificationService) {
     this.searchRepo = new SearchRepository();
-    this.listingRepo = new ListingRepository();
     this.notifService = new NotificationService();
+    this.searchService = new SearchService();
     this.subService = new SubscriptionService();
     this.adminNotifService = adminNotifService;
     this.bot = bot;
     this.notifService.setBot(bot);
+    // Wire notification service into search service so it can send alerts
+    this.searchService.setNotificationService(this.notifService);
   }
 
   start(): void {
@@ -87,81 +87,24 @@ export class CheckerCron {
   private async processSearch(search: SearchWithUser, user: User): Promise<void> {
     const start = Date.now();
     try {
-      const parser = ParserFactory.create(search.platform);
-      const listings = await withRetry(() => parser.parse(search.url));
-
-      await this.searchRepo.updateLastChecked(search.id);
+      // All baseline / freshness / dedup logic lives in SearchService.
+      // CheckerCron is only responsible for scheduling and error handling.
+      await this.searchService.checkSearchForNewListings(
+        search.id,
+        user,
+        (search as SearchWithUser).user.settings,
+      );
 
       if (search.errorCount > 0) {
         await this.searchRepo.resetError(search.id);
       }
-
-      // If baseline has never been taken — do a silent seed run.
-      // This covers both: first-ever run AND cases where baseline was reset.
-      const needsBaseline = !(search as SearchWithUser & { baselineInitializedAt: Date | null }).baselineInitializedAt;
-
-      if (needsBaseline) {
-        await this.initializeBaseline(search, listings);
-        return;
-      }
-
-      // Normal run — only notify for listings whose externalId is new in DB.
-      // Age cutoff: skip anything published more than 24h ago.
-      // This is the last-resort guard against stale listings slipping through.
-      const MAX_LISTING_AGE_MS = 24 * 60 * 60_000;
-      const nowMs = Date.now();
-
-      let newCount = 0;
-      for (const parsed of listings) {
-        // If we have a parsed date and it is older than 24h — skip without saving to DB.
-        // This keeps old stock from ever showing up, even after a baseline reset.
-        if (parsed.publishedAt) {
-          const ageMs = nowMs - parsed.publishedAt.getTime();
-          if (ageMs > MAX_LISTING_AGE_MS) continue;
-        }
-
-        const externalId = parsed.externalId;
-
-        const { listing, isNew } = await this.listingRepo.upsert(
-          search.id,
-          externalId,
-          {
-            title: parsed.title,
-            price: parsed.price ?? null,
-            location: parsed.location ?? null,
-            imageUrl: parsed.imageUrl ?? null,
-            url: parsed.url,
-            platform: search.platform,
-            publishedAt: parsed.publishedAt ?? null,
-            isBaseline: false,
-          },
-        );
-
-        if (!isNew) continue;
-
-        // Guard: never send if already notified
-        if (listing.notifiedAt) continue;
-
-        newCount++;
-
-        await this.searchRepo.update(search.id, { lastFoundAt: new Date(), lastNewListingAt: new Date() });
-
-        const settings: UserSettings | null = (search as SearchWithUser).user.settings;
-        const sent = await this.notifService.sendListingNotification(user, search, listing, settings);
-
-        if (sent) {
-          await this.listingRepo.markNotified(listing.id);
-        }
-      }
-
-      logger.debug(`Search ${search.id}: checked ${listings.length} listings, sent=${newCount}`);
 
       await prisma.parserLog.create({
         data: {
           platform: search.platform,
           searchId: search.id,
           success: true,
-          foundCount: listings.length,
+          foundCount: 0, // actual count is tracked inside SearchService per listing
           duration: Date.now() - start,
         },
       });
@@ -193,45 +136,5 @@ export class CheckerCron {
 
       logger.error(`Parser error for search ${search.id}: ${errorMsg}`);
     }
-  }
-
-  /** Save all current listings as baseline — no notifications sent. */
-  async initializeBaseline(
-    search: { id: number; platform: Search['platform']; url: string },
-    listings?: Awaited<ReturnType<ReturnType<typeof ParserFactory.create>['parse']>>,
-  ): Promise<number> {
-    if (!listings) {
-      const parser = ParserFactory.create(search.platform);
-      listings = await withRetry(() => parser.parse(search.url));
-    }
-
-    let count = 0;
-    for (const parsed of listings) {
-      try {
-        await this.listingRepo.upsert(
-          search.id,
-          parsed.externalId,
-          {
-            title: parsed.title,
-            price: parsed.price ?? null,
-            location: parsed.location ?? null,
-            imageUrl: parsed.imageUrl ?? null,
-            url: parsed.url,
-            platform: search.platform,
-            publishedAt: parsed.publishedAt ?? null,
-            isBaseline: true,
-          },
-        );
-        count++;
-      } catch { /* unique constraint — already exists, skip */ }
-    }
-
-    await this.searchRepo.update(search.id, {
-      baselineInitializedAt: new Date(),
-      lastCheckedAt: new Date(),
-    } as Parameters<SearchRepository['update']>[1]);
-
-    console.log(`[baseline] search=${search.id} saved=${count}`);
-    return count;
   }
 }

@@ -8,6 +8,8 @@
     "dev": "tsx src/index.ts",
     "build": "tsup",
     "start": "node dist/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "lint": "eslint src --ext .ts",
     "format": "prettier --write \"src/**/*.ts\"",
     "db:generate": "prisma generate",
@@ -38,6 +40,7 @@
     "ts-node": "^10.9.2",
     "tsup": "^8.5.1",
     "tsx": "^4.23.0",
-    "typescript": "5.7.3"
+    "typescript": "5.7.3",
+    "vitest": "^2.1.0"
   }
 }

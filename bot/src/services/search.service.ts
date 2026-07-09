@@ -156,10 +156,16 @@ export class SearchService {
     if (!search) throw new Error(`Search ${searchId} not found`);
 
     const parser = ParserFactory.create(search.platform);
-    const listings = await withRetry(() => parser.parse(search.url));
+    const items = await withRetry(() => parser.parse(search.url));
 
     let count = 0;
-    for (const parsed of listings) {
+    for (const parsed of items) {
+      const rawDate: string | null =
+        parsed.rawPublishedAt ?? null;
+      const parsedDate: Date | null = rawDate
+        ? parseListingDate(rawDate)
+        : (parsed.publishedAt ?? null);
+
       try {
         await this.listingRepo.upsert(
           search.id,
@@ -171,9 +177,10 @@ export class SearchService {
             imageUrl: parsed.imageUrl ?? null,
             url: parsed.url,
             platform: search.platform,
-            publishedAt: parsed.publishedAt ?? null,
+            rawPublishedAt: rawDate,
+            publishedAt: parsedDate,
             isBaseline: true,
-          },
+          } as Parameters<ListingRepository['upsert']>[2],
         );
         count++;
       } catch { /* unique constraint — already seeded */ }
@@ -184,9 +191,133 @@ export class SearchService {
       lastCheckedAt: new Date(),
     });
 
-    console.log(`[baseline] search=${search.id} saved=${count}`);
-    logger.info(`Search ${search.id}: baseline initialized with ${count} listings`);
+    logger.info(`[baseline-init] searchId=${search.id} count=${count}`);
     return count;
+  }
+
+  /**
+   * Check a single search for new listings and send notifications.
+   * If baseline has not been initialized yet, calls initializeSearchBaseline and returns early.
+   * This is the main method called by CheckerCron on every tick.
+   */
+  async checkSearchForNewListings(
+    searchId: number,
+    user: { id: number; telegramId: bigint | string | number } & Record<string, unknown>,
+    settings: Record<string, unknown> | null,
+  ): Promise<void> {
+    const search = await this.searchRepo.findById(searchId);
+    if (!search) return;
+
+    // If baseline has never been initialized — do a silent seed run.
+    const baselineAt = (search as typeof search & { baselineInitializedAt: Date | null })
+      .baselineInitializedAt;
+    if (!baselineAt) {
+      await this.initializeSearchBaseline(searchId);
+      return;
+    }
+
+    const parser = ParserFactory.create(search.platform);
+    const items = await withRetry(() => parser.parse(search.url));
+
+    await this.searchRepo.update(search.id, { lastCheckedAt: new Date() });
+
+    for (const parsed of items) {
+      // 1. Resolve externalId (parser-provided or content hash)
+      const externalId =
+        parsed.externalId ||
+        hashListing(parsed.title, parsed.price, parsed.url);
+
+      // 2. Skip if already in DB for this search
+      const existing = await this.listingRepo.findByExternalId(search.id, externalId);
+      if (existing) {
+        logger.debug(`[duplicate-skip] searchId=${search.id} externalId=${externalId}`);
+        continue;
+      }
+
+      // 3. Resolve raw date and parse it
+      const rawDate: string | null = parsed.rawPublishedAt ?? null;
+      const parsedDate: Date | null = rawDate
+        ? parseListingDate(rawDate)
+        : (parsed.publishedAt ?? null);
+
+      logger.debug(
+        `[date-parse] raw=${rawDate ?? 'null'} parsed=${parsedDate?.toISOString() ?? 'null'}`,
+      );
+
+      // 4. Freshness check
+      const maxAge = Number(process.env.FRESH_LISTING_MAX_AGE_MINUTES ?? FRESH_MAX_MINUTES);
+      const fresh = isFreshListing(parsedDate, maxAge);
+      const ageMinutes = parsedDate ? getListingAgeMinutes(parsedDate) : null;
+
+      logger.debug(
+        `[fresh-check] externalId=${externalId} ageMinutes=${ageMinutes?.toFixed(2) ?? 'n/a'} fresh=${fresh}`,
+      );
+
+      if (!fresh) {
+        // Save to DB so we never visit it again, but do NOT notify
+        const skippedReason = parsedDate ? 'TOO_OLD' : 'UNKNOWN_DATE';
+
+        if (skippedReason === 'TOO_OLD') {
+          logger.debug(`[old-skip] externalId=${externalId} reason=TOO_OLD`);
+        } else {
+          logger.debug(`[unknown-date-skip] externalId=${externalId} reason=UNKNOWN_DATE`);
+        }
+
+        await this.listingRepo.upsert(
+          search.id,
+          externalId,
+          {
+            title: parsed.title,
+            price: parsed.price ?? null,
+            location: parsed.location ?? null,
+            imageUrl: parsed.imageUrl ?? null,
+            url: parsed.url,
+            platform: search.platform,
+            rawPublishedAt: rawDate,
+            publishedAt: parsedDate,
+            isBaseline: false,
+            skippedReason,
+          } as Parameters<ListingRepository['upsert']>[2],
+        );
+        continue;
+      }
+
+      // 5. Fresh listing — save and send notification
+      const { listing } = await this.listingRepo.upsert(
+        search.id,
+        externalId,
+        {
+          title: parsed.title,
+          price: parsed.price ?? null,
+          location: parsed.location ?? null,
+          imageUrl: parsed.imageUrl ?? null,
+          url: parsed.url,
+          platform: search.platform,
+          rawPublishedAt: rawDate,
+          publishedAt: parsedDate,
+          isBaseline: false,
+          skippedReason: null,
+        } as Parameters<ListingRepository['upsert']>[2],
+      );
+
+      if (!this.notifService) {
+        logger.warn(`[notification-skip] notifService not set for searchId=${search.id}`);
+        continue;
+      }
+
+      const sent = await this.notifService.sendListingNotification(
+        user as Parameters<NotificationService['sendListingNotification']>[0],
+        search,
+        listing,
+        settings as Parameters<NotificationService['sendListingNotification']>[3],
+      );
+
+      if (sent) {
+        await this.listingRepo.markNotified(listing.id);
+        await this.searchRepo.update(search.id, { lastNewListingAt: new Date() });
+        logger.info(`[notification-sent] listingId=${listing.id}`);
+      }
+    }
   }
 
   /**
@@ -200,10 +331,7 @@ export class SearchService {
 
     if (!search) throw new Error('Search not found or access denied');
 
-    // Clear existing listings
     await this.listingRepo.deleteBySearchId(search.id);
-
-    // Re-run baseline
     return this.initializeSearchBaseline(search.id);
   }
 

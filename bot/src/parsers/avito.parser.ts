@@ -52,7 +52,9 @@ export class AvitoParser extends BaseParser {
           dateEl.find('time').attr('datetime') ??
           $el.find('time').attr('datetime');
         const dateText = dateEl.text().trim() || $el.find('time').text().trim();
-        const publishedAt = parseAvitoDate(dateIso ?? dateText);
+        // rawPublishedAt is the original string, exactly as scraped — used for dateParser.ts
+        const rawPublishedAt: string | undefined = dateIso ?? dateText ?? undefined;
+        const publishedAt = parseAvitoDate(rawPublishedAt);
 
         const finalExternalId = externalId ?? hashListing(title, price, fullUrl);
 
@@ -63,6 +65,7 @@ export class AvitoParser extends BaseParser {
           location,
           imageUrl: imageUrl && !imageUrl.includes('data:') ? imageUrl : undefined,
           url: fullUrl,
+          rawPublishedAt,
           publishedAt,
         });
       } catch (err) {

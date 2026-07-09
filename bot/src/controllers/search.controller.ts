@@ -109,11 +109,13 @@ export function registerSearchController(bot: Bot<BotContext>): void {
     try {
       await searchService.initializeSearchBaseline(search.id);
       await ctx.reply(
-        `Поиск добавлен: ${search.name ?? PLATFORM_NAMES[platform]}\n\nЯ запомнил текущие объявления и буду присылать только новые.`,
+        `Поиск добавлен: ${search.name ?? PLATFORM_NAMES[platform]}\n\n` +
+        `Текущие объявления запомнены. Я буду присылать только новые.`,
       );
     } catch {
       await ctx.reply(
-        `Поиск добавлен: ${search.name ?? PLATFORM_NAMES[platform]}\nПервая проверка начнётся в ближайшую минуту.`,
+        `Поиск добавлен: ${search.name ?? PLATFORM_NAMES[platform]}\n` +
+        `Первая проверка начнётся в ближайшую минуту.`,
       );
     }
   });
