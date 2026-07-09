@@ -13,6 +13,11 @@ import { logger } from '../utils/logger';
 
 
 
+// Stamped once when this module is first loaded (= bot process startup).
+// Used as the lower-bound of the cutoff window: even if a search was added
+// a long time ago, we never send listings published before the bot started.
+const BOT_STARTED_AT: Date = new Date();
+
 export class SearchService {
   private searchRepo: SearchRepository;
   private listingRepo: ListingRepository;
@@ -287,7 +292,16 @@ export class SearchService {
       //     entered the results page — that alone is a freshness signal.
       //     We only have hard evidence of staleness when we actually parsed
       //     a date that predates the search creation.
-      const cutoff = baselineAt as Date;
+      // Cutoff = the LATER of: when the search was created vs when the bot
+      // last started. This prevents "catch-up" floods of old listings when
+      // the bot is restarted after being offline for a while.
+      const cutoff = new Date(Math.max(
+        (baselineAt as Date).getTime(),
+        BOT_STARTED_AT.getTime(),
+      ));
+      logger.debug(
+        `[cutoff] externalId=${externalId} baseline=${(baselineAt as Date).toISOString()} botStart=${BOT_STARTED_AT.toISOString()} effective=${cutoff.toISOString()} publishedAt=${parsedDate?.toISOString() ?? 'null'}`,
+      );
 
       let shouldSend: boolean;
       let skippedReason: string | null;
