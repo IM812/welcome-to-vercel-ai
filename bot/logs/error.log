@@ -699,3 +699,15 @@ The column `Listing.rawPublishedAt` does not exist in the current database.
 2026-07-09 19:24:04 [[31merror[39m]: Parser error for search 6: Request failed with status code 403
 2026-07-09 19:24:18 [[31merror[39m]: Parser error for search 6: Request failed with status code 403
 2026-07-09 19:24:30 [[31merror[39m]: Fatal startup error
+2026-07-09 19:24:50 [[31merror[39m]: Parser error for search 5: Request failed with status code 403
+2026-07-09 19:25:00 [[31merror[39m]: Parser error for search 5: Request failed with status code 403
+2026-07-09 19:25:19 [[31merror[39m]: Parser error for search 6: Request failed with status code 403
+2026-07-09 19:25:30 [[31merror[39m]: Parser error for search 6: Request failed with status code 403
+2026-07-09 19:25:31 [[31merror[39m]: Parser error for search 5: Request failed with status code 403
+2026-07-09 19:25:49 [[31merror[39m]: Parser error for search 5: Request failed with status code 403
+2026-07-09 19:26:01 [[31merror[39m]: Parser error for search 5: Request failed with status code 403
+2026-07-09 19:26:15 [[31merror[39m]: Parser error for search 5: Request failed with status code 403
+2026-07-09 19:26:16 [[31merror[39m]: Parser error for search 6: Request failed with status code 403
+2026-07-09 19:26:31 [[31merror[39m]: Parser error for search 5: Request failed with status code 403
+2026-07-09 19:26:32 [[31merror[39m]: Parser error for search 6: Request failed with status code 403
+2026-07-09 19:27:05 [[31merror[39m]: Fatal startup error

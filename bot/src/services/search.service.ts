@@ -4,19 +4,17 @@ import { ListingRepository } from '../repositories/listing.repository';
 import { SubscriptionService } from './subscription.service';
 import { NotificationService } from './notification.service';
 import { ParserFactory } from '../parsers/parser.factory';
-import { AvitoParser } from '../parsers/avito.parser';
 import { withRetry } from '../utils/retry';
 import { parseListingDate } from '../utils/dateParser';
+// AvitoParser no longer imported — detail-page fetching removed from check loop
 import { hashListing } from '../utils/hash';
 import { PLATFORM_DOMAINS, PLAN_LIMITS } from '../types/index';
 import { logger } from '../utils/logger';
 
-
-
-// Stamped once when this module is first loaded (= bot process startup).
-// Used as the lower-bound of the cutoff window: even if a search was added
-// a long time ago, we never send listings published before the bot started.
-const BOT_STARTED_AT: Date = new Date();
+// How many listings from the top of the feed to inspect on each cron tick.
+// The baseline seed always saves up to PARSE_LIMIT items.
+const BASELINE_LIMIT = 30;
+const CHECK_LIMIT = 20;
 
 export class SearchService {
   private searchRepo: SearchRepository;
@@ -153,29 +151,27 @@ export class SearchService {
   }
 
   /**
-   * Parse current listings and save them all as baseline (isBaseline=true).
-   * No notifications are sent. Sets baselineInitializedAt and lastCheckedAt.
-   * Returns the number of listings saved.
+   * Fetch the category page, save the first BASELINE_LIMIT listings as
+   * baseline (isBaseline=true). No notifications sent.
+   * Sets baselineInitializedAt so future ticks know seeding is done.
    */
   async initializeSearchBaseline(searchId: number): Promise<number> {
     const search = await this.searchRepo.findById(searchId);
     if (!search) throw new Error(`Search ${searchId} not found`);
 
     const parser = ParserFactory.create(search.platform);
-    const items = await withRetry(() => parser.parse(search.url));
+    const allItems = await withRetry(() => parser.parse(search.url));
+
+    // Take only the first BASELINE_LIMIT items — these become the "seen" set.
+    const items = allItems.slice(0, BASELINE_LIMIT);
 
     let count = 0;
     for (const parsed of items) {
-      const rawDate: string | null =
-        parsed.rawPublishedAt ?? null;
-      const parsedDate: Date | null = rawDate
-        ? parseListingDate(rawDate)
-        : (parsed.publishedAt ?? null);
-
+      const externalId = parsed.externalId || hashListing(parsed.title, parsed.price, parsed.url);
       try {
         await this.listingRepo.upsert(
           search.id,
-          parsed.externalId,
+          externalId,
           {
             title: parsed.title,
             price: parsed.price ?? null,
@@ -183,8 +179,8 @@ export class SearchService {
             imageUrl: parsed.imageUrl ?? null,
             url: parsed.url,
             platform: search.platform,
-            rawPublishedAt: rawDate,
-            publishedAt: parsedDate,
+            rawPublishedAt: parsed.rawPublishedAt ?? null,
+            publishedAt: parsed.publishedAt ?? null,
             isBaseline: true,
           } as Parameters<ListingRepository['upsert']>[2],
         );
@@ -197,14 +193,18 @@ export class SearchService {
       lastCheckedAt: new Date(),
     });
 
-    logger.info(`[baseline-init] searchId=${search.id} count=${count}`);
+    logger.info(`[baseline-init] searchId=${search.id} saved=${count}/${allItems.length}`);
     return count;
   }
 
   /**
-   * Check a single search for new listings and send notifications.
-   * If baseline has not been initialized yet, calls initializeSearchBaseline and returns early.
-   * This is the main method called by CheckerCron on every tick.
+   * Main method called by CheckerCron on every tick.
+   *
+   * Architecture:
+   *   1. First run ever: save first BASELINE_LIMIT listings as "seen" (no notify). Done.
+   *   2. Every subsequent run: fetch category page, look at first CHECK_LIMIT items.
+   *      Any externalId NOT already in DB → send notification immediately.
+   *      Date is used only to display in the message, NOT as a filter.
    */
   async checkSearchForNewListings(
     searchId: number,
@@ -214,141 +214,42 @@ export class SearchService {
     const search = await this.searchRepo.findById(searchId);
     if (!search) return;
 
-    // If baseline has never been initialized — do a silent seed run.
     const baselineAt = (search as typeof search & { baselineInitializedAt: Date | null })
       .baselineInitializedAt;
+
+    // First run: seed baseline silently and return.
     if (!baselineAt) {
+      logger.info(`[baseline-needed] searchId=${searchId} — seeding now`);
       await this.initializeSearchBaseline(searchId);
       return;
     }
 
+    // Normal tick: parse only the first CHECK_LIMIT items from the feed.
     const parser = ParserFactory.create(search.platform);
-    const items = await withRetry(() => parser.parse(search.url));
+    const allItems = await withRetry(() => parser.parse(search.url));
+    const items = allItems.slice(0, CHECK_LIMIT);
 
     await this.searchRepo.update(search.id, { lastCheckedAt: new Date() });
 
-    // ── Step 1: filter out known duplicates in one pass ───────────────────────
-    const newItems: typeof items = [];
+    logger.debug(`[tick] searchId=${search.id} fetched=${allItems.length} checking=${items.length}`);
+
     for (const parsed of items) {
       const externalId = parsed.externalId || hashListing(parsed.title, parsed.price, parsed.url);
+
+      // Already seen — skip.
       const existing = await this.listingRepo.findByExternalId(search.id, externalId);
       if (existing) {
-        logger.debug(`[duplicate-skip] searchId=${search.id} externalId=${externalId}`);
-      } else {
-        newItems.push({ ...parsed, externalId });
-      }
-    }
-
-    if (newItems.length === 0) return;
-
-    logger.debug(`[new-candidates] searchId=${search.id} count=${newItems.length}`);
-
-    // ── Step 2: fetch detail pages IN PARALLEL for all new candidates ─────────
-    // The meta line "№ XXXXXXX · сегодня в 21:08 · N просмотров" on the
-    // individual listing page is the only reliable date source on Avito.
-    // Parallel fetch cuts latency from N×8s down to ~8s regardless of count.
-    type WithDate = (typeof newItems)[number] & { rawDate: string | null; parsedDate: Date | null };
-    const withDates: WithDate[] = await Promise.all(
-      newItems.map(async (parsed): Promise<WithDate> => {
-        let rawDate: string | null = null;
-        if (parser instanceof AvitoParser) {
-          rawDate = await parser.fetchListingDate(parsed.url);
-          if (rawDate) {
-            logger.debug(`[avito-details] externalId=${parsed.externalId} rawPublishedAt="${rawDate}"`);
-          } else {
-            rawDate = parsed.rawPublishedAt ?? null;
-            logger.debug(`[avito-details-fallback] externalId=${parsed.externalId} raw="${rawDate ?? 'null'}"`);
-          }
-        } else {
-          rawDate = parsed.rawPublishedAt ?? null;
-        }
-        const parsedDate: Date | null = rawDate
-          ? parseListingDate(rawDate)
-          : (parsed.publishedAt ?? null);
-        logger.debug(`[date-parse] externalId=${parsed.externalId} raw="${rawDate ?? 'null'}" parsed=${parsedDate?.toISOString() ?? 'null'}`);
-        return { ...parsed, rawDate, parsedDate };
-      }),
-    );
-
-    // ── Step 3: apply cutoff and notify ──────────────────────────────────────
-    for (const parsed of withDates) {
-      const externalId = parsed.externalId;
-      const rawDate = parsed.rawDate;
-      const parsedDate = parsed.parsedDate;
-
-      logger.debug(
-        `[date-parse] raw=${rawDate ?? 'null'} parsed=${parsedDate?.toISOString() ?? 'null'}`,
-      );
-
-      // 4. Baseline-cutoff rule:
-      //
-      //   The only listings we SKIP are ones where we have a confirmed date
-      //   that is provably older than when the user added this search.
-      //
-      //   • parsedDate exists AND parsedDate < baselineAt  → skip (confirmed old)
-      //   • parsedDate exists AND parsedDate >= baselineAt → send
-      //   • parsedDate is null (Avito didn't expose the date) → SEND
-      //     A new externalId appearing in the feed means the listing just
-      //     entered the results page — that alone is a freshness signal.
-      //     We only have hard evidence of staleness when we actually parsed
-      //     a date that predates the search creation.
-      // Cutoff = the LATER of: when the search was created vs when the bot
-      // last started. This prevents "catch-up" floods of old listings when
-      // the bot is restarted after being offline for a while.
-      const cutoff = new Date(Math.max(
-        (baselineAt as Date).getTime(),
-        BOT_STARTED_AT.getTime(),
-      ));
-      logger.debug(
-        `[cutoff] externalId=${externalId} baseline=${(baselineAt as Date).toISOString()} botStart=${BOT_STARTED_AT.toISOString()} effective=${cutoff.toISOString()} publishedAt=${parsedDate?.toISOString() ?? 'null'}`,
-      );
-
-      let shouldSend: boolean;
-      let skippedReason: string | null;
-
-      if (parsedDate && parsedDate < cutoff) {
-        shouldSend = false;
-        skippedReason = 'TOO_OLD';
-      } else {
-        shouldSend = true;
-        skippedReason = null;
-      }
-
-      logger.debug(
-        `[cutoff-check] externalId=${externalId} publishedAt=${parsedDate?.toISOString() ?? 'null'} cutoff=${cutoff.toISOString()} send=${shouldSend} reason=${skippedReason ?? 'ok'}`,
-      );
-
-      if (!shouldSend) {
-        if (skippedReason === 'TOO_OLD') {
-          logger.debug(`[old-skip] externalId=${externalId} publishedAt=${parsedDate?.toISOString()}`);
-        } else {
-          logger.debug(`[unknown-date-skip] externalId=${externalId}`);
-        }
-
-        await this.listingRepo.upsert(
-          search.id,
-          externalId,
-          {
-            title: parsed.title,
-            price: parsed.price ?? null,
-            location: parsed.location ?? null,
-            imageUrl: parsed.imageUrl ?? null,
-            url: parsed.url,
-            platform: search.platform,
-            rawPublishedAt: rawDate,
-            publishedAt: parsedDate,
-            isBaseline: false,
-            skippedReason,
-          } as Parameters<ListingRepository['upsert']>[2],
-        );
+        logger.debug(`[seen] searchId=${search.id} externalId=${externalId}`);
         continue;
       }
 
-      // 5. New listing to notify — save and send.
-      // Store the REAL parsed publication date (or null when Avito hid it).
-      // We must NOT fake this to "now" — that made the bot display a wrong
-      // "Опубликовано" time. The notification guard is mode-aware and does not
-      // re-check freshness in competitor mode, so a null date is fine here.
+      // New externalId in the feed → send immediately, no date filtering.
+      logger.info(`[new-listing] searchId=${search.id} externalId=${externalId} url=${parsed.url}`);
+
+      // Resolve a display date from the card's raw string (best-effort, no blocking).
+      const rawDate: string | null = parsed.rawPublishedAt ?? null;
+      const parsedDate: Date | null = rawDate ? parseListingDate(rawDate) : (parsed.publishedAt ?? null);
+
       const { listing } = await this.listingRepo.upsert(
         search.id,
         externalId,
@@ -367,7 +268,7 @@ export class SearchService {
       );
 
       if (!this.notifService) {
-        logger.warn(`[notification-skip] notifService not set for searchId=${search.id}`);
+        logger.warn(`[no-notif-service] searchId=${search.id}`);
         continue;
       }
 
@@ -381,8 +282,7 @@ export class SearchService {
       if (sent) {
         await this.listingRepo.markNotified(listing.id);
         await this.searchRepo.update(search.id, { lastNewListingAt: new Date() });
-        logger.info(`[notification-sent] listingId=${listing.id}`);
-        logger.info(`[avito-send] externalId=${externalId}`);
+        logger.info(`[sent] listingId=${listing.id} externalId=${externalId}`);
       }
     }
   }
