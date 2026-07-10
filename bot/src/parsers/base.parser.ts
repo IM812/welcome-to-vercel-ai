@@ -223,14 +223,27 @@ export abstract class BaseParser implements Parser {
     } catch (err: unknown) {
       const status = (err as { response?: { status?: number } })?.response?.status;
       // 403 = cookies missing/expired or IP blocked. Try to auto-refresh
-      // cookies via the stealth browser, then retry the request once.
+      // cookies via spfa.ru, then retry the request once.
       if (status === 403) {
         logger.warn('[fetch] 403 — attempting automatic cookie refresh');
         const ok = await refreshAvitoCookies();
         if (ok) {
           return await fetchWithCurlCffi(url);
         }
+        throw err;
       }
+
+      // status 0 / undefined = no HTTP response at all: a transient network
+      // blip (timeout, connection reset, DNS, proxy hiccup) — NOT a block.
+      // Refreshing cookies would be pointless (and wastes spfa balance), so
+      // just wait briefly and retry once. This keeps a single blip from
+      // counting toward the 3-error "проверьте ссылку" threshold.
+      if (!status) {
+        logger.warn('[fetch] network error (no response) — retrying once in 1.5s');
+        await new Promise((r) => setTimeout(r, 1_500));
+        return await fetchWithCurlCffi(url);
+      }
+
       throw err;
     }
   }
