@@ -266,16 +266,18 @@ export class SearchService {
 
     await this.searchRepo.update(search.id, { lastCheckedAt: new Date() });
 
-    // First tick after restart: seed the session seen-set from the DB, NOT
-    // from the live feed. Snapshotting the live feed swallowed listings that
-    // appeared while the bot was restarting (they were already in the feed at
-    // first tick, so they were marked seen and never sent). The DB is the
-    // durable record of what was actually processed, so restarts lose nothing —
-    // and the tick proceeds immediately instead of being skipped.
-    if (!sessionSeen.has(search.id)) {
+    // First tick after restart: seed the session seen-set from the DB. The DB
+    // is only a record of listings we processed — the live feed also contains
+    // OLDER items that predate the bot (or rotated in), which are not in the
+    // DB. Sending those on the first tick spams the user with stale listings,
+    // so the first tick runs in "quiet baseline" mode: unseen items are saved
+    // to the DB silently (no notification). From the second tick on, anything
+    // unseen is genuinely new and is sent within one poll interval.
+    const firstTick = !sessionSeen.has(search.id);
+    if (firstTick) {
       const dbIds = await this.listingRepo.findExternalIds(search.id);
       sessionSeen.set(search.id, new Set(dbIds));
-      logger.info(`[session-seed] searchId=${search.id} seeded ${dbIds.length} ids from DB`);
+      logger.info(`[session-seed] searchId=${search.id} seeded ${dbIds.length} ids from DB — quiet baseline tick`);
     }
 
     const seenSession = sessionSeen.get(search.id)!;
@@ -301,6 +303,28 @@ export class SearchService {
         seenSession.add(externalId); // warm the in-memory cache
         logger.debug(`[seen-db] externalId=${externalId}`);
         await this.checkPriceDrop(search, user, settings, externalId, parsed.price ?? null);
+        continue;
+      }
+
+      // First tick after restart: unknown items may be old feed residents that
+      // simply predate our DB records. Save them quietly instead of notifying.
+      if (firstTick) {
+        seenSession.add(externalId);
+        logger.info(`[restart-baseline] searchId=${search.id} externalId=${externalId} — saved silently`);
+        try {
+          await this.listingRepo.upsert(search.id, externalId, {
+            title: parsed.title,
+            price: parsed.price ?? null,
+            location: parsed.location ?? null,
+            imageUrl: parsed.imageUrl ?? null,
+            url: parsed.url,
+            platform: search.platform,
+            sellerName: parsed.sellerName ?? null,
+            sellerUrl: parsed.sellerUrl ?? null,
+            isBaseline: true,
+            skippedReason: 'restart-baseline',
+          } as Parameters<ListingRepository['upsert']>[2]);
+        } catch { /* already saved */ }
         continue;
       }
 

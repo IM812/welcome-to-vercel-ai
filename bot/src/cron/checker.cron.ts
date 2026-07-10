@@ -14,6 +14,14 @@ type SearchWithUser = Search & {
   user: User & { settings: UserSettings | null };
 };
 
+// Poll interval between checker ticks. Lower = faster notifications but more
+// requests (higher 403 risk & more cookie purchases). Tunable via .env without
+// a code change. Default 10s (was 15s) to edge ahead of competitors.
+const CHECK_INTERVAL_MS = Math.max(
+  5_000,
+  parseInt(process.env.CHECK_INTERVAL_MS ?? '10000', 10) || 10_000,
+);
+
 export class CheckerCron {
   private searchRepo: SearchRepository;
   private searchService: SearchService;
@@ -35,7 +43,7 @@ export class CheckerCron {
 
   start(): void {
     void this.loop();
-    logger.info('Checker cron started (continuous loop, 15s interval)');
+    logger.info(`Checker cron started (continuous loop, ${CHECK_INTERVAL_MS / 1000}s interval)`);
   }
 
   private async loop(): Promise<void> {
@@ -51,7 +59,7 @@ export class CheckerCron {
             this.isRunning = false;
           });
       }
-      await sleep(15_000);
+      await sleep(CHECK_INTERVAL_MS);
     }
   }
 
