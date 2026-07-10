@@ -243,16 +243,11 @@ export async function fetchWithCurlCffi(url: string): Promise<string> {
 }
 
 // ---------------------------------------------------------------------------
-// Global 403 circuit breaker.
-// When the IP is flagged, every retry deepens the ban: each 403 spawned more
-// retries (Python x3 + Node x1 + next tick in 10s) = up to ~36 req/min while
-// blocked — a ban spiral. The breaker OPENS after 3 consecutive 403s and
-// pauses ALL Avito fetches for 3 minutes so the IP-level block can expire.
-// Any successful fetch closes it again.
+// Per-parser 403 circuit breaker.
+// State lives on each parser INSTANCE so a blocked search does NOT stop other
+// users' searches. With many users, a single blocked search was pausing every
+// active search for 3-30 minutes — completely unacceptable at scale.
 // ---------------------------------------------------------------------------
-let consecutive403 = 0;
-let breakerOpenUntil = 0;
-let breakerOpens = 0; // consecutive opens without a success in between
 const BREAKER_THRESHOLD = 3;
 const BREAKER_BASE_PAUSE_MS = 3 * 60_000;
 const BREAKER_MAX_PAUSE_MS = 30 * 60_000;
@@ -260,46 +255,45 @@ const BREAKER_MAX_PAUSE_MS = 30 * 60_000;
 export abstract class BaseParser implements Parser {
   abstract parse(url: string): Promise<ParsedListing[]>;
 
+  // Per-instance breaker state — isolated per search.
+  private consecutive403 = 0;
+  private breakerOpenUntil = 0;
+  private breakerOpens = 0;
+
   protected async fetchHtml(url: string): Promise<string> {
     // Circuit breaker: while open, fail fast without touching Avito at all.
-    if (Date.now() < breakerOpenUntil) {
-      const waitSec = Math.round((breakerOpenUntil - Date.now()) / 1000);
+    if (Date.now() < this.breakerOpenUntil) {
+      const waitSec = Math.round((this.breakerOpenUntil - Date.now()) / 1000);
       throw new Error(`Avito cooldown active — ${waitSec}s until retry (IP flagged, letting the block expire)`);
     }
 
     logger.debug(`[fetch] ${url}`);
     try {
       const html = await fetchWithCurlCffi(url);
-      consecutive403 = 0; // success closes the breaker
-      breakerOpens = 0;   // and resets the backoff ladder
+      this.consecutive403 = 0;
+      this.breakerOpens = 0;
       return html;
     } catch (err: unknown) {
       const status = (err as { response?: { status?: number } })?.response?.status;
-      // 403 = cookies missing/expired or IP blocked. Try to auto-refresh
-      // cookies via spfa.ru, then retry the request once.
       if (status === 403) {
-        consecutive403++;
-        if (consecutive403 >= BREAKER_THRESHOLD) {
-          // Exponential backoff: 3min, 6min, 12min, 24min, capped at 30min.
-          // A freshly flagged IP recovers in minutes; a hammered one needs
-          // longer. Doubling gives the block time to actually expire instead
-          // of re-triggering it the moment the pause ends.
-          breakerOpens++;
+        this.consecutive403++;
+        if (this.consecutive403 >= BREAKER_THRESHOLD) {
+          this.breakerOpens++;
           const pauseMs = Math.min(
-            BREAKER_BASE_PAUSE_MS * 2 ** (breakerOpens - 1),
+            BREAKER_BASE_PAUSE_MS * 2 ** (this.breakerOpens - 1),
             BREAKER_MAX_PAUSE_MS,
           );
-          breakerOpenUntil = Date.now() + pauseMs;
-          consecutive403 = 0;
-          logger.warn(`[breaker] ${BREAKER_THRESHOLD} consecutive 403s — pausing ALL Avito requests for ${Math.round(pauseMs / 60_000)}min (open #${breakerOpens}) to let the IP block expire`);
+          this.breakerOpenUntil = Date.now() + pauseMs;
+          this.consecutive403 = 0;
+          logger.warn(`[breaker] ${BREAKER_THRESHOLD} consecutive 403s — pausing this search for ${Math.round(pauseMs / 60_000)}min (open #${this.breakerOpens})`);
           throw err;
         }
         logger.warn('[fetch] 403 — attempting automatic cookie refresh');
         const ok = await refreshAvitoCookies();
         if (ok) {
           const html = await fetchWithCurlCffi(url);
-          consecutive403 = 0;
-          breakerOpens = 0;
+          this.consecutive403 = 0;
+          this.breakerOpens = 0;
           return html;
         }
         throw err;
