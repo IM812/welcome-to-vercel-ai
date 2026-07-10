@@ -229,8 +229,19 @@ def fetch(url, proxy=None, cookies_path=None):
             if not resp.ok:
                 return {"ok": False, "error": f"HTTP {resp.status_code}", "status": resp.status_code}
 
-            # Return full HTML for Node.js parser
-            return {"ok": True, "html": resp.text, "status": resp.status_code}
+            # Return full HTML for Node.js parser. Include the FINAL url (after
+            # any redirects) and redirect history so Node can verify Avito
+            # actually honoured the s=104 (sort-by-date) parameter and did not
+            # bounce us to a relevance-sorted page.
+            redirect_chain = [str(r.url) for r in resp.history] if resp.history else []
+            return {
+                "ok": True,
+                "html": resp.text,
+                "status": resp.status_code,
+                "final_url": str(resp.url),
+                "redirected": bool(resp.history),
+                "redirect_chain": redirect_chain,
+            }
 
         except Exception as e:
             if attempt < MAX_RETRIES:

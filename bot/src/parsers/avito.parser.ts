@@ -148,6 +148,17 @@ export class AvitoParser extends BaseParser {
 
     logger.debug(`[avito-category] found=${listings.length}`);
 
+    // Feed-order diagnostics — enabled with AVITO_SORT_DIAG=true.
+    // Prints the first items IN FEED ORDER with their dates. If the feed is
+    // truly sorted by date (s=104), these should be the newest listings and
+    // their dates should descend from top to bottom.
+    if ((process.env.AVITO_SORT_DIAG ?? 'false') === 'true') {
+      logger.info(`[sort-diag] first ${Math.min(5, listings.length)} listings in feed order:`);
+      listings.slice(0, 5).forEach((l, i) => {
+        logger.info(`[sort-diag]   #${i + 1} id=${l.externalId ?? '(hash)'} date=${l.rawPublishedAt ?? '—'} | ${l.title.slice(0, 50)}`);
+      });
+    }
+
     if (DIAG) {
       const withDate = diag.filter((d) => d.value).length;
       const withoutDate = diag.length - withDate;

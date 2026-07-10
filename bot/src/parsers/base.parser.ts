@@ -211,12 +211,38 @@ export async function fetchWithCurlCffi(url: string): Promise<string> {
         /** True when avito_fetch.py already called spfa handle_block() internally.
          *  Node must NOT trigger a second refreshAvitoCookies() in that case. */
         cookies_refreshed?: boolean;
+        /** Final URL after redirects — for sort-by-date verification. */
+        final_url?: string;
+        redirected?: boolean;
+        redirect_chain?: string[];
       };
       try {
         result = JSON.parse(stdout.trim());
       } catch {
         reject(new Error(`avito_fetch.py bad JSON: ${stdout.trim().slice(0, 200)}`));
         return;
+      }
+
+      // Sort-by-date diagnostics — enabled with AVITO_SORT_DIAG=true.
+      // Proves whether Avito honoured s=104 or silently redirected us to a
+      // relevance-sorted page (which would mean we read the WRONG feed).
+      if ((process.env.AVITO_SORT_DIAG ?? 'false') === 'true') {
+        const requestedHasSort = /[?&]s=104(&|$)/.test(url);
+        const finalUrl = result.final_url ?? '(not reported)';
+        const finalHasSort = /[?&]s=104(&|$)/.test(finalUrl);
+        logger.info('[sort-diag] --------------------------------------------------');
+        logger.info(`[sort-diag] requested URL : ${url}`);
+        logger.info(`[sort-diag]   has s=104?   : ${requestedHasSort ? 'YES' : 'NO'}`);
+        logger.info(`[sort-diag] final URL     : ${finalUrl}`);
+        logger.info(`[sort-diag]   has s=104?   : ${finalHasSort ? 'YES' : 'NO'}`);
+        logger.info(`[sort-diag] redirected    : ${result.redirected ? 'YES' : 'no'}`);
+        if (result.redirect_chain?.length) {
+          logger.info(`[sort-diag] redirect chain: ${result.redirect_chain.join(' -> ')}`);
+        }
+        if (requestedHasSort && !finalHasSort) {
+          logger.warn('[sort-diag] ⚠ Avito DROPPED s=104 — feed is NOT sorted by date! Reading wrong feed.');
+        }
+        logger.info('[sort-diag] --------------------------------------------------');
       }
 
       if (!result.ok) {
