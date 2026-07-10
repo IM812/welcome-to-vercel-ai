@@ -24,10 +24,15 @@ import time
 import os
 
 try:
-    from curl_cffi import requests as cffi_requests
+    import httpx as cffi_requests
+    _USE_HTTPX = True
 except ImportError:
-    print(json.dumps({"ok": False, "error": "curl_cffi not installed"}))
-    sys.exit(1)
+    try:
+        import requests as cffi_requests
+        _USE_HTTPX = False
+    except ImportError:
+        print(json.dumps({"ok": False, "error": "httpx or requests not installed. Run: pip3 install httpx"}))
+        sys.exit(1)
 
 # Optional spfa.ru cookie provider (auto cookies).
 try:
@@ -37,9 +42,15 @@ except ImportError:
 
 # Plain requests for the IP-rotation call.
 try:
-    import requests as plain_requests
+    import httpx as plain_requests
+    _PLAIN_HTTPX = True
 except ImportError:
-    plain_requests = None
+    try:
+        import requests as plain_requests
+        _PLAIN_HTTPX = False
+    except ImportError:
+        plain_requests = None
+        _PLAIN_HTTPX = False
 
 IMPERSONATE_OPTIONS = ["chrome120", "chrome124", "chrome131", "edge101", "safari17_0"]
 MAX_RETRIES = 4
@@ -122,21 +133,25 @@ def fetch(url: str, proxy: str | None = None, cookies_path: str | None = None) -
         cookies = load_cookies(cookies_path) if cookies_path else {}
 
     for attempt in range(1, MAX_RETRIES + 1):
-        impersonate = random.choice(IMPERSONATE_OPTIONS)
-
-        session_kwargs = {"impersonate": impersonate}
-        if proxy:
-            session_kwargs["proxies"] = {"http": proxy, "https": proxy}
-
         try:
-            with cffi_requests.Session(**session_kwargs) as session:
-                resp = session.get(
-                    url,
-                    headers=HEADERS,
-                    cookies=cookies or None,
-                    timeout=15,
-                    allow_redirects=True,
-                )
+            client_kwargs = {
+                "headers": HEADERS,
+                "follow_redirects": True,
+                "timeout": 20,
+                "verify": False,
+            }
+            if proxy:
+                client_kwargs["proxies"] = proxy if not _USE_HTTPX else {"http://": proxy, "https://": proxy}
+
+            with (cffi_requests.Client(**client_kwargs) if _USE_HTTPX else cffi_requests.Session()) as session:
+                get_kwargs = {
+                    "headers": HEADERS,
+                    "cookies": cookies or None,
+                    "timeout": 20,
+                }
+                if not _USE_HTTPX and proxy:
+                    get_kwargs["proxies"] = {"http": proxy, "https": proxy}
+                resp = session.get(url, **get_kwargs) if not _USE_HTTPX else session.get(url, cookies=cookies or None)
 
                 # Record status for spfa's block-detection heuristic.
                 if spfa:
