@@ -9,7 +9,11 @@
  * handshake that Avito detects and returns 403 for.
  *
  * Optional env vars:
- *   AVITO_PROXY        — proxy URL, e.g. http://user:pass@host:port
+ *   AVITO_PROXY        — single proxy URL, e.g. http://user:pass@host:port
+ *   AVITO_PROXY_POOL   — MANY proxies (round-robin), separated by newlines or
+ *                        commas. Each request goes out through the next IP so
+ *                        Avito cannot ban a single address. This is the real
+ *                        fix for the 403 storms — competitors rotate IPs too.
  *   AVITO_COOKIES_PATH — path to cookies JSON file
  *                        (default: <project>/storage/avito_cookies.json)
  */
@@ -46,6 +50,49 @@ export const PROXY_PATH =
   process.env.AVITO_PROXY_PATH ??
   path.resolve(_dir, '../../storage/avito_proxy.txt');
 
+// Proxy POOL: one proxy per line (comments with # ignored). File-first, then
+// AVITO_PROXY_POOL env (newline- or comma-separated). When present, requests
+// round-robin across the whole list so no single IP gets hammered into a ban.
+export const PROXY_POOL_PATH =
+  process.env.AVITO_PROXY_POOL_PATH ??
+  path.resolve(_dir, '../../storage/avito_proxy_pool.txt');
+
+// Round-robin cursor (module-level, survives across fetches within a process).
+let proxyPoolCursor = 0;
+
+function loadProxyPool(): string[] {
+  const raw: string[] = [];
+
+  // 1. File source (editable at runtime without a restart).
+  try {
+    if (fs.existsSync(PROXY_POOL_PATH)) {
+      raw.push(...fs.readFileSync(PROXY_POOL_PATH, 'utf-8').split(/\r?\n/));
+    }
+  } catch { /* ignore */ }
+
+  // 2. Env source (newline OR comma separated).
+  if (process.env.AVITO_PROXY_POOL) {
+    raw.push(...process.env.AVITO_PROXY_POOL.split(/[\n,]/));
+  }
+
+  // Normalize: trim, drop blanks and #comments, de-duplicate.
+  const seen = new Set<string>();
+  const pool: string[] = [];
+  for (const line of raw) {
+    const p = line.trim();
+    if (!p || p.startsWith('#')) continue;
+    if (seen.has(p)) continue;
+    seen.add(p);
+    pool.push(p);
+  }
+  return pool;
+}
+
+/** Number of proxies currently configured in the pool (0 = single/direct). */
+export function getProxyPoolSize(): number {
+  return loadProxyPool().length;
+}
+
 function resolveProxy(): string | null {
   // Direct mode: on a Russian host Avito is reachable without a proxy, so
   // AVITO_DIRECT=1 hard-disables proxy resolution. This makes the no-proxy
@@ -53,6 +100,15 @@ function resolveProxy(): string | null {
   // would otherwise route traffic through a dead proxy.
   if (/^(1|true|yes)$/i.test(process.env.AVITO_DIRECT ?? '')) return null;
 
+  // Pool takes priority: rotate to the next IP for every request.
+  const pool = loadProxyPool();
+  if (pool.length > 0) {
+    const proxy = pool[proxyPoolCursor % pool.length];
+    proxyPoolCursor = (proxyPoolCursor + 1) % pool.length;
+    return proxy;
+  }
+
+  // Fallback: single proxy (file-first, then env).
   try {
     if (fs.existsSync(PROXY_PATH)) {
       const v = fs.readFileSync(PROXY_PATH, 'utf-8').trim();

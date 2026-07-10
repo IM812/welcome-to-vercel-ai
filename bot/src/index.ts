@@ -37,6 +37,9 @@ import { registerReferralController } from './controllers/referral.controller';
 import { registerAdminController } from './controllers/admin.controller';
 import { registerProfileController } from './controllers/profile.controller';
 
+// Parsers
+import { getProxyPoolSize } from './parsers/base.parser';
+
 // Cron jobs (class-based)
 import { CheckerCron } from './cron/checker.cron';
 import { SubscriptionCron } from './cron/subscription.cron';
@@ -45,6 +48,14 @@ import { QueueFlushCron } from './cron/queue-flush.cron';
 
 async function main() {
   logger.info('Starting SearchBot...');
+
+  // Report proxy-pool status so it's obvious whether IP rotation is active.
+  const proxyPoolSize = getProxyPoolSize();
+  if (proxyPoolSize > 0) {
+    logger.info(`[proxy] pool active — ${proxyPoolSize} proxies, round-robin rotation`);
+  } else {
+    logger.warn('[proxy] NO proxy pool configured — all requests use the server IP (403 risk). Set AVITO_PROXY_POOL or storage/avito_proxy_pool.txt');
+  }
 
   // ── Bot instance ──────────────────────────────────────────────────────────
   const bot = new Bot<BotContext>(config.BOT_TOKEN);
