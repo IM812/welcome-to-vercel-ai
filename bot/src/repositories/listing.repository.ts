@@ -63,6 +63,10 @@ export class ListingRepository {
     return { listing, isNew: true };
   }
 
+  async updatePrice(id: number, price: string | null): Promise<void> {
+    await prisma.listing.updateMany({ where: { id }, data: { price } });
+  }
+
   async markNotified(id: number): Promise<void> {
     await prisma.listing.update({ where: { id }, data: { notifiedAt: new Date() } });
   }

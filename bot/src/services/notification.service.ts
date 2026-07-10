@@ -137,6 +137,67 @@ export class NotificationService {
     }
   }
 
+  /**
+   * Price-drop alert for a listing the user already received. Bypasses the
+   * notifiedAt / duplicate-notification guards on purpose (it is a repeat
+   * message about the same listing), but still respects daily limits and
+   * working hours.
+   */
+  async sendPriceDropNotification(
+    user: User,
+    search: Search,
+    listing: Listing,
+    oldPrice: string,
+    newPrice: string,
+    settings: UserSettings | null,
+  ): Promise<boolean> {
+    if (!this.bot) return false;
+    if (!this.subService.canSendNotification(user)) return false;
+    if (!this.subService.isWithinWorkingHours(settings)) return false;
+
+    try {
+      const lines: string[] = [];
+      lines.push(`📉 <b>Цена снижена!</b>`);
+      lines.push('');
+      lines.push(`<b>${this.esc(listing.title)}</b>`);
+      lines.push('');
+      lines.push(`Было: <s>${this.esc(oldPrice)}</s>`);
+      lines.push(`Стало: <b>${this.esc(newPrice)}</b>`);
+      if (listing.location) lines.push(`\n📍 ${this.esc(listing.location)}`);
+      if (search.name) lines.push(`🔍 Поиск: <i>${this.esc(search.name)}</i>`);
+
+      const caption = lines.join('\n');
+      const keyboard = this.buildKeyboard(listing, search);
+      const chatId = Number(user.telegramId);
+
+      let sent = false;
+      if (listing.imageUrl) {
+        try {
+          await this.bot.api.sendPhoto(chatId, listing.imageUrl, {
+            caption,
+            parse_mode: 'HTML',
+            reply_markup: { inline_keyboard: keyboard },
+          });
+          sent = true;
+        } catch { /* fall through to text */ }
+      }
+
+      if (!sent) {
+        await this.bot.api.sendMessage(chatId, `${caption}\n\n<a href="${listing.url}">Смотреть объявление</a>`, {
+          parse_mode: 'HTML',
+          reply_markup: { inline_keyboard: keyboard },
+          link_preview_options: { is_disabled: false, prefer_large_media: true, show_above_text: true, url: listing.url },
+        });
+      }
+
+      await this.userRepo.incrementDailyNotification(user.id);
+      return true;
+    } catch (err) {
+      logger.error(`Failed to send price-drop notification to user ${user.id}`, err);
+      return false;
+    }
+  }
+
   /** Build a rich HTML caption for the listing card. */
   private buildCaption(listing: Listing, search: Search): string {
     const lines: string[] = [];
