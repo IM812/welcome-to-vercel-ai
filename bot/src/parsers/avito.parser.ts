@@ -11,6 +11,23 @@ import { fetchWithCurlCffi } from './base.parser';
  */
 const MAX_LISTINGS = Number(process.env.AVITO_MAX_LISTINGS_PER_CHECK ?? 30);
 
+/**
+ * Force sort-by-date on any Avito search URL.
+ * s=104 = "по дате" (newest first). Without this Avito returns relevance-
+ * sorted results where freshly posted items are buried under promoted/old
+ * listings — causing the parser to find nothing newer than 1 час назад.
+ */
+function withDateSort(rawUrl: string): string {
+  try {
+    const u = new URL(rawUrl);
+    u.searchParams.set('s', '104');
+    return u.toString();
+  } catch {
+    // If the URL is malformed just use it as-is.
+    return rawUrl;
+  }
+}
+
 export class AvitoParser extends BaseParser {
   /**
    * Main entry point used by SearchService.
@@ -22,7 +39,7 @@ export class AvitoParser extends BaseParser {
    * are not yet in the database (to avoid unnecessary HTTP requests).
    */
   async parse(url: string): Promise<ParsedListing[]> {
-    const html = await this.fetchHtml(url);
+    const html = await this.fetchHtml(withDateSort(url));
     const $ = cheerio.load(html);
     const listings: ParsedListing[] = [];
 
