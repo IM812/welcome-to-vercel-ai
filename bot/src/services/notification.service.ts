@@ -137,6 +137,67 @@ export class NotificationService {
     }
   }
 
+  /**
+   * Price-drop alert for a listing the user already received. Bypasses the
+   * notifiedAt / duplicate-notification guards on purpose (it is a repeat
+   * message about the same listing), but still respects daily limits and
+   * working hours.
+   */
+  async sendPriceDropNotification(
+    user: User,
+    search: Search,
+    listing: Listing,
+    oldPrice: string,
+    newPrice: string,
+    settings: UserSettings | null,
+  ): Promise<boolean> {
+    if (!this.bot) return false;
+    if (!this.subService.canSendNotification(user)) return false;
+    if (!this.subService.isWithinWorkingHours(settings)) return false;
+
+    try {
+      const lines: string[] = [];
+      lines.push(`📉 <b>Цена снижена!</b>`);
+      lines.push('');
+      lines.push(`<b>${this.esc(listing.title)}</b>`);
+      lines.push('');
+      lines.push(`Было: <s>${this.esc(oldPrice)}</s>`);
+      lines.push(`Стало: <b>${this.esc(newPrice)}</b>`);
+      if (listing.location) lines.push(`\n📍 ${this.esc(listing.location)}`);
+      if (search.name) lines.push(`🔍 Поиск: <i>${this.esc(search.name)}</i>`);
+
+      const caption = lines.join('\n');
+      const keyboard = this.buildKeyboard(listing, search);
+      const chatId = Number(user.telegramId);
+
+      let sent = false;
+      if (listing.imageUrl) {
+        try {
+          await this.bot.api.sendPhoto(chatId, listing.imageUrl, {
+            caption,
+            parse_mode: 'HTML',
+            reply_markup: { inline_keyboard: keyboard },
+          });
+          sent = true;
+        } catch { /* fall through to text */ }
+      }
+
+      if (!sent) {
+        await this.bot.api.sendMessage(chatId, `${caption}\n\n<a href="${listing.url}">Смотреть объявление</a>`, {
+          parse_mode: 'HTML',
+          reply_markup: { inline_keyboard: keyboard },
+          link_preview_options: { is_disabled: false, prefer_large_media: true, show_above_text: true, url: listing.url },
+        });
+      }
+
+      await this.userRepo.incrementDailyNotification(user.id);
+      return true;
+    } catch (err) {
+      logger.error(`Failed to send price-drop notification to user ${user.id}`, err);
+      return false;
+    }
+  }
+
   /** Build a rich HTML caption for the listing card. */
   private buildCaption(listing: Listing, search: Search): string {
     const lines: string[] = [];
@@ -156,30 +217,33 @@ export class NotificationService {
       lines.push(`📍 ${this.esc(listing.location)}`);
     }
 
-    // Published date — ALWAYS show a concrete date/time, never a relative
-    // phrase like "час назад" or "вчера". We format the parsed instant in
-    // Moscow time (e.g. "2 июля 2026, 01:18"). Only when the date could not
-    // be parsed at all do we fall back to the raw string, and only if that
-    // raw string is itself an absolute date (relative phrases are dropped).
+    // Time display. Avito's relative timestamps are rounded UP ("1 час назад"
+    // for a listing posted minutes ago), so a date parsed from them is up to
+    // an hour off — misleading in the card. The bot polls every 15s, so the
+    // moment we caught the listing IS the real appearance time. Always show
+    // the catch time in Moscow; add "Опубликовано" only when Avito supplied
+    // an absolute (non-relative) date we can trust.
     const raw = (listing as Listing & { rawPublishedAt: string | null }).rawPublishedAt;
     const isRelative = raw
       ? /назад|только что|сейчас|вчера|сегодня|час|минут/i.test(raw)
       : false;
 
-    if (listing.publishedAt) {
-      const dateStr = listing.publishedAt.toLocaleString('ru-RU', {
+    const mskTime = (d: Date) =>
+      d.toLocaleString('ru-RU', {
         day: 'numeric',
         month: 'long',
-        year: 'numeric',
         hour: '2-digit',
         minute: '2-digit',
         timeZone: 'Europe/Moscow',
       });
-      lines.push(`Опубликовано: ${this.esc(dateStr)}`);
+
+    lines.push(`🕐 Найдено: ${this.esc(mskTime(new Date()))} (МСК)`);
+
+    if (listing.publishedAt && !isRelative) {
+      // Absolute date from Avito ("2 июля 01:18") — trustworthy, show it.
+      lines.push(`Опубликовано: ${this.esc(mskTime(listing.publishedAt))}`);
     } else if (raw && raw.trim() && !isRelative) {
       lines.push(`Опубликовано: ${this.esc(raw.trim())}`);
-    } else {
-      lines.push('Опубликовано: время не указано');
     }
 
     // Search label

@@ -35,6 +35,19 @@ const SEND_WHEN_DATE_UNKNOWN =
 // before this bot process started, without requiring DB writes for each one.
 const sessionSeen = new Map<number, Set<string>>();
 
+// In-memory last-known numeric price per listing, per search. Used to detect
+// price drops on already-seen listings without a DB hit on every tick.
+const sessionPrices = new Map<number, Map<string, number>>();
+
+/** Extract a numeric value from a price string like "45 000 ₽". */
+function parsePriceNumber(price: string | null | undefined): number | null {
+  if (!price) return null;
+  const digits = price.replace(/[^\d]/g, '');
+  if (!digits) return null;
+  const n = Number(digits);
+  return Number.isFinite(n) && n > 0 ? n : null;
+}
+
 
 
 export class SearchService {
@@ -272,6 +285,7 @@ export class SearchService {
       // 1. In-memory session check — O(1), no DB hit.
       if (seenSession.has(externalId)) {
         logger.debug(`[seen-session] externalId=${externalId}`);
+        await this.checkPriceDrop(search, user, settings, externalId, parsed.price ?? null);
         continue;
       }
 
@@ -280,6 +294,7 @@ export class SearchService {
       if (existing) {
         seenSession.add(externalId); // warm the in-memory cache
         logger.debug(`[seen-db] externalId=${externalId}`);
+        await this.checkPriceDrop(search, user, settings, externalId, parsed.price ?? null);
         continue;
       }
 
@@ -362,6 +377,66 @@ export class SearchService {
   }
 
   /**
+   * Detect a price drop on an already-seen listing and notify the user.
+   * Prices are cached in memory per search; the first observation per session
+   * seeds the cache from the DB record (one-time lookup per listing).
+   */
+  private async checkPriceDrop(
+    search: Search,
+    user: unknown,
+    settings: unknown,
+    externalId: string,
+    rawPrice: string | null,
+  ): Promise<void> {
+    const newPrice = parsePriceNumber(rawPrice);
+    if (newPrice === null) return;
+
+    let prices = sessionPrices.get(search.id);
+    if (!prices) {
+      prices = new Map();
+      sessionPrices.set(search.id, prices);
+    }
+
+    let oldPrice = prices.get(externalId);
+    if (oldPrice === undefined) {
+      // First sighting this session — seed from the DB record.
+      const existing = await this.listingRepo.findByExternalId(search.id, externalId);
+      const dbPrice = parsePriceNumber(existing?.price ?? null);
+      if (dbPrice === null) {
+        prices.set(externalId, newPrice);
+        return;
+      }
+      oldPrice = dbPrice;
+    }
+
+    if (newPrice >= oldPrice) {
+      prices.set(externalId, newPrice);
+      return;
+    }
+
+    // Genuine drop.
+    prices.set(externalId, newPrice);
+    const existing = await this.listingRepo.findByExternalId(search.id, externalId);
+    if (!existing) return;
+
+    const oldPriceStr = existing.price ?? `${oldPrice.toLocaleString('ru-RU')} ₽`;
+    await this.listingRepo.updatePrice(existing.id, rawPrice);
+
+    logger.info(`[price-drop] searchId=${search.id} externalId=${externalId} ${oldPrice} -> ${newPrice}`);
+
+    if (this.notifService) {
+      await this.notifService.sendPriceDropNotification(
+        user as Parameters<NotificationService['sendPriceDropNotification']>[0],
+        search,
+        { ...existing, price: rawPrice },
+        oldPriceStr,
+        rawPrice ?? `${newPrice.toLocaleString('ru-RU')} ₽`,
+        settings as Parameters<NotificationService['sendPriceDropNotification']>[5],
+      );
+    }
+  }
+
+  /**
    * Delete all listings for a search and re-initialize baseline.
    * Used by admin /resetbaseline command and user "Сбросить старые объявления".
    */
@@ -375,6 +450,7 @@ export class SearchService {
     await this.listingRepo.deleteBySearchId(search.id);
     await this.searchRepo.update(search.id, { baselineInitializedAt: null });
     sessionSeen.delete(search.id);
+    sessionPrices.delete(search.id);
     return this.initializeSearchBaseline(search.id);
   }
 
