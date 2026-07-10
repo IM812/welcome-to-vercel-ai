@@ -78,10 +78,14 @@ export class CheckerCron {
         const diffMinutes = (now.getTime() - search.lastCheckedAt.getTime()) / 60_000;
         if (diffMinutes < 5) continue;
       }
-      // Active searches: run every cron tick (15s) — no artificial interval gate.
+      // Active searches: run every cron tick — no artificial interval gate.
       // Speed is the priority: we want to notify before competitors do.
 
       await this.processSearch(search, user);
+
+      // Stagger between searches: back-to-back requests from the same IP look
+      // like a scraper burst. 3-6s of jitter makes the traffic pattern human.
+      await sleep(3_000 + Math.floor(Math.random() * 3_000));
     }
   }
 
