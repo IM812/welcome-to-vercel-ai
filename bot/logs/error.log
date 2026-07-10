@@ -739,3 +739,4 @@ The column `Listing.rawPublishedAt` does not exist in the current database.
 2026-07-10 10:12:33 [[31merror[39m]: Parser error for search 6: Request failed with status code 0
 2026-07-10 10:13:48 [[31merror[39m]: Parser error for search 6: Request failed with status code 0
 2026-07-10 10:15:03 [[31merror[39m]: Parser error for search 6: Request failed with status code 0
+2026-07-10 10:15:28 [[31merror[39m]: Fatal startup error
