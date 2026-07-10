@@ -252,8 +252,10 @@ export async function fetchWithCurlCffi(url: string): Promise<string> {
 // ---------------------------------------------------------------------------
 let consecutive403 = 0;
 let breakerOpenUntil = 0;
+let breakerOpens = 0; // consecutive opens without a success in between
 const BREAKER_THRESHOLD = 3;
-const BREAKER_PAUSE_MS = 3 * 60_000;
+const BREAKER_BASE_PAUSE_MS = 3 * 60_000;
+const BREAKER_MAX_PAUSE_MS = 30 * 60_000;
 
 export abstract class BaseParser implements Parser {
   abstract parse(url: string): Promise<ParsedListing[]>;
@@ -269,6 +271,7 @@ export abstract class BaseParser implements Parser {
     try {
       const html = await fetchWithCurlCffi(url);
       consecutive403 = 0; // success closes the breaker
+      breakerOpens = 0;   // and resets the backoff ladder
       return html;
     } catch (err: unknown) {
       const status = (err as { response?: { status?: number } })?.response?.status;
@@ -277,9 +280,18 @@ export abstract class BaseParser implements Parser {
       if (status === 403) {
         consecutive403++;
         if (consecutive403 >= BREAKER_THRESHOLD) {
-          breakerOpenUntil = Date.now() + BREAKER_PAUSE_MS;
+          // Exponential backoff: 3min, 6min, 12min, 24min, capped at 30min.
+          // A freshly flagged IP recovers in minutes; a hammered one needs
+          // longer. Doubling gives the block time to actually expire instead
+          // of re-triggering it the moment the pause ends.
+          breakerOpens++;
+          const pauseMs = Math.min(
+            BREAKER_BASE_PAUSE_MS * 2 ** (breakerOpens - 1),
+            BREAKER_MAX_PAUSE_MS,
+          );
+          breakerOpenUntil = Date.now() + pauseMs;
           consecutive403 = 0;
-          logger.warn(`[breaker] ${BREAKER_THRESHOLD} consecutive 403s — pausing ALL Avito requests for ${BREAKER_PAUSE_MS / 60_000}min to let the IP block expire`);
+          logger.warn(`[breaker] ${BREAKER_THRESHOLD} consecutive 403s — pausing ALL Avito requests for ${Math.round(pauseMs / 60_000)}min (open #${breakerOpens}) to let the IP block expire`);
           throw err;
         }
         logger.warn('[fetch] 403 — attempting automatic cookie refresh');
@@ -287,6 +299,7 @@ export abstract class BaseParser implements Parser {
         if (ok) {
           const html = await fetchWithCurlCffi(url);
           consecutive403 = 0;
+          breakerOpens = 0;
           return html;
         }
         throw err;
