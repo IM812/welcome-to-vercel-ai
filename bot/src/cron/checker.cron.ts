@@ -116,7 +116,7 @@ export class CheckerCron {
       });
 
       const MAX_ERRORS = 5;
-      if (updated.errorCount >= MAX_ERRORS && search.status !== 'ERROR') {
+      if (updated && updated.errorCount >= MAX_ERRORS && search.status !== 'ERROR') {
         await this.searchRepo.setStatus(search.id, 'ERROR');
         try {
           await this.bot.api.sendMessage(
