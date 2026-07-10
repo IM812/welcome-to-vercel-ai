@@ -22,6 +22,10 @@ export interface ParsedListing {
   rawPublishedAt?: string;
   /** Pre-parsed Date, if the parser already converted it. */
   publishedAt?: Date;
+  /** Seller display name (best-effort, from the listing card). */
+  sellerName?: string;
+  /** Seller profile URL — stable key for seller blocking. */
+  sellerUrl?: string;
 }
 
 export interface PlanLimits {

@@ -78,6 +78,20 @@ export class AvitoParser extends BaseParser {
 
         const finalExternalId = externalId ?? hashListing(title, price, fullUrl);
 
+        // Seller info (best-effort): profile link is the stable key for
+        // per-user seller blocking; name is for display.
+        const sellerLinkEl = $el
+          .find('a[href*="/user/"], a[href*="/brands/"], a[data-marker*="seller"]')
+          .first();
+        const sellerHref = sellerLinkEl.attr('href');
+        const sellerUrl = sellerHref
+          ? (sellerHref.startsWith('http') ? sellerHref : `https://www.avito.ru${sellerHref}`).split('?')[0]
+          : undefined;
+        const sellerName =
+          sellerLinkEl.text().trim() ||
+          $el.find('[class*="sellerInfo"] p, [data-marker="item-line"] [class*="title"]').first().text().trim() ||
+          undefined;
+
         listings.push({
           externalId: finalExternalId,
           title,
@@ -88,6 +102,8 @@ export class AvitoParser extends BaseParser {
           // From the card when available; SearchService fetches the detail page
           // only when this is undefined (minimises requests & 403 risk).
           rawPublishedAt,
+          sellerName,
+          sellerUrl,
         });
       } catch (err) {
         this.safeLog('Failed to parse Avito category item', err);

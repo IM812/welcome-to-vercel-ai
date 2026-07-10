@@ -1,6 +1,7 @@
 import type { Platform, Search, User } from '../generated/prisma/index';
 import { SearchRepository } from '../repositories/search.repository';
 import { ListingRepository } from '../repositories/listing.repository';
+import { BlockedSellerRepository } from '../repositories/blocked-seller.repository';
 import { SubscriptionService } from './subscription.service';
 import { NotificationService } from './notification.service';
 import { ParserFactory } from '../parsers/parser.factory';
@@ -54,12 +55,14 @@ export class SearchService {
   private searchRepo: SearchRepository;
   private listingRepo: ListingRepository;
   private subService: SubscriptionService;
+  private blockedSellerRepo: BlockedSellerRepository;
   private notifService: NotificationService | null = null;
 
   constructor() {
     this.searchRepo = new SearchRepository();
     this.listingRepo = new ListingRepository();
     this.subService = new SubscriptionService();
+    this.blockedSellerRepo = new BlockedSellerRepository();
   }
 
   /**
@@ -277,6 +280,9 @@ export class SearchService {
 
     const seenSession = sessionSeen.get(search.id)!;
 
+    // Blocked sellers for this user (single query per tick).
+    const blockedSellers = await this.blockedSellerRepo.keysForUser(user.id);
+
     logger.debug(`[tick] searchId=${search.id} feed=${allItems.length} checking=${items.length}`);
 
     for (const parsed of items) {
@@ -301,6 +307,27 @@ export class SearchService {
       // Genuinely new — send it.
       logger.info(`[new] searchId=${search.id} externalId=${externalId}`);
       seenSession.add(externalId);
+
+      // Blocked-seller gate: skip listings from sellers the user blocked.
+      const sellerKey = parsed.sellerUrl ?? parsed.sellerName ?? null;
+      if (sellerKey && blockedSellers?.has(sellerKey)) {
+        logger.info(`[blocked-seller-skip] searchId=${search.id} externalId=${externalId} seller="${parsed.sellerName ?? sellerKey}"`);
+        try {
+          await this.listingRepo.upsert(search.id, externalId, {
+            title: parsed.title,
+            price: parsed.price ?? null,
+            location: parsed.location ?? null,
+            imageUrl: parsed.imageUrl ?? null,
+            url: parsed.url,
+            platform: search.platform,
+            sellerName: parsed.sellerName ?? null,
+            sellerUrl: parsed.sellerUrl ?? null,
+            isBaseline: false,
+            skippedReason: 'blocked-seller',
+          } as Parameters<ListingRepository['upsert']>[2]);
+        } catch { /* already saved */ }
+        continue;
+      }
 
       const rawDate: string | null = parsed.rawPublishedAt ?? null;
       const parsedDate: Date | null = rawDate ? parseListingDate(rawDate) : (parsed.publishedAt ?? null);
@@ -351,6 +378,8 @@ export class SearchService {
           platform: search.platform,
           rawPublishedAt: rawDate,
           publishedAt: parsedDate,
+          sellerName: parsed.sellerName ?? null,
+          sellerUrl: parsed.sellerUrl ?? null,
           isBaseline: false,
           skippedReason: null,
         } as Parameters<ListingRepository['upsert']>[2],
