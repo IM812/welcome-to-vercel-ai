@@ -16,6 +16,7 @@
 
 import { spawn } from 'child_process';
 import path from 'path';
+import fs from 'fs';
 import type { ParsedListing } from '../types/index';
 import { logger } from '../utils/logger';
 
@@ -29,12 +30,87 @@ declare const __filename: string;
 const _dir = path.dirname(__filename);
 
 const FETCHER_SCRIPT = path.resolve(_dir, '../../scripts/avito_fetch.py');
+const COOKIES_SCRIPT = path.resolve(_dir, '../../scripts/avito_cookies.py');
 
 const COOKIES_PATH =
   process.env.AVITO_COOKIES_PATH ??
   path.resolve(_dir, '../../storage/avito_cookies.json');
 
-const PROXY = process.env.AVITO_PROXY ?? null;
+// Proxy can be set two ways (checked in this order):
+//   1. storage/avito_proxy.txt  — written at runtime by the /setproxy command
+//   2. AVITO_PROXY env var
+// Reading a file each call lets admins change the proxy from Telegram (mobile
+// friendly) without restarting the bot.
+export const PROXY_PATH =
+  process.env.AVITO_PROXY_PATH ??
+  path.resolve(_dir, '../../storage/avito_proxy.txt');
+
+function resolveProxy(): string | null {
+  try {
+    if (fs.existsSync(PROXY_PATH)) {
+      const v = fs.readFileSync(PROXY_PATH, 'utf-8').trim();
+      if (v) return v;
+    }
+  } catch { /* ignore */ }
+  return process.env.AVITO_PROXY ?? null;
+}
+
+// Serialize cookie refreshes so a burst of 403s doesn't launch N browsers.
+let cookieRefreshInFlight: Promise<boolean> | null = null;
+let lastCookieRefresh = 0;
+const COOKIE_REFRESH_COOLDOWN_MS = 60_000;
+
+/**
+ * Launch the Playwright stealth helper to obtain fresh Avito cookies
+ * (solves the JS challenge automatically). Ported from Duff89/get_cookies.py.
+ * Returns true if the `ft` cookie was obtained.
+ */
+export async function refreshAvitoCookies(): Promise<boolean> {
+  // Cooldown: don't hammer the browser launcher.
+  if (Date.now() - lastCookieRefresh < COOKIE_REFRESH_COOLDOWN_MS && lastCookieRefresh !== 0) {
+    logger.debug('[cookies] refresh skipped (cooldown)');
+    return false;
+  }
+  if (cookieRefreshInFlight) return cookieRefreshInFlight;
+
+  cookieRefreshInFlight = new Promise<boolean>((resolve) => {
+    logger.info('[cookies] launching browser to fetch fresh cookies…');
+    const args = [COOKIES_SCRIPT, COOKIES_PATH, resolveProxy() ?? 'null'];
+    let stdout = '';
+    let stderr = '';
+    const proc = spawn('python3', args, { timeout: 150_000 });
+
+    proc.stdout.on('data', (c: Buffer) => { stdout += c.toString(); });
+    proc.stderr.on('data', (c: Buffer) => { stderr += c.toString(); });
+
+    proc.on('close', () => {
+      lastCookieRefresh = Date.now();
+      cookieRefreshInFlight = null;
+      try {
+        const r = JSON.parse(stdout.trim()) as { ok: boolean; has_ft?: boolean; error?: string };
+        if (r.ok) {
+          logger.info('[cookies] fresh cookies obtained');
+          resolve(true);
+        } else {
+          logger.warn(`[cookies] refresh failed: ${r.error ?? 'unknown'} ${stderr.trim().slice(0, 200)}`);
+          resolve(false);
+        }
+      } catch {
+        logger.warn(`[cookies] refresh bad output: ${stdout.trim().slice(0, 150)} ${stderr.trim().slice(0, 150)}`);
+        resolve(false);
+      }
+    });
+
+    proc.on('error', (err) => {
+      lastCookieRefresh = Date.now();
+      cookieRefreshInFlight = null;
+      logger.warn(`[cookies] spawn failed: ${err.message}`);
+      resolve(false);
+    });
+  });
+
+  return cookieRefreshInFlight;
+}
 
 /**
  * Invoke the Python curl_cffi helper and return raw HTML.
@@ -42,7 +118,7 @@ const PROXY = process.env.AVITO_PROXY ?? null;
  */
 export async function fetchWithCurlCffi(url: string): Promise<string> {
   return new Promise((resolve, reject) => {
-    const args = [FETCHER_SCRIPT, url, PROXY ?? 'null', COOKIES_PATH];
+    const args = [FETCHER_SCRIPT, url, resolveProxy() ?? 'null', COOKIES_PATH];
 
     let stdout = '';
     let stderr = '';
@@ -91,7 +167,21 @@ export abstract class BaseParser implements Parser {
 
   protected async fetchHtml(url: string): Promise<string> {
     logger.debug(`[fetch] ${url}`);
-    return fetchWithCurlCffi(url);
+    try {
+      return await fetchWithCurlCffi(url);
+    } catch (err: unknown) {
+      const status = (err as { response?: { status?: number } })?.response?.status;
+      // 403 = cookies missing/expired or IP blocked. Try to auto-refresh
+      // cookies via the stealth browser, then retry the request once.
+      if (status === 403) {
+        logger.warn('[fetch] 403 — attempting automatic cookie refresh');
+        const ok = await refreshAvitoCookies();
+        if (ok) {
+          return await fetchWithCurlCffi(url);
+        }
+      }
+      throw err;
+    }
   }
 
   protected safeLog(msg: string, err?: unknown): void {

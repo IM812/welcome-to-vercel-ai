@@ -14,6 +14,7 @@ import { adminMenuKeyboard } from '../keyboards/main.keyboard';
 import { formatDate, formatUserMention } from '../utils/format';
 import { ParserFactory } from '../parsers/parser.factory';
 import { SearchService } from '../services/search.service';
+import { refreshAvitoCookies } from '../parsers/base.parser';
 import fs from 'fs';
 import path from 'path';
 
@@ -445,13 +446,85 @@ export function registerAdminController(
     const cookiesPath = process.env.AVITO_COOKIES_PATH ??
       path.resolve(process.cwd(), 'storage/avito_cookies.json');
     const cookiesExist = fs.existsSync(cookiesPath);
-    const cookiesStatus = cookiesExist
-      ? `✅ есть (${cookiesPath})`
-      : `❌ не установлены`;
+    const cookiesStatus = cookiesExist ? '✅ есть' : '❌ нет';
+
+    const proxyPath = process.env.AVITO_PROXY_PATH ??
+      path.resolve(process.cwd(), 'storage/avito_proxy.txt');
+    let proxyStatus = '❌ не задан';
+    if (fs.existsSync(proxyPath)) {
+      const p = fs.readFileSync(proxyPath, 'utf-8').trim();
+      if (p) proxyStatus = `✅ ${p.replace(/:[^:@]+@/, ':***@').slice(0, 40)}`;
+    } else if (process.env.AVITO_PROXY) {
+      proxyStatus = '✅ (из env)';
+    }
 
     await ctx.reply(
-      `Настройки парсера\n\nАктивных поисков: ${totalSearches}\nПоисков с ошибкой: ${errorSearches}\nКуки Avito: ${cookiesStatus}\n\nКоманды:\n/testparser <url> — тест парсера\n/setcookies <строка> — установить куки Avito\n/ban <id> — заблокировать\n/unban <id> — разблокировать\n/setplan <id> <план> — сменить тариф\n/userinfo <id> — инфо о пользователе`,
+      `Настройки парсера\n\nАктивных поисков: ${totalSearches}\nПоисков с ошибкой: ${errorSearches}\nКуки Avito: ${cookiesStatus}\nПрокси: ${proxyStatus}\n\n⚠️ Avito блокирует IP серверов (дата-центров). Для работы парсера нужен резидентный/мобильный прокси.\n\nКоманды:\n/setproxy <прокси> — задать прокси (ip:port@user:pass)\n/refreshcookies — обновить куки через браузер\n/testparser <url> — тест парсера\n/setcookies <строка> — вручную вставить куки\n/ban <id> — заблокировать\n/unban <id> — разблокировать\n/setplan <id> <план> — сменить тариф\n/userinfo <id> — инфо о пользователе`,
     );
+  });
+
+  /**
+   * /setproxy <proxy_string>
+   *
+   * Saves a residential/mobile proxy used by the Avito parser and cookie
+   * fetcher. Avito hard-blocks datacenter IPs, so a proxy is mandatory on
+   * servers. Formats accepted (same as Duff89/parser_avito):
+   *   http://user:pass@host:port
+   *   host:port@user:pass
+   *   host:port:user:pass
+   * Send "/setproxy off" to remove it.
+   */
+  bot.command('setproxy', adminGuard, async (ctx) => {
+    const raw = ctx.message?.text?.replace(/^\/setproxy\s*/i, '').trim() ?? '';
+    const proxyPath = process.env.AVITO_PROXY_PATH ??
+      path.resolve(process.cwd(), 'storage/avito_proxy.txt');
+
+    if (!raw) {
+      await ctx.reply(
+        'Использование: /setproxy <прокси>\n\n' +
+        'Форматы:\n' +
+        '• http://user:pass@host:port\n' +
+        '• host:port@user:pass\n' +
+        '• host:port:user:pass\n\n' +
+        'Отключить: /setproxy off',
+      );
+      return;
+    }
+
+    try {
+      fs.mkdirSync(path.dirname(proxyPath), { recursive: true });
+      if (raw.toLowerCase() === 'off') {
+        if (fs.existsSync(proxyPath)) fs.unlinkSync(proxyPath);
+        await ctx.reply('✅ Прокси удалён.');
+      } else {
+        fs.writeFileSync(proxyPath, raw, 'utf-8');
+        await ctx.reply(`✅ Прокси сохранён: ${raw.replace(/:[^:@]+@/, ':***@')}\n\nПопробуй /refreshcookies для проверки.`);
+      }
+      await adminLogRepo.log('SET_PROXY', raw === 'off' ? 'off' : 'set', getDbUser(ctx).id);
+    } catch (e) {
+      await ctx.reply(`Ошибка: ${e instanceof Error ? e.message : String(e)}`);
+    }
+  });
+
+  /**
+   * /refreshcookies — launch the stealth browser to fetch fresh Avito cookies.
+   * Uses the configured proxy. Works from mobile — no manual copy-paste.
+   */
+  bot.command('refreshcookies', adminGuard, async (ctx) => {
+    await ctx.reply('🔄 Запускаю браузер для получения куки… (до 2 минут)');
+    try {
+      const ok = await refreshAvitoCookies();
+      if (ok) {
+        await ctx.reply('✅ Куки успешно получены и сохранены. Парсер готов к работе.');
+      } else {
+        await ctx.reply(
+          '❌ Не удалось получить куки.\n\n' +
+          'Скорее всего Avito блокирует IP. Задай рабочий резидентный/мобильный прокси через /setproxy и попробуй снова.',
+        );
+      }
+    } catch (e) {
+      await ctx.reply(`Ошибка: ${e instanceof Error ? e.message : String(e)}`);
+    }
   });
 
   /**
