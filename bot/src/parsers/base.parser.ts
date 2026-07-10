@@ -1,96 +1,97 @@
+/**
+ * base.parser.ts
+ *
+ * All HTTP fetching goes through scripts/avito_fetch.py which uses
+ * curl_cffi — a Python library that mimics the TLS fingerprint of real
+ * browsers (Chrome, Edge, Firefox, Safari). This is the same technique
+ * used by Duff89/parser_avito to bypass Avito's JA3/TLS-based bot
+ * detection. Ordinary axios/node-fetch requests expose a synthetic TLS
+ * handshake that Avito detects and returns 403 for.
+ *
+ * Optional env vars:
+ *   AVITO_PROXY        — proxy URL, e.g. http://user:pass@host:port
+ *   AVITO_COOKIES_PATH — path to cookies JSON file
+ *                        (default: <project>/storage/avito_cookies.json)
+ */
+
+import { spawn } from 'child_process';
+import path from 'path';
 import type { ParsedListing } from '../types/index';
-import axios from 'axios';
-import type { AxiosInstance } from 'axios';
-import { sleep, withTimeout } from '../utils/retry';
 import { logger } from '../utils/logger';
 
 export interface Parser {
   parse(url: string): Promise<ParsedListing[]>;
 }
 
-// Rotate through several real Chrome User-Agent strings so repeated requests
-// from the same IP look like different browsers to Avito's bot detection.
-const USER_AGENTS = [
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
-  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15',
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0',
-];
+// In CommonJS (the project's tsconfig uses "module": "CommonJS") __filename
+// is a built-in global — no import.meta needed.
+declare const __filename: string;
+const _dir = path.dirname(__filename);
 
-function randomUA(): string {
-  return USER_AGENTS[Math.floor(Math.random() * USER_AGENTS.length)];
-}
+const FETCHER_SCRIPT = path.resolve(_dir, '../../scripts/avito_fetch.py');
 
-// Random jitter between min and max ms — breaks machine-like request timing.
-function jitter(minMs: number, maxMs: number): Promise<void> {
-  return sleep(minMs + Math.floor(Math.random() * (maxMs - minMs)));
+const COOKIES_PATH =
+  process.env.AVITO_COOKIES_PATH ??
+  path.resolve(_dir, '../../storage/avito_cookies.json');
+
+const PROXY = process.env.AVITO_PROXY ?? null;
+
+/**
+ * Invoke the Python curl_cffi helper and return raw HTML.
+ * Throws on non-OK HTTP response or process error.
+ */
+export async function fetchWithCurlCffi(url: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const args = [FETCHER_SCRIPT, url, PROXY ?? 'null', COOKIES_PATH];
+
+    let stdout = '';
+    let stderr = '';
+
+    const proc = spawn('python3', args, { timeout: 25_000 });
+
+    proc.stdout.on('data', (chunk: Buffer) => { stdout += chunk.toString(); });
+    proc.stderr.on('data', (chunk: Buffer) => { stderr += chunk.toString(); });
+
+    proc.on('close', (code) => {
+      if (code !== 0) {
+        logger.warn(`[curl_cffi] exit=${code} stderr=${stderr.trim().slice(0, 300)}`);
+        reject(new Error(`avito_fetch.py exited ${code}: ${stderr.trim().slice(0, 300)}`));
+        return;
+      }
+
+      let result: { ok: boolean; html?: string; error?: string; status?: number };
+      try {
+        result = JSON.parse(stdout.trim());
+      } catch {
+        reject(new Error(`avito_fetch.py bad JSON: ${stdout.trim().slice(0, 200)}`));
+        return;
+      }
+
+      if (!result.ok) {
+        // Throw in the same format axios used so existing error handlers work.
+        const err = new Error(`Request failed with status code ${result.status ?? 0}`) as Error & {
+          response?: { status: number };
+        };
+        err.response = { status: result.status ?? 0 };
+        reject(err);
+        return;
+      }
+
+      resolve(result.html ?? '');
+    });
+
+    proc.on('error', (err) => {
+      reject(new Error(`spawn avito_fetch.py failed: ${err.message}`));
+    });
+  });
 }
 
 export abstract class BaseParser implements Parser {
-  protected readonly http: AxiosInstance;
-  protected readonly timeoutMs = 10_000;
-
-  constructor() {
-    this.http = axios.create({
-      timeout: this.timeoutMs,
-      headers: {
-        // Start with a random UA; fetchHtml rotates it on every call.
-        'User-Agent': randomUA(),
-        Accept:
-          'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-        'Accept-Language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Cache-Control': 'no-cache',
-        Pragma: 'no-cache',
-        Connection: 'keep-alive',
-        // "none" = direct navigation (typing URL / following a bookmark).
-        // "same-origin" would only be correct for navigation within avito.ru.
-        'Sec-Fetch-Site': 'none',
-        'Sec-Fetch-Mode': 'navigate',
-        'Sec-Fetch-Dest': 'document',
-        'Sec-Fetch-User': '?1',
-        'Upgrade-Insecure-Requests': '1',
-        DNT: '1',
-      },
-    });
-  }
-
   abstract parse(url: string): Promise<ParsedListing[]>;
 
-  protected async fetchHtml(url: string, attempt = 0): Promise<string> {
-    // Rotate User-Agent on every request.
-    this.http.defaults.headers['User-Agent'] = randomUA();
-
-    // Small jitter so requests don't arrive at a robot-perfect cadence.
-    if (attempt > 0) {
-      await jitter(2_000, 5_000);
-    }
-
-    try {
-      const response = await withTimeout(
-        this.http.get<string>(url, {
-          headers: {
-            // The Referer for a direct category-page load should be the Avito
-            // home page or empty — never the same URL (that's a page refresh).
-            Referer: 'https://www.avito.ru/',
-          },
-        }),
-        this.timeoutMs,
-      );
-      return response.data;
-    } catch (err: unknown) {
-      const status = (err as { response?: { status?: number } })?.response?.status;
-
-      // On 403 retry up to 2 more times with increasing back-off + fresh UA.
-      if (status === 403 && attempt < 2) {
-        logger.warn(`[fetchHtml] 403 on attempt ${attempt + 1}, retrying with new UA…`);
-        await jitter(3_000, 7_000);
-        return this.fetchHtml(url, attempt + 1);
-      }
-
-      throw err;
-    }
+  protected async fetchHtml(url: string): Promise<string> {
+    logger.debug(`[fetch] ${url}`);
+    return fetchWithCurlCffi(url);
   }
 
   protected safeLog(msg: string, err?: unknown): void {

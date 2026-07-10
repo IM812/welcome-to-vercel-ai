@@ -19,13 +19,7 @@ const CHECK_LIMIT = 20;
 // before this bot process started, without requiring DB writes for each one.
 const sessionSeen = new Map<number, Set<string>>();
 
-// Variant 2: top-position tracker.
-// Stores the externalIds that occupied the top TOP_N positions on the
-// previous tick. If a new ID appears in top positions next tick it means
-// Avito just promoted it to the top — that alone is a freshness signal,
-// regardless of the seen-set state.
-const TOP_N = 5;
-const prevTopIds = new Map<number, Set<string>>();
+
 
 export class SearchService {
   private searchRepo: SearchRepository;

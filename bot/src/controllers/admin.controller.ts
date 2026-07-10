@@ -14,6 +14,8 @@ import { adminMenuKeyboard } from '../keyboards/main.keyboard';
 import { formatDate, formatUserMention } from '../utils/format';
 import { ParserFactory } from '../parsers/parser.factory';
 import { SearchService } from '../services/search.service';
+import fs from 'fs';
+import path from 'path';
 
 function getDbUser(ctx: BotContext): User {
   return (ctx as BotContext & { dbUser: User }).dbUser;
@@ -439,8 +441,86 @@ export function registerAdminController(
       searchRepo.countAll(),
       searchRepo.countByStatus('ERROR'),
     ]);
+
+    const cookiesPath = process.env.AVITO_COOKIES_PATH ??
+      path.resolve(process.cwd(), 'storage/avito_cookies.json');
+    const cookiesExist = fs.existsSync(cookiesPath);
+    const cookiesStatus = cookiesExist
+      ? `✅ есть (${cookiesPath})`
+      : `❌ не установлены`;
+
     await ctx.reply(
-      `Настройки парсера\n\nАктивных поисков: ${totalSearches}\nПоисков с ошибкой: ${errorSearches}\n\nКоманды:\n/testparser <url> — тест парсера\n/ban <id> — заблокировать\n/unban <id> — разблокировать\n/setplan <id> <план> — сменить тариф\n/userinfo <id> — инфо о пользователе`,
+      `Настройки парсера\n\nАктивных поисков: ${totalSearches}\nПоисков с ошибкой: ${errorSearches}\nКуки Avito: ${cookiesStatus}\n\nКоманды:\n/testparser <url> — тест парсера\n/setcookies <строка> — установить куки Avito\n/ban <id> — заблокировать\n/unban <id> — разблокировать\n/setplan <id> <план> — сменить тариф\n/userinfo <id> — инфо о пользователе`,
     );
+  });
+
+  /**
+   * /setcookies <cookie_string>
+   *
+   * Accepts the raw cookie string copied from browser DevTools
+   * (Application → Cookies → right-click → Copy All, or just paste from
+   * the browser address bar cookie header).
+   *
+   * Format: "name1=value1; name2=value2; ..."
+   * The parsed dict is saved to AVITO_COOKIES_PATH (default: storage/avito_cookies.json).
+   * avito_fetch.py reads this file on every request.
+   *
+   * How to get the cookie string:
+   *   1. Open avito.ru in Chrome and solve any CAPTCHA if shown
+   *   2. DevTools → Application → Cookies → avito.ru
+   *   3. Copy the "ft" cookie value and any others, or use the snippet:
+   *      document.cookie  (paste into Console)
+   */
+  bot.command('setcookies', adminGuard, async (ctx) => {
+    const raw = ctx.message?.text?.replace(/^\/setcookies\s*/i, '').trim() ?? '';
+    if (!raw) {
+      await ctx.reply(
+        'Использование: /setcookies <строка куки>\n\n' +
+        'Как получить куки:\n' +
+        '1. Открой avito.ru в Chrome\n' +
+        '2. Открой DevTools (F12) → Console\n' +
+        '3. Введи: document.cookie\n' +
+        '4. Скопируй всю строку и отправь: /setcookies <вставь сюда>',
+      );
+      return;
+    }
+
+    // Parse "name=value; name2=value2; ..." into a dict
+    const cookies: Record<string, string> = {};
+    for (const pair of raw.split(';')) {
+      const eqIdx = pair.indexOf('=');
+      if (eqIdx === -1) continue;
+      const key = pair.slice(0, eqIdx).trim();
+      const value = pair.slice(eqIdx + 1).trim();
+      if (key) cookies[key] = value;
+    }
+
+    if (Object.keys(cookies).length === 0) {
+      await ctx.reply('Не удалось распарсить куки. Убедись что формат: name=value; name2=value2');
+      return;
+    }
+
+    const cookiesPath = process.env.AVITO_COOKIES_PATH ??
+      path.resolve(process.cwd(), 'storage/avito_cookies.json');
+
+    try {
+      fs.mkdirSync(path.dirname(cookiesPath), { recursive: true });
+      fs.writeFileSync(
+        cookiesPath,
+        JSON.stringify({ cookies, saved_at: Date.now() / 1000 }, null, 2),
+        'utf-8',
+      );
+    } catch (e) {
+      await ctx.reply(`Ошибка при сохранении куки: ${e instanceof Error ? e.message : String(e)}`);
+      return;
+    }
+
+    const hasFt = 'ft' in cookies;
+    await ctx.reply(
+      `✅ Куки сохранены: ${Object.keys(cookies).length} шт.\n` +
+      `ft-кука: ${hasFt ? '✅ есть' : '⚠️ нет (парсер может не работать)'}\n` +
+      `Путь: ${cookiesPath}`,
+    );
+    await adminLogRepo.log('SET_COOKIES', `keys:${Object.keys(cookies).join(',').slice(0, 200)}`, getDbUser(ctx).id);
   });
 }

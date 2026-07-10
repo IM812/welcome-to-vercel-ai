@@ -6244,3 +6244,9 @@ The column `Listing.rawPublishedAt` does not exist in the current database.
 2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8275209199
 2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8186009574
 2026-07-09 19:42:20 [[34mdebug[39m]: [seen-session] externalId=8155364488
+2026-07-10 09:14:44 [[32minfo[39m]: Starting SearchBot...
+2026-07-10 09:14:44 [[32minfo[39m]: Checker cron started (continuous loop, 15s interval)
+2026-07-10 09:14:44 [[32minfo[39m]: Subscription cron started
+2026-07-10 09:14:44 [[32minfo[39m]: Daily reset cron started
+2026-07-10 09:14:44 [[32minfo[39m]: Queue flush cron started
+2026-07-10 09:14:45 [[32minfo[39m]: Bot @avito_parser_test_bot started

@@ -3,7 +3,7 @@ import { BaseParser } from './base.parser';
 import type { ParsedListing } from '../types/index';
 import { hashListing } from '../utils/hash';
 import { logger } from '../utils/logger';
-import { withTimeout } from '../utils/retry';
+import { fetchWithCurlCffi } from './base.parser';
 
 /**
  * How many listings to collect from a category/search page per check.
@@ -110,12 +110,7 @@ export class AvitoParser extends BaseParser {
    */
   async fetchListingDate(itemUrl: string): Promise<string | null> {
     try {
-      // Use a tight 5s timeout — we only need the date, not full page load.
-      const response = await withTimeout(
-        this.http.get<string>(itemUrl),
-        5_000,
-      );
-      const html = response.data;
+      const html = await fetchWithCurlCffi(itemUrl);
       const $ = cheerio.load(html);
 
       // Avito detail page: look for the meta info line that contains the
