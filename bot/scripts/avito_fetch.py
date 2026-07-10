@@ -12,7 +12,7 @@ Returns JSON on stdout:
   {"ok": true,  "html": "..."}
   {"ok": false, "error": "...", "status": 403}
 
-Antiblock stack (ported from Duff89/parser_avito 3.2.16):
+Antiblock stack:
   1. curl_cffi impersonate — mimics a real browser's TLS/JA3 fingerprint
   2. spfa.ru cookie service — auto-supplies & unblocks working Avito cookies
   3. mobile proxy IP rotation — changes IP via proxy_change_url on 403/429
@@ -22,16 +22,20 @@ import json
 import random
 import time
 import os
+import warnings
+
+# Suppress all SSL warnings
+warnings.filterwarnings("ignore")
 
 try:
-    import httpx as cffi_requests
-    _USE_HTTPX = True
+    from curl_cffi import requests as cffi_requests
+    _USE_CURL_CFFI = True
 except ImportError:
+    _USE_CURL_CFFI = False
     try:
         import requests as cffi_requests
-        _USE_HTTPX = False
     except ImportError:
-        print(json.dumps({"ok": False, "error": "httpx or requests not installed. Run: pip3 install httpx"}))
+        print(json.dumps({"ok": False, "error": "curl_cffi not installed"}))
         sys.exit(1)
 
 # Optional spfa.ru cookie provider (auto cookies).
@@ -42,15 +46,12 @@ except ImportError:
 
 # Plain requests for the IP-rotation call.
 try:
-    import httpx as plain_requests
-    _PLAIN_HTTPX = True
+    from curl_cffi import requests as plain_requests
 except ImportError:
     try:
         import requests as plain_requests
-        _PLAIN_HTTPX = False
     except ImportError:
         plain_requests = None
-        _PLAIN_HTTPX = False
 
 IMPERSONATE_OPTIONS = ["chrome120", "chrome124", "chrome131", "edge101", "safari17_0"]
 MAX_RETRIES = 4
@@ -61,15 +62,16 @@ PROXY_CHANGE_URL = os.environ.get("AVITO_PROXY_CHANGE_URL", "").strip()
 
 
 def rotate_ip():
-    """Ask a mobile proxy to switch its exit IP (Duff89 MobileProxy.handle_block)."""
+    """Ask a mobile proxy to switch its exit IP."""
     if not PROXY_CHANGE_URL or not plain_requests:
         return
     try:
         r = plain_requests.get(PROXY_CHANGE_URL, params={"format": "json"}, timeout=10)
         if r.status_code == 200:
-            time.sleep(2)  # give the network a moment to switch
+            time.sleep(2)
     except Exception:
         pass
+
 
 HEADERS = {
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
@@ -85,8 +87,8 @@ HEADERS = {
     "Sec-Fetch-User": "?1",
 }
 
+
 def load_cookies(cookies_path: str) -> dict:
-    """Load cookies from a JSON file saved by the bot."""
     if not os.path.exists(cookies_path):
         return {}
     try:
@@ -96,8 +98,8 @@ def load_cookies(cookies_path: str) -> dict:
     except Exception:
         return {}
 
+
 def save_cookies(cookies_path: str, cookies: dict):
-    """Persist updated cookies back to disk."""
     try:
         os.makedirs(os.path.dirname(cookies_path), exist_ok=True)
         with open(cookies_path, "w", encoding="utf-8") as f:
@@ -105,23 +107,21 @@ def save_cookies(cookies_path: str, cookies: dict):
     except Exception:
         pass
 
-def _normalize_proxy(proxy: str | None) -> str | None:
-    """Accept host:port, host:port@user:pass, or full http:// URL."""
+
+def _normalize_proxy(proxy):
     if not proxy:
         return None
     if proxy.startswith("http://") or proxy.startswith("https://"):
         return proxy
-    # host:port@user:pass  ->  http://user:pass@host:port
     if "@" in proxy:
         hostport, creds = proxy.split("@", 1)
         return f"http://{creds}@{hostport}"
     return f"http://{proxy}"
 
 
-def fetch(url: str, proxy: str | None = None, cookies_path: str | None = None) -> dict:
+def fetch(url, proxy=None, cookies_path=None):
     proxy = _normalize_proxy(proxy)
 
-    # Cookie source: spfa.ru service (auto) takes priority, else local file.
     spfa = None
     if SPFA_KEY and SpfaCookiesProvider is not None:
         try:
@@ -133,55 +133,59 @@ def fetch(url: str, proxy: str | None = None, cookies_path: str | None = None) -
         cookies = load_cookies(cookies_path) if cookies_path else {}
 
     for attempt in range(1, MAX_RETRIES + 1):
+        impersonate = random.choice(IMPERSONATE_OPTIONS)
+
         try:
-            client_kwargs = {
-                "headers": HEADERS,
-                "follow_redirects": True,
-                "timeout": 20,
-                "verify": False,
-            }
-            if proxy:
-                client_kwargs["proxies"] = proxy if not _USE_HTTPX else {"http://": proxy, "https://": proxy}
+            if _USE_CURL_CFFI:
+                session_kwargs = {"impersonate": impersonate}
+                if proxy:
+                    session_kwargs["proxies"] = {"http": proxy, "https": proxy}
 
-            with (cffi_requests.Client(**client_kwargs) if _USE_HTTPX else cffi_requests.Session()) as session:
-                get_kwargs = {
-                    "headers": HEADERS,
-                    "cookies": cookies or None,
-                    "timeout": 20,
-                }
-                if not _USE_HTTPX and proxy:
-                    get_kwargs["proxies"] = {"http": proxy, "https": proxy}
-                resp = session.get(url, **get_kwargs) if not _USE_HTTPX else session.get(url, cookies=cookies or None)
+                with cffi_requests.Session(**session_kwargs) as session:
+                    resp = session.get(
+                        url,
+                        headers=HEADERS,
+                        cookies=cookies or None,
+                        timeout=20,
+                        allow_redirects=True,
+                    )
+            else:
+                with cffi_requests.Session() as session:
+                    req_kwargs = {
+                        "headers": HEADERS,
+                        "cookies": cookies or None,
+                        "timeout": 20,
+                        "allow_redirects": True,
+                        "verify": False,
+                    }
+                    if proxy:
+                        req_kwargs["proxies"] = {"http": proxy, "https": proxy}
+                    resp = session.get(url, **req_kwargs)
 
-                # Record status for spfa's block-detection heuristic.
-                if spfa:
-                    spfa.record_status(resp.status_code)
+            if spfa:
+                spfa.record_status(resp.status_code)
 
-                # Persist cookies from response (local-file mode only).
-                if not spfa and cookies_path and resp.cookies:
-                    cookies.update(dict(resp.cookies))
-                    save_cookies(cookies_path, cookies)
+            if not spfa and cookies_path and resp.cookies:
+                cookies.update(dict(resp.cookies))
+                save_cookies(cookies_path, cookies)
 
-                if resp.status_code in (403, 429, 401):
-                    if attempt < MAX_RETRIES:
-                        # 1. Ask spfa to unblock / buy fresh cookies.
-                        if spfa:
-                            try:
-                                spfa.handle_block()
-                                cookies = spfa.get()
-                            except Exception:
-                                pass
-                        # 2. Rotate mobile-proxy IP.
-                        rotate_ip()
-                        # 3. Back off and retry.
-                        time.sleep(RETRY_DELAY * attempt + random.uniform(1, 3))
-                        continue
-                    return {"ok": False, "error": f"HTTP {resp.status_code}", "status": resp.status_code}
+            if resp.status_code in (403, 429, 401):
+                if attempt < MAX_RETRIES:
+                    if spfa:
+                        try:
+                            spfa.handle_block()
+                            cookies = spfa.get()
+                        except Exception:
+                            pass
+                    rotate_ip()
+                    time.sleep(RETRY_DELAY * attempt + random.uniform(1, 3))
+                    continue
+                return {"ok": False, "error": f"HTTP {resp.status_code}", "status": resp.status_code}
 
-                if not resp.ok:
-                    return {"ok": False, "error": f"HTTP {resp.status_code}", "status": resp.status_code}
+            if not resp.ok:
+                return {"ok": False, "error": f"HTTP {resp.status_code}", "status": resp.status_code}
 
-                return {"ok": True, "html": resp.text, "status": resp.status_code}
+            return {"ok": True, "html": resp.text, "status": resp.status_code}
 
         except Exception as e:
             if attempt < MAX_RETRIES:
