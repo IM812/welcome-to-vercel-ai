@@ -162,7 +162,10 @@ export async function fetchWithCurlCffi(url: string): Promise<string> {
     let stdout = '';
     let stderr = '';
 
-    const proc = spawn('python3', args, { timeout: 30_000, env: pythonEnv() });
+    // 90s: avito_fetch.py retries up to 3 times with sleeps between attempts
+    // (plus optional spfa cookie purchase). A 30s timeout was killing the
+    // process mid-retry (exit=null), silently dropping most check ticks.
+    const proc = spawn('python3', args, { timeout: 90_000, env: pythonEnv() });
 
     proc.stdout.on('data', (chunk: Buffer) => { stdout += chunk.toString(); });
     proc.stderr.on('data', (chunk: Buffer) => { stderr += chunk.toString(); });
