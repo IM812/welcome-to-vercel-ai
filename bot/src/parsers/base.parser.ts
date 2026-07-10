@@ -242,26 +242,52 @@ export async function fetchWithCurlCffi(url: string): Promise<string> {
   });
 }
 
+// ---------------------------------------------------------------------------
+// Global 403 circuit breaker.
+// When the IP is flagged, every retry deepens the ban: each 403 spawned more
+// retries (Python x3 + Node x1 + next tick in 10s) = up to ~36 req/min while
+// blocked — a ban spiral. The breaker OPENS after 3 consecutive 403s and
+// pauses ALL Avito fetches for 3 minutes so the IP-level block can expire.
+// Any successful fetch closes it again.
+// ---------------------------------------------------------------------------
+let consecutive403 = 0;
+let breakerOpenUntil = 0;
+const BREAKER_THRESHOLD = 3;
+const BREAKER_PAUSE_MS = 3 * 60_000;
+
 export abstract class BaseParser implements Parser {
   abstract parse(url: string): Promise<ParsedListing[]>;
 
   protected async fetchHtml(url: string): Promise<string> {
+    // Circuit breaker: while open, fail fast without touching Avito at all.
+    if (Date.now() < breakerOpenUntil) {
+      const waitSec = Math.round((breakerOpenUntil - Date.now()) / 1000);
+      throw new Error(`Avito cooldown active — ${waitSec}s until retry (IP flagged, letting the block expire)`);
+    }
+
     logger.debug(`[fetch] ${url}`);
     try {
-      return await fetchWithCurlCffi(url);
+      const html = await fetchWithCurlCffi(url);
+      consecutive403 = 0; // success closes the breaker
+      return html;
     } catch (err: unknown) {
       const status = (err as { response?: { status?: number } })?.response?.status;
       // 403 = cookies missing/expired or IP blocked. Try to auto-refresh
       // cookies via spfa.ru, then retry the request once.
       if (status === 403) {
-        // Single refresh path: always go through Node refreshAvitoCookies()
-        // which logs every step, respects the mutex/cooldown, and writes the
-        // cookie file. Python's internal handle_block was a second path that
-        // silently competed with this one — removed to simplify the flow.
+        consecutive403++;
+        if (consecutive403 >= BREAKER_THRESHOLD) {
+          breakerOpenUntil = Date.now() + BREAKER_PAUSE_MS;
+          consecutive403 = 0;
+          logger.warn(`[breaker] ${BREAKER_THRESHOLD} consecutive 403s — pausing ALL Avito requests for ${BREAKER_PAUSE_MS / 60_000}min to let the IP block expire`);
+          throw err;
+        }
         logger.warn('[fetch] 403 — attempting automatic cookie refresh');
         const ok = await refreshAvitoCookies();
         if (ok) {
-          return await fetchWithCurlCffi(url);
+          const html = await fetchWithCurlCffi(url);
+          consecutive403 = 0;
+          return html;
         }
         throw err;
       }
