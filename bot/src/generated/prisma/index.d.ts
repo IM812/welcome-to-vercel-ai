@@ -34,6 +34,11 @@ export type Listing = $Result.DefaultSelection<Prisma.$ListingPayload>
  */
 export type Payment = $Result.DefaultSelection<Prisma.$PaymentPayload>
 /**
+ * Model BlockedSeller
+ * 
+ */
+export type BlockedSeller = $Result.DefaultSelection<Prisma.$BlockedSellerPayload>
+/**
  * Model Favorite
  * 
  */
@@ -309,6 +314,16 @@ export class PrismaClient<
     * ```
     */
   get payment(): Prisma.PaymentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.blockedSeller`: Exposes CRUD operations for the **BlockedSeller** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BlockedSellers
+    * const blockedSellers = await prisma.blockedSeller.findMany()
+    * ```
+    */
+  get blockedSeller(): Prisma.BlockedSellerDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.favorite`: Exposes CRUD operations for the **Favorite** model.
@@ -827,6 +842,7 @@ export namespace Prisma {
     Search: 'Search',
     Listing: 'Listing',
     Payment: 'Payment',
+    BlockedSeller: 'BlockedSeller',
     Favorite: 'Favorite',
     Notification: 'Notification',
     UserSettings: 'UserSettings',
@@ -850,7 +866,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "search" | "listing" | "payment" | "favorite" | "notification" | "userSettings" | "promoCode" | "promoCodeUse" | "referral" | "adminLog" | "parserLog"
+      modelProps: "user" | "search" | "listing" | "payment" | "blockedSeller" | "favorite" | "notification" | "userSettings" | "promoCode" | "promoCodeUse" | "referral" | "adminLog" | "parserLog"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1147,6 +1163,80 @@ export namespace Prisma {
           count: {
             args: Prisma.PaymentCountArgs<ExtArgs>
             result: $Utils.Optional<PaymentCountAggregateOutputType> | number
+          }
+        }
+      }
+      BlockedSeller: {
+        payload: Prisma.$BlockedSellerPayload<ExtArgs>
+        fields: Prisma.BlockedSellerFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BlockedSellerFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockedSellerPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BlockedSellerFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockedSellerPayload>
+          }
+          findFirst: {
+            args: Prisma.BlockedSellerFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockedSellerPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BlockedSellerFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockedSellerPayload>
+          }
+          findMany: {
+            args: Prisma.BlockedSellerFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockedSellerPayload>[]
+          }
+          create: {
+            args: Prisma.BlockedSellerCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockedSellerPayload>
+          }
+          createMany: {
+            args: Prisma.BlockedSellerCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BlockedSellerCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockedSellerPayload>[]
+          }
+          delete: {
+            args: Prisma.BlockedSellerDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockedSellerPayload>
+          }
+          update: {
+            args: Prisma.BlockedSellerUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockedSellerPayload>
+          }
+          deleteMany: {
+            args: Prisma.BlockedSellerDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BlockedSellerUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BlockedSellerUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockedSellerPayload>[]
+          }
+          upsert: {
+            args: Prisma.BlockedSellerUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockedSellerPayload>
+          }
+          aggregate: {
+            args: Prisma.BlockedSellerAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBlockedSeller>
+          }
+          groupBy: {
+            args: Prisma.BlockedSellerGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BlockedSellerGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BlockedSellerCountArgs<ExtArgs>
+            result: $Utils.Optional<BlockedSellerCountAggregateOutputType> | number
           }
         }
       }
@@ -1854,6 +1944,7 @@ export namespace Prisma {
     search?: SearchOmit
     listing?: ListingOmit
     payment?: PaymentOmit
+    blockedSeller?: BlockedSellerOmit
     favorite?: FavoriteOmit
     notification?: NotificationOmit
     userSettings?: UserSettingsOmit
@@ -1946,6 +2037,7 @@ export namespace Prisma {
     searches: number
     payments: number
     favorites: number
+    blockedSellers: number
     notifications: number
     adminLogs: number
     sentReferrals: number
@@ -1957,6 +2049,7 @@ export namespace Prisma {
     searches?: boolean | UserCountOutputTypeCountSearchesArgs
     payments?: boolean | UserCountOutputTypeCountPaymentsArgs
     favorites?: boolean | UserCountOutputTypeCountFavoritesArgs
+    blockedSellers?: boolean | UserCountOutputTypeCountBlockedSellersArgs
     notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
     adminLogs?: boolean | UserCountOutputTypeCountAdminLogsArgs
     sentReferrals?: boolean | UserCountOutputTypeCountSentReferralsArgs
@@ -2000,6 +2093,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountFavoritesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FavoriteWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountBlockedSellersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BlockedSellerWhereInput
   }
 
   /**
@@ -2473,6 +2573,7 @@ export namespace Prisma {
     searches?: boolean | User$searchesArgs<ExtArgs>
     payments?: boolean | User$paymentsArgs<ExtArgs>
     favorites?: boolean | User$favoritesArgs<ExtArgs>
+    blockedSellers?: boolean | User$blockedSellersArgs<ExtArgs>
     notifications?: boolean | User$notificationsArgs<ExtArgs>
     settings?: boolean | User$settingsArgs<ExtArgs>
     adminLogs?: boolean | User$adminLogsArgs<ExtArgs>
@@ -2557,6 +2658,7 @@ export namespace Prisma {
     searches?: boolean | User$searchesArgs<ExtArgs>
     payments?: boolean | User$paymentsArgs<ExtArgs>
     favorites?: boolean | User$favoritesArgs<ExtArgs>
+    blockedSellers?: boolean | User$blockedSellersArgs<ExtArgs>
     notifications?: boolean | User$notificationsArgs<ExtArgs>
     settings?: boolean | User$settingsArgs<ExtArgs>
     adminLogs?: boolean | User$adminLogsArgs<ExtArgs>
@@ -2580,6 +2682,7 @@ export namespace Prisma {
       searches: Prisma.$SearchPayload<ExtArgs>[]
       payments: Prisma.$PaymentPayload<ExtArgs>[]
       favorites: Prisma.$FavoritePayload<ExtArgs>[]
+      blockedSellers: Prisma.$BlockedSellerPayload<ExtArgs>[]
       notifications: Prisma.$NotificationPayload<ExtArgs>[]
       settings: Prisma.$UserSettingsPayload<ExtArgs> | null
       adminLogs: Prisma.$AdminLogPayload<ExtArgs>[]
@@ -3006,6 +3109,7 @@ export namespace Prisma {
     searches<T extends User$searchesArgs<ExtArgs> = {}>(args?: Subset<T, User$searchesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SearchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     payments<T extends User$paymentsArgs<ExtArgs> = {}>(args?: Subset<T, User$paymentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     favorites<T extends User$favoritesArgs<ExtArgs> = {}>(args?: Subset<T, User$favoritesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FavoritePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    blockedSellers<T extends User$blockedSellersArgs<ExtArgs> = {}>(args?: Subset<T, User$blockedSellersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlockedSellerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     notifications<T extends User$notificationsArgs<ExtArgs> = {}>(args?: Subset<T, User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     settings<T extends User$settingsArgs<ExtArgs> = {}>(args?: Subset<T, User$settingsArgs<ExtArgs>>): Prisma__UserSettingsClient<$Result.GetResult<Prisma.$UserSettingsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     adminLogs<T extends User$adminLogsArgs<ExtArgs> = {}>(args?: Subset<T, User$adminLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3573,6 +3677,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: FavoriteScalarFieldEnum | FavoriteScalarFieldEnum[]
+  }
+
+  /**
+   * User.blockedSellers
+   */
+  export type User$blockedSellersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockedSeller
+     */
+    select?: BlockedSellerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockedSeller
+     */
+    omit?: BlockedSellerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockedSellerInclude<ExtArgs> | null
+    where?: BlockedSellerWhereInput
+    orderBy?: BlockedSellerOrderByWithRelationInput | BlockedSellerOrderByWithRelationInput[]
+    cursor?: BlockedSellerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BlockedSellerScalarFieldEnum | BlockedSellerScalarFieldEnum[]
   }
 
   /**
@@ -5081,6 +5209,8 @@ export namespace Prisma {
     isBaseline: boolean | null
     notifiedAt: Date | null
     skippedReason: string | null
+    sellerName: string | null
+    sellerUrl: string | null
   }
 
   export type ListingMaxAggregateOutputType = {
@@ -5100,6 +5230,8 @@ export namespace Prisma {
     isBaseline: boolean | null
     notifiedAt: Date | null
     skippedReason: string | null
+    sellerName: string | null
+    sellerUrl: string | null
   }
 
   export type ListingCountAggregateOutputType = {
@@ -5119,6 +5251,8 @@ export namespace Prisma {
     isBaseline: number
     notifiedAt: number
     skippedReason: number
+    sellerName: number
+    sellerUrl: number
     _all: number
   }
 
@@ -5150,6 +5284,8 @@ export namespace Prisma {
     isBaseline?: true
     notifiedAt?: true
     skippedReason?: true
+    sellerName?: true
+    sellerUrl?: true
   }
 
   export type ListingMaxAggregateInputType = {
@@ -5169,6 +5305,8 @@ export namespace Prisma {
     isBaseline?: true
     notifiedAt?: true
     skippedReason?: true
+    sellerName?: true
+    sellerUrl?: true
   }
 
   export type ListingCountAggregateInputType = {
@@ -5188,6 +5326,8 @@ export namespace Prisma {
     isBaseline?: true
     notifiedAt?: true
     skippedReason?: true
+    sellerName?: true
+    sellerUrl?: true
     _all?: true
   }
 
@@ -5294,6 +5434,8 @@ export namespace Prisma {
     isBaseline: boolean
     notifiedAt: Date | null
     skippedReason: string | null
+    sellerName: string | null
+    sellerUrl: string | null
     _count: ListingCountAggregateOutputType | null
     _avg: ListingAvgAggregateOutputType | null
     _sum: ListingSumAggregateOutputType | null
@@ -5332,6 +5474,8 @@ export namespace Prisma {
     isBaseline?: boolean
     notifiedAt?: boolean
     skippedReason?: boolean
+    sellerName?: boolean
+    sellerUrl?: boolean
     search?: boolean | SearchDefaultArgs<ExtArgs>
     notifications?: boolean | Listing$notificationsArgs<ExtArgs>
     favorites?: boolean | Listing$favoritesArgs<ExtArgs>
@@ -5355,6 +5499,8 @@ export namespace Prisma {
     isBaseline?: boolean
     notifiedAt?: boolean
     skippedReason?: boolean
+    sellerName?: boolean
+    sellerUrl?: boolean
     search?: boolean | SearchDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["listing"]>
 
@@ -5375,6 +5521,8 @@ export namespace Prisma {
     isBaseline?: boolean
     notifiedAt?: boolean
     skippedReason?: boolean
+    sellerName?: boolean
+    sellerUrl?: boolean
     search?: boolean | SearchDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["listing"]>
 
@@ -5395,9 +5543,11 @@ export namespace Prisma {
     isBaseline?: boolean
     notifiedAt?: boolean
     skippedReason?: boolean
+    sellerName?: boolean
+    sellerUrl?: boolean
   }
 
-  export type ListingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "searchId" | "externalId" | "title" | "price" | "location" | "imageUrl" | "url" | "platform" | "rawPublishedAt" | "publishedAt" | "foundAt" | "firstSeenAt" | "isBaseline" | "notifiedAt" | "skippedReason", ExtArgs["result"]["listing"]>
+  export type ListingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "searchId" | "externalId" | "title" | "price" | "location" | "imageUrl" | "url" | "platform" | "rawPublishedAt" | "publishedAt" | "foundAt" | "firstSeenAt" | "isBaseline" | "notifiedAt" | "skippedReason" | "sellerName" | "sellerUrl", ExtArgs["result"]["listing"]>
   export type ListingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     search?: boolean | SearchDefaultArgs<ExtArgs>
     notifications?: boolean | Listing$notificationsArgs<ExtArgs>
@@ -5453,6 +5603,14 @@ export namespace Prisma {
        * Reason why a notification was NOT sent: TOO_OLD | UNKNOWN_DATE | null (notified or baseline).
        */
       skippedReason: string | null
+      /**
+       * Seller display name scraped from the listing card (best-effort).
+       */
+      sellerName: string | null
+      /**
+       * Seller profile URL — the stable key for per-user seller blocking.
+       */
+      sellerUrl: string | null
     }, ExtArgs["result"]["listing"]>
     composites: {}
   }
@@ -5895,6 +6053,8 @@ export namespace Prisma {
     readonly isBaseline: FieldRef<"Listing", 'Boolean'>
     readonly notifiedAt: FieldRef<"Listing", 'DateTime'>
     readonly skippedReason: FieldRef<"Listing", 'String'>
+    readonly sellerName: FieldRef<"Listing", 'String'>
+    readonly sellerUrl: FieldRef<"Listing", 'String'>
   }
     
 
@@ -7520,6 +7680,1110 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: PaymentInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model BlockedSeller
+   */
+
+  export type AggregateBlockedSeller = {
+    _count: BlockedSellerCountAggregateOutputType | null
+    _avg: BlockedSellerAvgAggregateOutputType | null
+    _sum: BlockedSellerSumAggregateOutputType | null
+    _min: BlockedSellerMinAggregateOutputType | null
+    _max: BlockedSellerMaxAggregateOutputType | null
+  }
+
+  export type BlockedSellerAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type BlockedSellerSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type BlockedSellerMinAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    sellerKey: string | null
+    sellerName: string | null
+    createdAt: Date | null
+  }
+
+  export type BlockedSellerMaxAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    sellerKey: string | null
+    sellerName: string | null
+    createdAt: Date | null
+  }
+
+  export type BlockedSellerCountAggregateOutputType = {
+    id: number
+    userId: number
+    sellerKey: number
+    sellerName: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type BlockedSellerAvgAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type BlockedSellerSumAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type BlockedSellerMinAggregateInputType = {
+    id?: true
+    userId?: true
+    sellerKey?: true
+    sellerName?: true
+    createdAt?: true
+  }
+
+  export type BlockedSellerMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    sellerKey?: true
+    sellerName?: true
+    createdAt?: true
+  }
+
+  export type BlockedSellerCountAggregateInputType = {
+    id?: true
+    userId?: true
+    sellerKey?: true
+    sellerName?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type BlockedSellerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BlockedSeller to aggregate.
+     */
+    where?: BlockedSellerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BlockedSellers to fetch.
+     */
+    orderBy?: BlockedSellerOrderByWithRelationInput | BlockedSellerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BlockedSellerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BlockedSellers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BlockedSellers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BlockedSellers
+    **/
+    _count?: true | BlockedSellerCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BlockedSellerAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BlockedSellerSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BlockedSellerMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BlockedSellerMaxAggregateInputType
+  }
+
+  export type GetBlockedSellerAggregateType<T extends BlockedSellerAggregateArgs> = {
+        [P in keyof T & keyof AggregateBlockedSeller]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBlockedSeller[P]>
+      : GetScalarType<T[P], AggregateBlockedSeller[P]>
+  }
+
+
+
+
+  export type BlockedSellerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BlockedSellerWhereInput
+    orderBy?: BlockedSellerOrderByWithAggregationInput | BlockedSellerOrderByWithAggregationInput[]
+    by: BlockedSellerScalarFieldEnum[] | BlockedSellerScalarFieldEnum
+    having?: BlockedSellerScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BlockedSellerCountAggregateInputType | true
+    _avg?: BlockedSellerAvgAggregateInputType
+    _sum?: BlockedSellerSumAggregateInputType
+    _min?: BlockedSellerMinAggregateInputType
+    _max?: BlockedSellerMaxAggregateInputType
+  }
+
+  export type BlockedSellerGroupByOutputType = {
+    id: number
+    userId: number
+    sellerKey: string
+    sellerName: string | null
+    createdAt: Date
+    _count: BlockedSellerCountAggregateOutputType | null
+    _avg: BlockedSellerAvgAggregateOutputType | null
+    _sum: BlockedSellerSumAggregateOutputType | null
+    _min: BlockedSellerMinAggregateOutputType | null
+    _max: BlockedSellerMaxAggregateOutputType | null
+  }
+
+  type GetBlockedSellerGroupByPayload<T extends BlockedSellerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BlockedSellerGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BlockedSellerGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BlockedSellerGroupByOutputType[P]>
+            : GetScalarType<T[P], BlockedSellerGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BlockedSellerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    sellerKey?: boolean
+    sellerName?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["blockedSeller"]>
+
+  export type BlockedSellerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    sellerKey?: boolean
+    sellerName?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["blockedSeller"]>
+
+  export type BlockedSellerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    sellerKey?: boolean
+    sellerName?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["blockedSeller"]>
+
+  export type BlockedSellerSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    sellerKey?: boolean
+    sellerName?: boolean
+    createdAt?: boolean
+  }
+
+  export type BlockedSellerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "sellerKey" | "sellerName" | "createdAt", ExtArgs["result"]["blockedSeller"]>
+  export type BlockedSellerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type BlockedSellerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type BlockedSellerIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $BlockedSellerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BlockedSeller"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: number
+      /**
+       * Stable identifier: seller profile URL when known, otherwise seller name.
+       */
+      sellerKey: string
+      sellerName: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["blockedSeller"]>
+    composites: {}
+  }
+
+  type BlockedSellerGetPayload<S extends boolean | null | undefined | BlockedSellerDefaultArgs> = $Result.GetResult<Prisma.$BlockedSellerPayload, S>
+
+  type BlockedSellerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BlockedSellerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BlockedSellerCountAggregateInputType | true
+    }
+
+  export interface BlockedSellerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BlockedSeller'], meta: { name: 'BlockedSeller' } }
+    /**
+     * Find zero or one BlockedSeller that matches the filter.
+     * @param {BlockedSellerFindUniqueArgs} args - Arguments to find a BlockedSeller
+     * @example
+     * // Get one BlockedSeller
+     * const blockedSeller = await prisma.blockedSeller.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BlockedSellerFindUniqueArgs>(args: SelectSubset<T, BlockedSellerFindUniqueArgs<ExtArgs>>): Prisma__BlockedSellerClient<$Result.GetResult<Prisma.$BlockedSellerPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BlockedSeller that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BlockedSellerFindUniqueOrThrowArgs} args - Arguments to find a BlockedSeller
+     * @example
+     * // Get one BlockedSeller
+     * const blockedSeller = await prisma.blockedSeller.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BlockedSellerFindUniqueOrThrowArgs>(args: SelectSubset<T, BlockedSellerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BlockedSellerClient<$Result.GetResult<Prisma.$BlockedSellerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BlockedSeller that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlockedSellerFindFirstArgs} args - Arguments to find a BlockedSeller
+     * @example
+     * // Get one BlockedSeller
+     * const blockedSeller = await prisma.blockedSeller.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BlockedSellerFindFirstArgs>(args?: SelectSubset<T, BlockedSellerFindFirstArgs<ExtArgs>>): Prisma__BlockedSellerClient<$Result.GetResult<Prisma.$BlockedSellerPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BlockedSeller that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlockedSellerFindFirstOrThrowArgs} args - Arguments to find a BlockedSeller
+     * @example
+     * // Get one BlockedSeller
+     * const blockedSeller = await prisma.blockedSeller.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BlockedSellerFindFirstOrThrowArgs>(args?: SelectSubset<T, BlockedSellerFindFirstOrThrowArgs<ExtArgs>>): Prisma__BlockedSellerClient<$Result.GetResult<Prisma.$BlockedSellerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BlockedSellers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlockedSellerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BlockedSellers
+     * const blockedSellers = await prisma.blockedSeller.findMany()
+     * 
+     * // Get first 10 BlockedSellers
+     * const blockedSellers = await prisma.blockedSeller.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const blockedSellerWithIdOnly = await prisma.blockedSeller.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BlockedSellerFindManyArgs>(args?: SelectSubset<T, BlockedSellerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlockedSellerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BlockedSeller.
+     * @param {BlockedSellerCreateArgs} args - Arguments to create a BlockedSeller.
+     * @example
+     * // Create one BlockedSeller
+     * const BlockedSeller = await prisma.blockedSeller.create({
+     *   data: {
+     *     // ... data to create a BlockedSeller
+     *   }
+     * })
+     * 
+     */
+    create<T extends BlockedSellerCreateArgs>(args: SelectSubset<T, BlockedSellerCreateArgs<ExtArgs>>): Prisma__BlockedSellerClient<$Result.GetResult<Prisma.$BlockedSellerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BlockedSellers.
+     * @param {BlockedSellerCreateManyArgs} args - Arguments to create many BlockedSellers.
+     * @example
+     * // Create many BlockedSellers
+     * const blockedSeller = await prisma.blockedSeller.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BlockedSellerCreateManyArgs>(args?: SelectSubset<T, BlockedSellerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BlockedSellers and returns the data saved in the database.
+     * @param {BlockedSellerCreateManyAndReturnArgs} args - Arguments to create many BlockedSellers.
+     * @example
+     * // Create many BlockedSellers
+     * const blockedSeller = await prisma.blockedSeller.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BlockedSellers and only return the `id`
+     * const blockedSellerWithIdOnly = await prisma.blockedSeller.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BlockedSellerCreateManyAndReturnArgs>(args?: SelectSubset<T, BlockedSellerCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlockedSellerPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a BlockedSeller.
+     * @param {BlockedSellerDeleteArgs} args - Arguments to delete one BlockedSeller.
+     * @example
+     * // Delete one BlockedSeller
+     * const BlockedSeller = await prisma.blockedSeller.delete({
+     *   where: {
+     *     // ... filter to delete one BlockedSeller
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BlockedSellerDeleteArgs>(args: SelectSubset<T, BlockedSellerDeleteArgs<ExtArgs>>): Prisma__BlockedSellerClient<$Result.GetResult<Prisma.$BlockedSellerPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BlockedSeller.
+     * @param {BlockedSellerUpdateArgs} args - Arguments to update one BlockedSeller.
+     * @example
+     * // Update one BlockedSeller
+     * const blockedSeller = await prisma.blockedSeller.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BlockedSellerUpdateArgs>(args: SelectSubset<T, BlockedSellerUpdateArgs<ExtArgs>>): Prisma__BlockedSellerClient<$Result.GetResult<Prisma.$BlockedSellerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BlockedSellers.
+     * @param {BlockedSellerDeleteManyArgs} args - Arguments to filter BlockedSellers to delete.
+     * @example
+     * // Delete a few BlockedSellers
+     * const { count } = await prisma.blockedSeller.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BlockedSellerDeleteManyArgs>(args?: SelectSubset<T, BlockedSellerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BlockedSellers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlockedSellerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BlockedSellers
+     * const blockedSeller = await prisma.blockedSeller.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BlockedSellerUpdateManyArgs>(args: SelectSubset<T, BlockedSellerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BlockedSellers and returns the data updated in the database.
+     * @param {BlockedSellerUpdateManyAndReturnArgs} args - Arguments to update many BlockedSellers.
+     * @example
+     * // Update many BlockedSellers
+     * const blockedSeller = await prisma.blockedSeller.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BlockedSellers and only return the `id`
+     * const blockedSellerWithIdOnly = await prisma.blockedSeller.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BlockedSellerUpdateManyAndReturnArgs>(args: SelectSubset<T, BlockedSellerUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlockedSellerPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one BlockedSeller.
+     * @param {BlockedSellerUpsertArgs} args - Arguments to update or create a BlockedSeller.
+     * @example
+     * // Update or create a BlockedSeller
+     * const blockedSeller = await prisma.blockedSeller.upsert({
+     *   create: {
+     *     // ... data to create a BlockedSeller
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BlockedSeller we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BlockedSellerUpsertArgs>(args: SelectSubset<T, BlockedSellerUpsertArgs<ExtArgs>>): Prisma__BlockedSellerClient<$Result.GetResult<Prisma.$BlockedSellerPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BlockedSellers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlockedSellerCountArgs} args - Arguments to filter BlockedSellers to count.
+     * @example
+     * // Count the number of BlockedSellers
+     * const count = await prisma.blockedSeller.count({
+     *   where: {
+     *     // ... the filter for the BlockedSellers we want to count
+     *   }
+     * })
+    **/
+    count<T extends BlockedSellerCountArgs>(
+      args?: Subset<T, BlockedSellerCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BlockedSellerCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BlockedSeller.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlockedSellerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BlockedSellerAggregateArgs>(args: Subset<T, BlockedSellerAggregateArgs>): Prisma.PrismaPromise<GetBlockedSellerAggregateType<T>>
+
+    /**
+     * Group by BlockedSeller.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlockedSellerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BlockedSellerGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BlockedSellerGroupByArgs['orderBy'] }
+        : { orderBy?: BlockedSellerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BlockedSellerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBlockedSellerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BlockedSeller model
+   */
+  readonly fields: BlockedSellerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BlockedSeller.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BlockedSellerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BlockedSeller model
+   */
+  interface BlockedSellerFieldRefs {
+    readonly id: FieldRef<"BlockedSeller", 'Int'>
+    readonly userId: FieldRef<"BlockedSeller", 'Int'>
+    readonly sellerKey: FieldRef<"BlockedSeller", 'String'>
+    readonly sellerName: FieldRef<"BlockedSeller", 'String'>
+    readonly createdAt: FieldRef<"BlockedSeller", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BlockedSeller findUnique
+   */
+  export type BlockedSellerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockedSeller
+     */
+    select?: BlockedSellerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockedSeller
+     */
+    omit?: BlockedSellerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockedSellerInclude<ExtArgs> | null
+    /**
+     * Filter, which BlockedSeller to fetch.
+     */
+    where: BlockedSellerWhereUniqueInput
+  }
+
+  /**
+   * BlockedSeller findUniqueOrThrow
+   */
+  export type BlockedSellerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockedSeller
+     */
+    select?: BlockedSellerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockedSeller
+     */
+    omit?: BlockedSellerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockedSellerInclude<ExtArgs> | null
+    /**
+     * Filter, which BlockedSeller to fetch.
+     */
+    where: BlockedSellerWhereUniqueInput
+  }
+
+  /**
+   * BlockedSeller findFirst
+   */
+  export type BlockedSellerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockedSeller
+     */
+    select?: BlockedSellerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockedSeller
+     */
+    omit?: BlockedSellerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockedSellerInclude<ExtArgs> | null
+    /**
+     * Filter, which BlockedSeller to fetch.
+     */
+    where?: BlockedSellerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BlockedSellers to fetch.
+     */
+    orderBy?: BlockedSellerOrderByWithRelationInput | BlockedSellerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BlockedSellers.
+     */
+    cursor?: BlockedSellerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BlockedSellers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BlockedSellers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BlockedSellers.
+     */
+    distinct?: BlockedSellerScalarFieldEnum | BlockedSellerScalarFieldEnum[]
+  }
+
+  /**
+   * BlockedSeller findFirstOrThrow
+   */
+  export type BlockedSellerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockedSeller
+     */
+    select?: BlockedSellerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockedSeller
+     */
+    omit?: BlockedSellerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockedSellerInclude<ExtArgs> | null
+    /**
+     * Filter, which BlockedSeller to fetch.
+     */
+    where?: BlockedSellerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BlockedSellers to fetch.
+     */
+    orderBy?: BlockedSellerOrderByWithRelationInput | BlockedSellerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BlockedSellers.
+     */
+    cursor?: BlockedSellerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BlockedSellers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BlockedSellers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BlockedSellers.
+     */
+    distinct?: BlockedSellerScalarFieldEnum | BlockedSellerScalarFieldEnum[]
+  }
+
+  /**
+   * BlockedSeller findMany
+   */
+  export type BlockedSellerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockedSeller
+     */
+    select?: BlockedSellerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockedSeller
+     */
+    omit?: BlockedSellerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockedSellerInclude<ExtArgs> | null
+    /**
+     * Filter, which BlockedSellers to fetch.
+     */
+    where?: BlockedSellerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BlockedSellers to fetch.
+     */
+    orderBy?: BlockedSellerOrderByWithRelationInput | BlockedSellerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BlockedSellers.
+     */
+    cursor?: BlockedSellerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BlockedSellers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BlockedSellers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BlockedSellers.
+     */
+    distinct?: BlockedSellerScalarFieldEnum | BlockedSellerScalarFieldEnum[]
+  }
+
+  /**
+   * BlockedSeller create
+   */
+  export type BlockedSellerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockedSeller
+     */
+    select?: BlockedSellerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockedSeller
+     */
+    omit?: BlockedSellerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockedSellerInclude<ExtArgs> | null
+    /**
+     * The data needed to create a BlockedSeller.
+     */
+    data: XOR<BlockedSellerCreateInput, BlockedSellerUncheckedCreateInput>
+  }
+
+  /**
+   * BlockedSeller createMany
+   */
+  export type BlockedSellerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BlockedSellers.
+     */
+    data: BlockedSellerCreateManyInput | BlockedSellerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BlockedSeller createManyAndReturn
+   */
+  export type BlockedSellerCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockedSeller
+     */
+    select?: BlockedSellerSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockedSeller
+     */
+    omit?: BlockedSellerOmit<ExtArgs> | null
+    /**
+     * The data used to create many BlockedSellers.
+     */
+    data: BlockedSellerCreateManyInput | BlockedSellerCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockedSellerIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BlockedSeller update
+   */
+  export type BlockedSellerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockedSeller
+     */
+    select?: BlockedSellerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockedSeller
+     */
+    omit?: BlockedSellerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockedSellerInclude<ExtArgs> | null
+    /**
+     * The data needed to update a BlockedSeller.
+     */
+    data: XOR<BlockedSellerUpdateInput, BlockedSellerUncheckedUpdateInput>
+    /**
+     * Choose, which BlockedSeller to update.
+     */
+    where: BlockedSellerWhereUniqueInput
+  }
+
+  /**
+   * BlockedSeller updateMany
+   */
+  export type BlockedSellerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BlockedSellers.
+     */
+    data: XOR<BlockedSellerUpdateManyMutationInput, BlockedSellerUncheckedUpdateManyInput>
+    /**
+     * Filter which BlockedSellers to update
+     */
+    where?: BlockedSellerWhereInput
+    /**
+     * Limit how many BlockedSellers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BlockedSeller updateManyAndReturn
+   */
+  export type BlockedSellerUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockedSeller
+     */
+    select?: BlockedSellerSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockedSeller
+     */
+    omit?: BlockedSellerOmit<ExtArgs> | null
+    /**
+     * The data used to update BlockedSellers.
+     */
+    data: XOR<BlockedSellerUpdateManyMutationInput, BlockedSellerUncheckedUpdateManyInput>
+    /**
+     * Filter which BlockedSellers to update
+     */
+    where?: BlockedSellerWhereInput
+    /**
+     * Limit how many BlockedSellers to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockedSellerIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BlockedSeller upsert
+   */
+  export type BlockedSellerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockedSeller
+     */
+    select?: BlockedSellerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockedSeller
+     */
+    omit?: BlockedSellerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockedSellerInclude<ExtArgs> | null
+    /**
+     * The filter to search for the BlockedSeller to update in case it exists.
+     */
+    where: BlockedSellerWhereUniqueInput
+    /**
+     * In case the BlockedSeller found by the `where` argument doesn't exist, create a new BlockedSeller with this data.
+     */
+    create: XOR<BlockedSellerCreateInput, BlockedSellerUncheckedCreateInput>
+    /**
+     * In case the BlockedSeller was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BlockedSellerUpdateInput, BlockedSellerUncheckedUpdateInput>
+  }
+
+  /**
+   * BlockedSeller delete
+   */
+  export type BlockedSellerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockedSeller
+     */
+    select?: BlockedSellerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockedSeller
+     */
+    omit?: BlockedSellerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockedSellerInclude<ExtArgs> | null
+    /**
+     * Filter which BlockedSeller to delete.
+     */
+    where: BlockedSellerWhereUniqueInput
+  }
+
+  /**
+   * BlockedSeller deleteMany
+   */
+  export type BlockedSellerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BlockedSellers to delete
+     */
+    where?: BlockedSellerWhereInput
+    /**
+     * Limit how many BlockedSellers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * BlockedSeller without action
+   */
+  export type BlockedSellerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockedSeller
+     */
+    select?: BlockedSellerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockedSeller
+     */
+    omit?: BlockedSellerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockedSellerInclude<ExtArgs> | null
   }
 
 
@@ -16646,7 +17910,9 @@ export namespace Prisma {
     firstSeenAt: 'firstSeenAt',
     isBaseline: 'isBaseline',
     notifiedAt: 'notifiedAt',
-    skippedReason: 'skippedReason'
+    skippedReason: 'skippedReason',
+    sellerName: 'sellerName',
+    sellerUrl: 'sellerUrl'
   };
 
   export type ListingScalarFieldEnum = (typeof ListingScalarFieldEnum)[keyof typeof ListingScalarFieldEnum]
@@ -16665,6 +17931,17 @@ export namespace Prisma {
   };
 
   export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
+
+
+  export const BlockedSellerScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    sellerKey: 'sellerKey',
+    sellerName: 'sellerName',
+    createdAt: 'createdAt'
+  };
+
+  export type BlockedSellerScalarFieldEnum = (typeof BlockedSellerScalarFieldEnum)[keyof typeof BlockedSellerScalarFieldEnum]
 
 
   export const FavoriteScalarFieldEnum: {
@@ -16976,6 +18253,7 @@ export namespace Prisma {
     searches?: SearchListRelationFilter
     payments?: PaymentListRelationFilter
     favorites?: FavoriteListRelationFilter
+    blockedSellers?: BlockedSellerListRelationFilter
     notifications?: NotificationListRelationFilter
     settings?: XOR<UserSettingsNullableScalarRelationFilter, UserSettingsWhereInput> | null
     adminLogs?: AdminLogListRelationFilter
@@ -17009,6 +18287,7 @@ export namespace Prisma {
     searches?: SearchOrderByRelationAggregateInput
     payments?: PaymentOrderByRelationAggregateInput
     favorites?: FavoriteOrderByRelationAggregateInput
+    blockedSellers?: BlockedSellerOrderByRelationAggregateInput
     notifications?: NotificationOrderByRelationAggregateInput
     settings?: UserSettingsOrderByWithRelationInput
     adminLogs?: AdminLogOrderByRelationAggregateInput
@@ -17045,6 +18324,7 @@ export namespace Prisma {
     searches?: SearchListRelationFilter
     payments?: PaymentListRelationFilter
     favorites?: FavoriteListRelationFilter
+    blockedSellers?: BlockedSellerListRelationFilter
     notifications?: NotificationListRelationFilter
     settings?: XOR<UserSettingsNullableScalarRelationFilter, UserSettingsWhereInput> | null
     adminLogs?: AdminLogListRelationFilter
@@ -17243,6 +18523,8 @@ export namespace Prisma {
     isBaseline?: BoolFilter<"Listing"> | boolean
     notifiedAt?: DateTimeNullableFilter<"Listing"> | Date | string | null
     skippedReason?: StringNullableFilter<"Listing"> | string | null
+    sellerName?: StringNullableFilter<"Listing"> | string | null
+    sellerUrl?: StringNullableFilter<"Listing"> | string | null
     search?: XOR<SearchScalarRelationFilter, SearchWhereInput>
     notifications?: NotificationListRelationFilter
     favorites?: FavoriteListRelationFilter
@@ -17265,6 +18547,8 @@ export namespace Prisma {
     isBaseline?: SortOrder
     notifiedAt?: SortOrderInput | SortOrder
     skippedReason?: SortOrderInput | SortOrder
+    sellerName?: SortOrderInput | SortOrder
+    sellerUrl?: SortOrderInput | SortOrder
     search?: SearchOrderByWithRelationInput
     notifications?: NotificationOrderByRelationAggregateInput
     favorites?: FavoriteOrderByRelationAggregateInput
@@ -17291,6 +18575,8 @@ export namespace Prisma {
     isBaseline?: BoolFilter<"Listing"> | boolean
     notifiedAt?: DateTimeNullableFilter<"Listing"> | Date | string | null
     skippedReason?: StringNullableFilter<"Listing"> | string | null
+    sellerName?: StringNullableFilter<"Listing"> | string | null
+    sellerUrl?: StringNullableFilter<"Listing"> | string | null
     search?: XOR<SearchScalarRelationFilter, SearchWhereInput>
     notifications?: NotificationListRelationFilter
     favorites?: FavoriteListRelationFilter
@@ -17313,6 +18599,8 @@ export namespace Prisma {
     isBaseline?: SortOrder
     notifiedAt?: SortOrderInput | SortOrder
     skippedReason?: SortOrderInput | SortOrder
+    sellerName?: SortOrderInput | SortOrder
+    sellerUrl?: SortOrderInput | SortOrder
     _count?: ListingCountOrderByAggregateInput
     _avg?: ListingAvgOrderByAggregateInput
     _max?: ListingMaxOrderByAggregateInput
@@ -17340,6 +18628,8 @@ export namespace Prisma {
     isBaseline?: BoolWithAggregatesFilter<"Listing"> | boolean
     notifiedAt?: DateTimeNullableWithAggregatesFilter<"Listing"> | Date | string | null
     skippedReason?: StringNullableWithAggregatesFilter<"Listing"> | string | null
+    sellerName?: StringNullableWithAggregatesFilter<"Listing"> | string | null
+    sellerUrl?: StringNullableWithAggregatesFilter<"Listing"> | string | null
   }
 
   export type PaymentWhereInput = {
@@ -17417,6 +18707,64 @@ export namespace Prisma {
     status?: EnumPaymentStatusWithAggregatesFilter<"Payment"> | $Enums.PaymentStatus
     createdAt?: DateTimeWithAggregatesFilter<"Payment"> | Date | string
     completedAt?: DateTimeNullableWithAggregatesFilter<"Payment"> | Date | string | null
+  }
+
+  export type BlockedSellerWhereInput = {
+    AND?: BlockedSellerWhereInput | BlockedSellerWhereInput[]
+    OR?: BlockedSellerWhereInput[]
+    NOT?: BlockedSellerWhereInput | BlockedSellerWhereInput[]
+    id?: IntFilter<"BlockedSeller"> | number
+    userId?: IntFilter<"BlockedSeller"> | number
+    sellerKey?: StringFilter<"BlockedSeller"> | string
+    sellerName?: StringNullableFilter<"BlockedSeller"> | string | null
+    createdAt?: DateTimeFilter<"BlockedSeller"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type BlockedSellerOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    sellerKey?: SortOrder
+    sellerName?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type BlockedSellerWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    userId_sellerKey?: BlockedSellerUserIdSellerKeyCompoundUniqueInput
+    AND?: BlockedSellerWhereInput | BlockedSellerWhereInput[]
+    OR?: BlockedSellerWhereInput[]
+    NOT?: BlockedSellerWhereInput | BlockedSellerWhereInput[]
+    userId?: IntFilter<"BlockedSeller"> | number
+    sellerKey?: StringFilter<"BlockedSeller"> | string
+    sellerName?: StringNullableFilter<"BlockedSeller"> | string | null
+    createdAt?: DateTimeFilter<"BlockedSeller"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId_sellerKey">
+
+  export type BlockedSellerOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    sellerKey?: SortOrder
+    sellerName?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: BlockedSellerCountOrderByAggregateInput
+    _avg?: BlockedSellerAvgOrderByAggregateInput
+    _max?: BlockedSellerMaxOrderByAggregateInput
+    _min?: BlockedSellerMinOrderByAggregateInput
+    _sum?: BlockedSellerSumOrderByAggregateInput
+  }
+
+  export type BlockedSellerScalarWhereWithAggregatesInput = {
+    AND?: BlockedSellerScalarWhereWithAggregatesInput | BlockedSellerScalarWhereWithAggregatesInput[]
+    OR?: BlockedSellerScalarWhereWithAggregatesInput[]
+    NOT?: BlockedSellerScalarWhereWithAggregatesInput | BlockedSellerScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"BlockedSeller"> | number
+    userId?: IntWithAggregatesFilter<"BlockedSeller"> | number
+    sellerKey?: StringWithAggregatesFilter<"BlockedSeller"> | string
+    sellerName?: StringNullableWithAggregatesFilter<"BlockedSeller"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"BlockedSeller"> | Date | string
   }
 
   export type FavoriteWhereInput = {
@@ -17982,6 +19330,7 @@ export namespace Prisma {
     searches?: SearchCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
     favorites?: FavoriteCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     settings?: UserSettingsCreateNestedOneWithoutUserInput
     adminLogs?: AdminLogCreateNestedManyWithoutUserInput
@@ -18014,6 +19363,7 @@ export namespace Prisma {
     searches?: SearchUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     settings?: UserSettingsUncheckedCreateNestedOneWithoutUserInput
     adminLogs?: AdminLogUncheckedCreateNestedManyWithoutUserInput
@@ -18045,6 +19395,7 @@ export namespace Prisma {
     searches?: SearchUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUpdateOneWithoutUserNestedInput
     adminLogs?: AdminLogUpdateManyWithoutUserNestedInput
@@ -18077,6 +19428,7 @@ export namespace Prisma {
     searches?: SearchUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
     adminLogs?: AdminLogUncheckedUpdateManyWithoutUserNestedInput
@@ -18301,6 +19653,8 @@ export namespace Prisma {
     isBaseline?: boolean
     notifiedAt?: Date | string | null
     skippedReason?: string | null
+    sellerName?: string | null
+    sellerUrl?: string | null
     search: SearchCreateNestedOneWithoutListingsInput
     notifications?: NotificationCreateNestedManyWithoutListingInput
     favorites?: FavoriteCreateNestedManyWithoutListingInput
@@ -18323,6 +19677,8 @@ export namespace Prisma {
     isBaseline?: boolean
     notifiedAt?: Date | string | null
     skippedReason?: string | null
+    sellerName?: string | null
+    sellerUrl?: string | null
     notifications?: NotificationUncheckedCreateNestedManyWithoutListingInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutListingInput
   }
@@ -18342,6 +19698,8 @@ export namespace Prisma {
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerUrl?: NullableStringFieldUpdateOperationsInput | string | null
     search?: SearchUpdateOneRequiredWithoutListingsNestedInput
     notifications?: NotificationUpdateManyWithoutListingNestedInput
     favorites?: FavoriteUpdateManyWithoutListingNestedInput
@@ -18364,6 +19722,8 @@ export namespace Prisma {
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerUrl?: NullableStringFieldUpdateOperationsInput | string | null
     notifications?: NotificationUncheckedUpdateManyWithoutListingNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutListingNestedInput
   }
@@ -18385,6 +19745,8 @@ export namespace Prisma {
     isBaseline?: boolean
     notifiedAt?: Date | string | null
     skippedReason?: string | null
+    sellerName?: string | null
+    sellerUrl?: string | null
   }
 
   export type ListingUpdateManyMutationInput = {
@@ -18402,6 +19764,8 @@ export namespace Prisma {
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ListingUncheckedUpdateManyInput = {
@@ -18421,6 +19785,8 @@ export namespace Prisma {
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PaymentCreateInput = {
@@ -18501,6 +19867,58 @@ export namespace Prisma {
     status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type BlockedSellerCreateInput = {
+    sellerKey: string
+    sellerName?: string | null
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutBlockedSellersInput
+  }
+
+  export type BlockedSellerUncheckedCreateInput = {
+    id?: number
+    userId: number
+    sellerKey: string
+    sellerName?: string | null
+    createdAt?: Date | string
+  }
+
+  export type BlockedSellerUpdateInput = {
+    sellerKey?: StringFieldUpdateOperationsInput | string
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutBlockedSellersNestedInput
+  }
+
+  export type BlockedSellerUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    sellerKey?: StringFieldUpdateOperationsInput | string
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BlockedSellerCreateManyInput = {
+    id?: number
+    userId: number
+    sellerKey: string
+    sellerName?: string | null
+    createdAt?: Date | string
+  }
+
+  export type BlockedSellerUpdateManyMutationInput = {
+    sellerKey?: StringFieldUpdateOperationsInput | string
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BlockedSellerUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    sellerKey?: StringFieldUpdateOperationsInput | string
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FavoriteCreateInput = {
@@ -19129,6 +20547,12 @@ export namespace Prisma {
     none?: FavoriteWhereInput
   }
 
+  export type BlockedSellerListRelationFilter = {
+    every?: BlockedSellerWhereInput
+    some?: BlockedSellerWhereInput
+    none?: BlockedSellerWhereInput
+  }
+
   export type NotificationListRelationFilter = {
     every?: NotificationWhereInput
     some?: NotificationWhereInput
@@ -19181,6 +20605,10 @@ export namespace Prisma {
   }
 
   export type FavoriteOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type BlockedSellerOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -19599,6 +21027,8 @@ export namespace Prisma {
     isBaseline?: SortOrder
     notifiedAt?: SortOrder
     skippedReason?: SortOrder
+    sellerName?: SortOrder
+    sellerUrl?: SortOrder
   }
 
   export type ListingAvgOrderByAggregateInput = {
@@ -19623,6 +21053,8 @@ export namespace Prisma {
     isBaseline?: SortOrder
     notifiedAt?: SortOrder
     skippedReason?: SortOrder
+    sellerName?: SortOrder
+    sellerUrl?: SortOrder
   }
 
   export type ListingMinOrderByAggregateInput = {
@@ -19642,6 +21074,8 @@ export namespace Prisma {
     isBaseline?: SortOrder
     notifiedAt?: SortOrder
     skippedReason?: SortOrder
+    sellerName?: SortOrder
+    sellerUrl?: SortOrder
   }
 
   export type ListingSumOrderByAggregateInput = {
@@ -19714,6 +21148,45 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumPaymentStatusFilter<$PrismaModel>
     _max?: NestedEnumPaymentStatusFilter<$PrismaModel>
+  }
+
+  export type BlockedSellerUserIdSellerKeyCompoundUniqueInput = {
+    userId: number
+    sellerKey: string
+  }
+
+  export type BlockedSellerCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    sellerKey?: SortOrder
+    sellerName?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type BlockedSellerAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type BlockedSellerMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    sellerKey?: SortOrder
+    sellerName?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type BlockedSellerMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    sellerKey?: SortOrder
+    sellerName?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type BlockedSellerSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
   }
 
   export type ListingScalarRelationFilter = {
@@ -20125,6 +21598,13 @@ export namespace Prisma {
     connect?: FavoriteWhereUniqueInput | FavoriteWhereUniqueInput[]
   }
 
+  export type BlockedSellerCreateNestedManyWithoutUserInput = {
+    create?: XOR<BlockedSellerCreateWithoutUserInput, BlockedSellerUncheckedCreateWithoutUserInput> | BlockedSellerCreateWithoutUserInput[] | BlockedSellerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BlockedSellerCreateOrConnectWithoutUserInput | BlockedSellerCreateOrConnectWithoutUserInput[]
+    createMany?: BlockedSellerCreateManyUserInputEnvelope
+    connect?: BlockedSellerWhereUniqueInput | BlockedSellerWhereUniqueInput[]
+  }
+
   export type NotificationCreateNestedManyWithoutUserInput = {
     create?: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput> | NotificationCreateWithoutUserInput[] | NotificationUncheckedCreateWithoutUserInput[]
     connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
@@ -20191,6 +21671,13 @@ export namespace Prisma {
     connectOrCreate?: FavoriteCreateOrConnectWithoutUserInput | FavoriteCreateOrConnectWithoutUserInput[]
     createMany?: FavoriteCreateManyUserInputEnvelope
     connect?: FavoriteWhereUniqueInput | FavoriteWhereUniqueInput[]
+  }
+
+  export type BlockedSellerUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<BlockedSellerCreateWithoutUserInput, BlockedSellerUncheckedCreateWithoutUserInput> | BlockedSellerCreateWithoutUserInput[] | BlockedSellerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BlockedSellerCreateOrConnectWithoutUserInput | BlockedSellerCreateOrConnectWithoutUserInput[]
+    createMany?: BlockedSellerCreateManyUserInputEnvelope
+    connect?: BlockedSellerWhereUniqueInput | BlockedSellerWhereUniqueInput[]
   }
 
   export type NotificationUncheckedCreateNestedManyWithoutUserInput = {
@@ -20335,6 +21822,20 @@ export namespace Prisma {
     deleteMany?: FavoriteScalarWhereInput | FavoriteScalarWhereInput[]
   }
 
+  export type BlockedSellerUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BlockedSellerCreateWithoutUserInput, BlockedSellerUncheckedCreateWithoutUserInput> | BlockedSellerCreateWithoutUserInput[] | BlockedSellerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BlockedSellerCreateOrConnectWithoutUserInput | BlockedSellerCreateOrConnectWithoutUserInput[]
+    upsert?: BlockedSellerUpsertWithWhereUniqueWithoutUserInput | BlockedSellerUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BlockedSellerCreateManyUserInputEnvelope
+    set?: BlockedSellerWhereUniqueInput | BlockedSellerWhereUniqueInput[]
+    disconnect?: BlockedSellerWhereUniqueInput | BlockedSellerWhereUniqueInput[]
+    delete?: BlockedSellerWhereUniqueInput | BlockedSellerWhereUniqueInput[]
+    connect?: BlockedSellerWhereUniqueInput | BlockedSellerWhereUniqueInput[]
+    update?: BlockedSellerUpdateWithWhereUniqueWithoutUserInput | BlockedSellerUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BlockedSellerUpdateManyWithWhereWithoutUserInput | BlockedSellerUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: BlockedSellerScalarWhereInput | BlockedSellerScalarWhereInput[]
+  }
+
   export type NotificationUpdateManyWithoutUserNestedInput = {
     create?: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput> | NotificationCreateWithoutUserInput[] | NotificationUncheckedCreateWithoutUserInput[]
     connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
@@ -20473,6 +21974,20 @@ export namespace Prisma {
     update?: FavoriteUpdateWithWhereUniqueWithoutUserInput | FavoriteUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: FavoriteUpdateManyWithWhereWithoutUserInput | FavoriteUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: FavoriteScalarWhereInput | FavoriteScalarWhereInput[]
+  }
+
+  export type BlockedSellerUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BlockedSellerCreateWithoutUserInput, BlockedSellerUncheckedCreateWithoutUserInput> | BlockedSellerCreateWithoutUserInput[] | BlockedSellerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BlockedSellerCreateOrConnectWithoutUserInput | BlockedSellerCreateOrConnectWithoutUserInput[]
+    upsert?: BlockedSellerUpsertWithWhereUniqueWithoutUserInput | BlockedSellerUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BlockedSellerCreateManyUserInputEnvelope
+    set?: BlockedSellerWhereUniqueInput | BlockedSellerWhereUniqueInput[]
+    disconnect?: BlockedSellerWhereUniqueInput | BlockedSellerWhereUniqueInput[]
+    delete?: BlockedSellerWhereUniqueInput | BlockedSellerWhereUniqueInput[]
+    connect?: BlockedSellerWhereUniqueInput | BlockedSellerWhereUniqueInput[]
+    update?: BlockedSellerUpdateWithWhereUniqueWithoutUserInput | BlockedSellerUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BlockedSellerUpdateManyWithWhereWithoutUserInput | BlockedSellerUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: BlockedSellerScalarWhereInput | BlockedSellerScalarWhereInput[]
   }
 
   export type NotificationUncheckedUpdateManyWithoutUserNestedInput = {
@@ -20783,6 +22298,20 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutPaymentsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPaymentsInput, UserUpdateWithoutPaymentsInput>, UserUncheckedUpdateWithoutPaymentsInput>
+  }
+
+  export type UserCreateNestedOneWithoutBlockedSellersInput = {
+    create?: XOR<UserCreateWithoutBlockedSellersInput, UserUncheckedCreateWithoutBlockedSellersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBlockedSellersInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutBlockedSellersNestedInput = {
+    create?: XOR<UserCreateWithoutBlockedSellersInput, UserUncheckedCreateWithoutBlockedSellersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBlockedSellersInput
+    upsert?: UserUpsertWithoutBlockedSellersInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBlockedSellersInput, UserUpdateWithoutBlockedSellersInput>, UserUncheckedUpdateWithoutBlockedSellersInput>
   }
 
   export type UserCreateNestedOneWithoutFavoritesInput = {
@@ -21349,6 +22878,7 @@ export namespace Prisma {
     searches?: SearchCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
     favorites?: FavoriteCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     settings?: UserSettingsCreateNestedOneWithoutUserInput
     adminLogs?: AdminLogCreateNestedManyWithoutUserInput
@@ -21380,6 +22910,7 @@ export namespace Prisma {
     searches?: SearchUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     settings?: UserSettingsUncheckedCreateNestedOneWithoutUserInput
     adminLogs?: AdminLogUncheckedCreateNestedManyWithoutUserInput
@@ -21415,6 +22946,7 @@ export namespace Prisma {
     searches?: SearchCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
     favorites?: FavoriteCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     settings?: UserSettingsCreateNestedOneWithoutUserInput
     adminLogs?: AdminLogCreateNestedManyWithoutUserInput
@@ -21446,6 +22978,7 @@ export namespace Prisma {
     searches?: SearchUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     settings?: UserSettingsUncheckedCreateNestedOneWithoutUserInput
     adminLogs?: AdminLogUncheckedCreateNestedManyWithoutUserInput
@@ -21562,6 +23095,29 @@ export namespace Prisma {
 
   export type FavoriteCreateManyUserInputEnvelope = {
     data: FavoriteCreateManyUserInput | FavoriteCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BlockedSellerCreateWithoutUserInput = {
+    sellerKey: string
+    sellerName?: string | null
+    createdAt?: Date | string
+  }
+
+  export type BlockedSellerUncheckedCreateWithoutUserInput = {
+    id?: number
+    sellerKey: string
+    sellerName?: string | null
+    createdAt?: Date | string
+  }
+
+  export type BlockedSellerCreateOrConnectWithoutUserInput = {
+    where: BlockedSellerWhereUniqueInput
+    create: XOR<BlockedSellerCreateWithoutUserInput, BlockedSellerUncheckedCreateWithoutUserInput>
+  }
+
+  export type BlockedSellerCreateManyUserInputEnvelope = {
+    data: BlockedSellerCreateManyUserInput | BlockedSellerCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -21742,6 +23298,7 @@ export namespace Prisma {
     searches?: SearchUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUpdateOneWithoutUserNestedInput
     adminLogs?: AdminLogUpdateManyWithoutUserNestedInput
@@ -21773,6 +23330,7 @@ export namespace Prisma {
     searches?: SearchUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
     adminLogs?: AdminLogUncheckedUpdateManyWithoutUserNestedInput
@@ -21915,6 +23473,33 @@ export namespace Prisma {
     userId?: IntFilter<"Favorite"> | number
     listingId?: IntFilter<"Favorite"> | number
     createdAt?: DateTimeFilter<"Favorite"> | Date | string
+  }
+
+  export type BlockedSellerUpsertWithWhereUniqueWithoutUserInput = {
+    where: BlockedSellerWhereUniqueInput
+    update: XOR<BlockedSellerUpdateWithoutUserInput, BlockedSellerUncheckedUpdateWithoutUserInput>
+    create: XOR<BlockedSellerCreateWithoutUserInput, BlockedSellerUncheckedCreateWithoutUserInput>
+  }
+
+  export type BlockedSellerUpdateWithWhereUniqueWithoutUserInput = {
+    where: BlockedSellerWhereUniqueInput
+    data: XOR<BlockedSellerUpdateWithoutUserInput, BlockedSellerUncheckedUpdateWithoutUserInput>
+  }
+
+  export type BlockedSellerUpdateManyWithWhereWithoutUserInput = {
+    where: BlockedSellerScalarWhereInput
+    data: XOR<BlockedSellerUpdateManyMutationInput, BlockedSellerUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type BlockedSellerScalarWhereInput = {
+    AND?: BlockedSellerScalarWhereInput | BlockedSellerScalarWhereInput[]
+    OR?: BlockedSellerScalarWhereInput[]
+    NOT?: BlockedSellerScalarWhereInput | BlockedSellerScalarWhereInput[]
+    id?: IntFilter<"BlockedSeller"> | number
+    userId?: IntFilter<"BlockedSeller"> | number
+    sellerKey?: StringFilter<"BlockedSeller"> | string
+    sellerName?: StringNullableFilter<"BlockedSeller"> | string | null
+    createdAt?: DateTimeFilter<"BlockedSeller"> | Date | string
   }
 
   export type NotificationUpsertWithWhereUniqueWithoutUserInput = {
@@ -22109,6 +23694,7 @@ export namespace Prisma {
     referrals?: UserCreateNestedManyWithoutReferredByInput
     payments?: PaymentCreateNestedManyWithoutUserInput
     favorites?: FavoriteCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     settings?: UserSettingsCreateNestedOneWithoutUserInput
     adminLogs?: AdminLogCreateNestedManyWithoutUserInput
@@ -22140,6 +23726,7 @@ export namespace Prisma {
     referrals?: UserUncheckedCreateNestedManyWithoutReferredByInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     settings?: UserSettingsUncheckedCreateNestedOneWithoutUserInput
     adminLogs?: AdminLogUncheckedCreateNestedManyWithoutUserInput
@@ -22168,6 +23755,8 @@ export namespace Prisma {
     isBaseline?: boolean
     notifiedAt?: Date | string | null
     skippedReason?: string | null
+    sellerName?: string | null
+    sellerUrl?: string | null
     notifications?: NotificationCreateNestedManyWithoutListingInput
     favorites?: FavoriteCreateNestedManyWithoutListingInput
   }
@@ -22188,6 +23777,8 @@ export namespace Prisma {
     isBaseline?: boolean
     notifiedAt?: Date | string | null
     skippedReason?: string | null
+    sellerName?: string | null
+    sellerUrl?: string | null
     notifications?: NotificationUncheckedCreateNestedManyWithoutListingInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutListingInput
   }
@@ -22264,6 +23855,7 @@ export namespace Prisma {
     referrals?: UserUpdateManyWithoutReferredByNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUpdateOneWithoutUserNestedInput
     adminLogs?: AdminLogUpdateManyWithoutUserNestedInput
@@ -22295,6 +23887,7 @@ export namespace Prisma {
     referrals?: UserUncheckedUpdateManyWithoutReferredByNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
     adminLogs?: AdminLogUncheckedUpdateManyWithoutUserNestedInput
@@ -22339,6 +23932,8 @@ export namespace Prisma {
     isBaseline?: BoolFilter<"Listing"> | boolean
     notifiedAt?: DateTimeNullableFilter<"Listing"> | Date | string | null
     skippedReason?: StringNullableFilter<"Listing"> | string | null
+    sellerName?: StringNullableFilter<"Listing"> | string | null
+    sellerUrl?: StringNullableFilter<"Listing"> | string | null
   }
 
   export type NotificationUpsertWithWhereUniqueWithoutSearchInput = {
@@ -22555,6 +24150,7 @@ export namespace Prisma {
     referrals?: UserCreateNestedManyWithoutReferredByInput
     searches?: SearchCreateNestedManyWithoutUserInput
     favorites?: FavoriteCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     settings?: UserSettingsCreateNestedOneWithoutUserInput
     adminLogs?: AdminLogCreateNestedManyWithoutUserInput
@@ -22586,6 +24182,7 @@ export namespace Prisma {
     referrals?: UserUncheckedCreateNestedManyWithoutReferredByInput
     searches?: SearchUncheckedCreateNestedManyWithoutUserInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     settings?: UserSettingsUncheckedCreateNestedOneWithoutUserInput
     adminLogs?: AdminLogUncheckedCreateNestedManyWithoutUserInput
@@ -22632,6 +24229,7 @@ export namespace Prisma {
     referrals?: UserUpdateManyWithoutReferredByNestedInput
     searches?: SearchUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUpdateOneWithoutUserNestedInput
     adminLogs?: AdminLogUpdateManyWithoutUserNestedInput
@@ -22663,6 +24261,149 @@ export namespace Prisma {
     referrals?: UserUncheckedUpdateManyWithoutReferredByNestedInput
     searches?: SearchUncheckedUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+    adminLogs?: AdminLogUncheckedUpdateManyWithoutUserNestedInput
+    sentReferrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
+    gotReferral?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
+    promoUses?: PromoCodeUseUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutBlockedSellersInput = {
+    telegramId: bigint | number
+    username?: string | null
+    firstName?: string | null
+    lastName?: string | null
+    plan?: $Enums.Plan
+    subscriptionUntil?: Date | string | null
+    isBanned?: boolean
+    banReason?: string | null
+    dailyNotificationCount?: number
+    dailyNotificationLimitResetAt?: Date | string
+    limitNotifiedAt?: Date | string | null
+    trialStartedAt?: Date | string | null
+    trialEndsAt?: Date | string | null
+    trialUsed?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    lastActiveAt?: Date | string
+    referredBy?: UserCreateNestedOneWithoutReferralsInput
+    referrals?: UserCreateNestedManyWithoutReferredByInput
+    searches?: SearchCreateNestedManyWithoutUserInput
+    payments?: PaymentCreateNestedManyWithoutUserInput
+    favorites?: FavoriteCreateNestedManyWithoutUserInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    settings?: UserSettingsCreateNestedOneWithoutUserInput
+    adminLogs?: AdminLogCreateNestedManyWithoutUserInput
+    sentReferrals?: ReferralCreateNestedManyWithoutReferrerInput
+    gotReferral?: ReferralCreateNestedOneWithoutReferredInput
+    promoUses?: PromoCodeUseCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutBlockedSellersInput = {
+    id?: number
+    telegramId: bigint | number
+    username?: string | null
+    firstName?: string | null
+    lastName?: string | null
+    plan?: $Enums.Plan
+    subscriptionUntil?: Date | string | null
+    isBanned?: boolean
+    banReason?: string | null
+    dailyNotificationCount?: number
+    dailyNotificationLimitResetAt?: Date | string
+    limitNotifiedAt?: Date | string | null
+    trialStartedAt?: Date | string | null
+    trialEndsAt?: Date | string | null
+    trialUsed?: boolean
+    referredByUserId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    lastActiveAt?: Date | string
+    referrals?: UserUncheckedCreateNestedManyWithoutReferredByInput
+    searches?: SearchUncheckedCreateNestedManyWithoutUserInput
+    payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
+    favorites?: FavoriteUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    settings?: UserSettingsUncheckedCreateNestedOneWithoutUserInput
+    adminLogs?: AdminLogUncheckedCreateNestedManyWithoutUserInput
+    sentReferrals?: ReferralUncheckedCreateNestedManyWithoutReferrerInput
+    gotReferral?: ReferralUncheckedCreateNestedOneWithoutReferredInput
+    promoUses?: PromoCodeUseUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutBlockedSellersInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutBlockedSellersInput, UserUncheckedCreateWithoutBlockedSellersInput>
+  }
+
+  export type UserUpsertWithoutBlockedSellersInput = {
+    update: XOR<UserUpdateWithoutBlockedSellersInput, UserUncheckedUpdateWithoutBlockedSellersInput>
+    create: XOR<UserCreateWithoutBlockedSellersInput, UserUncheckedCreateWithoutBlockedSellersInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutBlockedSellersInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutBlockedSellersInput, UserUncheckedUpdateWithoutBlockedSellersInput>
+  }
+
+  export type UserUpdateWithoutBlockedSellersInput = {
+    telegramId?: BigIntFieldUpdateOperationsInput | bigint | number
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    plan?: EnumPlanFieldUpdateOperationsInput | $Enums.Plan
+    subscriptionUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    dailyNotificationCount?: IntFieldUpdateOperationsInput | number
+    dailyNotificationLimitResetAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    limitNotifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialUsed?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastActiveAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    referredBy?: UserUpdateOneWithoutReferralsNestedInput
+    referrals?: UserUpdateManyWithoutReferredByNestedInput
+    searches?: SearchUpdateManyWithoutUserNestedInput
+    payments?: PaymentUpdateManyWithoutUserNestedInput
+    favorites?: FavoriteUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    settings?: UserSettingsUpdateOneWithoutUserNestedInput
+    adminLogs?: AdminLogUpdateManyWithoutUserNestedInput
+    sentReferrals?: ReferralUpdateManyWithoutReferrerNestedInput
+    gotReferral?: ReferralUpdateOneWithoutReferredNestedInput
+    promoUses?: PromoCodeUseUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutBlockedSellersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    telegramId?: BigIntFieldUpdateOperationsInput | bigint | number
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    plan?: EnumPlanFieldUpdateOperationsInput | $Enums.Plan
+    subscriptionUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    dailyNotificationCount?: IntFieldUpdateOperationsInput | number
+    dailyNotificationLimitResetAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    limitNotifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialUsed?: BoolFieldUpdateOperationsInput | boolean
+    referredByUserId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastActiveAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    referrals?: UserUncheckedUpdateManyWithoutReferredByNestedInput
+    searches?: SearchUncheckedUpdateManyWithoutUserNestedInput
+    payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
+    favorites?: FavoriteUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
     adminLogs?: AdminLogUncheckedUpdateManyWithoutUserNestedInput
@@ -22693,6 +24434,7 @@ export namespace Prisma {
     referrals?: UserCreateNestedManyWithoutReferredByInput
     searches?: SearchCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     settings?: UserSettingsCreateNestedOneWithoutUserInput
     adminLogs?: AdminLogCreateNestedManyWithoutUserInput
@@ -22724,6 +24466,7 @@ export namespace Prisma {
     referrals?: UserUncheckedCreateNestedManyWithoutReferredByInput
     searches?: SearchUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     settings?: UserSettingsUncheckedCreateNestedOneWithoutUserInput
     adminLogs?: AdminLogUncheckedCreateNestedManyWithoutUserInput
@@ -22752,6 +24495,8 @@ export namespace Prisma {
     isBaseline?: boolean
     notifiedAt?: Date | string | null
     skippedReason?: string | null
+    sellerName?: string | null
+    sellerUrl?: string | null
     search: SearchCreateNestedOneWithoutListingsInput
     notifications?: NotificationCreateNestedManyWithoutListingInput
   }
@@ -22773,6 +24518,8 @@ export namespace Prisma {
     isBaseline?: boolean
     notifiedAt?: Date | string | null
     skippedReason?: string | null
+    sellerName?: string | null
+    sellerUrl?: string | null
     notifications?: NotificationUncheckedCreateNestedManyWithoutListingInput
   }
 
@@ -22814,6 +24561,7 @@ export namespace Prisma {
     referrals?: UserUpdateManyWithoutReferredByNestedInput
     searches?: SearchUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUpdateOneWithoutUserNestedInput
     adminLogs?: AdminLogUpdateManyWithoutUserNestedInput
@@ -22845,6 +24593,7 @@ export namespace Prisma {
     referrals?: UserUncheckedUpdateManyWithoutReferredByNestedInput
     searches?: SearchUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
     adminLogs?: AdminLogUncheckedUpdateManyWithoutUserNestedInput
@@ -22879,6 +24628,8 @@ export namespace Prisma {
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerUrl?: NullableStringFieldUpdateOperationsInput | string | null
     search?: SearchUpdateOneRequiredWithoutListingsNestedInput
     notifications?: NotificationUpdateManyWithoutListingNestedInput
   }
@@ -22900,6 +24651,8 @@ export namespace Prisma {
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerUrl?: NullableStringFieldUpdateOperationsInput | string | null
     notifications?: NotificationUncheckedUpdateManyWithoutListingNestedInput
   }
 
@@ -22926,6 +24679,7 @@ export namespace Prisma {
     searches?: SearchCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
     favorites?: FavoriteCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerCreateNestedManyWithoutUserInput
     settings?: UserSettingsCreateNestedOneWithoutUserInput
     adminLogs?: AdminLogCreateNestedManyWithoutUserInput
     sentReferrals?: ReferralCreateNestedManyWithoutReferrerInput
@@ -22957,6 +24711,7 @@ export namespace Prisma {
     searches?: SearchUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerUncheckedCreateNestedManyWithoutUserInput
     settings?: UserSettingsUncheckedCreateNestedOneWithoutUserInput
     adminLogs?: AdminLogUncheckedCreateNestedManyWithoutUserInput
     sentReferrals?: ReferralUncheckedCreateNestedManyWithoutReferrerInput
@@ -23028,6 +24783,8 @@ export namespace Prisma {
     isBaseline?: boolean
     notifiedAt?: Date | string | null
     skippedReason?: string | null
+    sellerName?: string | null
+    sellerUrl?: string | null
     search: SearchCreateNestedOneWithoutListingsInput
     favorites?: FavoriteCreateNestedManyWithoutListingInput
   }
@@ -23049,6 +24806,8 @@ export namespace Prisma {
     isBaseline?: boolean
     notifiedAt?: Date | string | null
     skippedReason?: string | null
+    sellerName?: string | null
+    sellerUrl?: string | null
     favorites?: FavoriteUncheckedCreateNestedManyWithoutListingInput
   }
 
@@ -23091,6 +24850,7 @@ export namespace Prisma {
     searches?: SearchUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUpdateOneWithoutUserNestedInput
     adminLogs?: AdminLogUpdateManyWithoutUserNestedInput
     sentReferrals?: ReferralUpdateManyWithoutReferrerNestedInput
@@ -23122,6 +24882,7 @@ export namespace Prisma {
     searches?: SearchUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUncheckedUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
     adminLogs?: AdminLogUncheckedUpdateManyWithoutUserNestedInput
     sentReferrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
@@ -23205,6 +24966,8 @@ export namespace Prisma {
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerUrl?: NullableStringFieldUpdateOperationsInput | string | null
     search?: SearchUpdateOneRequiredWithoutListingsNestedInput
     favorites?: FavoriteUpdateManyWithoutListingNestedInput
   }
@@ -23226,6 +24989,8 @@ export namespace Prisma {
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerUrl?: NullableStringFieldUpdateOperationsInput | string | null
     favorites?: FavoriteUncheckedUpdateManyWithoutListingNestedInput
   }
 
@@ -23252,6 +25017,7 @@ export namespace Prisma {
     searches?: SearchCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
     favorites?: FavoriteCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     adminLogs?: AdminLogCreateNestedManyWithoutUserInput
     sentReferrals?: ReferralCreateNestedManyWithoutReferrerInput
@@ -23283,6 +25049,7 @@ export namespace Prisma {
     searches?: SearchUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     adminLogs?: AdminLogUncheckedCreateNestedManyWithoutUserInput
     sentReferrals?: ReferralUncheckedCreateNestedManyWithoutReferrerInput
@@ -23329,6 +25096,7 @@ export namespace Prisma {
     searches?: SearchUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     adminLogs?: AdminLogUpdateManyWithoutUserNestedInput
     sentReferrals?: ReferralUpdateManyWithoutReferrerNestedInput
@@ -23360,6 +25128,7 @@ export namespace Prisma {
     searches?: SearchUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     adminLogs?: AdminLogUncheckedUpdateManyWithoutUserNestedInput
     sentReferrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
@@ -23455,6 +25224,7 @@ export namespace Prisma {
     searches?: SearchCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
     favorites?: FavoriteCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     settings?: UserSettingsCreateNestedOneWithoutUserInput
     adminLogs?: AdminLogCreateNestedManyWithoutUserInput
@@ -23486,6 +25256,7 @@ export namespace Prisma {
     searches?: SearchUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     settings?: UserSettingsUncheckedCreateNestedOneWithoutUserInput
     adminLogs?: AdminLogUncheckedCreateNestedManyWithoutUserInput
@@ -23566,6 +25337,7 @@ export namespace Prisma {
     searches?: SearchUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUpdateOneWithoutUserNestedInput
     adminLogs?: AdminLogUpdateManyWithoutUserNestedInput
@@ -23597,6 +25369,7 @@ export namespace Prisma {
     searches?: SearchUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
     adminLogs?: AdminLogUncheckedUpdateManyWithoutUserNestedInput
@@ -23627,6 +25400,7 @@ export namespace Prisma {
     searches?: SearchCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
     favorites?: FavoriteCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     settings?: UserSettingsCreateNestedOneWithoutUserInput
     adminLogs?: AdminLogCreateNestedManyWithoutUserInput
@@ -23658,6 +25432,7 @@ export namespace Prisma {
     searches?: SearchUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     settings?: UserSettingsUncheckedCreateNestedOneWithoutUserInput
     adminLogs?: AdminLogUncheckedCreateNestedManyWithoutUserInput
@@ -23693,6 +25468,7 @@ export namespace Prisma {
     searches?: SearchCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
     favorites?: FavoriteCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     settings?: UserSettingsCreateNestedOneWithoutUserInput
     adminLogs?: AdminLogCreateNestedManyWithoutUserInput
@@ -23724,6 +25500,7 @@ export namespace Prisma {
     searches?: SearchUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     settings?: UserSettingsUncheckedCreateNestedOneWithoutUserInput
     adminLogs?: AdminLogUncheckedCreateNestedManyWithoutUserInput
@@ -23770,6 +25547,7 @@ export namespace Prisma {
     searches?: SearchUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUpdateOneWithoutUserNestedInput
     adminLogs?: AdminLogUpdateManyWithoutUserNestedInput
@@ -23801,6 +25579,7 @@ export namespace Prisma {
     searches?: SearchUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
     adminLogs?: AdminLogUncheckedUpdateManyWithoutUserNestedInput
@@ -23842,6 +25621,7 @@ export namespace Prisma {
     searches?: SearchUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUpdateOneWithoutUserNestedInput
     adminLogs?: AdminLogUpdateManyWithoutUserNestedInput
@@ -23873,6 +25653,7 @@ export namespace Prisma {
     searches?: SearchUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
     adminLogs?: AdminLogUncheckedUpdateManyWithoutUserNestedInput
@@ -23903,6 +25684,7 @@ export namespace Prisma {
     searches?: SearchCreateNestedManyWithoutUserInput
     payments?: PaymentCreateNestedManyWithoutUserInput
     favorites?: FavoriteCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     settings?: UserSettingsCreateNestedOneWithoutUserInput
     sentReferrals?: ReferralCreateNestedManyWithoutReferrerInput
@@ -23934,6 +25716,7 @@ export namespace Prisma {
     searches?: SearchUncheckedCreateNestedManyWithoutUserInput
     payments?: PaymentUncheckedCreateNestedManyWithoutUserInput
     favorites?: FavoriteUncheckedCreateNestedManyWithoutUserInput
+    blockedSellers?: BlockedSellerUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     settings?: UserSettingsUncheckedCreateNestedOneWithoutUserInput
     sentReferrals?: ReferralUncheckedCreateNestedManyWithoutReferrerInput
@@ -23980,6 +25763,7 @@ export namespace Prisma {
     searches?: SearchUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUpdateOneWithoutUserNestedInput
     sentReferrals?: ReferralUpdateManyWithoutReferrerNestedInput
@@ -24011,6 +25795,7 @@ export namespace Prisma {
     searches?: SearchUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
     sentReferrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
@@ -24074,6 +25859,13 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
+  export type BlockedSellerCreateManyUserInput = {
+    id?: number
+    sellerKey: string
+    sellerName?: string | null
+    createdAt?: Date | string
+  }
+
   export type NotificationCreateManyUserInput = {
     id?: number
     searchId: number
@@ -24126,6 +25918,7 @@ export namespace Prisma {
     searches?: SearchUpdateManyWithoutUserNestedInput
     payments?: PaymentUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUpdateOneWithoutUserNestedInput
     adminLogs?: AdminLogUpdateManyWithoutUserNestedInput
@@ -24157,6 +25950,7 @@ export namespace Prisma {
     searches?: SearchUncheckedUpdateManyWithoutUserNestedInput
     payments?: PaymentUncheckedUpdateManyWithoutUserNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutUserNestedInput
+    blockedSellers?: BlockedSellerUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     settings?: UserSettingsUncheckedUpdateOneWithoutUserNestedInput
     adminLogs?: AdminLogUncheckedUpdateManyWithoutUserNestedInput
@@ -24292,6 +26086,26 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type BlockedSellerUpdateWithoutUserInput = {
+    sellerKey?: StringFieldUpdateOperationsInput | string
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BlockedSellerUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sellerKey?: StringFieldUpdateOperationsInput | string
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BlockedSellerUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sellerKey?: StringFieldUpdateOperationsInput | string
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type NotificationUpdateWithoutUserInput = {
     status?: EnumNotificationStatusFieldUpdateOperationsInput | $Enums.NotificationStatus
     sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -24394,6 +26208,8 @@ export namespace Prisma {
     isBaseline?: boolean
     notifiedAt?: Date | string | null
     skippedReason?: string | null
+    sellerName?: string | null
+    sellerUrl?: string | null
   }
 
   export type NotificationCreateManySearchInput = {
@@ -24421,6 +26237,8 @@ export namespace Prisma {
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerUrl?: NullableStringFieldUpdateOperationsInput | string | null
     notifications?: NotificationUpdateManyWithoutListingNestedInput
     favorites?: FavoriteUpdateManyWithoutListingNestedInput
   }
@@ -24441,6 +26259,8 @@ export namespace Prisma {
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerUrl?: NullableStringFieldUpdateOperationsInput | string | null
     notifications?: NotificationUncheckedUpdateManyWithoutListingNestedInput
     favorites?: FavoriteUncheckedUpdateManyWithoutListingNestedInput
   }
@@ -24461,6 +26281,8 @@ export namespace Prisma {
     isBaseline?: BoolFieldUpdateOperationsInput | boolean
     notifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     skippedReason?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerName?: NullableStringFieldUpdateOperationsInput | string | null
+    sellerUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type NotificationUpdateWithoutSearchInput = {

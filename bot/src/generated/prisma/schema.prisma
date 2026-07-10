@@ -66,15 +66,16 @@ model User {
   updatedAt                     DateTime  @updatedAt
   lastActiveAt                  DateTime  @default(now())
 
-  searches      Search[]
-  payments      Payment[]
-  favorites     Favorite[]
-  notifications Notification[]
-  settings      UserSettings?
-  adminLogs     AdminLog[]
-  sentReferrals Referral[]     @relation("ReferrerUser")
-  gotReferral   Referral?      @relation("ReferredUser")
-  promoUses     PromoCodeUse[]
+  searches       Search[]
+  payments       Payment[]
+  favorites      Favorite[]
+  blockedSellers BlockedSeller[]
+  notifications  Notification[]
+  settings       UserSettings?
+  adminLogs      AdminLog[]
+  sentReferrals  Referral[]      @relation("ReferrerUser")
+  gotReferral    Referral?       @relation("ReferredUser")
+  promoUses      PromoCodeUse[]
 
   @@index([telegramId])
   @@index([plan])
@@ -135,6 +136,10 @@ model Listing {
   notifiedAt     DateTime?
   /// Reason why a notification was NOT sent: TOO_OLD | UNKNOWN_DATE | null (notified or baseline).
   skippedReason  String?
+  /// Seller display name scraped from the listing card (best-effort).
+  sellerName     String?
+  /// Seller profile URL — the stable key for per-user seller blocking.
+  sellerUrl      String?
 
   notifications Notification[]
   favorites     Favorite[]
@@ -159,6 +164,19 @@ model Payment {
 
   @@index([userId])
   @@index([telegramPaymentChargeId])
+}
+
+model BlockedSeller {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  /// Stable identifier: seller profile URL when known, otherwise seller name.
+  sellerKey  String
+  sellerName String?
+  createdAt  DateTime @default(now())
+
+  @@unique([userId, sellerKey])
+  @@index([userId])
 }
 
 model Favorite {

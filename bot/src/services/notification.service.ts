@@ -263,7 +263,15 @@ export class NotificationService {
     const fav: InlineKeyboardButton = { text: 'В избранное', callback_data: `fav:${listing.id}` };
     const pause: InlineKeyboardButton = { text: 'Пауза', callback_data: `pause_search:${search.id}` };
     const del: InlineKeyboardButton = { text: 'Удалить', callback_data: `del_search:${search.id}` };
-    return [[open], [fav, pause, del]];
+
+    const rows: InlineKeyboardButton[][] = [[open], [fav, pause, del]];
+
+    // Seller blocking — only when the listing has seller info.
+    const withSeller = listing as Listing & { sellerName?: string | null; sellerUrl?: string | null };
+    if (withSeller.sellerUrl || withSeller.sellerName) {
+      rows.push([{ text: 'Скрыть продавца', callback_data: `block_seller:${listing.id}` }]);
+    }
+    return rows;
   }
 
   /** Escape HTML special characters. */

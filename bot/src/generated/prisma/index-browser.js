@@ -177,7 +177,9 @@ exports.Prisma.ListingScalarFieldEnum = {
   firstSeenAt: 'firstSeenAt',
   isBaseline: 'isBaseline',
   notifiedAt: 'notifiedAt',
-  skippedReason: 'skippedReason'
+  skippedReason: 'skippedReason',
+  sellerName: 'sellerName',
+  sellerUrl: 'sellerUrl'
 };
 
 exports.Prisma.PaymentScalarFieldEnum = {
@@ -190,6 +192,14 @@ exports.Prisma.PaymentScalarFieldEnum = {
   status: 'status',
   createdAt: 'createdAt',
   completedAt: 'completedAt'
+};
+
+exports.Prisma.BlockedSellerScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  sellerKey: 'sellerKey',
+  sellerName: 'sellerName',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.FavoriteScalarFieldEnum = {
@@ -324,6 +334,7 @@ exports.Prisma.ModelName = {
   Search: 'Search',
   Listing: 'Listing',
   Payment: 'Payment',
+  BlockedSeller: 'BlockedSeller',
   Favorite: 'Favorite',
   Notification: 'Notification',
   UserSettings: 'UserSettings',
