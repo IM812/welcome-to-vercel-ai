@@ -131,7 +131,12 @@ async function main() {
   new QueueFlushCron(bot, adminNotif).start();
 
   // ── Start polling ──────────────────────────────────────────────────────────
+  // drop_pending_updates: true — при старте сбрасывает очередь апдейтов и
+  // перехватывает сессию у любого другого запущенного экземпляра (локального
+  // на компе или старого серверного). После этого только этот процесс
+  // получает сообщения.
   await bot.start({
+    drop_pending_updates: true,
     onStart: (info) => { logger.info(`Bot @${info.username} started`); },
   });
 }
