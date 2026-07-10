@@ -250,16 +250,16 @@ export class SearchService {
 
     await this.searchRepo.update(search.id, { lastCheckedAt: new Date() });
 
-    // First tick after restart: snapshot current feed into session seen-set.
-    // This covers listings that were in the feed before this process started
-    // but never made it into the DB (old skipped entries, etc.).
+    // First tick after restart: seed the session seen-set from the DB, NOT
+    // from the live feed. Snapshotting the live feed swallowed listings that
+    // appeared while the bot was restarting (they were already in the feed at
+    // first tick, so they were marked seen and never sent). The DB is the
+    // durable record of what was actually processed, so restarts lose nothing —
+    // and the tick proceeds immediately instead of being skipped.
     if (!sessionSeen.has(search.id)) {
-      const snap = new Set(allItems.map(
-        p => p.externalId || hashListing(p.title, p.price, p.url)
-      ));
-      sessionSeen.set(search.id, snap);
-      logger.info(`[session-seed] searchId=${search.id} snapped ${snap.size} ids — skipping this tick`);
-      return;
+      const dbIds = await this.listingRepo.findExternalIds(search.id);
+      sessionSeen.set(search.id, new Set(dbIds));
+      logger.info(`[session-seed] searchId=${search.id} seeded ${dbIds.length} ids from DB`);
     }
 
     const seenSession = sessionSeen.get(search.id)!;

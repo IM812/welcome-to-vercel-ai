@@ -28,6 +28,17 @@ export class ListingRepository {
     return prisma.listing.count({ where: { searchId } });
   }
 
+  /** All externalIds ever stored for a search — used to seed the in-memory
+   *  seen-set from the DB on restart so listings that appeared while the bot
+   *  was down are still detected as new. */
+  async findExternalIds(searchId: number): Promise<string[]> {
+    const rows = await prisma.listing.findMany({
+      where: { searchId },
+      select: { externalId: true },
+    });
+    return rows.map((r) => r.externalId);
+  }
+
   async countFoundToday(): Promise<number> {
     const start = new Date();
     start.setHours(0, 0, 0, 0);
