@@ -6351,3 +6351,6 @@ The column `Listing.rawPublishedAt` does not exist in the current database.
 2026-07-10 10:05:02 [[31merror[39m]: Parser error for search 6: Request failed with status code 0
 2026-07-10 10:05:17 [[34mdebug[39m]: [fetch] https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_odezhda-ASgBAgICAUTeAtgL
 2026-07-10 10:05:37 [[34mdebug[39m]: [fetch] https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_odezhda-ASgBAgICAUTeAtgL
+2026-07-10 10:05:59 [[34mdebug[39m]: [fetch] https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_odezhda-ASgBAgICAUTeAtgL
+2026-07-10 10:06:18 [[31merror[39m]: Parser error for search 6: Request failed with status code 0
+2026-07-10 10:06:32 [[34mdebug[39m]: [fetch] https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_odezhda-ASgBAgICAUTeAtgL
