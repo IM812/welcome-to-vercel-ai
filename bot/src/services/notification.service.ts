@@ -105,12 +105,12 @@ export class NotificationService {
       }
 
       if (!sent) {
-        // Append a placeholder "photo" line so the message still looks rich
-        const textWithLink = `${caption}\n\n<a href="${listing.url}">Смотреть объявление</a>`;
-        await this.bot.api.sendMessage(chatId, textWithLink, {
+        // Text-only fallback. Preview is disabled: it duplicated the title and
+        // description above the card and made it unreadable.
+        await this.bot.api.sendMessage(chatId, caption, {
           parse_mode: 'HTML',
           reply_markup: { inline_keyboard: keyboard },
-          link_preview_options: { is_disabled: false, prefer_large_media: true, show_above_text: true, url: listing.url },
+          link_preview_options: { is_disabled: true },
         });
       }
 
@@ -202,7 +202,7 @@ export class NotificationService {
    * Build the listing card caption (competitor-style format):
    *   🏷 : <title>
    *   💵 Цена: <price>
-   *   🔗 Ссылка: <url>
+   *   🔗 Ссылка: <short clickable link>
    *   👤 <seller> | 📍 <location>
    */
   private buildCaption(listing: Listing, search: Search): string {
@@ -212,13 +212,16 @@ export class NotificationService {
     if (listing.price) {
       lines.push(`💵 Цена: <b>${this.esc(listing.price)}</b>`);
     }
-    lines.push(`🔗 Ссылка: ${listing.url}`);
+    // Clickable anchor instead of the raw URL — Avito URLs carry a huge
+    // `context=` tail that used to fill 5 lines of the card.
+    lines.push(`🔗 Ссылка: <a href="${this.cleanUrl(listing.url)}">на Авито</a>`);
 
     // Seller line — competitor shows "👤 Name | Компания | На Авито с 2017".
     // We show what we scraped from the card (name); location complements it.
     const withSeller = listing as Listing & { sellerName?: string | null };
     const sellerParts: string[] = [];
-    if (withSeller.sellerName) sellerParts.push(this.esc(withSeller.sellerName));
+    const sellerName = this.cleanSellerName(withSeller.sellerName);
+    if (sellerName) sellerParts.push(this.esc(sellerName));
     if (listing.location) sellerParts.push(`📍 ${this.esc(listing.location)}`);
     if (sellerParts.length > 0) {
       lines.push('');
@@ -231,6 +234,31 @@ export class NotificationService {
     }
 
     return lines.join('\n');
+  }
+
+  /** Strip tracking/query params (the giant `context=` tail) from Avito URLs. */
+  private cleanUrl(url: string): string {
+    try {
+      const u = new URL(url);
+      u.search = '';
+      return u.toString();
+    } catch {
+      return url.split('?')[0];
+    }
+  }
+
+  /**
+   * Seller names scraped from the card sometimes have the rating and review
+   * count glued on ("AppleStudio4,94,9·125 отзывов"). Cut everything from the
+   * first rating-like token onwards.
+   */
+  private cleanSellerName(name: string | null | undefined): string | null {
+    if (!name) return null;
+    const cleaned = name
+      .replace(/\d[.,]\d.*$/u, '') // "4,9..." rating and everything after
+      .replace(/\s*\d+\s*отзыв\w*.*$/iu, '')
+      .trim();
+    return cleaned.length > 1 ? cleaned : null;
   }
 
   /** Inline keyboard: full-width action buttons, competitor style. */
