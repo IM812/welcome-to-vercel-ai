@@ -21,15 +21,21 @@ const CHECK_LIMIT = 20;
 // IMPORTANT: Avito's relative timestamps are coarse — a listing posted 2 minutes
 // ago can display "1 час назад" (rounded up / cached). Minute-precision filtering
 // therefore breaks on fresh listings. The real "is this new?" decision is made by
-// the seen-set (DB + session snapshot). But Avito re-surfaces older listings
-// into the feed (promotion, re-indexing, relevance sort), so an item can look
-// "new" to the seen-set while actually being minutes-to-hours old. The freshness
-// gate is the real defense: only notify for listings published within the last
-// FRESH_LISTING_MAX_AGE_MINUTES. Default 10min — tight enough to beat competitors
-// on genuinely new posts, loose enough to absorb Avito's coarse "X минут назад"
-// rounding and minor clock skew. Was 1440 (24h), which let stale rotated-in
-// listings through — the cause of "поймали 12-минутной давности".
-const MAX_AGE_MINUTES = Number(process.env.FRESH_LISTING_MAX_AGE_MINUTES || 10);
+// PRIMARY defense is NOVELTY DETECTION: an item is notified when its
+// externalId is not in the seen-set (DB + session snapshot) and was not part
+// of the baseline. This is how competitors work — a new id means a new post.
+//
+// The freshness gate is now only a SOFT SAFEGUARD against obvious garbage
+// (e.g. an item Avito re-surfaces days later), NOT the main filter. It was
+// previously 10min, which was fatally wrong: Avito's card only shows minute
+// precision for the first hour, then rounds EVERYTHING older to "1 час назад"
+// (=60min). With a 10min gate every card that says "1 час назад" was killed,
+// so genuinely-new items never got through and the bot went silent.
+//
+// Default is now 1440min (24h): wide enough that the coarse "N часов назад"
+// rounding never blocks a legitimately new listing, while still discarding
+// truly ancient items that rotate in. Tune via FRESH_LISTING_MAX_AGE_MINUTES.
+const MAX_AGE_MINUTES = Number(process.env.FRESH_LISTING_MAX_AGE_MINUTES || 1440);
 
 // If the date can't be parsed at all, send anyway (true) or skip (false).
 const SEND_WHEN_DATE_UNKNOWN =
@@ -360,8 +366,11 @@ export class SearchService {
       const rawDate: string | null = parsed.rawPublishedAt ?? null;
       const parsedDate: Date | null = rawDate ? parseListingDate(rawDate) : (parsed.publishedAt ?? null);
 
-      // Freshness gate: skip stale listings that rotated into the feed
-      // (promoted/old items Avito re-surfaces in relevance sort).
+      // Freshness gate (SOFT SAFEGUARD, default 24h): the item is already
+      // confirmed NEW by novelty detection above. This only discards truly
+      // ancient items Avito re-surfaces days later — it must NOT reject items
+      // whose card rounds to "1 час назад". Novelty detection is the primary
+      // signal; this is just a backstop against obvious garbage.
       let stale = false;
       if (parsedDate) {
         if (!isFreshListing(parsedDate, MAX_AGE_MINUTES)) {
