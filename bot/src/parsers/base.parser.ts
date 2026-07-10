@@ -196,7 +196,10 @@ export async function fetchWithCurlCffi(url: string): Promise<string> {
 
       if (!result.ok) {
         // Throw in the same format axios used so existing error handlers work.
-        const err = new Error(`Request failed with status code ${result.status ?? 0}`) as Error & {
+        // Include the Python-side detail (proxy/timeout/connection reason) so
+        // status 0 failures are diagnosable from the log instead of opaque.
+        const detail = result.error ? ` (${result.error.slice(0, 160)})` : '';
+        const err = new Error(`Request failed with status code ${result.status ?? 0}${detail}`) as Error & {
           response?: { status: number };
         };
         err.response = { status: result.status ?? 0 };
