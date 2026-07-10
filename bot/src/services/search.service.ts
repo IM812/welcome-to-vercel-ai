@@ -334,7 +334,7 @@ export class SearchService {
 
     const updated = await this.searchRepo.incrementError(id, error);
 
-    if (updated.errorCount >= 3 && notifyFn) {
+    if (updated && updated.errorCount >= 3 && notifyFn) {
       await this.searchRepo.setStatus(id, 'ERROR');
       await notifyFn('Поиск временно не работает. Проверьте ссылку.');
     }
