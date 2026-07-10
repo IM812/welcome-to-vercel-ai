@@ -13,3 +13,10 @@ __v0_jsx-dev-runtime.ts
 node_modules
 .next/
 .DS_Store
+
+# Runtime parser config & secrets — per-deployment, never commit.
+# Committing these caused a dead proxy (mproxy.site) to keep returning on
+# every `git pull` and made the rotating cookies file block pulls.
+storage/avito_proxy.txt
+storage/avito_proxy_change_url.txt
+storage/avito_cookies.json

@@ -21,11 +21,15 @@ const CHECK_LIMIT = 20;
 // IMPORTANT: Avito's relative timestamps are coarse — a listing posted 2 minutes
 // ago can display "1 час назад" (rounded up / cached). Minute-precision filtering
 // therefore breaks on fresh listings. The real "is this new?" decision is made by
-// the seen-set (DB + session snapshot): while the bot runs, anything not already
-// seen genuinely just appeared. So the gate defaults to a wide 24h window and
-// exists only to drop day-old rotated junk. Combine with date sorting (&s=104)
-// in the search URL for instant, accurate results.
-const MAX_AGE_MINUTES = Number(process.env.FRESH_LISTING_MAX_AGE_MINUTES || 1440);
+// the seen-set (DB + session snapshot). But Avito re-surfaces older listings
+// into the feed (promotion, re-indexing, relevance sort), so an item can look
+// "new" to the seen-set while actually being minutes-to-hours old. The freshness
+// gate is the real defense: only notify for listings published within the last
+// FRESH_LISTING_MAX_AGE_MINUTES. Default 10min — tight enough to beat competitors
+// on genuinely new posts, loose enough to absorb Avito's coarse "X минут назад"
+// rounding and minor clock skew. Was 1440 (24h), which let stale rotated-in
+// listings through — the cause of "поймали 12-минутной давности".
+const MAX_AGE_MINUTES = Number(process.env.FRESH_LISTING_MAX_AGE_MINUTES || 10);
 
 // If the date can't be parsed at all, send anyway (true) or skip (false).
 const SEND_WHEN_DATE_UNKNOWN =
