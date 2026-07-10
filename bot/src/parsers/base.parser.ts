@@ -55,6 +55,45 @@ function resolveProxy(): string | null {
   return process.env.AVITO_PROXY ?? null;
 }
 
+// spfa.ru API key — auto cookie supply service. File-first, then env.
+export const SPFA_KEY_PATH =
+  process.env.AVITO_SPFA_KEY_PATH ??
+  path.resolve(_dir, '../../storage/avito_spfa_key.txt');
+
+function resolveSpfaKey(): string {
+  try {
+    if (fs.existsSync(SPFA_KEY_PATH)) {
+      const v = fs.readFileSync(SPFA_KEY_PATH, 'utf-8').trim();
+      if (v) return v;
+    }
+  } catch { /* ignore */ }
+  return process.env.AVITO_SPFA_KEY ?? '';
+}
+
+// Mobile-proxy "change IP" URL. File-first, then env.
+export const PROXY_CHANGE_URL_PATH =
+  process.env.AVITO_PROXY_CHANGE_URL_PATH ??
+  path.resolve(_dir, '../../storage/avito_proxy_change_url.txt');
+
+function resolveProxyChangeUrl(): string {
+  try {
+    if (fs.existsSync(PROXY_CHANGE_URL_PATH)) {
+      const v = fs.readFileSync(PROXY_CHANGE_URL_PATH, 'utf-8').trim();
+      if (v) return v;
+    }
+  } catch { /* ignore */ }
+  return process.env.AVITO_PROXY_CHANGE_URL ?? '';
+}
+
+// Build the env passed to Python subprocesses (spfa key + IP rotation URL).
+function pythonEnv(): NodeJS.ProcessEnv {
+  return {
+    ...process.env,
+    AVITO_SPFA_KEY: resolveSpfaKey(),
+    AVITO_PROXY_CHANGE_URL: resolveProxyChangeUrl(),
+  };
+}
+
 // Serialize cookie refreshes so a burst of 403s doesn't launch N browsers.
 let cookieRefreshInFlight: Promise<boolean> | null = null;
 let lastCookieRefresh = 0;
@@ -78,7 +117,7 @@ export async function refreshAvitoCookies(): Promise<boolean> {
     const args = [COOKIES_SCRIPT, COOKIES_PATH, resolveProxy() ?? 'null'];
     let stdout = '';
     let stderr = '';
-    const proc = spawn('python3', args, { timeout: 150_000 });
+    const proc = spawn('python3', args, { timeout: 150_000, env: pythonEnv() });
 
     proc.stdout.on('data', (c: Buffer) => { stdout += c.toString(); });
     proc.stderr.on('data', (c: Buffer) => { stderr += c.toString(); });
@@ -123,7 +162,7 @@ export async function fetchWithCurlCffi(url: string): Promise<string> {
     let stdout = '';
     let stderr = '';
 
-    const proc = spawn('python3', args, { timeout: 25_000 });
+    const proc = spawn('python3', args, { timeout: 30_000, env: pythonEnv() });
 
     proc.stdout.on('data', (chunk: Buffer) => { stdout += chunk.toString(); });
     proc.stderr.on('data', (chunk: Buffer) => { stderr += chunk.toString(); });

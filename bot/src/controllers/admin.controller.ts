@@ -208,7 +208,7 @@ export function registerAdminController(
     const validPlans: Plan[] = ['FREE', 'START', 'PRO', 'UNLIMITED'];
 
     if (!code || !plan || !daysStr || !validPlans.includes(plan as Plan)) {
-      await ctx.reply('Использование: /createpromo <КОД> <FREE|START|PRO|UNLIMITED> <дней> [maxUses]');
+      await ctx.reply('Использова��ие: /createpromo <КОД> <FREE|START|PRO|UNLIMITED> <дней> [maxUses]');
       return;
     }
 
@@ -458,8 +458,41 @@ export function registerAdminController(
       proxyStatus = '✅ (из env)';
     }
 
+    const spfaPath = process.env.AVITO_SPFA_KEY_PATH ??
+      path.resolve(process.cwd(), 'storage/avito_spfa_key.txt');
+    const spfaStatus =
+      (fs.existsSync(spfaPath) && fs.readFileSync(spfaPath, 'utf-8').trim()) || process.env.AVITO_SPFA_KEY
+        ? '✅ подключён'
+        : '❌ не задан';
+
+    const rotatePath = process.env.AVITO_PROXY_CHANGE_URL_PATH ??
+      path.resolve(process.cwd(), 'storage/avito_proxy_change_url.txt');
+    const rotateStatus =
+      (fs.existsSync(rotatePath) && fs.readFileSync(rotatePath, 'utf-8').trim()) || process.env.AVITO_PROXY_CHANGE_URL
+        ? '✅ задан'
+        : '❌ не задан';
+
     await ctx.reply(
-      `Настройки парсера\n\nАктивных поисков: ${totalSearches}\nПоисков с ошибкой: ${errorSearches}\nКуки Avito: ${cookiesStatus}\nПрокси: ${proxyStatus}\n\n⚠️ Avito блокирует IP серверов (дата-центров). Для работы парсера нужен резидентный/мобильный прокси.\n\nКоманды:\n/setproxy <прокси> — задать прокси (ip:port@user:pass)\n/refreshcookies — обновить куки через браузер\n/testparser <url> — тест парсера\n/setcookies <строка> — вручную вставить куки\n/ban <id> — заблокировать\n/unban <id> — разблокировать\n/setplan <id> <план> — сменить тариф\n/userinfo <id> — инфо о пользователе`,
+      `Настройки парсера\n\n` +
+      `Активных поисков: ${totalSearches}\n` +
+      `Поисков с ошибкой: ${errorSearches}\n\n` +
+      `— Антиблокировка —\n` +
+      `Прокси: ${proxyStatus}\n` +
+      `Смена IP (моб. прокси): ${rotateStatus}\n` +
+      `Куки Avito: ${cookiesStatus}\n` +
+      `Сервис spfa.ru: ${spfaStatus}\n\n` +
+      `⚠️ Avito блокирует IP дата-центров. Для стабильной работы: резидентный/мобильный прокси + сервис spfa.ru (авто-куки).\n\n` +
+      `Команды:\n` +
+      `/setproxy <прокси> — задать прокси\n` +
+      `/setrotateurl <url> — URL смены IP моб. прокси\n` +
+      `/setspfa <ключ> — API-ключ spfa.ru (авто-куки)\n` +
+      `/refreshcookies — обновить куки через браузер\n` +
+      `/setcookies <строка> — вручную вставить куки\n` +
+      `/testparser <url> — тест парсера\n` +
+      `/ban <id> — заблокировать\n` +
+      `/unban <id> — разблокировать\n` +
+      `/setplan <id> <план> — сменить тариф\n` +
+      `/userinfo <id> — инфо о пользователе`,
     );
   });
 
@@ -501,6 +534,83 @@ export function registerAdminController(
         await ctx.reply(`✅ Прокси сохранён: ${raw.replace(/:[^:@]+@/, ':***@')}\n\nПопробуй /refreshcookies для проверки.`);
       }
       await adminLogRepo.log('SET_PROXY', raw === 'off' ? 'off' : 'set', getDbUser(ctx).id);
+    } catch (e) {
+      await ctx.reply(`Ошибка: ${e instanceof Error ? e.message : String(e)}`);
+    }
+  });
+
+  /**
+   * /setspfa <api_key>
+   *
+   * Saves the spfa.ru API key. When set, the parser automatically buys and
+   * unblocks working Avito cookies via spfa.ru — no browser, no manual
+   * cookie copy-paste. This is the recommended "hands-off" mode from
+   * Duff89/parser_avito 3.2.16. Send "/setspfa off" to remove it.
+   */
+  bot.command('setspfa', adminGuard, async (ctx) => {
+    const raw = ctx.message?.text?.replace(/^\/setspfa\s*/i, '').trim() ?? '';
+    const spfaPath = process.env.AVITO_SPFA_KEY_PATH ??
+      path.resolve(process.cwd(), 'storage/avito_spfa_key.txt');
+
+    if (!raw) {
+      await ctx.reply(
+        'Использование: /setspfa <API-ключ>\n\n' +
+        'spfa.ru — сервис который автоматически поставляет рабочие куки Avito ' +
+        '(≈12₽ за набор, хватает на ~12 часов). Зарегистрируйся на spfa.ru, ' +
+        'пополни баланс, скопируй API-ключ и отправь его сюда.\n\n' +
+        'Отключить: /setspfa off',
+      );
+      return;
+    }
+
+    try {
+      fs.mkdirSync(path.dirname(spfaPath), { recursive: true });
+      if (raw.toLowerCase() === 'off') {
+        if (fs.existsSync(spfaPath)) fs.unlinkSync(spfaPath);
+        await ctx.reply('✅ Ключ spfa.ru удалён.');
+      } else {
+        fs.writeFileSync(spfaPath, raw, 'utf-8');
+        await ctx.reply(`✅ Ключ spfa.ru сохранён (${raw.slice(0, 4)}…${raw.slice(-4)}).\n\nПарсер будет автоматически получать куки. Проверь через /testparser <url>.`);
+      }
+      await adminLogRepo.log('SET_SPFA', raw === 'off' ? 'off' : 'set', getDbUser(ctx).id);
+    } catch (e) {
+      await ctx.reply(`Ошибка: ${e instanceof Error ? e.message : String(e)}`);
+    }
+  });
+
+  /**
+   * /setrotateurl <url>
+   *
+   * Saves the mobile-proxy "change IP" URL. On a 403/429 the parser calls
+   * this URL to rotate the proxy exit IP (Duff89 MobileProxy.handle_block).
+   * Send "/setrotateurl off" to remove it.
+   */
+  bot.command('setrotateurl', adminGuard, async (ctx) => {
+    const raw = ctx.message?.text?.replace(/^\/setrotateurl\s*/i, '').trim() ?? '';
+    const rotatePath = process.env.AVITO_PROXY_CHANGE_URL_PATH ??
+      path.resolve(process.cwd(), 'storage/avito_proxy_change_url.txt');
+
+    if (!raw) {
+      await ctx.reply(
+        'Использование: /setrotateurl <url>\n\n' +
+        'URL смены IP у мобильного прокси (например ссылка вида ' +
+        'https://mobileproxy.space/api.html?command=change_ip&...). ' +
+        'Парсер вызовет его при блокировке чтобы сменить IP.\n\n' +
+        'Отключить: /setrotateurl off',
+      );
+      return;
+    }
+
+    try {
+      fs.mkdirSync(path.dirname(rotatePath), { recursive: true });
+      if (raw.toLowerCase() === 'off') {
+        if (fs.existsSync(rotatePath)) fs.unlinkSync(rotatePath);
+        await ctx.reply('✅ URL смены IP удалён.');
+      } else {
+        fs.writeFileSync(rotatePath, raw, 'utf-8');
+        await ctx.reply('✅ URL смены IP сохранён. При блокировке парсер будет менять IP автоматически.');
+      }
+      await adminLogRepo.log('SET_ROTATE_URL', raw === 'off' ? 'off' : 'set', getDbUser(ctx).id);
     } catch (e) {
       await ctx.reply(`Ошибка: ${e instanceof Error ? e.message : String(e)}`);
     }

@@ -2,15 +2,20 @@
 avito_fetch.py — subprocess HTTP helper for the Node.js Avito bot.
 
 Called by base.parser.ts via child_process.spawn:
-  python3 scripts/avito_fetch.py <url> [proxy]
+  python3 scripts/avito_fetch.py <url> [proxy] [cookies_path]
+
+Environment variables (set by base.parser.ts):
+  AVITO_SPFA_KEY        — spfa.ru API key for automatic cookie supply
+  AVITO_PROXY_CHANGE_URL — mobile proxy "change IP" URL (rotates IP on block)
 
 Returns JSON on stdout:
   {"ok": true,  "html": "..."}
   {"ok": false, "error": "...", "status": 403}
 
-Uses curl_cffi which mimics the TLS fingerprint of a real browser (same
-technique as Duff89/parser_avito). This bypasses Avito's JA3/TLS-based
-bot detection that blocks ordinary axios/node-fetch requests.
+Antiblock stack (ported from Duff89/parser_avito 3.2.16):
+  1. curl_cffi impersonate — mimics a real browser's TLS/JA3 fingerprint
+  2. spfa.ru cookie service — auto-supplies & unblocks working Avito cookies
+  3. mobile proxy IP rotation — changes IP via proxy_change_url on 403/429
 """
 import sys
 import json
@@ -24,9 +29,36 @@ except ImportError:
     print(json.dumps({"ok": False, "error": "curl_cffi not installed"}))
     sys.exit(1)
 
+# Optional spfa.ru cookie provider (auto cookies).
+try:
+    from spfa_cookies import SpfaCookiesProvider
+except ImportError:
+    SpfaCookiesProvider = None
+
+# Plain requests for the IP-rotation call.
+try:
+    import requests as plain_requests
+except ImportError:
+    plain_requests = None
+
 IMPERSONATE_OPTIONS = ["chrome120", "chrome124", "chrome131", "edge101", "safari17_0"]
-MAX_RETRIES = 3
+MAX_RETRIES = 4
 RETRY_DELAY = 3  # seconds
+
+SPFA_KEY = os.environ.get("AVITO_SPFA_KEY", "").strip()
+PROXY_CHANGE_URL = os.environ.get("AVITO_PROXY_CHANGE_URL", "").strip()
+
+
+def rotate_ip():
+    """Ask a mobile proxy to switch its exit IP (Duff89 MobileProxy.handle_block)."""
+    if not PROXY_CHANGE_URL or not plain_requests:
+        return
+    try:
+        r = plain_requests.get(PROXY_CHANGE_URL, params={"format": "json"}, timeout=10)
+        if r.status_code == 200:
+            time.sleep(2)  # give the network a moment to switch
+    except Exception:
+        pass
 
 HEADERS = {
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
@@ -62,8 +94,32 @@ def save_cookies(cookies_path: str, cookies: dict):
     except Exception:
         pass
 
+def _normalize_proxy(proxy: str | None) -> str | None:
+    """Accept host:port, host:port@user:pass, or full http:// URL."""
+    if not proxy:
+        return None
+    if proxy.startswith("http://") or proxy.startswith("https://"):
+        return proxy
+    # host:port@user:pass  ->  http://user:pass@host:port
+    if "@" in proxy:
+        hostport, creds = proxy.split("@", 1)
+        return f"http://{creds}@{hostport}"
+    return f"http://{proxy}"
+
+
 def fetch(url: str, proxy: str | None = None, cookies_path: str | None = None) -> dict:
-    cookies = load_cookies(cookies_path) if cookies_path else {}
+    proxy = _normalize_proxy(proxy)
+
+    # Cookie source: spfa.ru service (auto) takes priority, else local file.
+    spfa = None
+    if SPFA_KEY and SpfaCookiesProvider is not None:
+        try:
+            spfa = SpfaCookiesProvider(SPFA_KEY, cookies_path or "storage/cookies_external.json")
+            cookies = spfa.get()
+        except Exception as e:
+            return {"ok": False, "error": f"spfa error: {e}", "status": 0}
+    else:
+        cookies = load_cookies(cookies_path) if cookies_path else {}
 
     for attempt in range(1, MAX_RETRIES + 1):
         impersonate = random.choice(IMPERSONATE_OPTIONS)
@@ -78,20 +134,32 @@ def fetch(url: str, proxy: str | None = None, cookies_path: str | None = None) -
                     url,
                     headers=HEADERS,
                     cookies=cookies or None,
-                    timeout=12,
+                    timeout=15,
                     allow_redirects=True,
                 )
 
-                # Update stored cookies from response
-                if cookies_path and resp.cookies:
-                    updated = dict(resp.cookies)
-                    cookies.update(updated)
+                # Record status for spfa's block-detection heuristic.
+                if spfa:
+                    spfa.record_status(resp.status_code)
+
+                # Persist cookies from response (local-file mode only).
+                if not spfa and cookies_path and resp.cookies:
+                    cookies.update(dict(resp.cookies))
                     save_cookies(cookies_path, cookies)
 
                 if resp.status_code in (403, 429, 401):
                     if attempt < MAX_RETRIES:
-                        delay = RETRY_DELAY * attempt + random.uniform(1, 3)
-                        time.sleep(delay)
+                        # 1. Ask spfa to unblock / buy fresh cookies.
+                        if spfa:
+                            try:
+                                spfa.handle_block()
+                                cookies = spfa.get()
+                            except Exception:
+                                pass
+                        # 2. Rotate mobile-proxy IP.
+                        rotate_ip()
+                        # 3. Back off and retry.
+                        time.sleep(RETRY_DELAY * attempt + random.uniform(1, 3))
                         continue
                     return {"ok": False, "error": f"HTTP {resp.status_code}", "status": resp.status_code}
 
