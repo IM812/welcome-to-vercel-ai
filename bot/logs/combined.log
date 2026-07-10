@@ -6297,3 +6297,5 @@ The column `Listing.rawPublishedAt` does not exist in the current database.
 2026-07-10 09:50:32 [[34mdebug[39m]: [fetch] https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_odezhda-ASgBAgICAUTeAtgL
 2026-07-10 09:51:02 [[33mwarn[39m]: [curl_cffi] exit=null stderr=
 2026-07-10 09:51:04 [[34mdebug[39m]: [fetch] https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_odezhda-ASgBAgICAUTeAtgL
+2026-07-10 09:51:34 [[33mwarn[39m]: [curl_cffi] exit=null stderr=
+2026-07-10 09:51:38 [[34mdebug[39m]: [fetch] https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_odezhda-ASgBAgICAUTeAtgL
