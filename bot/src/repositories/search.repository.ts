@@ -45,28 +45,31 @@ export class SearchRepository {
     return prisma.search.update({ where: { id }, data: { isActive, status } });
   }
 
-  async incrementError(id: number, error: string): Promise<Search> {
+  async incrementError(id: number, error: string): Promise<Search | null> {
     // Only increment the counter and store the message.
     // The caller (CheckerCron) decides when to flip status to ERROR
     // (after MAX_ERRORS consecutive failures) to avoid premature lockout.
-    return prisma.search.update({
+    // Use updateMany to avoid throwing if the record was deleted concurrently.
+    await prisma.search.updateMany({
       where: { id },
       data: {
         errorCount: { increment: 1 },
         lastError: error,
       },
     });
+    return prisma.search.findUnique({ where: { id } });
   }
 
-  async resetError(id: number): Promise<Search> {
-    return prisma.search.update({
+  async resetError(id: number): Promise<Search | null> {
+    await prisma.search.updateMany({
       where: { id },
       data: { errorCount: 0, lastError: null, status: 'ACTIVE' },
     });
+    return prisma.search.findUnique({ where: { id } });
   }
 
   async updateLastChecked(id: number): Promise<void> {
-    await prisma.search.update({
+    await prisma.search.updateMany({
       where: { id },
       data: { lastCheckedAt: new Date() },
     });
