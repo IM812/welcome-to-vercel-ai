@@ -6276,3 +6276,12 @@ The column `Listing.rawPublishedAt` does not exist in the current database.
 2026-07-10 09:43:16 [[32minfo[39m]: Daily reset cron started
 2026-07-10 09:43:16 [[32minfo[39m]: Queue flush cron started
 2026-07-10 09:43:17 [[32minfo[39m]: Bot @avito_parser_test_bot started
+2026-07-10 09:45:31 [[34mdebug[39m]: [fetch] https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_odezhda-ASgBAgICAUTeAtgL
+2026-07-10 09:46:01 [[33mwarn[39m]: [curl_cffi] exit=null stderr=
+2026-07-10 09:46:03 [[34mdebug[39m]: [fetch] https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_odezhda-ASgBAgICAUTeAtgL
+2026-07-10 09:46:33 [[33mwarn[39m]: [fetch] 403 — attempting automatic cookie refresh
+2026-07-10 09:46:33 [[32minfo[39m]: [cookies] launching browser to fetch fresh cookies…
+2026-07-10 09:47:13 [[33mwarn[39m]: [cookies] refresh failed: ft cookie not obtained 
+2026-07-10 09:47:17 [[34mdebug[39m]: [fetch] https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_odezhda-ASgBAgICAUTeAtgL
+2026-07-10 09:47:47 [[33mwarn[39m]: [curl_cffi] exit=null stderr=
+2026-07-10 09:47:47 [[31merror[39m]: Parser error for search 6: avito_fetch.py exited null: 

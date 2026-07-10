@@ -720,3 +720,4 @@ The column `Listing.rawPublishedAt` does not exist in the current database.
 2026-07-09 19:41:27 [[31merror[39m]: Fatal startup error
 2026-07-10 09:22:53 [[31merror[39m]: Fatal startup error
 2026-07-10 09:28:43 [[31merror[39m]: Fatal startup error
+2026-07-10 09:47:47 [[31merror[39m]: Parser error for search 6: avito_fetch.py exited null: 
