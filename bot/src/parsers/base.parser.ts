@@ -101,23 +101,34 @@ function pythonEnv(): NodeJS.ProcessEnv {
   };
 }
 
-// Serialize cookie refreshes so a burst of 403s doesn't launch N browsers.
+// Serialize cookie refreshes so a burst of 403s doesn't launch N Python
+// processes and burn spfa balance. Two guards:
+//   1. in-flight mutex  — checked FIRST so any concurrent 403 caller piggy-
+//      backs on the already-running refresh instead of spawning its own.
+//   2. post-refresh cooldown — prevents a fresh re-trigger while cookies are
+//      genuinely valid. 5 min (was 60 s) stops the "4 purchases in 2 min"
+//      pattern when the network is flaky or a proxy was dying.
 let cookieRefreshInFlight: Promise<boolean> | null = null;
 let lastCookieRefresh = 0;
-const COOKIE_REFRESH_COOLDOWN_MS = 60_000;
+const COOKIE_REFRESH_COOLDOWN_MS = 5 * 60_000; // 5 minutes
 
 /**
- * Launch the Playwright stealth helper to obtain fresh Avito cookies
- * (solves the JS challenge automatically). Ported from Duff89/get_cookies.py.
- * Returns true if the `ft` cookie was obtained.
+ * Obtain fresh Avito cookies via spfa.ru (or Playwright fallback).
+ * Returns true if new cookies were written successfully.
  */
 export async function refreshAvitoCookies(): Promise<boolean> {
-  // Cooldown: don't hammer the browser launcher.
-  if (Date.now() - lastCookieRefresh < COOKIE_REFRESH_COOLDOWN_MS && lastCookieRefresh !== 0) {
-    logger.debug('[cookies] refresh skipped (cooldown)');
+  // 1. Mutex first — piggyback on an in-flight refresh rather than spawning a
+  //    second Python process. This is the fix for burst-403 double-spend.
+  if (cookieRefreshInFlight) {
+    logger.debug('[cookies] refresh already in-flight — awaiting result');
+    return cookieRefreshInFlight;
+  }
+  // 2. Cooldown — skip if cookies were refreshed recently.
+  if (lastCookieRefresh !== 0 && Date.now() - lastCookieRefresh < COOKIE_REFRESH_COOLDOWN_MS) {
+    const remaining = Math.round((COOKIE_REFRESH_COOLDOWN_MS - (Date.now() - lastCookieRefresh)) / 1000);
+    logger.debug(`[cookies] refresh skipped (cooldown, ${remaining}s remaining)`);
     return false;
   }
-  if (cookieRefreshInFlight) return cookieRefreshInFlight;
 
   // Prefer spfa.ru (pure HTTP, works headless on any VPS). The Playwright
   // browser path is only a fallback for local machines without an spfa key.
