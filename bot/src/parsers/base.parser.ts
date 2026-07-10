@@ -203,7 +203,15 @@ export async function fetchWithCurlCffi(url: string): Promise<string> {
         return;
       }
 
-      let result: { ok: boolean; html?: string; error?: string; status?: number };
+      let result: {
+        ok: boolean;
+        html?: string;
+        error?: string;
+        status?: number;
+        /** True when avito_fetch.py already called spfa handle_block() internally.
+         *  Node must NOT trigger a second refreshAvitoCookies() in that case. */
+        cookies_refreshed?: boolean;
+      };
       try {
         result = JSON.parse(stdout.trim());
       } catch {
@@ -212,14 +220,15 @@ export async function fetchWithCurlCffi(url: string): Promise<string> {
       }
 
       if (!result.ok) {
-        // Throw in the same format axios used so existing error handlers work.
-        // Include the Python-side detail (proxy/timeout/connection reason) so
-        // status 0 failures are diagnosable from the log instead of opaque.
+        // Include the Python-side detail so status 0 failures are diagnosable.
         const detail = result.error ? ` (${result.error.slice(0, 160)})` : '';
         const err = new Error(`Request failed with status code ${result.status ?? 0}${detail}`) as Error & {
           response?: { status: number };
+          cookiesAlreadyRefreshed?: boolean;
         };
         err.response = { status: result.status ?? 0 };
+        // Flag so fetchHtml() does not trigger a redundant spfa purchase.
+        err.cookiesAlreadyRefreshed = result.cookies_refreshed === true;
         reject(err);
         return;
       }
@@ -245,6 +254,14 @@ export abstract class BaseParser implements Parser {
       // 403 = cookies missing/expired or IP blocked. Try to auto-refresh
       // cookies via spfa.ru, then retry the request once.
       if (status === 403) {
+        // If avito_fetch.py already called spfa handle_block() internally
+        // (cookies_refreshed flag), skip the Node-level refresh to avoid a
+        // second spfa purchase for the same block event.
+        const alreadyRefreshed = (err as { cookiesAlreadyRefreshed?: boolean }).cookiesAlreadyRefreshed;
+        if (alreadyRefreshed) {
+          logger.debug('[fetch] 403 — cookies already refreshed by fetcher, skipping Node refresh');
+          throw err;
+        }
         logger.warn('[fetch] 403 — attempting automatic cookie refresh');
         const ok = await refreshAvitoCookies();
         if (ok) {

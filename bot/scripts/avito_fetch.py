@@ -46,9 +46,12 @@ except ImportError:
 SPFA_KEY = os.environ.get("AVITO_SPFA_KEY", "").strip()
 PROXY_CHANGE_URL = os.environ.get("AVITO_PROXY_CHANGE_URL", "").strip()
 
-MAX_RETRIES = 5
-RETRY_DELAY = 5
-BLOCK_THRESHOLD = 3
+MAX_RETRIES = 3
+RETRY_DELAY = 3
+# Refresh cookies on the FIRST 403, not after 3 in a row.
+# Hammering Avito with 5 retries on a block only deepens the ban and wastes
+# spfa balance by triggering multiple handle_block() calls.
+BLOCK_THRESHOLD = 1
 
 # Headers from Duff89/parser_avito common_data.py (v3.2.16)
 HEADERS = {
@@ -201,18 +204,36 @@ def fetch(url, proxy=None, cookies_path=None):
                 cookies.update(dict(resp.cookies))
                 save_cookies(cookies_path, cookies)
 
-            # Handle blocks (same logic as Duff89 HttpClient)
+            # Handle blocks: on the very first 403/429 immediately refresh
+            # cookies via spfa and retry. This avoids burning multiple spfa
+            # purchases and stops hammering Avito with repeated blocked requests.
             if resp.status_code in (401, 403, 429):
                 block_count += 1
                 if block_count >= BLOCK_THRESHOLD:
+                    refreshed = False
                     if spfa:
                         try:
                             spfa.handle_block()
                             cookies = spfa.get()
+                            refreshed = True
                         except Exception:
                             pass
                     rotate_ip()
                     block_count = 0
+
+                    if attempt < MAX_RETRIES:
+                        time.sleep(RETRY_DELAY)
+                        continue
+
+                    # Exhausted retries even after cookie refresh.
+                    # Signal Node.js that we already tried refreshing so it
+                    # does NOT trigger a second spfa purchase.
+                    return {
+                        "ok": False,
+                        "error": f"HTTP {resp.status_code}",
+                        "status": resp.status_code,
+                        "cookies_refreshed": refreshed,
+                    }
 
                 if attempt < MAX_RETRIES:
                     time.sleep(RETRY_DELAY)
