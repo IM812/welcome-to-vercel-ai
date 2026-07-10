@@ -207,3 +207,27 @@ class SpfaCookiesProvider:
             self.last_purchase_at = data.get("last_purchase_at")
         except Exception:
             pass
+
+
+if __name__ == "__main__":
+    # CLI used by base.parser.ts on a 403: refresh cookies via spfa.ru
+    # (unblock current set or buy a fresh one). No browser needed.
+    #   python3 spfa_cookies.py <storage_path>
+    # Env: AVITO_SPFA_KEY
+    import sys
+
+    _key = os.environ.get("AVITO_SPFA_KEY", "").strip()
+    _storage = sys.argv[1] if len(sys.argv) > 1 else "storage/cookies_external.json"
+
+    if not _key:
+        print(json.dumps({"ok": False, "error": "AVITO_SPFA_KEY not set"}))
+        sys.exit(1)
+
+    try:
+        _p = SpfaCookiesProvider(_key, _storage)
+        _p.handle_block()
+        _c = _p.get()
+        print(json.dumps({"ok": bool(_c), "has_ft": True, "id": _p.last_id}))
+    except Exception as _e:  # noqa: BLE001
+        print(json.dumps({"ok": False, "error": str(_e)}))
+        sys.exit(1)

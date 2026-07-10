@@ -31,6 +31,7 @@ const _dir = path.dirname(__filename);
 
 const FETCHER_SCRIPT = path.resolve(_dir, '../../scripts/avito_fetch.py');
 const COOKIES_SCRIPT = path.resolve(_dir, '../../scripts/avito_cookies.py');
+const SPFA_SCRIPT = path.resolve(_dir, '../../scripts/spfa_cookies.py');
 
 const COOKIES_PATH =
   process.env.AVITO_COOKIES_PATH ??
@@ -112,9 +113,17 @@ export async function refreshAvitoCookies(): Promise<boolean> {
   }
   if (cookieRefreshInFlight) return cookieRefreshInFlight;
 
+  // Prefer spfa.ru (pure HTTP, works headless on any VPS). The Playwright
+  // browser path is only a fallback for local machines without an spfa key.
+  const useSpfa = resolveSpfaKey() !== '';
+
   cookieRefreshInFlight = new Promise<boolean>((resolve) => {
-    logger.info('[cookies] launching browser to fetch fresh cookies…');
-    const args = [COOKIES_SCRIPT, COOKIES_PATH, resolveProxy() ?? 'null'];
+    logger.info(useSpfa
+      ? '[cookies] refreshing via spfa.ru (unblock/buy)…'
+      : '[cookies] launching browser to fetch fresh cookies…');
+    const args = useSpfa
+      ? [SPFA_SCRIPT, COOKIES_PATH]
+      : [COOKIES_SCRIPT, COOKIES_PATH, resolveProxy() ?? 'null'];
     let stdout = '';
     let stderr = '';
     const proc = spawn('python3', args, { timeout: 150_000, env: pythonEnv() });
