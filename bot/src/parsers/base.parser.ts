@@ -226,9 +226,13 @@ export async function fetchWithCurlCffi(url: string): Promise<string> {
       // Sort-by-date diagnostics — enabled with AVITO_SORT_DIAG=true.
       // Proves whether Avito honoured s=104 or silently redirected us to a
       // relevance-sorted page (which would mean we read the WRONG feed).
-      if ((process.env.AVITO_SORT_DIAG ?? 'false') === 'true') {
+      // Only meaningful on a SUCCESSFUL fetch: a 403/failed request does not
+      // report final_url, and comparing against a missing URL produced a
+      // false "DROPPED s=104" alarm.
+      if ((process.env.AVITO_SORT_DIAG ?? 'false') === 'true' && result.ok) {
         const requestedHasSort = /[?&]s=104(&|$)/.test(url);
         const finalUrl = result.final_url ?? '(not reported)';
+        const finalReported = typeof result.final_url === 'string' && result.final_url.length > 0;
         const finalHasSort = /[?&]s=104(&|$)/.test(finalUrl);
         logger.info('[sort-diag] --------------------------------------------------');
         logger.info(`[sort-diag] requested URL : ${url}`);
@@ -239,7 +243,8 @@ export async function fetchWithCurlCffi(url: string): Promise<string> {
         if (result.redirect_chain?.length) {
           logger.info(`[sort-diag] redirect chain: ${result.redirect_chain.join(' -> ')}`);
         }
-        if (requestedHasSort && !finalHasSort) {
+        // Only warn when the final URL WAS reported and actually lacks s=104.
+        if (requestedHasSort && finalReported && !finalHasSort) {
           logger.warn('[sort-diag] ⚠ Avito DROPPED s=104 — feed is NOT sorted by date! Reading wrong feed.');
         }
         logger.info('[sort-diag] --------------------------------------------------');
