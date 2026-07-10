@@ -1,4 +1,5 @@
 import * as cheerio from 'cheerio';
+import type { Element } from 'domhandler';
 import { BaseParser } from './base.parser';
 import type { ParsedListing } from '../types/index';
 import { hashListing } from '../utils/hash';
@@ -42,6 +43,12 @@ export class AvitoParser extends BaseParser {
     const html = await this.fetchHtml(withDateSort(url));
     const $ = cheerio.load(html);
     const listings: ParsedListing[] = [];
+
+    // Date-extraction diagnostics — enabled with AVITO_DATE_DIAG=true.
+    // Collects per-card date resolution so we can prove WHERE the date lives
+    // before touching any send/skip policy.
+    const DIAG = (process.env.AVITO_DATE_DIAG ?? 'false') === 'true';
+    const diag: Array<{ id: string; title: string; value?: string; source: string; reason?: string }> = [];
 
     $('[data-marker="item"]').each((_, el) => {
       if (listings.length >= MAX_LISTINGS) return; // stop iterating
@@ -90,18 +97,20 @@ export class AvitoParser extends BaseParser {
         const fullUrl = href.startsWith('http') ? href : `https://www.avito.ru${href}`;
 
         // Extract the date DIRECTLY from the search-result card — no extra
-        // HTTP request. Prefer an ISO datetime attribute, then relative text
-        // ("N минут назад" / "3 июля в 23:26"). Only if the card has no date
-        // does SearchService fall back to fetchListingDate() (detail page).
-        const dateEl = $el.find('[data-marker="item-date"]').first();
-        const dateIso =
-          dateEl.attr('datetime') ??
-          dateEl.attr('data-time') ??
-          dateEl.find('time').attr('datetime') ??
-          $el.find('time').attr('datetime');
-        const dateText = dateEl.text().trim() || $el.find('time').text().trim();
-        const rawPublishedAt: string | undefined =
-          (dateIso ?? dateText)?.trim() || undefined;
+        // HTTP request. Multi-strategy extraction (see extractCardDate) tries
+        // several selectors and reports which one matched, for diagnostics.
+        const dateResult = extractCardDate($el);
+        const rawPublishedAt: string | undefined = dateResult.value;
+
+        if (DIAG) {
+          diag.push({
+            id: String(externalId ?? '(hash)'),
+            title: title.slice(0, 48),
+            value: dateResult.value,
+            source: dateResult.source,
+            reason: dateResult.reason,
+          });
+        }
 
         const finalExternalId = externalId ?? hashListing(title, price, fullUrl);
 
@@ -138,6 +147,42 @@ export class AvitoParser extends BaseParser {
     });
 
     logger.debug(`[avito-category] found=${listings.length}`);
+
+    // Feed-order diagnostics — enabled with AVITO_SORT_DIAG=true.
+    // Prints the first items IN FEED ORDER with their dates. If the feed is
+    // truly sorted by date (s=104), these should be the newest listings and
+    // their dates should descend from top to bottom.
+    if ((process.env.AVITO_SORT_DIAG ?? 'false') === 'true') {
+      logger.info(`[sort-diag] first ${Math.min(5, listings.length)} listings in feed order:`);
+      listings.slice(0, 5).forEach((l, i) => {
+        logger.info(`[sort-diag]   #${i + 1} id=${l.externalId ?? '(hash)'} date=${l.rawPublishedAt ?? '—'} | ${l.title.slice(0, 50)}`);
+      });
+    }
+
+    if (DIAG) {
+      const withDate = diag.filter((d) => d.value).length;
+      const withoutDate = diag.length - withDate;
+      // Per-selector breakdown so we can see WHICH strategy is carrying.
+      const bySource = diag.reduce<Record<string, number>>((acc, d) => {
+        const key = d.value ? d.source : `none:${d.reason ?? 'unknown'}`;
+        acc[key] = (acc[key] ?? 0) + 1;
+        return acc;
+      }, {});
+
+      logger.info('[date-diag] ==================================================');
+      logger.info(`[date-diag] cards parsed: ${diag.length}`);
+      logger.info(`[date-diag] date found:   ${withDate}`);
+      logger.info(`[date-diag] date missing: ${withoutDate}`);
+      logger.info(`[date-diag] by source: ${JSON.stringify(bySource)}`);
+      for (const d of diag) {
+        logger.info(
+          `[date-diag] id=${d.id} src=${d.value ? d.source : 'NONE'} ` +
+          `date=${d.value ?? '—'}${d.value ? '' : ` reason=${d.reason ?? '?'}`} | ${d.title}`,
+        );
+      }
+      logger.info('[date-diag] ==================================================');
+    }
+
     return listings;
   }
 
@@ -200,6 +245,70 @@ export class AvitoParser extends BaseParser {
       return null;
     }
   }
+}
+
+/**
+ * Multi-strategy date extraction from a single search-result card.
+ *
+ * Tries selectors in priority order and reports WHICH one matched via the
+ * `source` field, so diagnostics can show where Avito actually keeps the date.
+ * Does NOT change any send/skip policy — it only resolves the raw date string.
+ *
+ * Returns:
+ *   value  — raw date string (undefined if nothing found)
+ *   source — label of the strategy that matched (or 'none')
+ *   reason — when not found, a hint about why (for diagnostics)
+ */
+function extractCardDate(
+  $el: cheerio.Cheerio<Element>,
+): { value?: string; source: string; reason?: string } {
+  // Strategy 1: canonical data-marker="item-date" attribute (ISO/data-time)
+  const markerEl = $el.find('[data-marker="item-date"]').first();
+  const markerExists = markerEl.length > 0;
+  const markerAttr =
+    markerEl.attr('datetime') ?? markerEl.attr('data-time') ?? markerEl.find('time').attr('datetime');
+  if (markerAttr?.trim()) {
+    return { value: markerAttr.trim(), source: 'item-date[attr]' };
+  }
+
+  // Strategy 2: data-marker="item-date" text content
+  const markerText = markerEl.text().trim();
+  if (markerText) {
+    return { value: markerText, source: 'item-date[text]' };
+  }
+
+  // Strategy 3: any <time datetime="..."> inside the card
+  const timeAttr = $el.find('time[datetime]').first().attr('datetime');
+  if (timeAttr?.trim()) {
+    return { value: timeAttr.trim(), source: 'time[datetime]' };
+  }
+
+  // Strategy 4: <time> text content
+  const timeText = $el.find('time').first().text().trim();
+  if (timeText) {
+    return { value: timeText, source: 'time[text]' };
+  }
+
+  // Strategy 5: class-based date container (Avito obfuscated class names)
+  const classDateEl = $el.find('[class*="date" i], [class*="Date"]').first();
+  const classDateText = classDateEl.text().trim();
+  if (classDateText) {
+    const parsed = extractDateFromMetaLine(classDateText);
+    if (parsed) return { value: parsed, source: 'class*=date' };
+  }
+
+  // Strategy 6: last resort — scan the whole card text for a date pattern
+  const cardText = $el.text();
+  const scanned = extractDateFromMetaLine(cardText);
+  if (scanned) {
+    return { value: scanned, source: 'card-text-scan' };
+  }
+
+  // Nothing matched — explain why for diagnostics.
+  const reason = markerExists
+    ? 'item-date present but empty (likely JS-rendered)'
+    : 'no item-date / time / date-class node in card HTML';
+  return { source: 'none', reason };
 }
 
 /**

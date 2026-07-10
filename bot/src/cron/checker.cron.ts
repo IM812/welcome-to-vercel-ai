@@ -67,26 +67,31 @@ export class CheckerCron {
     const now = new Date();
     const rawSearches = await this.searchRepo.findAllActiveForCron();
 
+    // Group searches by user so we can process users in parallel while
+    // keeping one user's searches sequential (avoids double-notifying the
+    // same user when they have multiple active searches).
+    const byUser = new Map<number, SearchWithUser[]>();
     for (const raw of rawSearches) {
       const search = raw as unknown as SearchWithUser;
       const user = search.user;
-
       if (!user || user.isBanned) continue;
-
-      // ERROR searches: back off 5 min before retrying
-      if (search.status === 'ERROR' && search.lastCheckedAt) {
-        const diffMinutes = (now.getTime() - search.lastCheckedAt.getTime()) / 60_000;
-        if (diffMinutes < 5) continue;
-      }
-      // Active searches: run every cron tick — no artificial interval gate.
-      // Speed is the priority: we want to notify before competitors do.
-
-      await this.processSearch(search, user);
-
-      // Stagger between searches: back-to-back requests from the same IP look
-      // like a scraper burst. 3-6s of jitter makes the traffic pattern human.
-      await sleep(3_000 + Math.floor(Math.random() * 3_000));
+      const arr = byUser.get(user.id) ?? [];
+      arr.push(search);
+      byUser.set(user.id, arr);
     }
+
+    await Promise.all(
+      [...byUser.values()].map(async (searches) => {
+        for (const search of searches) {
+          // ERROR searches: back off 5 min before retrying.
+          if (search.status === 'ERROR' && search.lastCheckedAt) {
+            const diffMin = (now.getTime() - search.lastCheckedAt.getTime()) / 60_000;
+            if (diffMin < 5) continue;
+          }
+          await this.processSearch(search, search.user);
+        }
+      }),
+    );
   }
 
   private async processSearch(search: SearchWithUser, user: User): Promise<void> {
@@ -115,6 +120,16 @@ export class CheckerCron {
       });
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : String(err);
+
+      // Cooldown is NOT an error — it's the breaker intentionally waiting for
+      // the IP block to expire. Don't increment error counters, don't notify
+      // the user, don't disable searches. Just log quietly and let the next
+      // tick retry after the pause.
+      if (errorMsg.includes('cooldown active')) {
+        logger.info(`[checker] search ${search.id} skipped — ${errorMsg}`);
+        return;
+      }
+
       const updated = await this.searchRepo.incrementError(search.id, errorMsg);
 
       await prisma.parserLog.create({
