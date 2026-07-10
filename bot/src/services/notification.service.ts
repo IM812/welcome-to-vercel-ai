@@ -198,79 +198,57 @@ export class NotificationService {
     }
   }
 
-  /** Build a rich HTML caption for the listing card. */
+  /**
+   * Build the listing card caption (competitor-style format):
+   *   🏷 : <title>
+   *   💵 Цена: <price>
+   *   🔗 Ссылка: <url>
+   *   👤 <seller> | 📍 <location>
+   */
   private buildCaption(listing: Listing, search: Search): string {
     const lines: string[] = [];
 
-    // Title — bold and prominent
-    lines.push(`<b>${this.esc(listing.title)}</b>`);
-
-    // Price — highlighted
+    lines.push(`🏷 : <b>${this.esc(listing.title)}</b>`);
     if (listing.price) {
-      lines.push(`\n<b>${this.esc(listing.price)}</b>`);
+      lines.push(`💵 Цена: <b>${this.esc(listing.price)}</b>`);
+    }
+    lines.push(`🔗 Ссылка: ${listing.url}`);
+
+    // Seller line — competitor shows "👤 Name | Компания | На Авито с 2017".
+    // We show what we scraped from the card (name); location complements it.
+    const withSeller = listing as Listing & { sellerName?: string | null };
+    const sellerParts: string[] = [];
+    if (withSeller.sellerName) sellerParts.push(this.esc(withSeller.sellerName));
+    if (listing.location) sellerParts.push(`📍 ${this.esc(listing.location)}`);
+    if (sellerParts.length > 0) {
+      lines.push('');
+      lines.push(`👤 ${sellerParts.join(' | ')}`);
     }
 
-    lines.push('');
-
-    // Location
-    if (listing.location) {
-      lines.push(`📍 ${this.esc(listing.location)}`);
-    }
-
-    // Time display. Avito's relative timestamps are rounded UP ("1 час назад"
-    // for a listing posted minutes ago), so a date parsed from them is up to
-    // an hour off — misleading in the card. The bot polls every 15s, so the
-    // moment we caught the listing IS the real appearance time. Always show
-    // the catch time in Moscow; add "Опубликовано" only when Avito supplied
-    // an absolute (non-relative) date we can trust.
-    const raw = (listing as Listing & { rawPublishedAt: string | null }).rawPublishedAt;
-    const isRelative = raw
-      ? /назад|только что|сейчас|вчера|сегодня|час|минут/i.test(raw)
-      : false;
-
-    const mskTime = (d: Date) =>
-      d.toLocaleString('ru-RU', {
-        day: 'numeric',
-        month: 'long',
-        hour: '2-digit',
-        minute: '2-digit',
-        timeZone: 'Europe/Moscow',
-      });
-
-    lines.push(`🕐 Найдено: ${this.esc(mskTime(new Date()))} (МСК)`);
-
-    if (listing.publishedAt && !isRelative) {
-      // Absolute date from Avito ("2 июля 01:18") — trustworthy, show it.
-      lines.push(`Опубликовано: ${this.esc(mskTime(listing.publishedAt))}`);
-    } else if (raw && raw.trim() && !isRelative) {
-      lines.push(`Опубликовано: ${this.esc(raw.trim())}`);
-    }
-
-    // Search label
     if (search.name) {
-      lines.push(`\n🔍 Поиск: <i>${this.esc(search.name)}</i>`);
+      lines.push('');
+      lines.push(`🔍 <i>${this.esc(search.name)}</i>`);
     }
 
-    // Platform badge
-    lines.push(`\n<code>Avito</code>`);
-
-    return lines.filter((l, i, a) => !(l === '' && a[i - 1] === '')).join('\n');
+    return lines.join('\n');
   }
 
-  /** Inline keyboard with action buttons. */
+  /** Inline keyboard: full-width action buttons, competitor style. */
   private buildKeyboard(listing: Listing, search: Search): InlineKeyboardButton[][] {
-    const open: InlineKeyboardButton = { text: 'Открыть на Avito', url: listing.url };
-    const fav: InlineKeyboardButton = { text: 'В избранное', callback_data: `fav:${listing.id}` };
-    const pause: InlineKeyboardButton = { text: 'Пауза', callback_data: `pause_search:${search.id}` };
-    const del: InlineKeyboardButton = { text: 'Удалить', callback_data: `del_search:${search.id}` };
-
-    const rows: InlineKeyboardButton[][] = [[open], [fav, pause, del]];
+    const rows: InlineKeyboardButton[][] = [
+      [{ text: '💛 Добавить в избранное', callback_data: `fav:${listing.id}` }],
+    ];
 
     // Seller blocking — only when the listing has seller info.
     const withSeller = listing as Listing & { sellerName?: string | null; sellerUrl?: string | null };
     if (withSeller.sellerUrl || withSeller.sellerName) {
-      rows.push([{ text: 'Скрыть продавца', callback_data: `block_seller:${listing.id}` }]);
+      rows.push([{ text: '🙅‍♂️ Заблокировать продавца', callback_data: `block_seller:${listing.id}` }]);
     }
+
+    rows.push([
+      { text: 'Пауза', callback_data: `pause_search:${search.id}` },
+      { text: 'Удалить поиск', callback_data: `del_search:${search.id}` },
+    ]);
     return rows;
   }
 
