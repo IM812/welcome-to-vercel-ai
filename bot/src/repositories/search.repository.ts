@@ -28,16 +28,20 @@ export class SearchRepository {
     return prisma.search.count({ where: { userId, isActive: true } });
   }
 
-  async update(id: number, data: Prisma.SearchUpdateInput): Promise<Search> {
-    return prisma.search.update({ where: { id }, data });
+  async update(id: number, data: Prisma.SearchUpdateManyMutationInput): Promise<Search | null> {
+    // updateMany never throws P2025 when the record was deleted concurrently
+    // (e.g. user removes a search while the checker cron is mid-run).
+    await prisma.search.updateMany({ where: { id }, data });
+    return prisma.search.findUnique({ where: { id } });
   }
 
   async delete(id: number): Promise<void> {
-    await prisma.search.delete({ where: { id } });
+    await prisma.search.deleteMany({ where: { id } });
   }
 
-  async setStatus(id: number, status: SearchStatus): Promise<Search> {
-    return prisma.search.update({ where: { id }, data: { status } });
+  async setStatus(id: number, status: SearchStatus): Promise<Search | null> {
+    await prisma.search.updateMany({ where: { id }, data: { status } });
+    return prisma.search.findUnique({ where: { id } });
   }
 
   async setActive(id: number, isActive: boolean): Promise<Search> {

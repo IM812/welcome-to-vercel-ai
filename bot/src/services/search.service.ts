@@ -14,10 +14,17 @@ import { logger } from '../utils/logger';
 // How many listings to inspect on each cron tick.
 const CHECK_LIMIT = 20;
 
-// Freshness gate: Avito's default feed sorts by relevance/promotion, so old
-// promoted listings rotate into the top and look "new" to the seen-set.
-// Only listings whose parsed publish date is within this window are sent.
-const MAX_AGE_MINUTES = Number(process.env.FRESH_LISTING_MAX_AGE_MINUTES || 30);
+// Freshness gate — guards ONLY against genuinely ancient listings that Avito's
+// relevance sort rotates into the top of the feed (promoted/old items).
+//
+// IMPORTANT: Avito's relative timestamps are coarse — a listing posted 2 minutes
+// ago can display "1 час назад" (rounded up / cached). Minute-precision filtering
+// therefore breaks on fresh listings. The real "is this new?" decision is made by
+// the seen-set (DB + session snapshot): while the bot runs, anything not already
+// seen genuinely just appeared. So the gate defaults to a wide 24h window and
+// exists only to drop day-old rotated junk. Combine with date sorting (&s=104)
+// in the search URL for instant, accurate results.
+const MAX_AGE_MINUTES = Number(process.env.FRESH_LISTING_MAX_AGE_MINUTES || 1440);
 
 // If the date can't be parsed at all, send anyway (true) or skip (false).
 const SEND_WHEN_DATE_UNKNOWN =
