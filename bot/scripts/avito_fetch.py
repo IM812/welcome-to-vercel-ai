@@ -84,18 +84,15 @@ def rotate_ip():
 
 
 def _build_session(proxy=None):
-    """Build curl_cffi session like Duff89 HttpClient._build_client()"""
-    impersonate = random.choice(["chrome", "edge", "firefox", "safari"])
-    session = requests.Session(impersonate=impersonate)
+    """Build curl_cffi session with a STABLE fingerprint.
 
-    chrome_version = str(random.randint(138, 147))
-    session.headers.update({
-        "user-agent": (
-            f"Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            f"AppleWebKit/537.36 (KHTML, like Gecko) "
-            f"Chrome/{chrome_version}.0.0.0 Safari/537.36"
-        )
-    })
+    CRITICAL: spfa cookies are tied to a browser fingerprint. Randomizing
+    impersonation (chrome/edge/firefox/safari) and the Chrome version on every
+    request made the TLS fingerprint contradict the UA header — Avito detected
+    the mismatch and invalidated fresh cookies within seconds. Everything must
+    stay consistent: chrome impersonation + Chrome/140 UA matching HEADERS.
+    """
+    session = requests.Session(impersonate="chrome")
     session.headers.update(HEADERS)
 
     if proxy:
@@ -204,9 +201,24 @@ def fetch(url, proxy=None, cookies_path=None):
                 cookies.update(dict(resp.cookies))
                 save_cookies(cookies_path, cookies)
 
-            # On 403/429: Node.js owns cookie refresh via refreshAvitoCookies().
-            # Python just returns immediately so Node can refresh and retry cleanly.
+            # On 403/429: refresh cookies via spfa (free unblock first, buy
+            # only if needed) and retry with the SAME fingerprint.
             if resp.status_code in (401, 403, 429):
+                block_count += 1
+                if block_count >= BLOCK_THRESHOLD:
+                    if spfa:
+                        try:
+                            spfa.handle_block()
+                            cookies = spfa.get()
+                        except Exception:
+                            pass
+                    rotate_ip()
+                    block_count = 0
+
+                if attempt < MAX_RETRIES:
+                    time.sleep(RETRY_DELAY)
+                    continue
+
                 return {"ok": False, "error": f"HTTP {resp.status_code}", "status": resp.status_code}
 
             if not resp.ok:
