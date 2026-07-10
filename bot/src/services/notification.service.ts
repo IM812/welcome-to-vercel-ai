@@ -156,30 +156,33 @@ export class NotificationService {
       lines.push(`📍 ${this.esc(listing.location)}`);
     }
 
-    // Published date — ALWAYS show a concrete date/time, never a relative
-    // phrase like "час назад" or "вчера". We format the parsed instant in
-    // Moscow time (e.g. "2 июля 2026, 01:18"). Only when the date could not
-    // be parsed at all do we fall back to the raw string, and only if that
-    // raw string is itself an absolute date (relative phrases are dropped).
+    // Time display. Avito's relative timestamps are rounded UP ("1 час назад"
+    // for a listing posted minutes ago), so a date parsed from them is up to
+    // an hour off — misleading in the card. The bot polls every 15s, so the
+    // moment we caught the listing IS the real appearance time. Always show
+    // the catch time in Moscow; add "Опубликовано" only when Avito supplied
+    // an absolute (non-relative) date we can trust.
     const raw = (listing as Listing & { rawPublishedAt: string | null }).rawPublishedAt;
     const isRelative = raw
       ? /назад|только что|сейчас|вчера|сегодня|час|минут/i.test(raw)
       : false;
 
-    if (listing.publishedAt) {
-      const dateStr = listing.publishedAt.toLocaleString('ru-RU', {
+    const mskTime = (d: Date) =>
+      d.toLocaleString('ru-RU', {
         day: 'numeric',
         month: 'long',
-        year: 'numeric',
         hour: '2-digit',
         minute: '2-digit',
         timeZone: 'Europe/Moscow',
       });
-      lines.push(`Опубликовано: ${this.esc(dateStr)}`);
+
+    lines.push(`🕐 Найдено: ${this.esc(mskTime(new Date()))} (МСК)`);
+
+    if (listing.publishedAt && !isRelative) {
+      // Absolute date from Avito ("2 июля 01:18") — trustworthy, show it.
+      lines.push(`Опубликовано: ${this.esc(mskTime(listing.publishedAt))}`);
     } else if (raw && raw.trim() && !isRelative) {
       lines.push(`Опубликовано: ${this.esc(raw.trim())}`);
-    } else {
-      lines.push('Опубликовано: время не указано');
     }
 
     // Search label
