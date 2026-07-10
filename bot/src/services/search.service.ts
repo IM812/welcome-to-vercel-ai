@@ -5,7 +5,7 @@ import { SubscriptionService } from './subscription.service';
 import { NotificationService } from './notification.service';
 import { ParserFactory } from '../parsers/parser.factory';
 import { withRetry } from '../utils/retry';
-import { parseListingDate } from '../utils/dateParser';
+import { parseListingDate, isFreshListing, getListingAgeMinutes } from '../utils/dateParser';
 // AvitoParser no longer imported — detail-page fetching removed from check loop
 import { hashListing } from '../utils/hash';
 import { PLATFORM_DOMAINS, PLAN_LIMITS } from '../types/index';
@@ -13,6 +13,22 @@ import { logger } from '../utils/logger';
 
 // How many listings to inspect on each cron tick.
 const CHECK_LIMIT = 20;
+
+// Freshness gate — guards ONLY against genuinely ancient listings that Avito's
+// relevance sort rotates into the top of the feed (promoted/old items).
+//
+// IMPORTANT: Avito's relative timestamps are coarse — a listing posted 2 minutes
+// ago can display "1 час назад" (rounded up / cached). Minute-precision filtering
+// therefore breaks on fresh listings. The real "is this new?" decision is made by
+// the seen-set (DB + session snapshot): while the bot runs, anything not already
+// seen genuinely just appeared. So the gate defaults to a wide 24h window and
+// exists only to drop day-old rotated junk. Combine with date sorting (&s=104)
+// in the search URL for instant, accurate results.
+const MAX_AGE_MINUTES = Number(process.env.FRESH_LISTING_MAX_AGE_MINUTES || 1440);
+
+// If the date can't be parsed at all, send anyway (true) or skip (false).
+const SEND_WHEN_DATE_UNKNOWN =
+  (process.env.SEND_WHEN_DATE_UNKNOWN ?? 'true').toLowerCase() !== 'false';
 
 // In-memory seen set per searchId, populated on the first tick after restart.
 // Prevents flooding the user with old listings that were already in the feed
@@ -273,6 +289,40 @@ export class SearchService {
 
       const rawDate: string | null = parsed.rawPublishedAt ?? null;
       const parsedDate: Date | null = rawDate ? parseListingDate(rawDate) : (parsed.publishedAt ?? null);
+
+      // Freshness gate: skip stale listings that rotated into the feed
+      // (promoted/old items Avito re-surfaces in relevance sort).
+      let stale = false;
+      if (parsedDate) {
+        if (!isFreshListing(parsedDate, MAX_AGE_MINUTES)) {
+          stale = true;
+          logger.info(
+            `[stale-skip] searchId=${search.id} externalId=${externalId} age=${Math.round(getListingAgeMinutes(parsedDate))}min raw="${rawDate ?? ''}"`,
+          );
+        }
+      } else if (!SEND_WHEN_DATE_UNKNOWN) {
+        stale = true;
+        logger.info(`[no-date-skip] searchId=${search.id} externalId=${externalId}`);
+      }
+
+      if (stale) {
+        // Save quietly so it never comes back, but do NOT notify.
+        try {
+          await this.listingRepo.upsert(search.id, externalId, {
+            title: parsed.title,
+            price: parsed.price ?? null,
+            location: parsed.location ?? null,
+            imageUrl: parsed.imageUrl ?? null,
+            url: parsed.url,
+            platform: search.platform,
+            rawPublishedAt: rawDate,
+            publishedAt: parsedDate,
+            isBaseline: false,
+            skippedReason: parsedDate ? 'stale' : 'no-date',
+          } as Parameters<ListingRepository['upsert']>[2]);
+        } catch { /* already saved */ }
+        continue;
+      }
 
       const { listing } = await this.listingRepo.upsert(
         search.id,
