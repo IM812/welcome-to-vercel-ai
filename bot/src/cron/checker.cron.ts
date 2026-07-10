@@ -115,6 +115,16 @@ export class CheckerCron {
       });
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : String(err);
+
+      // Cooldown is NOT an error — it's the breaker intentionally waiting for
+      // the IP block to expire. Don't increment error counters, don't notify
+      // the user, don't disable searches. Just log quietly and let the next
+      // tick retry after the pause.
+      if (errorMsg.includes('cooldown active')) {
+        logger.info(`[checker] search ${search.id} skipped — ${errorMsg}`);
+        return;
+      }
+
       const updated = await this.searchRepo.incrementError(search.id, errorMsg);
 
       await prisma.parserLog.create({
