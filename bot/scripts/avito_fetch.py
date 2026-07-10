@@ -204,41 +204,9 @@ def fetch(url, proxy=None, cookies_path=None):
                 cookies.update(dict(resp.cookies))
                 save_cookies(cookies_path, cookies)
 
-            # Handle blocks: on the very first 403/429 immediately refresh
-            # cookies via spfa and retry. This avoids burning multiple spfa
-            # purchases and stops hammering Avito with repeated blocked requests.
+            # On 403/429: Node.js owns cookie refresh via refreshAvitoCookies().
+            # Python just returns immediately so Node can refresh and retry cleanly.
             if resp.status_code in (401, 403, 429):
-                block_count += 1
-                if block_count >= BLOCK_THRESHOLD:
-                    refreshed = False
-                    if spfa:
-                        try:
-                            spfa.handle_block()
-                            cookies = spfa.get()
-                            refreshed = True
-                        except Exception:
-                            pass
-                    rotate_ip()
-                    block_count = 0
-
-                    if attempt < MAX_RETRIES:
-                        time.sleep(RETRY_DELAY)
-                        continue
-
-                    # Exhausted retries even after cookie refresh.
-                    # Signal Node.js that we already tried refreshing so it
-                    # does NOT trigger a second spfa purchase.
-                    return {
-                        "ok": False,
-                        "error": f"HTTP {resp.status_code}",
-                        "status": resp.status_code,
-                        "cookies_refreshed": refreshed,
-                    }
-
-                if attempt < MAX_RETRIES:
-                    time.sleep(RETRY_DELAY)
-                    continue
-
                 return {"ok": False, "error": f"HTTP {resp.status_code}", "status": resp.status_code}
 
             if not resp.ok:
