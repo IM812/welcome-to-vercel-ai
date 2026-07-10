@@ -6315,3 +6315,20 @@ The column `Listing.rawPublishedAt` does not exist in the current database.
 2026-07-10 09:55:17 [[33mwarn[39m]: [curl_cffi] exit=null stderr=
 2026-07-10 09:55:19 [[34mdebug[39m]: [fetch] https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_odezhda-ASgBAgICAUTeAtgL
 2026-07-10 09:55:49 [[33mwarn[39m]: [curl_cffi] exit=null stderr=
+2026-07-10 09:55:53 [[34mdebug[39m]: [fetch] https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_odezhda-ASgBAgICAUTeAtgL
+2026-07-10 09:56:23 [[33mwarn[39m]: [curl_cffi] exit=null stderr=
+2026-07-10 09:56:23 [[31merror[39m]: Parser error for search 6: avito_fetch.py exited null: 
+2026-07-10 09:56:32 [[34mdebug[39m]: [fetch] https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_odezhda-ASgBAgICAUTeAtgL
+2026-07-10 09:57:02 [[33mwarn[39m]: [curl_cffi] exit=null stderr=
+2026-07-10 09:57:04 [[34mdebug[39m]: [fetch] https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_odezhda-ASgBAgICAUTeAtgL
+2026-07-10 09:57:34 [[33mwarn[39m]: [curl_cffi] exit=null stderr=
+2026-07-10 09:57:38 [[34mdebug[39m]: [fetch] https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_odezhda-ASgBAgICAUTeAtgL
+2026-07-10 09:58:07 [[33mwarn[39m]: [fetch] 403 — attempting automatic cookie refresh
+2026-07-10 09:58:07 [[32minfo[39m]: [cookies] launching browser to fetch fresh cookies…
+2026-07-10 09:58:46 [[33mwarn[39m]: [cookies] refresh failed: ft cookie not obtained 
+2026-07-10 09:58:46 [[31merror[39m]: Parser error for search 6: Request failed with status code 403
+2026-07-10 09:58:47 [[34mdebug[39m]: [fetch] https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_odezhda-ASgBAgICAUTeAtgL
+2026-07-10 09:59:17 [[33mwarn[39m]: [curl_cffi] exit=null stderr=
+2026-07-10 09:59:19 [[34mdebug[39m]: [fetch] https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_odezhda-ASgBAgICAUTeAtgL
+2026-07-10 09:59:49 [[33mwarn[39m]: [curl_cffi] exit=null stderr=
+2026-07-10 09:59:53 [[34mdebug[39m]: [fetch] https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_odezhda-ASgBAgICAUTeAtgL
