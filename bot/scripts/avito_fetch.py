@@ -181,6 +181,10 @@ def fetch(url, proxy=None, cookies_path=None):
         cookies = load_cookies(cookies_path)
 
     block_count = 0
+    # spfa handle_block() may PURCHASE new cookies. When the IP itself is
+    # flagged, fresh cookies die instantly — repeated purchases just burn
+    # balance. Allow at most ONE handle_block per fetch() call.
+    spfa_refreshed = False
 
     for attempt in range(1, MAX_RETRIES + 1):
         try:
@@ -206,10 +210,11 @@ def fetch(url, proxy=None, cookies_path=None):
             if resp.status_code in (401, 403, 429):
                 block_count += 1
                 if block_count >= BLOCK_THRESHOLD:
-                    if spfa:
+                    if spfa and not spfa_refreshed:
                         try:
                             spfa.handle_block()
                             cookies = spfa.get()
+                            spfa_refreshed = True
                         except Exception:
                             pass
                     rotate_ip()
