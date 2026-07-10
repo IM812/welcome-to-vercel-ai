@@ -18,10 +18,40 @@ import json
 import time
 import os
 
+# spfa.ru sits behind Cloudflare, which serves a JS challenge ("Just a
+# moment...") to plain requests from datacenter IPs. curl_cffi with browser
+# impersonation passes the challenge, so we use it here too.
 try:
-    import requests
+    from curl_cffi import requests as _cffi
+    _USE_CFFI = True
 except ImportError:
-    requests = None
+    _cffi = None
+    _USE_CFFI = False
+
+try:
+    import requests as _plain
+except ImportError:
+    _plain = None
+
+
+def _post(url, json_body, headers, timeout):
+    """POST that survives Cloudflare via curl_cffi impersonation."""
+    if _USE_CFFI:
+        with _cffi.Session(impersonate="chrome") as s:
+            return s.post(url, json=json_body, headers=headers, timeout=timeout)
+    if _plain is not None:
+        return _plain.post(url, json=json_body, headers=headers, timeout=timeout)
+    raise RuntimeError("no HTTP library available")
+
+
+# Backwards-compat alias so the rest of the file can keep calling requests.post
+class _RequestsShim:
+    @staticmethod
+    def post(url, json=None, headers=None, timeout=15):
+        return _post(url, json, headers, timeout)
+
+
+requests = _RequestsShim()
 
 API_URL = "https://spfa.ru/api"
 
