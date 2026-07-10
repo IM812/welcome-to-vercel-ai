@@ -47,6 +47,12 @@ export const PROXY_PATH =
   path.resolve(_dir, '../../storage/avito_proxy.txt');
 
 function resolveProxy(): string | null {
+  // Direct mode: on a Russian host Avito is reachable without a proxy, so
+  // AVITO_DIRECT=1 hard-disables proxy resolution. This makes the no-proxy
+  // setup immune to a stale storage/avito_proxy.txt or AVITO_PROXY env that
+  // would otherwise route traffic through a dead proxy.
+  if (/^(1|true|yes)$/i.test(process.env.AVITO_DIRECT ?? '')) return null;
+
   try {
     if (fs.existsSync(PROXY_PATH)) {
       const v = fs.readFileSync(PROXY_PATH, 'utf-8').trim();
