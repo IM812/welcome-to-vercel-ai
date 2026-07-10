@@ -68,8 +68,18 @@ export class AvitoParser extends BaseParser {
           .first();
         const location = locationEl.text().trim() || undefined;
 
-        const imageEl = $el.find('img[itemprop="image"], img[data-src]').first();
+        // Avito lazy-loads card images: `src` is often a data: placeholder
+        // while the real CDN URL lives in srcset/data-srcset. Take the last
+        // (largest) srcset entry so sendPhoto gets a decent-sized image.
+        const imageEl = $el.find('img[itemprop="image"], img[data-src], [class*="photo"] img, [data-marker*="image"] img').first();
+        const srcset = imageEl.attr('srcset') ?? imageEl.attr('data-srcset');
+        const srcsetBest = srcset
+          ?.split(',')
+          .map((s) => s.trim().split(/\s+/)[0])
+          .filter(Boolean)
+          .pop();
         const imageUrl =
+          srcsetBest ??
           imageEl.attr('src') ??
           imageEl.attr('data-src') ??
           undefined;

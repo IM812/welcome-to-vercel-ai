@@ -110,7 +110,7 @@ function pythonEnv(): NodeJS.ProcessEnv {
 //      pattern when the network is flaky or a proxy was dying.
 let cookieRefreshInFlight: Promise<boolean> | null = null;
 let lastCookieRefresh = 0;
-const COOKIE_REFRESH_COOLDOWN_MS = 5 * 60_000; // 5 minutes
+const COOKIE_REFRESH_COOLDOWN_MS = 2 * 60_000; // 2 minutes
 
 /**
  * Obtain fresh Avito cookies via spfa.ru (or Playwright fallback).
@@ -254,14 +254,10 @@ export abstract class BaseParser implements Parser {
       // 403 = cookies missing/expired or IP blocked. Try to auto-refresh
       // cookies via spfa.ru, then retry the request once.
       if (status === 403) {
-        // If avito_fetch.py already called spfa handle_block() internally
-        // (cookies_refreshed flag), skip the Node-level refresh to avoid a
-        // second spfa purchase for the same block event.
-        const alreadyRefreshed = (err as { cookiesAlreadyRefreshed?: boolean }).cookiesAlreadyRefreshed;
-        if (alreadyRefreshed) {
-          logger.debug('[fetch] 403 — cookies already refreshed by fetcher, skipping Node refresh');
-          throw err;
-        }
+        // Single refresh path: always go through Node refreshAvitoCookies()
+        // which logs every step, respects the mutex/cooldown, and writes the
+        // cookie file. Python's internal handle_block was a second path that
+        // silently competed with this one — removed to simplify the flow.
         logger.warn('[fetch] 403 — attempting automatic cookie refresh');
         const ok = await refreshAvitoCookies();
         if (ok) {

@@ -212,9 +212,13 @@ export class NotificationService {
     if (listing.price) {
       lines.push(`💵 Цена: <b>${this.esc(listing.price)}</b>`);
     }
-    // Clickable anchor instead of the raw URL — Avito URLs carry a huge
-    // `context=` tail that used to fill 5 lines of the card.
-    lines.push(`🔗 Ссылка: <a href="${this.cleanUrl(listing.url)}">на Авито</a>`);
+    // Competitor-style visible short link: https://avito.ru/<id>.
+    // Avito resolves ID-based short URLs, and the visible URL looks more
+    // trustworthy than an anchor. Falls back to the cleaned slug URL.
+    const shortUrl = /^\d+$/.test(listing.externalId)
+      ? `https://avito.ru/${listing.externalId}`
+      : this.cleanUrl(listing.url);
+    lines.push(`🔗 Ссылка: <a href="${shortUrl}">${shortUrl}</a>`);
 
     // Seller line — competitor shows "👤 Name | Компания | На Авито с 2017".
     // We show what we scraped from the card (name); location complements it.
